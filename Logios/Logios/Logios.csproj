@@ -244,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -251,16 +252,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entities_Layer\Entities_Layer.csproj">
-      <Project>{2d75acee-82cc-47aa-a7b9-baf672baad5d}</Project>
-      <Name>Entities_Layer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service_Layer\Service_Layer.csproj">
-      <Project>{937f5a39-4d92-48d0-ba9d-dcd07f9b46b9}</Project>
-      <Name>Service_Layer</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
