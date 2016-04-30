@@ -24,7 +24,7 @@ namespace Logios
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.cerulean.min.css",
                       "~/Content/site.css"));
         }
     }
