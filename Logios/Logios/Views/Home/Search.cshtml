@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Logios.Entities.Exercise>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Solution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Development)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic.Description)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Problem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Solution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Development)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExerciseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExerciseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExerciseId })
+        </td>
+    </tr>
+}
+    
+</table>
