@@ -7,15 +7,14 @@ namespace Logios.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Logios.Entities.LogiosContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Logios.Models.ApplicationDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "Logios.Entities.LogiosContext";
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Logios.Entities.LogiosContext context)
+        protected override void Seed(Logios.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
             var newTopics = new List<Topic>

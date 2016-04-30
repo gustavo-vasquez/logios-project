@@ -9,7 +9,7 @@ namespace Logios.Services
 {
     public class ExerciseServices
     {
-        private LogiosContext context = new LogiosContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public Exercise GetExercise(int id)
         {

@@ -172,26 +172,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Entities\Exercise.cs" />
-    <Compile Include="Entities\LogiosContext.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604301906375_InitialCreate.cs" />
-    <Compile Include="Migrations\201604301906375_InitialCreate.Designer.cs">
-      <DependentUpon>201604301906375_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604301916367_AddColumnsToExecise.cs" />
-    <Compile Include="Migrations\201604301916367_AddColumnsToExecise.Designer.cs">
-      <DependentUpon>201604301916367_AddColumnsToExecise.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604301928317_AddTopic.cs" />
-    <Compile Include="Migrations\201604301928317_AddTopic.Designer.cs">
-      <DependentUpon>201604301928317_AddTopic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604302010186_SeedData.cs" />
-    <Compile Include="Migrations\201604302010186_SeedData.Designer.cs">
-      <DependentUpon>201604302010186_SeedData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,20 +260,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604301906375_InitialCreate.resx">
-      <DependentUpon>201604301906375_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604301916367_AddColumnsToExecise.resx">
-      <DependentUpon>201604301916367_AddColumnsToExecise.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604301928317_AddTopic.resx">
-      <DependentUpon>201604301928317_AddTopic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604302010186_SeedData.resx">
-      <DependentUpon>201604302010186_SeedData.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
