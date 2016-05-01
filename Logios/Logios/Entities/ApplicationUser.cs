@@ -13,6 +13,7 @@ namespace Logios.Entities
     public class ApplicationUser : IdentityUser
     {
         public int Points { get; set; }
+        public List<UserTrophy> UserTrophy { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

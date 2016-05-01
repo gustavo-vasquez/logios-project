@@ -10,5 +10,7 @@ namespace Logios.Entities
         public int TrophyId { get; set; }
         public string Description { get; set; }
         public int Points { get; set; }
+
+        public List<UserTrophy> UserTrophy { get; set; }
     }
 }

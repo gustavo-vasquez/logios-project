@@ -171,17 +171,23 @@
     <Compile Include="Controllers\ExerciseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="Entities\ApplicationDbContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\Trophy.cs" />
+    <Compile Include="Entities\UserTrophy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201605010030020_AddTrophy.cs" />
     <Compile Include="Migrations\201605010030020_AddTrophy.Designer.cs">
       <DependentUpon>201605010030020_AddTrophy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605010050449_AddUserTrophy.cs" />
+    <Compile Include="Migrations\201605010050449_AddUserTrophy.Designer.cs">
+      <DependentUpon>201605010050449_AddUserTrophy.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,6 +262,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Exercise\Show.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\UserTrophies\Create.cshtml" />
+    <Content Include="Views\UserTrophies\Delete.cshtml" />
+    <Content Include="Views\UserTrophies\Details.cshtml" />
+    <Content Include="Views\UserTrophies\Edit.cshtml" />
+    <Content Include="Views\UserTrophies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -270,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605010030020_AddTrophy.resx">
       <DependentUpon>201605010030020_AddTrophy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605010050449_AddUserTrophy.resx">
+      <DependentUpon>201605010050449_AddUserTrophy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
