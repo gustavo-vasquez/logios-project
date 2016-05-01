@@ -1,8 +1,29 @@
-﻿@model IEnumerable<Logios.Entities.Exercise>
-
-<ul>
-    @foreach (var exercise in Model)
+﻿@model Logios.Models.ExerciseResultViewModel
+<div class="row">
+    @foreach (var exercise in Model.Exercises)
     {
-        <li>Ejercise Id = @exercise.ExerciseId</li>
+        <div class="col-xs-3">
+            <div class="thumbnail">
+                <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                    <img src="@Model.TopicImageUrl" alt="Imagen del ejercicio">
+                </a>                
+                <div class="caption">
+                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                        <h3>Ejercicio - @exercise.ExerciseId</h3>
+                    </a>
+                    <p>Breve descripcion del ejercicio</p>
+                </div>
+            </div>
+        </div>
     }
-</ul>
+
+@*<div class="col-xs-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ejercicio @exercise.ExerciseId</h3>
+            </div>
+            <div class="panel-body">
+                Descripci&oacute;n del ejercicio...
+            </div>
+        </div>
+    </div>*@

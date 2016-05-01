@@ -1,4 +1,5 @@
 ﻿using Logios.Entities;
+using Logios.Models;
 using Logios.Services;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace Logios.Controllers
 {
     public class HomeController : Controller
     {
-        ExerciseServices Services = new ExerciseServices();
+        ExerciseServices ExerciseService = new ExerciseServices();
+        TopicsService TopicService = new TopicsService();
 
         public ActionResult Index()
         {            
@@ -21,8 +23,15 @@ namespace Logios.Controllers
         public PartialViewResult Search(string topicId)
         {
             var id = int.Parse(topicId);
-            var exercises = Services.GetExercisesByTopic(id);
-            return PartialView("_ExerciseSearchResult", exercises);
+            var exercises = ExerciseService.GetExercisesByTopic(id);
+            var topic = this.TopicService.GetById(id);
+            var resultsViewModel = new ExerciseResultViewModel()
+            {
+                Exercises = exercises,
+                TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png")
+            };
+
+            return PartialView("_ExerciseSearchResult", resultsViewModel);
         }
     }
 }
