@@ -10,7 +10,7 @@ namespace Logios.Controllers
 {
     public class HomeController : Controller
     {
-        ExerciseServices services = new ExerciseServices();
+        ExerciseServices Services = new ExerciseServices();
 
         public ActionResult Index()
         {            
@@ -18,11 +18,11 @@ namespace Logios.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search()
+        public PartialViewResult Search(string topicId)
         {
-            var id = int.Parse(Request.Form["topicId"]);
-            var exercises = services.GetExercisesByTopic(id);
-            return View(exercises);
+            var id = int.Parse(topicId);
+            var exercises = Services.GetExercisesByTopic(id);
+            return PartialView("_ExerciseSearchResult", exercises);
         }
     }
 }

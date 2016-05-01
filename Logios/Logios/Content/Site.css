@@ -16,9 +16,13 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.exercise-search-box {
+    background-color: transparent;
+    margin: 0;
+}
+
+.exercise-search-result {
+    /* Same padding than Jumbotron from bootstrap */
+    padding-left: 60px;
+    padding-right: 60px;
 }

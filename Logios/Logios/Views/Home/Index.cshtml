@@ -2,11 +2,35 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <form role="form" method="post" action="@Url.Action("Search", "Home")">
-        <div class="form-group">
-            <input type="text" class="form-control" name="topicId" id="searchExercise" placeholder="Busque un ejercicio" />
+<div class="jumbotron exercise-search-box">
+    @using (Ajax.BeginForm(
+                "Search",
+                "Home",
+                null,
+                new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "exerciseSearchResult"
+                },
+                new
+                {
+                    Id = "exerciseSearchForm",
+                    @Class = "form",
+                    Role = "form"
+                }
+            )
+    )
+    {
+        <div class="form-group form-group-lg">
+            <div class="input-group input-group-lg">
+                <input id="searchInput" name="topicId" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    }
+</div>
+<div id="exerciseSearchResult" class="exercise-search-result">
 </div>
