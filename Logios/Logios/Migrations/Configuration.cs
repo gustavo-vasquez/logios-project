@@ -7,14 +7,14 @@ namespace Logios.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Logios.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Logios.Entities.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Logios.Models.ApplicationDbContext context)
+        protected override void Seed(Logios.Entities.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
             var newTopics = new List<Topic>
@@ -39,6 +39,17 @@ namespace Logios.Migrations
                 };
 
                 newExercises.ForEach(e => context.Exercises.AddOrUpdate(e));
+                context.SaveChanges();
+            }
+
+            if (context.Trophies.Count() == 0)
+            {
+                var trophies = new List<Trophy>()
+                {
+                    new Trophy { Description = "Primer Trofeo", Points = 20 }
+                };
+
+                trophies.ForEach(t => context.Trophies.Add(t));
                 context.SaveChanges();
             }
         }
