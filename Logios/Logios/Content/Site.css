@@ -46,3 +46,11 @@
     color: #a8a6a6 !important;
 }
 
+#problemDIV {
+    overflow:auto;
+}
+
+#problemDIV small {
+    margin-top: 30px;
+}
+
