@@ -41,5 +41,12 @@ namespace Logios.Services
 
             return exercises;
         }
+
+        public bool CheckUserAlreadyResolved(string UserId, int id)
+        {
+            var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
+
+            return isDeveloped;
+        }
     }
 }
