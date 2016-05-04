@@ -179,6 +179,7 @@
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\Trophy.cs" />
+    <Compile Include="Entities\UserExercise.cs" />
     <Compile Include="Entities\UserTrophy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,6 +248,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
