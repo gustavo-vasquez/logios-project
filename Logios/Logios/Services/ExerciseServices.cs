@@ -11,7 +11,7 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public Exercise GetExercise(int id)
+        public Exercise GetExercise(int? id)
         {
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
                         
@@ -22,7 +22,7 @@ namespace Logios.Services
         {
             var solution = context.Exercises.FirstOrDefault(e => e.ExerciseId == id).Solution;
 
-            if(answer != solution)            
+            if(answer.Replace('"', '\'') != solution)            
                 return false;            
             else            
                 return true;                     
@@ -40,6 +40,13 @@ namespace Logios.Services
             }
 
             return exercises;
+        }
+
+        public bool CheckUserAlreadyResolved(string UserId, int id)
+        {
+            var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
+
+            return isDeveloped;
         }
     }
 }

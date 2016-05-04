@@ -16,11 +16,16 @@ namespace Logios.Controllers
         {
             return View();
         }
-
-        public ActionResult Show(int id)
+        
+        public ActionResult Show(int? id)
         {
-            var exerciseToShow = services.GetExercise(id);
-            return View(exerciseToShow);
+            if (id != null)
+            {
+                var exerciseToShow = services.GetExercise(id);
+                return View(exerciseToShow);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

@@ -26,3 +26,31 @@
     padding-left: 60px;
     padding-right: 60px;
 }
+
+.exercise-breadcrumb-mod {
+    margin-top: 20px;
+    background-color: #f3f1f1 !important;
+    margin-bottom: 50px;
+}
+
+.vertical-space {
+    height: 60px;
+}
+
+#solutionContainer {
+    width: 500px;
+    height: 200px;
+}
+
+.exercise-legend {
+    color: #a8a6a6 !important;
+}
+
+#problemDIV {
+    overflow:auto;
+}
+
+#problemDIV small {
+    margin-top: 30px;
+}
+
