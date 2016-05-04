@@ -1,4 +1,5 @@
-﻿using Logios.Entities;
+﻿using Logios.DTOs;
+using Logios.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,14 @@ namespace Logios.Services
         {
         }
 
-        public IEnumerable<Topic> GetAll()
+        public IEnumerable<TopicDTO> GetAll()
         {
             using (var context = new ApplicationDbContext())
             {
-                var result = context.Topics.Select(x => x);
+                var topics = context.Topics.ToList();
+                var result = new List<TopicDTO>();
+                topics.ForEach(t => result.Add(new TopicDTO { TopicId = t.TopicId, Description = t.Description }));
+
                 return result;
             }
         }

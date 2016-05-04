@@ -33,5 +33,11 @@ namespace Logios.Controllers
 
             return PartialView("_ExerciseSearchResult", resultsViewModel);
         }
+
+        public JsonResult GetTopics()
+        {
+            var topics = this.TopicService.GetAll();
+            return Json(topics, JsonRequestBehavior.AllowGet);
+        }
     }
 }

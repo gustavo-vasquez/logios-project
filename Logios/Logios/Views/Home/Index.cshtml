@@ -11,7 +11,8 @@
                 {
                     HttpMethod = "POST",
                     InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "exerciseSearchResult"
+                    UpdateTargetId = "exerciseSearchResult",
+                    OnComplete = "animateResults"
                 },
                 new
                 {
@@ -24,7 +25,8 @@
     {
         <div class="form-group form-group-lg">
             <div class="input-group input-group-lg">
-                <input id="searchInput" name="topicId" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
+                <input type="hidden" name="topicId" />
+                <input id="searchInput" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
