@@ -34,11 +34,6 @@ namespace Logios.Services
                                    .Where(e => e.Topic.TopicId == topicId)
                                    .ToList();
 
-            if (exercises.Count == 0)
-            {
-                throw new ArgumentOutOfRangeException(string.Format("No se encuentra un tema que corresponda con el TopicId {0}", topicId));
-            }
-
             return exercises;
         }
 
