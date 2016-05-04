@@ -23,5 +23,6 @@ namespace Logios.Entities
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Trophy> Trophies { get; set; }
         public DbSet<UserTrophy> UserTrophies { get; set; }
+        public DbSet<UserExercise> UserExercise { get; set; }
     }
 }

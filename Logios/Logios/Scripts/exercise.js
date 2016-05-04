@@ -14,6 +14,13 @@ function ViewDevelopment() {
 
 function copyAnswer() {
     $('#answer').val(solutionEditor.getMathML());
+    var isValid = ($('#answer').val() != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>");
+    if (isValid)
+        return true;    
+    else
+        alert("ERROR: Debe escribir una respuesta.");
+
+    return false;
 }
 
 MathJax.Hub.Config({        
