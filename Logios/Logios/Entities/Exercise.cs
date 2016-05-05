@@ -11,6 +11,7 @@ namespace Logios.Entities
         public string Problem { get; set; }
         public string Development { get; set; }
         public string Solution { get; set; }
+        public string Description { get; set; }
 
         public virtual Topic Topic { get; set; }
     }

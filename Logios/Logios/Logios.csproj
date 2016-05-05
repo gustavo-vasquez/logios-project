@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201605010050449_AddUserTrophy.Designer.cs">
       <DependentUpon>201605010050449_AddUserTrophy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605050250080_AddDescriptionToExercise.cs" />
+    <Compile Include="Migrations\201605050250080_AddDescriptionToExercise.Designer.cs">
+      <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataGenerators\DataGeneratorExtensions.cs" />
     <Compile Include="Migrations\DataGenerators\ExerciseDataGenerator.cs" />
@@ -332,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605010050449_AddUserTrophy.resx">
       <DependentUpon>201605010050449_AddUserTrophy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605050250080_AddDescriptionToExercise.resx">
+      <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,7 +33,6 @@ namespace Logios.Services
             var exercises = context.Exercises
                                    .Where(e => e.Topic.TopicId == topicId)
                                    .ToList();
-
             return exercises;
         }
 
