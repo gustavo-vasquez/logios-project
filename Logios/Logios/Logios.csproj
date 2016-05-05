@@ -193,6 +193,11 @@
       <DependentUpon>201605010050449_AddUserTrophy.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataGenerators\DataGeneratorExtensions.cs" />
+    <Compile Include="Migrations\DataGenerators\ExerciseDataGenerator.cs" />
+    <Compile Include="Migrations\DataGenerators\IDataGenerator.cs" />
+    <Compile Include="Migrations\DataGenerators\TopicDataGenerator.cs" />
+    <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
