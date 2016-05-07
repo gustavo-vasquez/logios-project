@@ -5,11 +5,18 @@ window.onload = function () {
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
 }
 
-function ViewDevelopment() {
-    if ($('#DevelopmentField').is(':hidden'))
-        $('#DevelopmentField').slideDown(500);
-    else
-        $('#DevelopmentField').slideUp(500);
+function ViewDevelopment(UserId, ExerciseId) {
+	if ($('#DevelopmentField').is(':hidden'))
+	{
+		$('#DevelopmentField').slideDown(500);
+	}
+	else
+    {
+	    $('#DevelopmentField').slideUp(500);
+	}
+	console.log(UserId);
+	console.log(ExerciseId);
+		
 }
 
 function copyAnswer() {

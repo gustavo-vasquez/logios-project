@@ -59,5 +59,17 @@ namespace Logios.Services
 
             return isDeveloped;
         }
+
+        public void UpdateUserExercise(string UserId, int id)
+        {
+            UserExercise UserExercise = new UserExercise();
+
+            UserExercise.UserId = UserId;
+            UserExercise.ExerciseId = id;
+            UserExercise.ShowedSolution = true;
+            UserExercise.SolvedDate = DateTime.Now;
+
+            context.SaveChanges();
+        }
     }
 }

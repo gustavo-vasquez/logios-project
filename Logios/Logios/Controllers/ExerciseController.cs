@@ -39,6 +39,14 @@ namespace Logios.Controllers
 
             return View(services.GetExerciseInformation(id));
         }
+
+        public void ShowAnswer(string UserId, int id)
+        {
+            if (!services.CheckUserAlreadyResolved(UserId,id))
+            {
+                services.UpdateUserExercise(UserId, id);
+            }
+        }        
         
         public JsonResult Pagination(int id)
         {

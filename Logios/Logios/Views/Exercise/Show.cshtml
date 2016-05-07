@@ -1,4 +1,5 @@
 ﻿@model Logios.Models.ExerciseViewModel
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Mostrar ejercicio";
@@ -49,8 +50,8 @@
         </div>
 
         <div class="col-lg-8">            
-            <blockquote class="exercise-bg">
-                <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment();">Visualizar desarrollo</button>
+            <blockquote>                
+                <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
                 <div class="clearfix"><br /></div>
                 <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
             </blockquote>
