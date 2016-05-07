@@ -11,9 +11,10 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public Exercise GetExercise(int? id)
+        public ExerciseViewModel GetExercise(int? id)
         {
-            var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+            ExerciseViewModel exercise = new ExerciseViewModel();
+            exercise.Exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
                         
             return exercise;
         }
@@ -27,6 +28,22 @@ namespace Logios.Services
             else            
                 return true;                     
         }
+
+        public ExerciseViewModel GetExerciseInformation(int? id)
+        {
+            var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+            var allExercises = context.Exercises.ToList();
+            var index = allExercises.IndexOf(exercise);
+
+            ExerciseViewModel exerciseToShow = new ExerciseViewModel();
+            exerciseToShow.Exercise = exercise;
+            exerciseToShow.isFirst = (index == 0);
+            exerciseToShow.isLast = (allExercises.Count() > 0 && index == allExercises.Count() - 1);
+            exerciseToShow.backExerciseId = (index > 0) ? allExercises[index - 1].ExerciseId : id;
+            exerciseToShow.nextExerciseId = (index < allExercises.Count() - 1) ? allExercises[index + 1].ExerciseId : id;
+
+            return exerciseToShow;
+        }        
 
         public IEnumerable<Exercise> GetExercisesByTopic(int topicId)
         {

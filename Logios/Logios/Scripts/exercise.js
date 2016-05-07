@@ -30,7 +30,17 @@ MathJax.Hub.Config({
         font: "Gyre-Pagella",
         undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
         matchFontHeight: true,
-        useFontCache: true
+        useFontCache: true,
+        blacker: 9
     }
 });
 
+function pagination(isFirst, isLast) {
+    if (isFirst == "True") {        
+        document.getElementById("prevEx").className += " disabled";        
+    }
+
+    if (isLast == "True") {        
+        document.getElementById("nextEx").className += " disabled";
+    }    
+}

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 using System.Web.Mvc;
 using Logios.Services;
+using System.Web.Script.Serialization;
 
 namespace Logios.Controllers
 {
@@ -20,8 +22,8 @@ namespace Logios.Controllers
         public ActionResult Show(int? id)
         {
             if (id != null)
-            {
-                var exerciseToShow = services.GetExercise(id);
+            {                           
+                var exerciseToShow = services.GetExerciseInformation(id);
                 return View(exerciseToShow);
             }
             else
@@ -35,12 +37,13 @@ namespace Logios.Controllers
             bool result = services.CheckAnswer(id, answer);            
             ViewBag.Result = result;
 
-            return View(services.GetExercise(id));
+            return View(services.GetExerciseInformation(id));
+        }
+        
+        public JsonResult Pagination(int id)
+        {
+            return Json(JsonConvert.SerializeObject(services.GetExerciseInformation(id)), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete()
-        {
-            return View();
-        }
     }
 }

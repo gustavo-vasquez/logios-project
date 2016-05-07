@@ -204,6 +204,7 @@
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
+    <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ExerciseServices.cs" />
@@ -217,6 +218,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
+    <Content Include="Content\images\crunchify-follow-sprite.png" />
+    <Content Include="Content\images\social-icons-sprite.png" />
     <Content Include="Content\jquery.fullPage.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -272,6 +275,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MathJax\MathJax.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\vendors\jquery.easings.min.js" />
@@ -322,6 +326,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\MathJax\config\" />
+    <Folder Include="Scripts\MathJax\extensions\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Asana-Math\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Gyre-Pagella\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Gyre-Termes\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Latin-Modern\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Neo-Euler\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\STIX-Web\" />
+    <Folder Include="Scripts\MathJax\jax\" />
+    <Folder Include="Scripts\MathJax\localization\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
