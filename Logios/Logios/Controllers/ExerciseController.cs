@@ -35,7 +35,8 @@ namespace Logios.Controllers
         [ValidateInput(false)]
         public ActionResult Show(int id, string answer)
         {
-            bool result = services.CheckAnswer(id, answer);            
+            bool result = services.CheckAnswer(id, answer);
+
             ViewBag.Result = result;
 
             return View(services.GetExerciseInformation(id));
@@ -46,7 +47,7 @@ namespace Logios.Controllers
         {
             if(model != null)
             { 
-                if (!services.CheckUserAlreadyResolved(model.UserId,model.ExerciseId))
+                if (!services.CheckUserAlreadyDeveloped(model.UserId,model.ExerciseId))
                 {
                     services.UpdateUserExercise(model.UserId, model.ExerciseId);
                 }

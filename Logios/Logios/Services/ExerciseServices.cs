@@ -11,6 +11,8 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
+        public 
+
         public ExerciseViewModel GetExercise(int? id)
         {
             ExerciseViewModel exercise = new ExerciseViewModel();
@@ -53,7 +55,7 @@ namespace Logios.Services
             return exercises;
         }
 
-        public bool CheckUserAlreadyResolved(string UserId, int id)
+        public bool CheckUserAlreadyDeveloped(string UserId, int id)
         {
             var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
 
