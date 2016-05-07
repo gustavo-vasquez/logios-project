@@ -30,15 +30,26 @@ function copyAnswer() {
     return false;
 }
 
-MathJax.Hub.Config({        
-    jax: ["input/MathML", "output/SVG"],
+MathJax.Hub.Config({
+    MathML: {
+        extensions: ["content-mathml.js"]
+    },
+    jax: ["input/TeX", "output/HTML-CSS"],
+    "HTML-CSS": {
+        availableFonts: ["STIX", "TeX", "Gyre-Pagella"],
+        preferredFont: "Gyre-Pagella",
+        scale: 120,
+        webFont: "Gyre-Pagella",
+        undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
+        matchFontHeight: true
+    },
     SVG: {
         scale: 100,
         font: "Gyre-Pagella",
         undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
         matchFontHeight: true,
         useFontCache: true,
-        blacker: 9
+        blacker: 10
     }
 });
 
