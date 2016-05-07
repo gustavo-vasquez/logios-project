@@ -62,13 +62,14 @@ namespace Logios.Services
 
         public void UpdateUserExercise(string UserId, int id)
         {
-            UserExercise UserExercise = new UserExercise();
+            UserExercise userExercise = new UserExercise();
 
-            UserExercise.UserId = UserId;
-            UserExercise.ExerciseId = id;
-            UserExercise.ShowedSolution = true;
-            UserExercise.SolvedDate = DateTime.Now;
+            userExercise.UserId = UserId;
+            userExercise.ExerciseId = id;
+            userExercise.ShowedSolution = true;
+            userExercise.SolvedDate = DateTime.Now;
 
+            context.UserExercise.Add(userExercise);
             context.SaveChanges();
         }
     }
