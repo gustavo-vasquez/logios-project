@@ -62,6 +62,10 @@
     background-color: rgba(239, 239, 239, 0.60);
 }
 
+#loginForm input[type="checkbox"] {
+    margin-left: 0;
+}
+
 /*.sidebox-social {
     padding: 0 0 5px 0;
 }
