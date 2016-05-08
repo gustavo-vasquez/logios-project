@@ -14,8 +14,21 @@ function ViewDevelopment(UserId, ExerciseId) {
     {
 	    $('#DevelopmentField').slideUp(500);
 	}
-	console.log(UserId);
-	console.log(ExerciseId);
+	var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
+	//var urlaction = "@Url.Action(Exercise,ShowDevelop)";
+	$.ajax({
+	    url: "/Exercise/ShowDevelop",
+	    type: 'POST',
+        data: JSON.stringify(jsonObject),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (response) {
+	        alert(response.responseText);
+	    },
+        success: function (response) {
+	        alert(response);
+	    }
+    });
 		
 }
 

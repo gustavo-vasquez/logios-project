@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Web.Mvc;
 using Logios.Services;
 using System.Web.Script.Serialization;
+using Logios.Entities;
 
 namespace Logios.Controllers
 {
@@ -34,18 +35,29 @@ namespace Logios.Controllers
         [ValidateInput(false)]
         public ActionResult Show(int id, string answer)
         {
-            bool result = services.CheckAnswer(id, answer);            
+            bool result = services.CheckAnswer(id, answer);
+
             ViewBag.Result = result;
 
             return View(services.GetExerciseInformation(id));
         }
 
-        public void ShowAnswer(string UserId, int id)
+        [HttpPost]
+        public ActionResult ShowDevelop(UserExercise model)
         {
-            if (!services.CheckUserAlreadyResolved(UserId,id))
-            {
-                services.UpdateUserExercise(UserId, id);
+            if(model != null)
+            { 
+                if (!services.CheckUserAlreadyDeveloped(model.UserId,model.ExerciseId))
+                {
+                    services.UpdateUserExercise(model.UserId, model.ExerciseId);
+                }
+                return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
             }
+            else
+            {
+                return Json("Problema al grabar en la BD");
+            }
+             
         }        
         
         public JsonResult Pagination(int id)

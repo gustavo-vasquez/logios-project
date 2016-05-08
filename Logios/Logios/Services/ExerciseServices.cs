@@ -11,6 +11,8 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
+        public 
+
         public ExerciseViewModel GetExercise(int? id)
         {
             ExerciseViewModel exercise = new ExerciseViewModel();
@@ -53,7 +55,7 @@ namespace Logios.Services
             return exercises;
         }
 
-        public bool CheckUserAlreadyResolved(string UserId, int id)
+        public bool CheckUserAlreadyDeveloped(string UserId, int id)
         {
             var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
 
@@ -62,13 +64,14 @@ namespace Logios.Services
 
         public void UpdateUserExercise(string UserId, int id)
         {
-            UserExercise UserExercise = new UserExercise();
+            UserExercise userExercise = new UserExercise();
 
-            UserExercise.UserId = UserId;
-            UserExercise.ExerciseId = id;
-            UserExercise.ShowedSolution = true;
-            UserExercise.SolvedDate = DateTime.Now;
+            userExercise.UserId = UserId;
+            userExercise.ExerciseId = id;
+            userExercise.ShowedSolution = true;
+            userExercise.SolvedDate = DateTime.Now;
 
+            context.UserExercise.Add(userExercise);
             context.SaveChanges();
         }
     }
