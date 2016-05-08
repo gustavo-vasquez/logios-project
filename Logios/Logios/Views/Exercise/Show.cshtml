@@ -1,11 +1,11 @@
-﻿@model Logios.Entities.Exercise
+﻿@model Logios.Models.ExerciseViewModel
 @using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Mostrar ejercicio";
 }
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML-full"></script>
+@Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
 <script src="http://www.wiris.net/demo/editor/editor"></script>
 @Scripts.Render("~/Scripts/exercise.js")
 
@@ -13,15 +13,15 @@
     <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
     <li><a href="#">Ejercicios</a></li>
     <li><a href="#">Derivadas</a></li>
-    <li class="active">Ejercicio #@Model.ExerciseId</li>
+<li class="active">Ejercicio #@Model.Exercise.ExerciseId</li>
 </ul>
 
-<h2><b>EJERCICIO Nº @Model.ExerciseId</b></h2>
-<small>Temática: </small>
-<span class="label label-warning">Derivadas</span>
-<div class="pull-right">
-    <button class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></button>
-    <button class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></button>
+<h1><b>EJERCICIO Nº @Model.Exercise.ExerciseId</b></h1>
+<span>Temática: </span>
+<span class="label label-lg label-default">Derivadas</span>
+<div class="pull-right">         
+    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>                
+    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>     
 </div>
 <hr />
 
@@ -34,8 +34,8 @@
         </div>
 
         <div id="problemDIV" class="col-lg-8">
-            <blockquote>                
-                <p>@Html.Raw(Model.Problem)</p>
+            <blockquote class="exercise-bg">                
+                <p>@Html.Raw(Model.Exercise.Problem)</p>
                 <small>Suma 20 puntos</small>
             </blockquote>
         </div>
@@ -50,11 +50,10 @@
         </div>
 
         <div class="col-lg-8">            
-            <blockquote>
-                
-                <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.ExerciseId');">Visualizar desarrollo</button>
+            <blockquote class="exercise-bg">                
+                <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
                 <div class="clearfix"><br /></div>
-                <p id="DevelopmentField" hidden>@Html.Raw(Model.Development)</p>
+                <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
             </blockquote>
         </div>
     </div>
@@ -67,7 +66,7 @@
         </div>
 
         <div id="divSolution" class="col-lg-6">
-            <blockquote>
+            <blockquote class="exercise-bg">
                 <div id="solutionContainer"></div>
                 @using (@Html.BeginForm("Show", "Exercise", FormMethod.Post))
                 {
@@ -99,3 +98,5 @@
         }        
     }
 </div>
+
+<script>pagination('@Model.isFirst', '@Model.isLast');</script>

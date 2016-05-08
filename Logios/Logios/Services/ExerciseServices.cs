@@ -11,9 +11,12 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public Exercise GetExercise(int? id)
+        public 
+
+        public ExerciseViewModel GetExercise(int? id)
         {
-            var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+            ExerciseViewModel exercise = new ExerciseViewModel();
+            exercise.Exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
                         
             return exercise;
         }
@@ -28,6 +31,22 @@ namespace Logios.Services
                 return true;                     
         }
 
+        public ExerciseViewModel GetExerciseInformation(int? id)
+        {
+            var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+            var allExercises = context.Exercises.ToList();
+            var index = allExercises.IndexOf(exercise);
+
+            ExerciseViewModel exerciseToShow = new ExerciseViewModel();
+            exerciseToShow.Exercise = exercise;
+            exerciseToShow.isFirst = (index == 0);
+            exerciseToShow.isLast = (allExercises.Count() > 0 && index == allExercises.Count() - 1);
+            exerciseToShow.backExerciseId = (index > 0) ? allExercises[index - 1].ExerciseId : id;
+            exerciseToShow.nextExerciseId = (index < allExercises.Count() - 1) ? allExercises[index + 1].ExerciseId : id;
+
+            return exerciseToShow;
+        }        
+
         public IEnumerable<Exercise> GetExercisesByTopic(int topicId)
         {
             var exercises = context.Exercises
@@ -36,7 +55,7 @@ namespace Logios.Services
             return exercises;
         }
 
-        public bool CheckUserAlreadyResolved(string UserId, int id)
+        public bool CheckUserAlreadyDeveloped(string UserId, int id)
         {
             var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
 
@@ -45,13 +64,14 @@ namespace Logios.Services
 
         public void UpdateUserExercise(string UserId, int id)
         {
-            UserExercise UserExercise = new UserExercise();
+            UserExercise userExercise = new UserExercise();
 
-            UserExercise.UserId = UserId;
-            UserExercise.ExerciseId = id;
-            UserExercise.ShowedSolution = true;
-            UserExercise.SolvedDate = DateTime.Now;
+            userExercise.UserId = UserId;
+            userExercise.ExerciseId = id;
+            userExercise.ShowedSolution = true;
+            userExercise.SolvedDate = DateTime.Now;
 
+            context.UserExercise.Add(userExercise);
             context.SaveChanges();
         }
     }
