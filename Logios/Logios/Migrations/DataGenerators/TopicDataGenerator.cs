@@ -13,9 +13,9 @@ namespace Logios.Migrations.DataGenerators
         {
             var newTopics = new List<Topic>
             {
-                new Topic { Description = "Derivadas" },
-                new Topic { Description = "Polinomios" },
-                new Topic { Description = "Integrales" }
+                new Topic { TopicId = 1, Description = "Derivadas" },
+                new Topic { TopicId = 2, Description = "Polinomios" },
+                new Topic { TopicId = 3, Description = "Integrales" }
             };
 
             newTopics.ForEach(t => context.Topics.Add(t));

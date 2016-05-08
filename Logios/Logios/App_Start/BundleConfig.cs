@@ -22,7 +22,7 @@ namespace Logios
 
             bundles.Add(new ScriptBundle("~/bundles/siteScripts").Include(
                       "~/Scripts/localStorage.js",
-                      "~/Scripts/Site.js"));
+                      "~/Scripts/exerciseSearch.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.cerulean.min.css",
