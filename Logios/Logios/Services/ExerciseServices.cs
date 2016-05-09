@@ -10,9 +10,7 @@ namespace Logios.Services
     public class ExerciseServices
     {
         private ApplicationDbContext context = new ApplicationDbContext();
-
-        public 
-
+        
         public ExerciseViewModel GetExercise(int? id)
         {
             ExerciseViewModel exercise = new ExerciseViewModel();
@@ -61,14 +59,14 @@ namespace Logios.Services
 
             return isDeveloped;
         }
-
-        public void UpdateUserExercise(string UserId, int id)
+        
+        public void UpdateUserExercise(string UserId, int id, bool showed)
         {
             UserExercise userExercise = new UserExercise();
 
             userExercise.UserId = UserId;
             userExercise.ExerciseId = id;
-            userExercise.ShowedSolution = true;
+            userExercise.ShowedSolution = showed;
             userExercise.SolvedDate = DateTime.Now;
 
             context.UserExercise.Add(userExercise);

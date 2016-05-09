@@ -73,6 +73,7 @@
                     @Html.AntiForgeryToken();
                     <div class="form-inline">
                         <input type="hidden" id="answer" name="answer" />
+                        <input type="hidden" id="user" value="@User.Identity.GetUserId()"/>
                         <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
                     </div>
                 }

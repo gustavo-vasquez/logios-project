@@ -33,9 +33,17 @@ namespace Logios.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Show(int id, string answer)
+        public ActionResult Show(int id, string answer, string userid)
         {
             bool result = services.CheckAnswer(id, answer);
+
+            if (result)
+            {
+                if (!services.CheckUserAlreadyDeveloped(userid, id))
+                {
+                    services.UpdateUserExercise(userid, id, false);
+                }
+            }
 
             ViewBag.Result = result;
 
@@ -49,13 +57,13 @@ namespace Logios.Controllers
             { 
                 if (!services.CheckUserAlreadyDeveloped(model.UserId,model.ExerciseId))
                 {
-                    services.UpdateUserExercise(model.UserId, model.ExerciseId);
+                    services.UpdateUserExercise(model.UserId, model.ExerciseId,true);
                 }
                 return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
             }
             else
             {
-                return Json("Problema al grabar en la BD");
+                return Json("prueba ok");
             }
              
         }        
