@@ -55,12 +55,12 @@ namespace Logios.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña ha cambiado."
+                : message == ManageMessageId.SetPasswordSuccess ? "La contraseña ha sido configurada."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "La verificación en dos pasos ha sido configurada."
+                : message == ManageMessageId.Error ? "Un error ha ocurrido."
+                : message == ManageMessageId.AddPhoneSuccess ? "Tu nº de teléfono ha sido añadido."
+                : message == ManageMessageId.RemovePhoneSuccess ? "El nº de teléfono ha sido eliminado."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -123,7 +123,7 @@ namespace Logios.Controllers
                 var message = new IdentityMessage
                 {
                     Destination = model.Number,
-                    Body = "Your security code is: " + code
+                    Body = "El código de seguridad es: " + code
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
@@ -190,7 +190,7 @@ namespace Logios.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", "Falló al verificar el teléfono");
             return View(model);
         }
 
@@ -281,8 +281,8 @@ namespace Logios.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.RemoveLoginSuccess ? "El servicio de autenticación externo ha sido eliminado."
+                : message == ManageMessageId.Error ? "Un error ha ocurrido."
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)

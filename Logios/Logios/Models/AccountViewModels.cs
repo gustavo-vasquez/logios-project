@@ -5,8 +5,8 @@ namespace Logios.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 
@@ -25,15 +25,15 @@ namespace Logios.Models
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Proveedor requerido.")]
         public string Provider { get; set; }
 
-        [Required]
-        [Display(Name = "Code")]
+        [Required(ErrorMessage = "Código requerido.")]
+        [Display(Name = "Código")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "¿Recordar este navegador?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -41,62 +41,62 @@ namespace Logios.Models
 
     public class ForgotViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [Display(Name = "E-mail")]
+        [EmailAddress(ErrorMessage = "Ha ingresado un correo electrónico inválido.")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "¿Recordarme?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Ha ingresado un correo electrónico inválido.")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
+        [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Ha ingresado un correo electrónico inválido.")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
+        [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -104,9 +104,9 @@ namespace Logios.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Ha ingresado un correo electrónico inválido.")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 }
