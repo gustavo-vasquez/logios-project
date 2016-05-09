@@ -26,5 +26,6 @@ namespace Logios.Entities
         public DbSet<UserExercise> UserExercise { get; set; }
         public DbSet<TopicArea> TopicAreas { get; set; }
         public DbSet<TopicAreaTopic> TopicAreaTopics { get; set; }
+
     }
 }

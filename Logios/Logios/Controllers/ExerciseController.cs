@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Logios.Services;
 using System.Web.Script.Serialization;
 using Logios.Entities;
+using Microsoft.AspNet.Identity;
+
 
 namespace Logios.Controllers
 {
@@ -33,15 +35,21 @@ namespace Logios.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Show(int id, string answer, string userid)
+        public ActionResult Show(int id, string answer)
         {
+            var currentUser = User.Identity.GetUserId();
+
             bool result = services.CheckAnswer(id, answer);
 
             if (result)
             {
-                if (!services.CheckUserAlreadyDeveloped(userid, id))
+                if (!services.CheckUserAlreadyDeveloped(currentUser, id))
                 {
-                    services.UpdateUserExercise(userid, id, false);
+                    if (!services.CheckUserAlreadyResolved(currentUser, id))
+                    {
+                        services.UpdateUserExercise(currentUser, id, false);
+                        services.SumPoints(currentUser);
+                    }
                 }
             }
 

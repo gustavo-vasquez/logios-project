@@ -425,6 +425,8 @@
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\TeX\" />
     <Folder Include="Scripts\MathJax\jax\" />
     <Folder Include="Scripts\MathJax\localization\" />
+    <Folder Include="Views\ApplicationUsers\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -13,7 +13,7 @@
     <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
     <li><a href="#">Ejercicios</a></li>
     <li><a href="#">Derivadas</a></li>
-<li class="active">Ejercicio #@Model.Exercise.ExerciseId</li>
+    <li class="active">Ejercicio #@Model.Exercise.ExerciseId</li>
 </ul>
 
 <h1><b>EJERCICIO Nº @Model.Exercise.ExerciseId</b></h1>
@@ -73,7 +73,6 @@
                     @Html.AntiForgeryToken();
                     <div class="form-inline">
                         <input type="hidden" id="answer" name="answer" />
-                        <input type="hidden" id="user" value="@User.Identity.GetUserId()"/>
                         <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
                     </div>
                 }
