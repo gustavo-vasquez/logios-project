@@ -11,8 +11,8 @@ namespace Logios.Controllers
 {
     public class HomeController : Controller
     {
-        ExerciseServices ExerciseService = new ExerciseServices();
-        TopicsService TopicService = new TopicsService();
+        private ExerciseServices ExerciseService = new ExerciseServices();
+        private TopicsService TopicService = new TopicsService();
 
         public ActionResult Index()
         {            
@@ -23,6 +23,7 @@ namespace Logios.Controllers
         public PartialViewResult Search(string topicId)
         {
             var id = int.Parse(topicId);
+
             var exercises = ExerciseService.GetExercisesByTopic(id);
             var topic = this.TopicService.GetById(id);
             var resultsViewModel = new ExerciseResultViewModel()

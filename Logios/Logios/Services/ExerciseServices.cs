@@ -9,8 +9,8 @@ namespace Logios.Services
 {
     public class ExerciseServices
     {
-        private ApplicationDbContext context = new ApplicationDbContext();        
-
+        private ApplicationDbContext context = new ApplicationDbContext();
+        
         public ExerciseViewModel GetExercise(int? id)
         {
             ExerciseViewModel exercise = new ExerciseViewModel();

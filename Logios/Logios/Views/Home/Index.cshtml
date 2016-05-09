@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -12,7 +13,8 @@
                     HttpMethod = "POST",
                     InsertionMode = InsertionMode.Replace,
                     UpdateTargetId = "exerciseSearchResult",
-                    OnComplete = "animateResults"
+                    OnComplete = "animateResults",
+                    AllowCache = false
                 },
                 new
                 {
@@ -23,16 +25,24 @@
             )
     )
     {
-        <div class="form-group form-group-lg">
+        <div class="form-group">
             <div class="input-group input-group-lg">
                 <input type="hidden" name="topicId" />
+                <input type="hidden" id="lastTopicId" />
                 <input id="searchInput" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
                 <span class="input-group-btn">
-                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-info" type="button" onclick="searchExercise(userIdentity)"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
+        </div>
+        <div class="form-group">
+            <h4 id="search-tags">
+            </h4>
         </div>
     }
 </div>
 <div id="exerciseSearchResult" class="exercise-search-result">
 </div>
+<script type="text/javascript">
+    var userIdentity = '@User.Identity.GetUserId()';
+</script>

@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Logios.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Logios.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -178,6 +180,13 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Topic.cs" />
+    <Compile Include="Entities\TopicArea.cs" />
+    <Compile Include="Entities\TopicAreaTopic.cs" />
+    <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.cs" />
+    <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.Designer.cs">
+      <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
     <Compile Include="Entities\UserExercise.cs" />
     <Compile Include="Entities\UserTrophy.cs" />
@@ -196,10 +205,15 @@
     <Compile Include="Migrations\201605050250080_AddDescriptionToExercise.Designer.cs">
       <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605081958100_Add_TopicArea.cs" />
+    <Compile Include="Migrations\201605081958100_Add_TopicArea.Designer.cs">
+      <DependentUpon>201605081958100_Add_TopicArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataGenerators\DataGeneratorExtensions.cs" />
     <Compile Include="Migrations\DataGenerators\ExerciseDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\IDataGenerator.cs" />
+    <Compile Include="Migrations\DataGenerators\TopicAreaDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,6 +347,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Logios.ruleset" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -349,9 +364,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\localStorage.js" />
     <Content Include="Scripts\MathJax\MathJax.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\Site.js" />
+    <Content Include="Scripts\exerciseSearch.js" />
     <Content Include="Scripts\vendors\jquery.easings.min.js" />
     <Content Include="Scripts\vendors\jquery.slimscroll.js" />
     <Content Include="Scripts\vendors\jquery.slimscroll.min.js" />
@@ -426,6 +442,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605050250080_AddDescriptionToExercise.resx">
       <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081958100_Add_TopicArea.resx">
+      <DependentUpon>201605081958100_Add_TopicArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.resx">
+      <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,15 +20,19 @@ namespace Logios.Migrations
             {
                 new TopicDataGenerator(),
                 new ExerciseDataGenerator(),
-                new TrophyDataGenerator()
+                new TrophyDataGenerator(),
+                new TopicAreaDataGenerator(),
+                new TopicAreaTopicDataGenerator()
             };
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
             //  Borrar toda la data, en orden para que no de error de foreign keys
+            context.TopicAreaTopics.Clear();
             context.Exercises.Clear();
             context.Topics.Clear();
+            context.TopicAreas.Clear();
             context.Trophies.Clear();
 
             // Recorrer el listado de generadores de data y llamar a su método GenerateData en orden
