@@ -33,6 +33,11 @@
     margin-bottom: 50px;
 }
 
+.search-tag {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 .vertical-space {
     height: 60px;
 }
@@ -62,7 +67,11 @@
     background-color: rgba(239, 239, 239, 0.60);
 }
 
-.sidebox-social {
+#loginForm input[type="checkbox"] {
+    margin-left: 0;
+}
+
+/*.sidebox-social {
     padding: 0 0 5px 0;
 }
 .sidebox {    
@@ -96,4 +105,4 @@
 }
 .sm-wor {
     background-position: 0 -192px;
-}
+}*/

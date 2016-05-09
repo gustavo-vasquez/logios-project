@@ -12,7 +12,7 @@ namespace Logios.Migrations.DataGenerators
         {
             var trophies = new List<Trophy>()
             {
-                new Trophy { Description = "Primer Trofeo", Points = 20 }
+                new Trophy { TrophyId = 1, Description = "Primer Trofeo", Points = 20 }
             };
 
             trophies.ForEach(t => context.Trophies.Add(t));

@@ -28,24 +28,25 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer class="row">
-            <div class="col-lg-3">
+        @RenderBody()        
+        <footer class="row">            
+            <div class="col-lg-12">
+                <hr />
                 <p>&copy; @DateTime.Now.Year - Logios</p>
             </div>
-            <div class="col-lg-5 pull-right sidebox sidebox-social">
+            @*<div class="col-lg-5 pull-right sidebox sidebox-social">
                 <span class="col-lg-offset-4">Seguínos en:</span>
                 <a class="sm-rss" href="http://feeds.feedburner.com/Logios" rel="external" target="_blank" title="Subscribirse">RSS Feed</a>
                 <a class="sm-goo" href="https://plus.google.com/u/0/" rel="publisher" target="_blank" title="Perfil de Google+">Google+</a>                
                 <a class="sm-twi" href="http://twitter.com" target="_blank" title="Perfil de Twitter">Twitter</a>                
                 <a class="sm-fac" href="https://www.facebook.com/" target="_blank" title="Perfil de Facebook">Facebook</a>
-            </div>
+            </div>*@
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/siteScripts")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Logios.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Logios.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -178,6 +180,13 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Exercise.cs" />
     <Compile Include="Entities\Topic.cs" />
+    <Compile Include="Entities\TopicArea.cs" />
+    <Compile Include="Entities\TopicAreaTopic.cs" />
+    <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.cs" />
+    <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.Designer.cs">
+      <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
     <Compile Include="Entities\UserExercise.cs" />
     <Compile Include="Entities\UserTrophy.cs" />
@@ -196,10 +205,15 @@
     <Compile Include="Migrations\201605050250080_AddDescriptionToExercise.Designer.cs">
       <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605081958100_Add_TopicArea.cs" />
+    <Compile Include="Migrations\201605081958100_Add_TopicArea.Designer.cs">
+      <DependentUpon>201605081958100_Add_TopicArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\DataGenerators\DataGeneratorExtensions.cs" />
     <Compile Include="Migrations\DataGenerators\ExerciseDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\IDataGenerator.cs" />
+    <Compile Include="Migrations\DataGenerators\TopicAreaDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -216,6 +230,80 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\MathJax\config\Accessible-full.js" />
+    <Content Include="Scripts\MathJax\config\Accessible.js" />
+    <Content Include="Scripts\MathJax\config\AM_CHTML-full.js" />
+    <Content Include="Scripts\MathJax\config\AM_CHTML.js" />
+    <Content Include="Scripts\MathJax\config\AM_HTMLorMML-full.js" />
+    <Content Include="Scripts\MathJax\config\AM_HTMLorMML.js" />
+    <Content Include="Scripts\MathJax\config\AM_SVG-full.js" />
+    <Content Include="Scripts\MathJax\config\AM_SVG.js" />
+    <Content Include="Scripts\MathJax\config\default.js" />
+    <Content Include="Scripts\MathJax\config\local\local.js" />
+    <Content Include="Scripts\MathJax\config\MMLorHTML.js" />
+    <Content Include="Scripts\MathJax\config\MML_CHTML-full.js" />
+    <Content Include="Scripts\MathJax\config\MML_CHTML.js" />
+    <Content Include="Scripts\MathJax\config\MML_HTMLorMML-full.js" />
+    <Content Include="Scripts\MathJax\config\MML_HTMLorMML.js" />
+    <Content Include="Scripts\MathJax\config\MML_SVG-full.js" />
+    <Content Include="Scripts\MathJax\config\MML_SVG.js" />
+    <Content Include="Scripts\MathJax\config\Safe.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS-MML_HTMLorMML-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS-MML_HTMLorMML.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS-MML_SVG-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS-MML_SVG.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_CHTML-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_CHTML.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_HTML-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_HTML.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_SVG-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-AMS_SVG.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_CHTML-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_CHTML.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_HTMLorMML-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_HTMLorMML.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_SVG-full.js" />
+    <Content Include="Scripts\MathJax\config\TeX-MML-AM_SVG.js" />
+    <Content Include="Scripts\MathJax\extensions\asciimath2jax.js" />
+    <Content Include="Scripts\MathJax\extensions\AssistiveMML.js" />
+    <Content Include="Scripts\MathJax\extensions\CHTML-preview.js" />
+    <Content Include="Scripts\MathJax\extensions\fast-preview.js" />
+    <Content Include="Scripts\MathJax\extensions\FontWarnings.js" />
+    <Content Include="Scripts\MathJax\extensions\HelpDialog.js" />
+    <Content Include="Scripts\MathJax\extensions\HTML-CSS\handle-floats.js" />
+    <Content Include="Scripts\MathJax\extensions\jsMath2jax.js" />
+    <Content Include="Scripts\MathJax\extensions\MatchWebFonts.js" />
+    <Content Include="Scripts\MathJax\extensions\MathEvents.js" />
+    <Content Include="Scripts\MathJax\extensions\MathMenu.js" />
+    <Content Include="Scripts\MathJax\extensions\MathML\content-mathml.js" />
+    <Content Include="Scripts\MathJax\extensions\MathML\mml3.js" />
+    <Content Include="Scripts\MathJax\extensions\MathZoom.js" />
+    <Content Include="Scripts\MathJax\extensions\mml2jax.js" />
+    <Content Include="Scripts\MathJax\extensions\Safe.js" />
+    <Content Include="Scripts\MathJax\extensions\tex2jax.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\action.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\AMScd.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\AMSmath.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\AMSsymbols.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\autobold.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\autoload-all.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\bbox.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\begingroup.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\boldsymbol.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\cancel.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\color.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\enclose.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\extpfeil.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\HTML.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\mathchoice.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\mediawiki-texvc.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\mhchem.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\newcommand.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\noErrors.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\noUndefined.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\unicode.js" />
+    <Content Include="Scripts\MathJax\extensions\TeX\verb.js" />
+    <Content Include="Scripts\MathJax\extensions\toMathML.js" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />
@@ -259,6 +347,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Logios.ruleset" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -275,9 +364,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\localStorage.js" />
     <Content Include="Scripts\MathJax\MathJax.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\Site.js" />
+    <Content Include="Scripts\exerciseSearch.js" />
     <Content Include="Scripts\vendors\jquery.easings.min.js" />
     <Content Include="Scripts\vendors\jquery.slimscroll.js" />
     <Content Include="Scripts\vendors\jquery.slimscroll.min.js" />
@@ -326,14 +416,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\MathJax\config\" />
-    <Folder Include="Scripts\MathJax\extensions\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Asana-Math\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Gyre-Pagella\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Gyre-Termes\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Latin-Modern\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\Neo-Euler\" />
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\STIX-Web\" />
+    <Folder Include="Scripts\MathJax\fonts\HTML-CSS\TeX\" />
     <Folder Include="Scripts\MathJax\jax\" />
     <Folder Include="Scripts\MathJax\localization\" />
   </ItemGroup>
@@ -353,6 +442,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605050250080_AddDescriptionToExercise.resx">
       <DependentUpon>201605050250080_AddDescriptionToExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081958100_Add_TopicArea.resx">
+      <DependentUpon>201605081958100_Add_TopicArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.resx">
+      <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

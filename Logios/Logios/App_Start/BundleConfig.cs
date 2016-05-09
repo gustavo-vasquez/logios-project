@@ -20,8 +20,9 @@ namespace Logios
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/Site.js"));
+            bundles.Add(new ScriptBundle("~/bundles/siteScripts").Include(
+                      "~/Scripts/localStorage.js",
+                      "~/Scripts/exerciseSearch.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.cerulean.min.css",

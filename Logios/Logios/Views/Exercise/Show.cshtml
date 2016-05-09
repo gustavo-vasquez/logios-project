@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-lg-8">            
-            <blockquote>                
+            <blockquote class="exercise-bg">                
                 <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
                 <div class="clearfix"><br /></div>
                 <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
