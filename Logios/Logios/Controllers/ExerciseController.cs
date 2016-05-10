@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Logios.Services;
 using System.Web.Script.Serialization;
 using Logios.Entities;
+using Microsoft.AspNet.Identity;
+
 
 namespace Logios.Controllers
 {
@@ -35,7 +37,21 @@ namespace Logios.Controllers
         [ValidateInput(false)]
         public ActionResult Show(int id, string answer)
         {
+            var currentUser = User.Identity.GetUserId();
+
             bool result = services.CheckAnswer(id, answer);
+
+            if (result)
+            {
+                if (!services.CheckUserAlreadyDeveloped(currentUser, id))
+                {
+                    if (!services.CheckUserAlreadyResolved(currentUser, id))
+                    {
+                        services.UpdateUserExercise(currentUser, id, false);
+                        services.SumPoints(currentUser);
+                    }
+                }
+            }
 
             ViewBag.Result = result;
 
@@ -49,13 +65,13 @@ namespace Logios.Controllers
             { 
                 if (!services.CheckUserAlreadyDeveloped(model.UserId,model.ExerciseId))
                 {
-                    services.UpdateUserExercise(model.UserId, model.ExerciseId);
+                    services.UpdateUserExercise(model.UserId, model.ExerciseId,true);
                 }
                 return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
             }
             else
             {
-                return Json("Problema al grabar en la BD");
+                return Json("prueba ok");
             }
              
         }        
