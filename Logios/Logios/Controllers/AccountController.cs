@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Logios.Models;
 using Logios.Entities;
+using Logios.Services;
 
 namespace Logios.Controllers
 {
@@ -76,7 +77,7 @@ namespace Logios.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -150,9 +151,15 @@ namespace Logios.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if(new RegisterServices().UserNameExists(model.UserName))
+            {
+                ModelState.AddModelError("", "El nombre de usuario ya existe.");
+                return View(model);
+            }            
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

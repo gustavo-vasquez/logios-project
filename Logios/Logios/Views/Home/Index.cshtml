@@ -46,3 +46,7 @@
 <script type="text/javascript">
     var userIdentity = '@User.Identity.GetUserId()';
 </script>
+
+@section scripts {
+        @Scripts.Render("~/bundles/siteScripts")
+    }
