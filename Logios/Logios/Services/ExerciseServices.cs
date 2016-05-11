@@ -83,7 +83,7 @@ namespace Logios.Services
         public void SumPoints(string UserId)
         {
             ApplicationUser applicationUser = context.Users.Find(UserId);
-            applicationUser.Points = +1;
+            applicationUser.Points += 1;
             context.SaveChanges();
         }
     }
