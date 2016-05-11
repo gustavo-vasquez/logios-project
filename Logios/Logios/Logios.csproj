@@ -182,6 +182,7 @@
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\TopicArea.cs" />
     <Compile Include="Entities\TopicAreaTopic.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.cs" />
     <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.Designer.cs">
       <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
