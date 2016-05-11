@@ -67,6 +67,11 @@
     background-color: rgba(239, 239, 239, 0.60);
 }
 
+#loginForm div.checkbox {
+    padding: 0;
+    padding-top: 10px;
+}
+
 #loginForm input[type="checkbox"] {
     margin-left: 0;
 }
