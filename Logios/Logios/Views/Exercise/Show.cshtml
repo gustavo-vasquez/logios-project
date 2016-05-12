@@ -1,5 +1,6 @@
 ﻿@model Logios.Models.ExerciseViewModel
 @using Microsoft.AspNet.Identity
+@using Logios.Extensions
 @{
     ViewBag.Title = "Mostrar ejercicio";
 }
@@ -50,6 +51,7 @@
                     <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
                 </blockquote>
             </div>
+            @User.Identity.GetCurrentPoints();
         </div>
 
         <div class="vertical-space"></div>

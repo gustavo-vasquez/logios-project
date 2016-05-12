@@ -43,13 +43,10 @@ namespace Logios.Controllers
 
             if (result)
             {
-                if (!services.CheckUserAlreadyDeveloped(currentUser, id))
+                if (!services.CheckUserHasRecord(currentUser, id))
                 {
-                    if (!services.CheckUserAlreadyResolved(currentUser, id))
-                    {
-                        services.UpdateUserExercise(currentUser, id, false);
-                        services.SumPoints(currentUser);
-                    }
+                    services.UpdateUserExercise(currentUser, id, false);
+                    services.SumPoints(currentUser);
                 }
             }
 
@@ -61,19 +58,19 @@ namespace Logios.Controllers
         [HttpPost]
         public ActionResult ShowDevelop(UserExercise model)
         {
-            if(model != null)
-            { 
-                if (!services.CheckUserAlreadyDeveloped(model.UserId,model.ExerciseId))
-                {
-                    services.UpdateUserExercise(model.UserId, model.ExerciseId,true);
-                }
-                return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
-            }
-            else
+            if (model == null)
             {
-                return Json("prueba ok");
+                return Json("Error en la carga");
             }
-             
+
+            if (services.CheckUserHasRecord(model.UserId,model.ExerciseId))
+            {
+                return Json("Ya habías resuelto este ejercicio");
+            }
+
+            services.UpdateUserExercise(model.UserId, model.ExerciseId, true);
+            return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
+
         }        
         
         public JsonResult Pagination(int id)

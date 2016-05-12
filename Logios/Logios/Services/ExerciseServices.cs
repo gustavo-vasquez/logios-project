@@ -53,23 +53,20 @@ namespace Logios.Services
             return exercises;
         }
 
-        public bool CheckUserAlreadyDeveloped(string UserId, int id)
+        public bool CheckUserHasRecord(string UserId,int id)
         {
-            var isDeveloped = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == true);
-
-            return isDeveloped;
-        }
-
-        public bool CheckUserAlreadyResolved(string UserId, int id)
-        {
-            var isResolved = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id && e.ShowedSolution == false);
-
-            return isResolved;
+            var isRecorded = context.UserExercise.Any(e => e.UserId == UserId && e.ExerciseId == id);
+            return isRecorded;
         }
 
         public void UpdateUserExercise(string UserId, int id, bool showed)
         {
             UserExercise userExercise = new UserExercise();
+
+            if (CheckUserHasRecord(UserId, id))
+            {
+                return;
+            }
 
             userExercise.UserId = UserId;
             userExercise.ExerciseId = id;
