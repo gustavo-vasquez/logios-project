@@ -48,11 +48,13 @@
 }
 
 .exercise-legend {
-    color: #a8a6a6 !important;
+    color: #808080 !important;
 }
 
-#problemDIV {
-    overflow:auto;
+@media (max-width: 768px) {
+    div blockquote {
+        overflow:auto;
+    }
 }
 
 #problemDIV small {
@@ -64,7 +66,7 @@
 }
 
 .exercise-bg {
-    background-color: rgba(239, 239, 239, 0.60);
+    background-color: rgb(243, 242, 242);
 }
 
 #loginForm div.checkbox {
@@ -75,6 +77,10 @@
 #loginForm input[type="checkbox"] {
     margin-left: 0;
 }
+
+/*p span {
+    font-size: 22px !important;
+}*/
 
 /*.sidebox-social {
     padding: 0 0 5px 0;

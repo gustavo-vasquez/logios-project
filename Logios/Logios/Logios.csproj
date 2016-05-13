@@ -231,6 +231,8 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\jquery.gotop.js" />
+    <Content Include="Scripts\jquery.gotop.min.js" />
     <Content Include="Scripts\MathJax\config\Accessible-full.js" />
     <Content Include="Scripts\MathJax\config\Accessible.js" />
     <Content Include="Scripts\MathJax\config\AM_CHTML-full.js" />
@@ -305,6 +307,7 @@
     <Content Include="Scripts\MathJax\extensions\TeX\unicode.js" />
     <Content Include="Scripts\MathJax\extensions\TeX\verb.js" />
     <Content Include="Scripts\MathJax\extensions\toMathML.js" />
+    <Content Include="Views\Exercise\_Result.cshtml" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />

@@ -39,9 +39,9 @@ namespace Logios.Controllers
         {
             var currentUser = User.Identity.GetUserId();
 
-            bool result = services.CheckAnswer(id, answer);
+            bool? result = services.CheckAnswer(id, answer);
 
-            if (result)
+            if (result.Value)
             {
                 if (!services.CheckUserAlreadyDeveloped(currentUser, id))
                 {
@@ -53,9 +53,10 @@ namespace Logios.Controllers
                 }
             }
 
-            ViewBag.Result = result;
+            //ViewBag.Result = result;
 
-            return View(services.GetExerciseInformation(id));
+            //return View(services.GetExerciseInformation(id));
+            return PartialView("_Result", result);
         }
 
         [HttpPost]

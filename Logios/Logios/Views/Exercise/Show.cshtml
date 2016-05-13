@@ -5,16 +5,12 @@
     ViewBag.Title = "Mostrar ejercicio";
 }
 
-@Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
-<script src="http://www.wiris.net/demo/editor/editor"></script>
-@Scripts.Render("~/Scripts/exercise.js")
-
-<ul class="breadcrumb exercise-breadcrumb-mod">
+@*<ul class="breadcrumb exercise-breadcrumb-mod">
     <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
     <li><a href="#">Ejercicios</a></li>
     <li><a href="#">Derivadas</a></li>
     <li class="active">Ejercicio #@Model.Exercise.ExerciseId</li>
-</ul>
+</ul>*@
 
 <h1><b>EJERCICIO Nº @Model.Exercise.ExerciseId</b></h1>
 <span>Temática: </span>
@@ -27,13 +23,13 @@
 
 <div class="vertical-space"></div>
 
-<div class="container-fluid">    
+<div class="container-fluid col-lg-12">    
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Enunciado: </h2>
         </div>
 
-        <div id="problemDIV" class="col-lg-8">
+        <div class="col-lg-9">
             <blockquote class="exercise-bg">                
                 <p>@Html.Raw(Model.Exercise.Problem)</p>
                 <small>Suma 20 puntos</small>
@@ -49,7 +45,7 @@
             <h6 class="exercise-legend col-lg-10">(Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.)</h6>
         </div>
 
-        <div class="col-lg-8">            
+        <div class="col-lg-9">            
             <blockquote class="exercise-bg">                
                 <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
                 <div class="clearfix"><br /></div>
@@ -68,35 +64,37 @@
         <div id="divSolution" class="col-lg-6">
             <blockquote class="exercise-bg">
                 <div id="solutionContainer"></div>
-                @using (@Html.BeginForm("Show", "Exercise", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken();
-                    <div class="form-inline">
-                        <input type="hidden" id="answer" name="answer" />
-                        <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
-                    </div>
-                }
+                @using (Ajax.BeginForm(
+                    "Show",
+                    "Exercise",
+                    new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "DivResult"
+                    },
+                    new
+                    {
+                        Id = "ResultForm",
+                        @Class = "form",
+                        role = "form"
+                    }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <div class="form-inline">
+                            <input type="hidden" id="answer" name="answer" />
+                            <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                        </div>
+                    }                            
             </blockquote>
         </div>
-    </div>       
-
-    <div class="clearfix"></div>
-    <br /><br />
-    @if (IsPost)
-    {                
-        if (ViewBag.Result)
-        {
-            <div class="alert alert-dismissible alert-success col-lg-4 col-lg-push-4">
-                <p class="text-center"><b>¡Respuesta correcta!</b></p>
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-dismissible alert-danger col-lg-4 col-lg-push-4">
-                <p class="text-center"><b>¡Incorrecto!</b></p>
-            </div>
-        }        
-    }
+    </div>
+    <div id="DivResult"></div>
 </div>
 
-<script>pagination('@Model.isFirst', '@Model.isLast');</script>
+@section scripts {
+        @Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
+        <script src="http://www.wiris.net/demo/editor/editor"></script>
+        @Scripts.Render("~/Scripts/exercise.js")
+        <script>pagination('@Model.isFirst', '@Model.isLast');</script>
+    }

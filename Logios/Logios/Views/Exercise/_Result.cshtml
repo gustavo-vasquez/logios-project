@@ -1,0 +1,62 @@
+﻿ @model Boolean?
+
+<div class="clearfix"></div>
+<br /><br />
+<script>$(".modal").modal('show');</script>
+
+@if (Model.Value)
+{
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center text-success"><b>¡RESPUESTA CORRECTA! <span class="glyphicon glyphicon-ok-circle"></span></b></h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>¡Felicitaciones!</h4>
+                    <h4>Has obtenido un punto por resolver este ejercicio.</h4>
+                    <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <div class="col-md-9 col-md-pull-5">
+                            <button type="button" class="btn btn-primary">Compartir en Twitter</button>
+                        </div>
+                        <div class="col-md-3 pull-right">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="alert alert-dismissible alert-success col-lg-4 col-lg-push-4">
+            <p class="text-center label-success"><b>¡Respuesta correcta!</b></p>
+        </div>*@
+}
+else
+{
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center text-danger"><b>¡RESPUESTA INCORRECTA! <span class="glyphicon glyphicon-remove-circle"></span></b></h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>¡Vaya!</h4>
+                    <h4>Has fallado...</h4>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Inténtalo de nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="alert alert-dismissible alert-danger col-lg-4 col-lg-push-4">
+            <p class="text-center"><b>¡Incorrecto!</b></p>
+        </div>*@
+}

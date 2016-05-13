@@ -29,6 +29,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()        
+
+        <div class="clearfix"></div>
         <footer class="row">            
             <div class="col-lg-12">
                 <hr />
@@ -44,8 +46,11 @@
         </footer>
     </div>
 
+    <div id='goTop'></div>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")    
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.gotop.min.js")
+    <script>$('#goTop').goTop({ appear: 20 });</script>        
     @RenderSection("scripts", required: false)
 </body>
 </html>

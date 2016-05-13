@@ -14,33 +14,33 @@
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
             <label for="Email" class="col-md-4 control-label">E-mail:</label>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
             <label for="UserName" class="col-md-4 control-label">Nombre de usuario:</label>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
             </div>
         </div>
         
         <div class="form-group">
             <label for="Password" class="col-md-4 control-label">Contraseña:</label>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <label for="ConfirmPassword" class="col-md-4 control-label">Confirmar contraseña:</label>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
-                <input type="submit" class="btn btn-primary" value="Confirmar registro" />
+                <input type="submit" class="btn btn-info" value="Confirmar registro" />
             </div>
         </div>
     }

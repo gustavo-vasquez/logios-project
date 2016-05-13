@@ -1,9 +1,39 @@
 ﻿var solutionEditor;
 
-window.onload = function () {
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });    
+$(document).ready(function() {
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
-}
+
+    MathJax.Hub.Config({
+        jax: ["input/MathML", "output/HTML-CSS"],
+
+        MathML: {
+            extensions: ["content-mathml.js"]
+        },
+
+        "HTML-CSS": {
+            availableFonts: ["STIX", "TeX", "Gyre-Pagella"],
+            preferredFont: "Gyre-Pagella",
+            scale: 100,
+            webFont: "Gyre-Pagella",
+            undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
+            matchFontHeight: false
+        },
+
+        CommonHTML: {
+            scale: 50
+        },
+
+        SVG: {
+            scale: 50,
+            font: "Gyre-Pagella",
+            undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
+            matchFontHeight: true,
+            useFontCache: true,
+            blacker: 10
+        }
+    });
+});
 
 function ViewDevelopment(UserId, ExerciseId) {
 	if ($('#DevelopmentField').is(':hidden'))
@@ -42,29 +72,6 @@ function copyAnswer() {
 
     return false;
 }
-
-MathJax.Hub.Config({
-    MathML: {
-        extensions: ["content-mathml.js"]
-    },
-    jax: ["input/TeX", "output/HTML-CSS"],
-    "HTML-CSS": {
-        availableFonts: ["STIX", "TeX", "Gyre-Pagella"],
-        preferredFont: "Gyre-Pagella",
-        scale: 120,
-        webFont: "Gyre-Pagella",
-        undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
-        matchFontHeight: true
-    },
-    SVG: {
-        scale: 100,
-        font: "Gyre-Pagella",
-        undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
-        matchFontHeight: true,
-        useFontCache: true,
-        blacker: 10
-    }
-});
 
 function pagination(isFirst, isLast) {
     if (isFirst == "True") {        
