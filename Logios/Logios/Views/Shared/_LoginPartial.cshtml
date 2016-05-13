@@ -1,17 +1,22 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Logios.Extensions
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>            
-            <a href="@Url.Action("Index", "Manage")" title="Manage"><span class="glyphicon glyphicon-user"></span> Bienvenido: @User.Identity.GetUserName()</a>                        
-        </li>
-        <li>        
-        <a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="@Url.Action("Index", "Manage")" title="Ver perfil"><span class="glyphicon glyphicon-user"></span> Bienvenido: @User.Identity.GetUserName()</a>
+            </li>
+            <li>
+                <a href="" title="Puntos"><span class="glyphicon glyphicon-heart-empty"></span> @User.Identity.GetCurrentPoints()</a>
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+            </li>
+        </ul>
     }
 }
 else

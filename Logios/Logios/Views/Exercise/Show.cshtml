@@ -1,6 +1,6 @@
 ﻿@model Logios.Models.ExerciseViewModel
 @using Microsoft.AspNet.Identity
-
+@using Logios.Extensions
 @{
     ViewBag.Title = "Mostrar ejercicio";
 }
@@ -15,12 +15,11 @@
 <h1><b>EJERCICIO Nº @Model.Exercise.ExerciseId</b></h1>
 <span>Temática: </span>
 <span class="label label-lg label-default">Derivadas</span>
-<div class="pull-right">         
-    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>                
-    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>     
+<div class="pull-right">
+    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 <hr />
-
 <div class="vertical-space"></div>
 
 <div class="container-fluid col-lg-12">    
@@ -36,60 +35,68 @@
             </blockquote>
         </div>
     </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div class="vertical-space"></div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="exercise-legend">Desarrollo: </h2>
+                <h6 class="exercise-legend col-lg-10">(Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.)</h6>
+            </div>
+
+            <div class="col-lg-9">            
+                <blockquote class="exercise-bg">                
+                    <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
+                    <div class="clearfix"><br /></div>
+                    <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
+                </blockquote>
+            </div>
+        </div>
     
-    <div class="vertical-space"></div>
+        <div class="vertical-space"></div>
 
-    <div class="row">
-        <div class="col-lg-3">
-            <h2 class="exercise-legend">Desarrollo: </h2>
-            <h6 class="exercise-legend col-lg-10">(Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.)</h6>
-        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="exercise-legend">Solución: </h2>            
+            </div>
 
-        <div class="col-lg-9">            
-            <blockquote class="exercise-bg">                
-                <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
-                <div class="clearfix"><br /></div>
-                <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
-            </blockquote>
+            <div id="divSolution" class="col-lg-6">
+                <blockquote class="exercise-bg">
+                    <div id="solutionContainer"></div>
+                    @using (Ajax.BeginForm(
+                        "Show",
+                        "Exercise",
+                        new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "DivResult"
+                        },
+                        new
+                        {
+                            Id = "ResultForm",
+                            @Class = "form",
+                            role = "form"
+                        }))
+                        {
+                            @Html.AntiForgeryToken();
+                            <div class="form-inline">
+                                <input type="hidden" id="answer" name="answer" />
+                                <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                            </div>
+                        }                            
+                </blockquote>
+            </div>
         </div>
-    </div>
-    
-    <div class="vertical-space"></div>
-
-    <div class="row">
-        <div class="col-lg-3">
-            <h2 class="exercise-legend">Solución: </h2>            
+        <div id="DivResult"></div>
+    }
+    else
+    {
+        <div class="alert alert-info col-lg-4 col-lg-push-4">
+            <p class="text-center"><b>Debes iniciar sesión para poder resolver los ejercicios</b></p>
         </div>
-
-        <div id="divSolution" class="col-lg-6">
-            <blockquote class="exercise-bg">
-                <div id="solutionContainer"></div>
-                @using (Ajax.BeginForm(
-                    "Show",
-                    "Exercise",
-                    new AjaxOptions()
-                    {
-                        HttpMethod = "POST",
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "DivResult"
-                    },
-                    new
-                    {
-                        Id = "ResultForm",
-                        @Class = "form",
-                        role = "form"
-                    }))
-                    {
-                        @Html.AntiForgeryToken();
-                        <div class="form-inline">
-                            <input type="hidden" id="answer" name="answer" />
-                            <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
-                        </div>
-                    }                            
-            </blockquote>
-        </div>
-    </div>
-    <div id="DivResult"></div>
+    }
 </div>
 
 @section scripts {
