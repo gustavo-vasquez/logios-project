@@ -160,9 +160,16 @@ namespace Logios.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var userProfile = new UserProfile { UserID = user.Id, Points = 0 };
+                        context.UserProfiles.Add(userProfile);
+                        context.SaveChanges();
+                    }
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

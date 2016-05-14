@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Logios.Models;
 using Logios.Entities;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Logios.Services
 {
@@ -77,10 +79,13 @@ namespace Logios.Services
             context.SaveChanges();
         }
 
-        public void SumPoints(string UserId)
+        public void SumPoints(string userId)
         {
-            ApplicationUser applicationUser = context.Users.Find(UserId);
-            applicationUser.Points += 1;
+            
+            var userProfile = context.UserProfiles.Find(userId);
+
+            userProfile.Points += 1;
+            
             context.SaveChanges();
         }
     }

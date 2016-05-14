@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logios.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -9,12 +10,20 @@ namespace Logios.Extensions
 {
     public static class IdentityExtensions 
     {
-        public static string GetCurrentPoints(this IIdentity identity)
+        //public static string GetCurrentPoints(this IIdentity identity)
+        //{
+        //    var claim = ((ClaimsIdentity)identity).FindFirst("Points");
+        //    return (claim != null) ? claim.Value : string.Empty;
+        //}
+
+        public static int GetCurrentPoints(this IIdentity identity, string userId)
         {
-            var claim = ((ClaimsIdentity)identity).FindFirst("Points");
-            return (claim != null) ? claim.Value : string.Empty;
+            using (var context =new ApplicationDbContext())
+            {
+                var points = context.UserProfiles.Find(userId).Points;
+                return points;
+            }
         }
-        
-        
+
     }
 }
