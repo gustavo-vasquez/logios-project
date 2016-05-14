@@ -1,0 +1,18 @@
+﻿@model Logios.Models.TopicAreaViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var topicArea in Model.TopicsByArea.Keys)
+{
+    <div>
+        <h3>@topicArea</h3>
+        <ul>
+            @foreach (var topic in Model.TopicsByArea[topicArea])
+            {
+                <li>@topic.Description</li>
+            }
+        </ul>        
+    </div>
+}
