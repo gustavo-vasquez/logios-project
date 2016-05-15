@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Crear ejercicio";
+}
+
+<h1>@ViewBag.Title</h1>
+<hr />
+
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-3">
+            <h2 class="exercise-legend">Enunciado: </h2>
+            <h4><i>&raquo;PRIMER PASO: Escriba el problema a resolver.</i></h4>
+        </div>
+
+        <div class="col-lg-9">
+            <blockquote class="exercise-bg">
+                <div id="problemContainer"></div>
+            </blockquote>            
+            <a href="#stepTwo" id="stepTwo" class="btn btn-primary">Ir al segundo paso &raquo;</a>           
+        </div>
+    </div>
+
+    <div class="vertical-space"></div>
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <h2 class="exercise-legend">Desarrollo: </h2>
+            <h4><i>&raquo;SEGUNDO PASO: Desarrolle detalladamente cada paso para resolver el ejercicio.</i></h4>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="developmentContainer"></div>
+                </div>
+            </div>
+            <button class="btn btn-primary">Ir al tercer paso &raquo;</button>
+            @*<blockquote class="exercise-bg">
+                <div id="developmentContainer"></div>
+            </blockquote>*@
+        </div>
+    </div>
+
+    <div class="vertical-space"></div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <h2 class="exercise-legend">Solución: </h2>
+            <h4><i>&raquo;TERCER PASO: Escriba el resultado</i></h4>
+        </div>
+
+        <div class="col-lg-9">
+            @*<blockquote class="exercise-bg">
+                <div id="solutionContainer"></div>
+            </blockquote>*@
+            <div class="panel panel-default" style="border: none !important;">
+                <div class="panel-body">
+                    <div id="solutionContainer"></div>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="row" style="height: 180px;">
+        <div class="col-lg-3">
+            <h2 class="exercise-legend">Temática: </h2>
+            <h4><i>&raquo;ÚLTIMO PASO: Elija una temática de la siguiente lista que identifique al ejercicio.</i></h4>
+        </div>
+
+        <div class="col-lg-9">            
+            <div class="col-lg-6" style="padding-top: 25px;">
+                <select class="form-control">Elija una opción...
+                    <option>Derivadas</option>
+                    <option>Polinomios</option>
+                    <option>Integrales</option>
+                </select>
+            </div>            
+        </div>        
+    </div>
+    <div class="col-lg-offset-5">
+        <button type="submit" class="btn btn-info col-lg-4" onclick="alert('Ejercicio creado con exito.');">Crear nuevo ejercicio</button>
+    </div>
+</div>
+
+@section scripts {
+        <script src="http://www.wiris.net/demo/editor/editor"></script>
+        @Scripts.Render("~/Scripts/administrator.js")
+    }

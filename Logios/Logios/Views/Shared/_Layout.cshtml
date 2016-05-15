@@ -19,16 +19,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Ejercicio 1", "Show", "Exercise", new { id = "1" }, null)</li>
-                    <li>@Html.ActionLink("Ejercicio 2", "Show", "Exercise", new { id = "2" }, null)</li>
-                    <li>@Html.ActionLink("Ejercicio 3", "Show", "Exercise", new { id = "3" }, null)</li>
+                    <li>@Html.ActionLink("Ejercicio 1", "Show", "Exercise", new { id = "1" }, null)</li>                    
+                    <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()        
+        @RenderBody()
 
         <div class="clearfix"></div>
         <footer class="row">            

@@ -27,6 +27,7 @@ namespace Logios
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.cerulean.min.css",
                       "~/Content/site.css",
+                      "~/Content/administrator.css",
                       "~/Content/themes/base/*.css"));
         }
     }

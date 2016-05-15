@@ -1,0 +1,14 @@
+﻿#problemContainer {
+    width: 100%;
+    height: 400px;
+}
+
+#developmentContainer {
+    width: 100%;
+    height: 400px;
+}
+
+#solutionContainer {
+    width: 100% !important;
+    height: 300px !important;
+}

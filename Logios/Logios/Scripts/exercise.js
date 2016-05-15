@@ -21,7 +21,7 @@ $(document).ready(function() {
         },
 
         CommonHTML: {
-            scale: 50
+            scale: 100
         },
 
         SVG: {
