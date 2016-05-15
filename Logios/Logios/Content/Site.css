@@ -27,10 +27,8 @@
     padding-right: 60px;
 }
 
-.exercise-breadcrumb-mod {
-    margin-top: 20px;
-    background-color: #f3f1f1 !important;
-    margin-bottom: 50px;
+#topicAreaSearchBox {
+    background-color: transparent;
 }
 
 .search-tag {
