@@ -6,6 +6,7 @@ using Logios.Models;
 using Logios.Entities;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Logios.Extensions;
 
 namespace Logios.Services
 {
@@ -49,6 +50,18 @@ namespace Logios.Services
 
         public IEnumerable<Exercise> GetExercisesByTopic(int topicId)
         {
+            var exercises = context.Exercises
+                                   .Where(e => e.Topic.TopicId == topicId)
+                                   .ToList();
+            return exercises;
+        }
+
+        public IEnumerable<Exercise> GetExercisesByTopic(string topicDescription)
+        {
+            var topicId = context.Topics
+                                    .FirstOrDefault(x => topicDescription.EqualsIgnoreCase(x.Description))
+                                    .TopicId;
+
             var exercises = context.Exercises
                                    .Where(e => e.Topic.TopicId == topicId)
                                    .ToList();

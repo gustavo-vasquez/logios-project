@@ -20,7 +20,7 @@
             <div class="list-group">
                 @foreach (var topic in Model.TopicsByArea[topicArea])
                 {
-                    <a href="#" class="list-group-item">@topic.Description</a>
+                    <a href='@Url.Action("Index","Topic", new { topicId = @topic.TopicId })' class="list-group-item">@topic.Description</a>
                 }
             </div>
         </div>
