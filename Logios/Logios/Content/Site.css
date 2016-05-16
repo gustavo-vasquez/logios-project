@@ -21,6 +21,16 @@
     margin:10px;
 }
 
+@font-face {
+    font-family:UncialAntiqua-regular;
+    src:url('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
+    src:local('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
+}
+
+#logo_letras {
+    font-family:UncialAntiqua-regular;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;

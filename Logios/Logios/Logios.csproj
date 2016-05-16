@@ -381,6 +381,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Logios.ruleset" />
+    <Content Include="Content\fonts\UncialAntiqua-Regular.otf" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
