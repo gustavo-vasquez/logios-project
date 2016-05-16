@@ -3,6 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 
+<div class="wrapper clearfix">
+
+    @Html.Partial("_LandingPage")
+
+</div>
+
 <div class="jumbotron exercise-search-box">
     @using (Ajax.BeginForm(
                 "Search",
