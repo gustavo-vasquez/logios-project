@@ -49,10 +49,7 @@ namespace Logios.Controllers
                     services.SumPoints(currentUser);
                 }
             }
-
-            //ViewBag.Result = result;
-
-            //return View(services.GetExerciseInformation(id));
+            
             return PartialView("_Result", result);
         }
 

@@ -1,12 +1,13 @@
-﻿
+﻿@model Logios.Models.CreateExerciseViewModel
+
 @{
     ViewBag.Title = "Crear ejercicio";
 }
 
-<h1>@ViewBag.Title</h1>
+<h1><b>@ViewBag.Title</b></h1>
 <hr />
 
-<div class="col-lg-12">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Enunciado: </h2>
@@ -15,9 +16,9 @@
 
         <div class="col-lg-9">
             <blockquote class="exercise-bg">
-                <div id="problemContainer"></div>
-            </blockquote>            
-            <a href="#stepTwo" id="stepTwo" class="btn btn-primary">Ir al segundo paso &raquo;</a>           
+                <div id="problemContainer"></div>                
+            </blockquote>
+            <a href="#" id="stepTwo" name="stepTwo" class="btn btn-primary">Ir al 2º paso &raquo;</a>
         </div>
     </div>
 
@@ -32,10 +33,10 @@
         <div class="col-lg-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="developmentContainer"></div>
+                    <div id="developmentContainer"></div>                    
                 </div>
             </div>
-            <button class="btn btn-primary">Ir al tercer paso &raquo;</button>
+            <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>            
             @*<blockquote class="exercise-bg">
                 <div id="developmentContainer"></div>
             </blockquote>*@
@@ -47,7 +48,7 @@
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Solución: </h2>
-            <h4><i>&raquo;TERCER PASO: Escriba el resultado</i></h4>
+            <h4><i>&raquo;TERCER PASO: Escriba el resultado.</i></h4>
         </div>
 
         <div class="col-lg-9">
@@ -56,34 +57,59 @@
             </blockquote>*@
             <div class="panel panel-default" style="border: none !important;">
                 <div class="panel-body">
-                    <div id="solutionContainer"></div>
+                    <div id="solutionContainer"></div>                    
                 </div>
-            </div>            
+            </div>
+            <a href="#" id="backToStepOne" name="backToStepOne" class="btn btn-primary">&laquo; Volver al 1º paso</a>            
         </div>
     </div>
 
-    <div class="row" style="height: 180px;">
-        <div class="col-lg-3">
-            <h2 class="exercise-legend">Temática: </h2>
-            <h4><i>&raquo;ÚLTIMO PASO: Elija una temática de la siguiente lista que identifique al ejercicio.</i></h4>
-        </div>
+    <div class="vertical-space"></div>
 
-        <div class="col-lg-9">            
-            <div class="col-lg-6" style="padding-top: 25px;">
-                <select class="form-control">Elija una opción...
-                    <option>Derivadas</option>
-                    <option>Polinomios</option>
-                    <option>Integrales</option>
-                </select>
-            </div>            
-        </div>        
-    </div>
-    <div class="col-lg-offset-5">
-        <button type="submit" class="btn btn-info col-lg-4" onclick="alert('Ejercicio creado con exito.');">Crear nuevo ejercicio</button>
-    </div>
+    @using (Ajax.BeginForm(
+                "AddExercise",
+                "Administrator",
+                new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ModalCreateExercise" },
+                new { Id = "CreateForm", @class = "form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="exercise-legend">Temática y descripción: </h2>
+                <h4><i>&raquo;ÚLTIMO PASO: Elija una temática de la siguiente lista que identifique al ejercicio y escriba una pequeña reseña sobre su contenido.</i></h4>
+            </div>
+
+            <div class="col-lg-9">            
+                <div class="col-lg-5" style="padding-top: 25px;">
+                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control", size = "7", multiple = "" })                    
+                </div>
+                <div class="col-lg-7" style="padding-top: 25px;">
+                    @Html.TextAreaFor(m => m.Exercise.Description, 6, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })                                    
+                </div>
+            </div>        
+        </div>
+        @Html.HiddenFor(m => m.Exercise.Problem)
+        @Html.HiddenFor(m => m.Exercise.Development)
+        @Html.HiddenFor(m => m.Exercise.Solution)
+        
+        <div class="vertical-space"></div>
+
+        <div class="row">                  
+            <div class="col-lg-offset-9">
+                <button type="submit" class="btn btn-lg btn-info" onclick="return passData();">Crear nuevo ejercicio</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-8 help-block">
+                @Html.ValidationSummary("", new { @class = "summary text-danger" })
+            </div>
+        </div>
+    }
+    <div id="ModalCreateExercise"></div>
 </div>
 
 @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
         <script src="http://www.wiris.net/demo/editor/editor"></script>
         @Scripts.Render("~/Scripts/administrator.js")
     }

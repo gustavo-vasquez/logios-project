@@ -25,7 +25,7 @@ namespace Logios.Services
         {
             var solution = context.Exercises.FirstOrDefault(e => e.ExerciseId == id).Solution;
 
-            if(answer.Replace('"', '\'') != solution)            
+            if(answer != solution)
                 return false;            
             else            
                 return true;                     

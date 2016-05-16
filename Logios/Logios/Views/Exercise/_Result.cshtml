@@ -7,23 +7,25 @@
 @if (Model.Value)
 {
     <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title text-center text-success"><b>¡RESPUESTA CORRECTA! <span class="glyphicon glyphicon-ok-circle"></span></b></h3>
-                </div>
-                <div class="modal-body text-center">
-                    <h4>¡Felicitaciones!</h4>
-                    <h4>Has obtenido un punto por resolver este ejercicio.</h4>
-                    <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-md-12">
-                        <div class="col-md-9 col-md-pull-5">
-                            <button type="button" class="btn btn-primary">Compartir en Twitter</button>
-                        </div>
-                        <div class="col-md-3 pull-right">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-center text-success"><b>¡RESPUESTA CORRECTA! <span class="glyphicon glyphicon-ok-circle"></span></b></h3>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>¡Felicitaciones!</h4>
+                        <h4>Has obtenido un punto por resolver este ejercicio.</h4>
+                        <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-12">
+                            <div class="col-md-9 col-md-pull-5">
+                                <button type="button" class="btn btn-primary">Compartir en Twitter</button>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,18 +40,20 @@
 else
 {
     <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title text-center text-danger"><b>¡RESPUESTA INCORRECTA! <span class="glyphicon glyphicon-remove-circle"></span></b></h3>
-                </div>
-                <div class="modal-body text-center">
-                    <h4>¡Vaya!</h4>
-                    <h4>Has fallado...</h4>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Inténtalo de nuevo</button>
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-center text-danger"><b>¡RESPUESTA INCORRECTA! <span class="glyphicon glyphicon-remove-circle"></span></b></h3>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>¡Vaya!</h4>
+                        <h4>Has fallado...</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Inténtalo de nuevo</button>
+                        </div>
                     </div>
                 </div>
             </div>
