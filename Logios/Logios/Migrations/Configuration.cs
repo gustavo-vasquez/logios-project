@@ -35,6 +35,8 @@ namespace Logios.Migrations
             context.TopicAreas.Clear();
             context.Trophies.Clear();
 
+            context.SaveChanges();
+
             // Recorrer el listado de generadores de data y llamar a su método GenerateData en orden
             this.DataGenerators.ForEach(dataGenerator => dataGenerator.GenerateData(context));
         }

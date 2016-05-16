@@ -3,16 +3,31 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h1>Búsqueda por áreas temáticas</h1>
+<h4>Haz click en un área o tema para ver todos los ejercicios relacionados</h4>
+@{ int colNumber = 0; }
 @foreach (var topicArea in Model.TopicsByArea.Keys)
 {
-    <div>
-        <h3>@topicArea</h3>
-        <ul>
-            @foreach (var topic in Model.TopicsByArea[topicArea])
-            {
-                <li>@topic.Description</li>
-            }
-        </ul>        
+    if (colNumber % 2 == 0)
+    {
+       @Html.Raw("<div class=\"row\">");
+    }
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">@topicArea</h3>
+            </div>
+            <div class="list-group">
+                @foreach (var topic in Model.TopicsByArea[topicArea])
+                {
+                    <a href='@Url.Action("Index","Topic", new { topicId = @topic.TopicId })' class="list-group-item">@topic.Description</a>
+                }
+            </div>
+        </div>
     </div>
+    if (colNumber % 2 == 1)
+    {
+       @Html.Raw("</div>");
+    }
+    { colNumber++; }
 }
