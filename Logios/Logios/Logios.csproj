@@ -232,6 +232,7 @@
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateExerciseViewModel.cs" />
+    <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
     <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -251,6 +252,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Scripts\administrator.js" />
+    <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
     <Content Include="Scripts\MathJax\config\Accessible-full.js" />
@@ -334,6 +336,8 @@
     <Content Include="Views\Administrator\AddExercise.cshtml" />
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\Administrator\_CreateExerciseResult.cshtml" />
+    <Content Include="Views\Administrator\EditExercise.cshtml" />
+    <Content Include="Views\Administrator\_EditExerciseResult.cshtml" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />

@@ -46,5 +46,31 @@ namespace Logios.Controllers
                 return View(model);
             }            
         }
+
+        public ActionResult EditExercise(int id)
+        {                        
+            return View(adminServices.GetExerciseDataCreated(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult EditExercise(int id, EditExerciseViewModel model)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    var result = adminServices.EditCurrentExercise(id, model);
+                    return PartialView("_EditExerciseResult", result);                    
+                }
+
+                throw new Exception();
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
     }
 }

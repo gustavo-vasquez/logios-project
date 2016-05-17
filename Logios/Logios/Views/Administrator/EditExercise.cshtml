@@ -1,7 +1,7 @@
-﻿@model Logios.Models.CreateExerciseViewModel
+﻿@model Logios.Models.EditExerciseViewModel
 
 @{
-    ViewBag.Title = "Crear ejercicio";
+    ViewBag.Title = "Editar ejercicio";
 }
 
 <h1><b>@ViewBag.Title</b></h1>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="vertical-space"></div>
-    
+
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Desarrollo: </h2>
@@ -33,13 +33,13 @@
         <div class="col-lg-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="developmentContainer"></div>                    
+                    <div id="developmentContainer"></div>
                 </div>
             </div>
-            <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>            
+            <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>
             @*<blockquote class="exercise-bg">
-                <div id="developmentContainer"></div>
-            </blockquote>*@
+                    <div id="developmentContainer"></div>
+                </blockquote>*@
         </div>
     </div>
 
@@ -53,24 +53,24 @@
 
         <div class="col-lg-9">
             @*<blockquote class="exercise-bg">
-                <div id="solutionContainer"></div>
-            </blockquote>*@
+                    <div id="solutionContainer"></div>
+                </blockquote>*@
             <div class="panel panel-default" style="border: none !important;">
                 <div class="panel-body">
-                    <div id="solutionContainer"></div>                    
+                    <div id="solutionContainer"></div>
                 </div>
             </div>
-            <a href="#" id="backToStepOne" name="backToStepOne" class="btn btn-primary">&laquo; Volver al 1º paso</a>            
+            <a href="#" id="backToStepOne" name="backToStepOne" class="btn btn-primary">&laquo; Volver al 1º paso</a>
         </div>
     </div>
 
     <div class="vertical-space"></div>
 
     @using (Ajax.BeginForm(
-                "AddExercise",
-                "Administrator",
-                new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ModalCreateExercise" },
-                new { Id = "CreateForm", @class = "form", role = "form" }))
+                        "EditExercise",
+                        "Administrator",
+                        new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ModalEditExercise" },
+                        new { Id = "EditForm", @class = "form", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <div class="row">
@@ -79,24 +79,24 @@
                 <h4><i>&raquo;ÚLTIMO PASO: Elija una temática de la siguiente lista que identifique al ejercicio y escriba una pequeña reseña sobre su contenido.</i></h4>
             </div>
 
-            <div class="col-lg-9">            
+            <div class="col-lg-9">
                 <div class="col-lg-5" style="padding-top: 25px;">
-                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control", size = "7", multiple = "" })                    
+                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control", size = "7", multiple = "" })
                 </div>
                 <div class="col-lg-7" style="padding-top: 25px;">
-                    @Html.TextAreaFor(m => m.Exercise.Description, 6, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })                                    
+                    @Html.TextAreaFor(m => m.Exercise.Description, 6, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })
                 </div>
-            </div>        
+            </div>
         </div>
         @Html.HiddenFor(m => m.Exercise.Problem)
         @Html.HiddenFor(m => m.Exercise.Development)
         @Html.HiddenFor(m => m.Exercise.Solution)
-        
+
         <div class="vertical-space"></div>
 
-        <div class="row">                  
+        <div class="row">
             <div class="col-lg-offset-9">
-                <button type="submit" class="btn btn-lg btn-info" onclick="return passData();">Crear nuevo ejercicio</button>
+                <button type="submit" class="btn btn-lg btn-info" onclick="return passData();">Editar este ejercicio</button>
             </div>
         </div>
         <div class="row">
@@ -105,11 +105,13 @@
             </div>
         </div>
     }
-    <div id="ModalCreateExercise"></div>
+    <div id="ModalEditExercise"></div>
 </div>
 
 @section scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        <script src="http://www.wiris.net/demo/editor/editor"></script>
-        @Scripts.Render("~/Scripts/administrator.js")
-    }
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="http://www.wiris.net/demo/editor/editor"></script>
+    @Scripts.Render("~/Scripts/editExercise.js")
+    <script>serializeModel(@Html.Raw(Json.Encode(Model.Exercise)));</script>
+}
+

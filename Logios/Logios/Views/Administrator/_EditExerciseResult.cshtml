@@ -1,6 +1,6 @@
 ﻿@model Boolean?
 
-<script>    
+<script>
     $(".modal").modal('show');
 </script>
 
@@ -11,16 +11,11 @@
             <div class="modal-dialog vertical-align-center">
                 <div class="modal-content">
                     <div class="modal-body text-center">
-                        <h3 class="modal-title text-center text-primary"><b>Ejercicio creado correctamente <span class="glyphicon glyphicon-ok"></span></b></h3>
+                        <h3 class="modal-title text-center text-primary"><b>Ejercicio editado correctamente <span class="glyphicon glyphicon-ok"></span></b></h3>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-md-12">                            
-                            <div class="col-md-6">
-                                <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-block btn-info">Agregar otro ejercicio</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="@Url.Action("ControlPanel", "Administrator")" class="btn btn-block btn-info">Volver a panel de control</a>
-                            </div>                
+                        <div class="col-md-12">
+                            <a href="@Url.Action("ControlPanel", "Administrator")" class="btn btn-block btn-info">Volver a panel de control</a>
                         </div>
                     </div>
                 </div>

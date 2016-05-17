@@ -4,9 +4,11 @@
 }
 
 <div class="container col-lg-12">
-    <h1>@ViewBag.Title</h1>
+    <h1><b><span class="glyphicon glyphicon-cog"></span> @ViewBag.Title</b></h1>
     <h3><i>¿Que desea hacer?</i></h3>
     <hr />
     <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info">Crear nuevo ejercicio</a>
+    <a href="@Url.Action("EditExercise", "Administrator", new { id = 3 })" class="btn btn-info">Editar ejercicio 3</a>
+    <a href="@Url.Action("DeleteExercise", "Administrator", new { id = 5 })" class="btn btn-info">Eliminar ejercicio 5</a>
 </div>
 
