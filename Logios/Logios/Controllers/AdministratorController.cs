@@ -72,5 +72,20 @@ namespace Logios.Controllers
                 return View(model);
             }
         }
+
+        [HttpGet]
+        public ActionResult DeleteExercise(int? id, int? test)
+        {
+            return PartialView("_DeleteForm", id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteExercise(int? id)
+        {
+            var result = adminServices.DeleteExerciseFromDB(id);           
+
+            return PartialView("_DeleteExerciseResult", result);
+        }
     }
 }

@@ -13,6 +13,12 @@ namespace Logios.Services
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
+        private void Refresh()
+        {
+            this.context.Dispose();
+            this.context = new ApplicationDbContext();
+        }
+
         public IEnumerable<SelectListItem> GetAllTopics()
         {
             var topics = context.Topics.ToList();            
@@ -66,13 +72,29 @@ namespace Logios.Services
         public Boolean? EditCurrentExercise(int id, EditExerciseViewModel model)
         {
             try
-            {
+            {                
                 Exercise exerciseToEdit = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
                 exerciseToEdit.Problem = model.Exercise.Problem;
                 exerciseToEdit.Development = model.Exercise.Development;
                 exerciseToEdit.Solution = model.Exercise.Solution;
                 exerciseToEdit.Description = model.Exercise.Description;
-                exerciseToEdit.Topic = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);                
+                exerciseToEdit.Topic = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);
+                context.SaveChanges();                
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public Boolean? DeleteExerciseFromDB(int? id)
+        {
+            try
+            {
+                var exerciseToDelete = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+                context.Exercises.Remove(exerciseToDelete);
                 context.SaveChanges();
 
                 return true;

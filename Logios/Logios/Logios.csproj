@@ -253,7 +253,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
+    <Content Include="favicon.ico" />
     <Content Include="Scripts\administrator.js" />
+    <Content Include="Scripts\notification.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
@@ -341,6 +343,8 @@
     <Content Include="Views\Home\_LandingPage.cshtml" />
     <Content Include="Views\Administrator\EditExercise.cshtml" />
     <Content Include="Views\Administrator\_EditExerciseResult.cshtml" />
+    <Content Include="Views\Administrator\_DeleteExerciseResult.cshtml" />
+    <Content Include="Views\Administrator\_DeleteForm.cshtml" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />
@@ -379,7 +383,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon2.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

@@ -13,6 +13,12 @@ namespace Logios.Services
     public class ExerciseServices
     {
         private ApplicationDbContext context = new ApplicationDbContext();
+
+        private void Refresh()
+        {
+            this.context.Dispose();
+            this.context = new ApplicationDbContext();
+        }
         
         public ExerciseViewModel GetExercise(int? id)
         {
@@ -34,6 +40,7 @@ namespace Logios.Services
 
         public ExerciseViewModel GetExerciseInformation(int? id)
         {
+            this.Refresh();
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
             var allExercises = context.Exercises.ToList();
             var index = allExercises.IndexOf(exercise);

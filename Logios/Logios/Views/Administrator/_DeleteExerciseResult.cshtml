@@ -1,0 +1,18 @@
+﻿@model Boolean?
+
+@Scripts.Render("~/Scripts/notification.js")
+
+@if (Model.Value)
+{    
+    <div id="Notification" class="alert alert-dismissible alert-success text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡El ejercicio ha sido eliminado exitosamente!</strong>
+    </div>
+}
+else
+{    
+    <div id="Notification" class="alert alert-dismissible alert-danger text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Ocurrió un error al intentar eliminar el ejercicio. Vuelva a intentarlo más tarde.</strong>
+    </div>
+}

@@ -17,11 +17,13 @@ $(document).ready(function() {
             scale: 100,
             webFont: "Gyre-Pagella",
             undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
-            matchFontHeight: false
+            matchFontHeight: false,
+            linebreaks: { automatic: true }
         },
 
         CommonHTML: {
-            scale: 100
+            scale: 100,
+            linebreaks: { automatic: true }
         },
 
         SVG: {
