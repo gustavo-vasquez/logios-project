@@ -251,6 +251,8 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\bg3.jpg" />
+    <Content Include="Content\images\LOGO_V2.0.svg" />
     <Content Include="Scripts\administrator.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\jquery.gotop.js" />
@@ -336,6 +338,7 @@
     <Content Include="Views\Administrator\AddExercise.cshtml" />
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\Administrator\_CreateExerciseResult.cshtml" />
+    <Content Include="Views\Home\_LandingPage.cshtml" />
     <Content Include="Views\Administrator\EditExercise.cshtml" />
     <Content Include="Views\Administrator\_EditExerciseResult.cshtml" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
@@ -382,6 +385,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Logios.ruleset" />
+    <Content Include="Content\fonts\UncialAntiqua-Regular.otf" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
