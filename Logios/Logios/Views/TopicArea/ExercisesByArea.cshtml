@@ -1,0 +1,18 @@
+﻿@model Logios.Models.ExercisesByAreaViewModel
+
+<h1>@ViewBag.Title</h1>
+<br />
+@{ 
+    var topics = Model.Topics.ToList();
+    var exerciseResults = Model.ExerciseResultViewModels.ToList();
+}
+@for (int i = 0; i < topics.Count; i++)
+{
+    <div class="topic-exercises-container">
+        <h3>@topics[i].Description</h3>
+        <div>
+            @{Html.RenderPartial("_ExerciseSearchResult", exerciseResults[i]);}
+        </div>
+    </div>
+}
+    

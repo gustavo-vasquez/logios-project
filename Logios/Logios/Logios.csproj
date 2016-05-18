@@ -238,6 +238,7 @@
     <Compile Include="Models\CreateExerciseViewModel.cs" />
     <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
+    <Compile Include="Models\ExercisesByAreaViewModel.cs" />
     <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TopicAreaViewModel.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
     <Content Include="favicon.ico" />
@@ -349,6 +351,7 @@
     <Content Include="Views\Administrator\_EditExerciseResult.cshtml" />
     <Content Include="Views\Administrator\_DeleteExerciseResult.cshtml" />
     <Content Include="Views\Administrator\_DeleteForm.cshtml" />
+    <Content Include="Views\TopicArea\ExercisesByArea.cshtml" />
     <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />
@@ -456,7 +459,7 @@
     <Content Include="Views\UserTrophies\Details.cshtml" />
     <Content Include="Views\UserTrophies\Edit.cshtml" />
     <Content Include="Views\UserTrophies\Index.cshtml" />
-    <Content Include="Views\Home\_ExerciseSearchResult.cshtml" />
+    <Content Include="Views\Shared\_ExerciseSearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
