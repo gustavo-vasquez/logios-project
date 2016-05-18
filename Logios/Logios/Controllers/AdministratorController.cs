@@ -83,9 +83,10 @@ namespace Logios.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteExercise(int? id)
         {
-            var result = adminServices.DeleteExerciseFromDB(id);           
+            TempData["result"] = adminServices.DeleteExerciseFromDB(id);
 
-            return PartialView("_DeleteExerciseResult", result);
+            //return PartialView("_DeleteExerciseResult", result);
+            return View("ControlPanel");
         }
     }
 }

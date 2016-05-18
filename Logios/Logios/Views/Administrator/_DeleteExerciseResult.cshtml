@@ -1,8 +1,6 @@
 ﻿@model Boolean?
 
-@Scripts.Render("~/Scripts/notification.js")
-
-@if (Model.Value)
+@if ((Boolean)Model.Value)
 {    
     <div id="Notification" class="alert alert-dismissible alert-success text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>

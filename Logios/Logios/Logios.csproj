@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201605140011211_adduserprofile.Designer.cs">
       <DependentUpon>201605140011211_adduserprofile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605172313062_AddIsDeletedToExercise.cs" />
+    <Compile Include="Migrations\201605172313062_AddIsDeletedToExercise.Designer.cs">
+      <DependentUpon>201605172313062_AddIsDeletedToExercise.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
     <Compile Include="Entities\UserExercise.cs" />
@@ -255,7 +259,7 @@
     <Content Include="Content\images\LOGO_V2.0.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Scripts\administrator.js" />
-    <Content Include="Scripts\notification.js" />
+    <Content Include="Scripts\controlPanel.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
@@ -493,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605140011211_adduserprofile.resx">
       <DependentUpon>201605140011211_adduserprofile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605172313062_AddIsDeletedToExercise.resx">
+      <DependentUpon>201605172313062_AddIsDeletedToExercise.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

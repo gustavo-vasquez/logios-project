@@ -14,16 +14,16 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-md-12">
-                        <div class="col-md-6">
-                            @using (Ajax.BeginForm(
-                                    "DeleteExercise",
-                                    "Administrator",
-                                    new { id = Model.Value },
-                                    new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "NotificationArea" },
-                                    new { Id = "DeleteForm", @class = "form", role = "form" }))
+                        <div class="col-md-6">                            
+                            @using (Html.BeginForm(
+                                "DeleteExercise",
+                                "Administrator",
+                                new { id = Model.Value },
+                                FormMethod.Post,
+                                new { Id = "DeleteForm", @class = "form", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-block btn-success" onclick="hideModal();">Si</button>
+                                <button type="submit" class="btn btn-block btn-success">Si</button>
                             }
                         </div>
                         <div class="col-md-6">

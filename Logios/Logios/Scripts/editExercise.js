@@ -33,12 +33,6 @@ $(document).ready(function () {
     });
 });
 
-//function regenerateEditors(data) {
-//    problemEditor.setMathML(data.Problem);
-//    developmentEditor.setMathML(data.Development);
-//    solutionEditor.setMathML(data.Solution);
-//}
-
 function scrollToAnchor(idToGo) {
     var aTag = $("a[name='" + idToGo + "']");
     $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');

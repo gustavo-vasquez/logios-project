@@ -94,7 +94,8 @@ namespace Logios.Services
             try
             {
                 var exerciseToDelete = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
-                context.Exercises.Remove(exerciseToDelete);
+                exerciseToDelete.IsDeleted = true;
+                //context.Exercises.Remove(exerciseToDelete);
                 context.SaveChanges();
 
                 return true;

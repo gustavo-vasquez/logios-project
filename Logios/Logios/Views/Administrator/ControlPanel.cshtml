@@ -3,22 +3,30 @@
 }
 
 <div class="help-block"></div>
-<div id="NotificationArea"></div>
+@if(TempData["result"] != null)
+{
+    @Html.Partial("_DeleteExerciseResult", TempData["result"])
+}
 
 <div class="container col-lg-12">
     <h1><b><span class="glyphicon glyphicon-cog"></span> @ViewBag.Title</b></h1>
     <h3><i>¿Que desea hacer?</i></h3>
     <hr />
-    <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info">Crear nuevo ejercicio</a>
-    <a href="@Url.Action("EditExercise", "Administrator", new { id = 1 })" class="btn btn-info">Editar ejercicio 1</a>
-    <a href="@Url.Action("EditExercise", "Administrator", new { id = 2 })" class="btn btn-info">Editar ejercicio 2</a>
-    <a href="@Url.Action("EditExercise", "Administrator", new { id = 3 })" class="btn btn-info">Editar ejercicio 3</a>
-    <a class="btn btn-info" onclick="deleteExercise(3);">Eliminar ejercicio 3</a>
+    <div class="col-lg-12">
+        <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info">Crear nuevo ejercicio</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 1 })" class="btn btn-info">Editar ejercicio 1</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 2 })" class="btn btn-info">Editar ejercicio 2</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 3 })" class="btn btn-info">Editar ejercicio 3</a>        
+    </div>
+    <div class="vertical-space"></div>
+    <div class="col-lg-5 form-inline">
+        <input id="valor" class="form-control" />
+        <a class="btn btn-info" onclick="deleteExercise(document.getElementById('valor').value);">Eliminar ejercicio</a>
+    </div>
 </div>
 
-<div id="goToDelete"></div>
+<div id="divModal"></div>
 
-@section scripts {
-    <script>function hideModal() { $('#deleteModal').modal('hide'); }</script>
-    <script>function deleteExercise(id) { $("#goToDelete").load("/Administrator/DeleteExercise/" + id); }</script>
+@section scripts {     
+    @Scripts.Render("~/Scripts/controlPanel.js")
 }
