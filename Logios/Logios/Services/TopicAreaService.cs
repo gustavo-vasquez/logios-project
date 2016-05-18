@@ -44,6 +44,41 @@ namespace Logios.Services
             return result;
         }
 
+        public ExercisesByAreaViewModel GetExercisesByTopicArea(string topicAreaDescription)
+        {
+            var result = new ExercisesByAreaViewModel();
+
+            using (var context = new ApplicationDbContext())
+            {
+                var topicArea = context.TopicAreas.FirstOrDefault(ta => ta.Description == topicAreaDescription);
+
+                var topicsForThisArea = context.TopicAreaTopics
+                                                   .Where(tat => tat.TopicAreaId == topicArea.TopicAreaId)
+                                                   .Select(tat => tat.Topic)
+                                                   .ToList();
+
+                result.Topics = topicsForThisArea;
+
+                var exerciseResultViewModels = new List<ExerciseResultViewModel>();
+
+                foreach (var topic in result.Topics)
+                {
+                    var newViewModel = new ExerciseResultViewModel();
+                    newViewModel.Exercises = context.Exercises
+                                                        .Where(e => e.Topic.TopicId == topic.TopicId)
+                                                        .ToList();
+
+                    newViewModel.TopicImageUrl = string.Concat("/Content/images/thumbnails/", topic.Description, ".png");
+
+                    exerciseResultViewModels.Add(newViewModel);
+                }
+
+                result.ExerciseResultViewModels = exerciseResultViewModels;
+
+                return result;
+            }
+        }
+
         // Generar topics de mentira para ver el Layout, sacar cuando tengamos el feedbackd e Juan
         private IEnumerable<Topic> GenerateFakeTopics(int topicCount)
         {

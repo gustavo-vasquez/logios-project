@@ -1,6 +1,6 @@
 ﻿@model Logios.Models.ExerciseResultViewModel
 
 <h1>@ViewBag.TopicDescription</h1>
-<div class="exercise-search-result">
-    @{ Html.RenderPartial("~/Views/Home/_ExerciseSearchResult.cshtml", Model); }
+<div>
+    @{ Html.RenderPartial("_ExerciseSearchResult", Model); }
 </div>

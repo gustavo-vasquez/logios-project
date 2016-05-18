@@ -64,6 +64,18 @@ body {
     padding-right: 60px;
 }
 
+div.exercise-card div.thumbnail {
+    border-color: #999999;
+}
+
+div.topic-exercises-container {
+    border-top: 5px #033c73 solid;
+}
+
+div.topic-exercises-container h3 {
+    color: #033c73;
+}
+
 #topicAreaSearchBox {
     background-color: transparent;
 }

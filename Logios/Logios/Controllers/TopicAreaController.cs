@@ -9,7 +9,7 @@ namespace Logios.Controllers
 {
     public class TopicAreaController : Controller
     {
-        private TopicAreaService TopicAreaService;
+        private readonly TopicAreaService TopicAreaService;
 
         public TopicAreaController()
         {
@@ -21,6 +21,12 @@ namespace Logios.Controllers
         {
             var viewModel = this.TopicAreaService.GetAll();
 
+            return View(viewModel);
+        }
+
+        public ActionResult ExercisesByArea(string topicAreaDescription)
+        {
+            var viewModel = this.TopicAreaService.GetExercisesByTopicArea(topicAreaDescription);
             return View(viewModel);
         }
     }
