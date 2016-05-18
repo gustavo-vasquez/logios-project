@@ -48,6 +48,13 @@ function searchExercise(userId) {
     // Si llegó hasta acá es porque tengo que mandar el fomulario
     var exerciseSearchForm = $('#exerciseSearchForm');
 
+    // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
+    if (userId === '') {
+        lastTopicIdInput.val(topicId);
+        exerciseSearchForm.submit();
+        return;
+    }
+
     // Actualizar el valor de la ultima busqueda realizada
     lastTopicIdInput.val(topicId);
 
@@ -65,6 +72,10 @@ function searchExercise(userId) {
 }
 
 function generateSearchTags() {
+    if (userIdentity === '') {
+        return;
+    }
+
     var topSearches = getTopThreeMostSearchedTopics();
     var labelStart = '<span class="label label-default search-tag" ';
     var labelEnd = '</span>';
