@@ -1,12 +1,10 @@
 ﻿ @model Boolean?
 
-<div class="clearfix"></div>
-<br /><br />
-<script>$(".modal").modal('show');</script>
+<script>$('#resultModal').modal('show');</script>
 
 @if (Model.Value)
 {
-    <div class="modal fade">
+    <div id="resultModal" class="modal fade">
         <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
                 <div class="modal-content">
@@ -39,7 +37,7 @@
 }
 else
 {
-    <div class="modal fade">
+    <div id="resultModal" class="modal fade">
         <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
                 <div class="modal-content">

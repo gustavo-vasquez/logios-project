@@ -24,28 +24,17 @@ $(document).ready(function() {
         CommonHTML: {
             scale: 100,
             linebreaks: { automatic: true }
-        },
-
-        SVG: {
-            scale: 50,
-            font: "Gyre-Pagella",
-            undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
-            matchFontHeight: true,
-            useFontCache: true,
-            blacker: 10
-        }
+        },        
     });
 });
 
 function ViewDevelopment(UserId, ExerciseId) {
 	if ($('#DevelopmentField').is(':hidden'))
 	{
-		$('#DevelopmentField').slideDown(500);
+	    $('#ViewDevelopment').hide();
+	    $('#DevelopmentField').slideDown(500);	    
 	}
-	else
-    {
-	    $('#DevelopmentField').slideUp(500);
-	}
+	
 	var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
 	//var urlaction = "@Url.Action(Exercise,ShowDevelop)";
 	$.ajax({

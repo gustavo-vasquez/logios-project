@@ -85,8 +85,8 @@ namespace Logios.Controllers
         {
             TempData["result"] = adminServices.DeleteExerciseFromDB(id);
 
-            //return PartialView("_DeleteExerciseResult", result);
-            return View("ControlPanel");
+            return RedirectToAction("ControlPanel", "Administrator");
+            //return View("ControlPanel");
         }
     }
 }

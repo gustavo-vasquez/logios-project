@@ -18,7 +18,7 @@ namespace Logios.Migrations.DataGenerators
                     Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfrac><mn>25</mn><mn>5</mn></mfrac><mo>+</mo><mi>x</mi><mo>=</mo><mn>30</mn><mspace linebreak=\"newline\"/><mfrac><msup><menclose notation=\"updiagonalstrike\"><mn>25</mn></menclose><mn>5</mn></msup><msub><menclose notation=\"updiagonalstrike\"><mn>5</mn></menclose><mn>1</mn></msub></mfrac><mo>+</mo><mi>x</mi><mo>=</mo><mn>30</mn><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><mn>30</mn><mo>-</mo><mn>5</mn><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><mn>25</mn></math>",
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi><mo>=</mo><mn>25</mn></math>",
                     Description = "Descripcion del ejercicio...",
-                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Derivadas")
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Derivadas")                    
                 },
 
                 new Exercise {
@@ -27,7 +27,7 @@ namespace Logios.Migrations.DataGenerators
                     Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>5</mn><mspace linebreak=\"newline\"/><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mo>-</mo><mn>1</mn><mspace linebreak=\"newline\"/><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>4</mn><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><msqrt><mn>4</mn></msqrt><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><mn>2</mn></math>",
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi><mo>=</mo><mn>2</mn></math>",
                     Description = "Descripcion del ejercicio...",
-                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Derivadas")
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Derivadas")                    
                 },
 
                 new Exercise {
@@ -36,7 +36,7 @@ namespace Logios.Migrations.DataGenerators
                     Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mroot><mn>125</mn><mn>3</mn></mroot><mo>-</mo><mn>1</mn><mspace linebreak=\"newline\"/><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mroot><msup><mn>5</mn><msup><menclose notation=\"updiagonalstrike\"><mn>3</mn></menclose><mn>1</mn></msup></msup><msup><menclose notation=\"updiagonalstrike\"><mn>3</mn></menclose><mn>1</mn></msup></mroot><mo>-</mo><mn>1</mn><mspace linebreak=\"newline\"/><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mo>-</mo><mn>1</mn><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><msqrt><mn>4</mn></msqrt><mspace linebreak=\"newline\"/><mi>x</mi><mo>=</mo><mn>2</mn></math>",
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi><mo>=</mo><mn>2</mn></math>",
                     Description = "Descripcion del ejercicio...",
-                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios")
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios")                    
                 }
             };
 

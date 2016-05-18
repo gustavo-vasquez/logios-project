@@ -2,13 +2,18 @@
 @using Microsoft.AspNet.Identity
 @using Logios.Extensions
 @{
-    ViewBag.Title = "Mostrar ejercicio";
+    ViewBag.Title = "Ejercicio Nº " + Model.Exercise.ExerciseId;
 }
 
-<h1><b>EJERCICIO Nº @Model.Exercise.ExerciseId</b></h1>
+<h1>
+    <b>EJERCICIO Nº @Model.Exercise.ExerciseId &nbsp;</b>
+    <a href="@Url.Action("EditExercise", "Administrator", new { id = Model.Exercise.ExerciseId })" class="btn btn-sm btn-default" title="Editar este ejercicio"><span class="glyphicon glyphicon-edit"></span></a>
+    <a class="btn btn-sm btn-default" onclick="deleteExercise(@Model.Exercise.ExerciseId);" title="Eliminar este ejercicio"><span class="glyphicon glyphicon-trash"></span></a>
+</h1>
 <span>Temática: </span>
-<span class="label label-lg label-default">Derivadas</span>
+<span class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">
+    <span>Subido por <i>Cosme Fulanito</i> &nbsp;</span>    
     <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
@@ -24,7 +29,7 @@
         <div class="col-lg-9">
             <blockquote class="exercise-bg">                
                 <p>@Html.Raw(Model.Exercise.Problem)</p>
-                <small>Suma 20 puntos</small>
+                <small>Cada ejercicio suma 1 punto la primera vez</small>
             </blockquote>
         </div>
     </div>
@@ -35,12 +40,12 @@
         <div class="row">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Desarrollo: </h2>
-                <h6 class="exercise-legend col-lg-10">(Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.)</h6>
+                <h4 class="col-lg-10"><i>&raquo;Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.</i></h4>
             </div>
 
             <div class="col-lg-9">            
                 <blockquote class="exercise-bg">                
-                    <button id="ViewDevelopment" class="btn btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
+                    <button id="ViewDevelopment" class="btn btn-block btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
                     <div class="clearfix"><br /></div>
                     <p id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
                 </blockquote>
@@ -90,10 +95,13 @@
             <p class="text-center"><b>Debes iniciar sesión para poder resolver los ejercicios</b></p>
         </div>
     }
+    
+    <div id="divModal"></div>
 </div>
 
-@section scripts {
+@section scripts {        
         @Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
+        @Scripts.Render("~/Scripts/controlPanel.js")
         <script src="http://www.wiris.net/demo/editor/editor"></script>
         @Scripts.Render("~/Scripts/exercise.js")
         <script>pagination('@Model.isFirst', '@Model.isLast');</script>

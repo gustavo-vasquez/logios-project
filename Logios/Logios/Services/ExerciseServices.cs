@@ -47,6 +47,7 @@ namespace Logios.Services
 
             ExerciseViewModel exerciseToShow = new ExerciseViewModel();
             exerciseToShow.Exercise = exercise;
+            exerciseToShow.topicName = context.Topics.FirstOrDefault(t => t.TopicId == exercise.Topic.TopicId).Description;
             exerciseToShow.isFirst = (index == 0);
             exerciseToShow.isLast = (allExercises.Count() > 0 && index == allExercises.Count() - 1);
             exerciseToShow.backExerciseId = (index > 0) ? allExercises[index - 1].ExerciseId : id;
