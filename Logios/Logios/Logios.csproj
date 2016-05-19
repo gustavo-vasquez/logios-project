@@ -263,6 +263,7 @@
     <Content Include="Scripts\createExercise.js" />
     <Content Include="Scripts\controlPanel.js" />
     <Content Include="Scripts\editExercise.js" />
+    <Content Include="Scripts\formulaEditor.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
     <Content Include="Scripts\MathJax\config\Accessible-full.js" />
