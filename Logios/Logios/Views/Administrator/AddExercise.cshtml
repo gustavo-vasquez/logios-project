@@ -15,9 +15,11 @@
         </div>
 
         <div class="col-lg-9">
-            <blockquote class="exercise-bg">
-                <div id="problemContainer"></div>
-            </blockquote>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="problemContainer"></div>
+                </div>
+            </div>            
             <a href="#" id="stepTwo" name="stepTwo" class="btn btn-primary">Ir al 2º paso &raquo;</a>
         </div>
     </div>
@@ -27,7 +29,7 @@
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Desarrollo: </h2>
-            <h4><i>&raquo;SEGUNDO PASO: Desarrolle detalladamente cada paso para resolver el ejercicio.</i></h4>
+            <h4><i>&raquo;SEGUNDO PASO: Desarrolle detalladamente cada operación para resolver el ejercicio.</i></h4>
         </div>
 
         <div class="col-lg-9">
@@ -37,9 +39,6 @@
                 </div>
             </div>
             <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>            
-            @*<blockquote class="exercise-bg">
-                <div id="developmentContainer"></div>
-            </blockquote>*@
         </div>
     </div>
 
@@ -51,11 +50,8 @@
             <h4><i>&raquo;TERCER PASO: Escriba el resultado.</i></h4>
         </div>
 
-        <div class="col-lg-9">
-            @*<blockquote class="exercise-bg">
-                <div id="solutionContainer"></div>
-            </blockquote>*@
-            <div class="panel panel-default" style="border: none !important;">
+        <div class="col-lg-9">            
+            <div class="panel panel-default">
                 <div class="panel-body">
                     <div id="solutionContainer"></div>                    
                 </div>
@@ -81,7 +77,7 @@
 
             <div class="col-lg-9">            
                 <div class="col-lg-5" style="padding-top: 25px;">
-                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control", size = "7", multiple = "" })                    
+                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control font-larger", size = "7", multiple = "" })                    
                 </div>
                 <div class="col-lg-7" style="padding-top: 25px;">
                     @Html.TextAreaFor(m => m.Exercise.Description, 6, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })                                    
@@ -90,7 +86,7 @@
         </div>
         @Html.HiddenFor(m => m.Exercise.Problem)
         @Html.HiddenFor(m => m.Exercise.Development)
-        @Html.HiddenFor(m => m.Exercise.Solution)
+        @Html.HiddenFor(m => m.Exercise.Solution)     
         
         <div class="vertical-space"></div>
 
@@ -101,7 +97,7 @@
         </div>
         <div class="row">
             <div class="col-lg-offset-8 help-block">
-                @Html.ValidationSummary("", new { @class = "summary text-danger" })
+                @Html.ValidationSummary("", new { @class = "summary text-center text-danger" })
             </div>
         </div>
     }
@@ -109,7 +105,7 @@
 </div>
 
 @section scripts {
-        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryval")        
         <script src="http://www.wiris.net/demo/editor/editor"></script>
-        @Scripts.Render("~/Scripts/administrator.js")
+        @Scripts.Render("~/Scripts/createExercise.js")
     }

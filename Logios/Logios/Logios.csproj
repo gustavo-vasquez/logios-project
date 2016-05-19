@@ -260,7 +260,7 @@
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
     <Content Include="favicon.ico" />
-    <Content Include="Scripts\administrator.js" />
+    <Content Include="Scripts\createExercise.js" />
     <Content Include="Scripts\controlPanel.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\jquery.gotop.js" />
@@ -390,7 +390,6 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="favicon2.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

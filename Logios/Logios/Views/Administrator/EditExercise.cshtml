@@ -15,9 +15,11 @@
         </div>
 
         <div class="col-lg-9">
-            <blockquote class="exercise-bg">
-                <div id="problemContainer"></div>
-            </blockquote>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="problemContainer"></div>
+                </div>
+            </div>
             <a href="#" id="stepTwo" name="stepTwo" class="btn btn-primary">Ir al 2º paso &raquo;</a>
         </div>
     </div>
@@ -36,10 +38,7 @@
                     <div id="developmentContainer"></div>
                 </div>
             </div>
-            <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>
-            @*<blockquote class="exercise-bg">
-                    <div id="developmentContainer"></div>
-                </blockquote>*@
+            <a href="#" id="stepThree" name="stepThree" class="btn btn-primary">Ir al 3º paso &raquo;</a>            
         </div>
     </div>
 
@@ -51,11 +50,8 @@
             <h4><i>&raquo;TERCER PASO: Escriba el resultado.</i></h4>
         </div>
 
-        <div class="col-lg-9">
-            @*<blockquote class="exercise-bg">
-                    <div id="solutionContainer"></div>
-                </blockquote>*@
-            <div class="panel panel-default" style="border: none !important;">
+        <div class="col-lg-9">            
+            <div class="panel panel-default">
                 <div class="panel-body">
                     <div id="solutionContainer"></div>
                 </div>
@@ -101,7 +97,7 @@
         </div>
         <div class="row">
             <div class="col-lg-offset-8 help-block">
-                @Html.ValidationSummary("", new { @class = "summary text-danger" })
+                @Html.ValidationSummary("", new { @class = "summary text-center text-danger" })
             </div>
         </div>
     }

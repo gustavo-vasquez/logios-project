@@ -98,10 +98,8 @@ div.topic-exercises-container h3 {
     color: #808080 !important;
 }
 
-@media (max-width: 768px) {
-    div blockquote {
-        overflow:auto;
-    }
+div blockquote {
+    overflow:auto;
 }
 
 #problemDIV small {
@@ -153,9 +151,9 @@ div.topic-exercises-container h3 {
     -o-transition: all 0.5s ease-in-out;
 }
 
-/*p span {
-font-size: 22px !important;
-}*/
+.font-larger {
+    font-size: larger;
+}
 
 /*.sidebox-social {
     padding: 0 0 5px 0;

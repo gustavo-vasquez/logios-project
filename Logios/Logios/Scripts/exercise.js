@@ -5,7 +5,7 @@ $(document).ready(function() {
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
 
     MathJax.Hub.Config({
-        jax: ["input/MathML", "output/HTML-CSS"],
+        //jax: ["input/MathML", "output/CommonHTML"],
 
         MathML: {
             extensions: ["content-mathml.js"]
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
         CommonHTML: {
             scale: 100,
-            linebreaks: { automatic: true }
+            //linebreaks: { automatic: true }
         },        
     });
 });
