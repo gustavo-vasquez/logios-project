@@ -4,6 +4,11 @@ $(document).ready(function() {
     solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
 
+    //$('.wrs_focusElement').keyup(function () {
+    //    alert($('.wrs_container span').val());
+    //    //$('.wrs_focusElement').val($('.wrs_focusElement').val().toUpperCase());
+    //});    
+
     MathJax.Hub.Config({
         //jax: ["input/MathML", "output/CommonHTML"],
 

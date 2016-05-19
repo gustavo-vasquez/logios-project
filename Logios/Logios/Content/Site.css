@@ -155,6 +155,10 @@ div blockquote {
     font-size: larger;
 }
 
+/*.wrs_container span {
+    text-transform: lowercase !important;
+}*/
+
 /*.sidebox-social {
     padding: 0 0 5px 0;
 }
