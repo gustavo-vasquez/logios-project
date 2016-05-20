@@ -30,9 +30,9 @@ namespace Logios.Services
 
         public bool CheckAnswer(int id, string answer)
         {
-            var solution = context.Exercises.FirstOrDefault(e => e.ExerciseId == id).Solution;
+            var solution = context.Exercises.FirstOrDefault(e => e.ExerciseId == id).Solution;            
 
-            if(answer != solution)
+            if(answer.ToLower().Replace("<mo>&#x000a0;</mo>", "") != solution.ToLower().Replace("<mo>&#x000a0;</mo>", ""))
                 return false;            
             else            
                 return true;                     
