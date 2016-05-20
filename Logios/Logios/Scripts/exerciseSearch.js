@@ -54,14 +54,14 @@ function searchExercise() {
     var searches = storage.get(userId);
 
     // Si quere buscar lo mismo dos veces seguidas, no hago nada
-    if (lastTopicId === topicId) {
+    if (lastTopicId === topicId || isNaN(topicId)) {
         return false;
     }
     
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {
         lastTopicIdInput.val(topicId);
-        return false;
+        return;
     }
 
     // Actualizar el valor de la ultima busqueda realizada
@@ -121,6 +121,10 @@ function getTopicByDescription(topicDescription) {
 }
 
 function addOneToSearchCount(searches, topicDescription, topicId) {
+    if (topicDescription === '' || isNaN(topicId)) {
+        return;
+    }
+
     var found = false;
 
     for (var i = 0; i < searches.length; i++) {

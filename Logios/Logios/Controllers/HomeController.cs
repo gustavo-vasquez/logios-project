@@ -22,15 +22,18 @@ namespace Logios.Controllers
         [HttpPost]
         public PartialViewResult Search(string topicId)
         {
-            var id = int.Parse(topicId);
+            var resultsViewModel = new ExerciseResultViewModel();
 
-            var exercises = ExerciseService.GetExercisesByTopic(id);
-            var topic = this.TopicService.GetById(id);
-            var resultsViewModel = new ExerciseResultViewModel()
+            if (!string.IsNullOrEmpty(topicId))
             {
-                Exercises = exercises,
-                TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png")
-            };
+                var id = int.Parse(topicId);
+
+                var exercises = ExerciseService.GetExercisesByTopic(id);
+                var topic = this.TopicService.GetById(id);
+
+                resultsViewModel.Exercises = exercises;
+                resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png");
+            }            
 
             return PartialView("_ExerciseSearchResult", resultsViewModel);
         }
