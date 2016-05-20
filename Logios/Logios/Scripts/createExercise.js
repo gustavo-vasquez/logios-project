@@ -19,13 +19,28 @@ $(document).ready(function () {
         $('html,body').animate({ scrollTop: '0px' }, 'slow');
     });    
 
-    problemEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
+    problemEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '22px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
     problemEditor.insertInto(document.getElementById('problemContainer'));
 
-    developmentEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
+    developmentEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '22px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
     developmentEditor.insertInto(document.getElementById('developmentContainer'));
 
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '22px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));    
 });
 

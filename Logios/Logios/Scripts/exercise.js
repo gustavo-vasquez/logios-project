@@ -1,13 +1,13 @@
 ﻿var solutionEditor;
 
-$(document).ready(function() {
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));
-
-    //$('.wrs_focusElement').keyup(function () {
-    //    alert($('.wrs_container span').val());
-    //    //$('.wrs_focusElement').val($('.wrs_focusElement').val().toUpperCase());
-    //});    
+$(document).ready(function () {    
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '24px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));    
 
     MathJax.Hub.Config({
         //jax: ["input/MathML", "output/CommonHTML"],
@@ -60,11 +60,13 @@ function ViewDevelopment(UserId, ExerciseId) {
 
 function copyAnswer() {
     $('#answer').val(solutionEditor.getMathML());
-    var isValid = ($('#answer').val() != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>");
-    if (isValid)
-        return true;    
-    else
-        alert("ERROR: Debe escribir una respuesta.");
+    if ($('#answer').val() != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>") {
+        $('.message').empty();
+        return true;
+    }        
+    else {
+        $('.message').wrapInner('<span class="help-block"></span><span class="text-danger">&diams; Escriba la solución</span>');
+    }        
 
     return false;
 }

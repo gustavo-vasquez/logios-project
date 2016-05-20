@@ -32,12 +32,23 @@ color:white;
 }
 
 #logo_letras {
-    font-family:UncialAntiqua-regular;
+    font-family: UncialAntiqua-regular;
 }
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;    
+    background: url(images/Background7_edited.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-shadow {
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
+    box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -92,7 +103,7 @@ div.topic-exercises-container h3 {
 }
 
 #solutionContainer {
-    width: 500px;
+    width: auto;
     height: 200px;
 }
 
