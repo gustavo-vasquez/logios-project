@@ -1,7 +1,8 @@
-﻿var parsedTopics = [];
+﻿// La variable userId esta definida en la vista y tiene el Id del usuario de Identity
+var parsedTopics = [],
+    searchForm;
 
 $(function () {
-    //////////// SEARCH SECTION ////////////////////////////
     $.ajax({
         url: '/Home/GetTopics',
         method: 'GET',
@@ -26,11 +27,23 @@ $(function () {
         });
     }
 
+    // obtener el form
+    searchForm = $('#exerciseSearchForm');
+
+    $('#searchInput').on('keyup', function (event) {
+        // 13 es el ENTER, esto es para que aprentando ENTER en el autocomplete lo mande de una
+        // y no haga falta apretar ENTER dos veces para mandar la búsqueda.
+        if (event.keyCode == 13) {
+            searchForm.submit();
+        }
+    });
+
+    searchForm.submit(searchExercise);
+
     generateSearchTags();
-    // SEARCH SECTION ////////////////////////////
 });
 
-function searchExercise(userId) {
+function searchExercise() {
     // Guardarme los dos campos del formulario
     var topicId = parseInt($('input[name="topicId"]').val());
     var lastTopicIdInput = $('input#lastTopicId');
@@ -42,17 +55,13 @@ function searchExercise(userId) {
 
     // Si quere buscar lo mismo dos veces seguidas, no hago nada
     if (lastTopicId === topicId) {
-        return;
+        return false;
     }
-
-    // Si llegó hasta acá es porque tengo que mandar el fomulario
-    var exerciseSearchForm = $('#exerciseSearchForm');
-
+    
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {
         lastTopicIdInput.val(topicId);
-        exerciseSearchForm.submit();
-        return;
+        return false;
     }
 
     // Actualizar el valor de la ultima busqueda realizada
@@ -65,14 +74,12 @@ function searchExercise(userId) {
     searches.sort(function (search1, search2) {
         return search1.searchCount < search2.searchCount
     });
-    storage.set(userId, searches);
 
-    // Mandar el formulario
-    exerciseSearchForm.submit();
+    storage.set(userId, searches);
 }
 
 function generateSearchTags() {
-    if (userIdentity === '') {
+    if (userId === '') {
         return;
     }
 
@@ -88,7 +95,7 @@ function generateSearchTags() {
 }
 
 function getTopThreeMostSearchedTopics() {
-    var searches = storage.get(userIdentity);
+    var searches = storage.get(userId);
     
     // Devolver solo con los 3 que mas busquedas tienen
     return searches.slice(0, 3);
@@ -100,11 +107,11 @@ function searchFromTags(topicDescription) {
     $('input[name="topicId"]').val(topic.id);
     $('input#searchInput').val(topic.description);
 
-    searchExercise(userIdentity);
+    searchForm.submit();
 }
 
 function getTopicByDescription(topicDescription) {
-    var searches = storage.get(userIdentity);
+    var searches = storage.get(userId);
 
     var theSearch = searches.find(function (search) {
         return search.description === topicDescription;
