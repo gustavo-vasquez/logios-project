@@ -37,7 +37,7 @@
                 <input type="hidden" id="lastTopicId" />
                 <input id="searchInput" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
                 <span class="input-group-btn">
-                    <button class="btn btn-info" type="button" onclick="searchExercise(userIdentity)"><span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
@@ -54,7 +54,7 @@
 </div>
 
 <script type="text/javascript">
-    var userIdentity = '@User.Identity.GetUserId()';
+    var userId = '@User.Identity.GetUserId()';
 </script>
 
 @section scripts {

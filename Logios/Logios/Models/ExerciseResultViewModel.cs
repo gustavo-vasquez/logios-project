@@ -10,5 +10,11 @@ namespace Logios.Models
     {
         public IEnumerable<Exercise> Exercises { get; set; }
         public string TopicImageUrl { get; set; }
+
+        public ExerciseResultViewModel()
+        {
+            this.Exercises = new List<Exercise>();
+            this.TopicImageUrl = string.Empty;
+        }
     }
 }
