@@ -257,6 +257,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
+    <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
@@ -265,6 +266,7 @@
     <Content Include="Scripts\controlPanel.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\formulaEditor.js" />
+    <Content Include="Scripts\HoldOn.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
     <Content Include="Scripts\MathJax\config\Accessible-full.js" />

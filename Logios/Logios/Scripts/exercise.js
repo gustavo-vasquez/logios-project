@@ -1,13 +1,14 @@
 ﻿var solutionEditor;
 
+//HoldOn.open({
+//    theme: 'sk-circle',
+//    message: 'Cargando ejercicio...'
+//});
+
 $(document).ready(function () {    
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
-        'language': 'es',
-        'fontFamily': 'Times New Roman',
-        'fontSize': '24px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
-    });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));    
+    //setTimeout(function () {
+    //    HoldOn.close();
+    //}, 5000);
 
     MathJax.Hub.Config({
         //jax: ["input/MathML", "output/CommonHTML"],
@@ -29,8 +30,16 @@ $(document).ready(function () {
         CommonHTML: {
             scale: 100,
             //linebreaks: { automatic: true }
-        },        
+        },
     });
+
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '24px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));        
 });
 
 function ViewDevelopment(UserId, ExerciseId) {

@@ -102,11 +102,6 @@ div.topic-exercises-container h3 {
     height: 60px;
 }
 
-#solutionContainer {
-    width: auto;
-    height: 200px;
-}
-
 .exercise-legend {
     color: #808080 !important;
 }

@@ -69,6 +69,9 @@
                 new { Id = "CreateForm", @class = "form", role = "form" }))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Exercise.Problem)
+        @Html.HiddenFor(m => m.Exercise.Development)
+        @Html.HiddenFor(m => m.Exercise.Solution)
         <div class="row">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Temática y descripción: </h2>
@@ -83,10 +86,7 @@
                     @Html.TextAreaFor(m => m.Exercise.Description, 7, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })                                    
                 </div>
             </div>        
-        </div>
-        @Html.HiddenFor(m => m.Exercise.Problem)
-        @Html.HiddenFor(m => m.Exercise.Development)        
-        @Html.HiddenFor(m => m.Exercise.Solution)     
+        </div>             
         
         <div class="vertical-space"></div>
 
