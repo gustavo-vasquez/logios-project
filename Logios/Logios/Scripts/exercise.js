@@ -48,7 +48,24 @@ function ViewDevelopment(UserId, ExerciseId) {
 	    $('#ViewDevelopment').hide();
 	    $('#DevelopmentField').slideDown(500);	    
 	}
-	
+
+	//$('#divUI').wrapInner('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Si visualiza la resolución ya no se le otorgarán puntos por resolverlo.</p>');
+	//$("#divUI").dialog({
+	//    resizable: false,
+    //    title: "¿Está seguro?",
+	//    height: 140,
+	//    //minWidth: 500,
+	//    modal: true,
+	//    buttons: {
+	//        'Si': function () {
+	//            $(this).dialog("close");
+	//        },
+	//        'No': function () {
+	//            $(this).dialog("close");
+	//        }
+	//    }
+	//});
+		
 	var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
 	//var urlaction = "@Url.Action(Exercise,ShowDevelop)";
 	$.ajax({
@@ -58,10 +75,10 @@ function ViewDevelopment(UserId, ExerciseId) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (response) {
-	        alert(response.responseText);
+            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response.responseText + '</i></p>');            
 	    },
-        success: function (response) {
-	        alert(response);
+        success: function (response) {            
+            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');            
 	    }
     });
 		

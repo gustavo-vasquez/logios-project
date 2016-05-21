@@ -67,7 +67,7 @@ namespace Logios.Controllers
             }
 
             services.UpdateUserExercise(model.UserId, model.ExerciseId, true);
-            return Json("Acabas de visualizar el resultado. Ya no puedes ganar puntos por este ejercicio");
+            return Json("Acabas de visualizar la resolución. Ya no puedes ganar puntos por este ejercicio");
 
         }        
         
