@@ -298,6 +298,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Scripts\createExercise.js" />
     <Content Include="Scripts\controlPanel.js" />
+    <Content Include="Scripts\dc.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\formulaEditor.js" />
     <Content Include="Scripts\HoldOn.js" />
@@ -377,6 +378,8 @@
     <Content Include="Scripts\MathJax\extensions\TeX\unicode.js" />
     <Content Include="Scripts\MathJax\extensions\TeX\verb.js" />
     <Content Include="Scripts\MathJax\extensions\toMathML.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\tick.js" />
     <Content Include="Views\Exercise\_Result.cshtml" />
     <Content Include="Views\Home\_TopicAreaSearch.cshtml" />
     <Content Include="Views\TopicArea\Index.cshtml" />

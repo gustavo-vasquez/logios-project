@@ -1,0 +1,1 @@
+com.wiris.system.ServiceProvider.answer_0=""
