@@ -12,14 +12,18 @@
                 <div class="modal-content">
                     <div class="modal-body text-center">
                         <h3 class="modal-title text-center text-primary"><b>Ejercicio creado correctamente <span class="glyphicon glyphicon-ok"></span></b></h3>
+                        <h4><i>¿A dónde quieres ir ahora?</i></h4>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-md-12">                            
-                            <div class="col-md-6">
-                                <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-block btn-info">Agregar otro ejercicio</a>
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-block btn-info">Crear nuevo</a>
                             </div>
-                            <div class="col-md-6">
-                                <a href="@Url.Action("ControlPanel", "Administrator")" class="btn btn-block btn-info">Volver a panel de control</a>
+                            <div class="col-md-4">
+                                <a href="@Url.Action("Index", "Home")" class="btn btn-block btn-info"><span class="glyphicon glyphicon-home"></span></a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="@Url.Action("ControlPanel", "Administrator")" class="btn btn-block btn-info">Panel de control</a>
                             </div>                
                         </div>
                     </div>

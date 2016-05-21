@@ -1,13 +1,14 @@
 ﻿var solutionEditor;
 
-$(document).ready(function() {
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({ 'language': 'es' });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));
+//HoldOn.open({
+//    theme: 'sk-circle',
+//    message: 'Cargando ejercicio...'
+//});
 
-    //$('.wrs_focusElement').keyup(function () {
-    //    alert($('.wrs_container span').val());
-    //    //$('.wrs_focusElement').val($('.wrs_focusElement').val().toUpperCase());
-    //});    
+$(document).ready(function () {    
+    //setTimeout(function () {
+    //    HoldOn.close();
+    //}, 5000);
 
     MathJax.Hub.Config({
         //jax: ["input/MathML", "output/CommonHTML"],
@@ -29,8 +30,16 @@ $(document).ready(function() {
         CommonHTML: {
             scale: 100,
             //linebreaks: { automatic: true }
-        },        
+        },
     });
+
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
+        'language': 'es',
+        'fontFamily': 'Times New Roman',
+        'fontSize': '24px',
+        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+    });
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));        
 });
 
 function ViewDevelopment(UserId, ExerciseId) {
@@ -39,7 +48,24 @@ function ViewDevelopment(UserId, ExerciseId) {
 	    $('#ViewDevelopment').hide();
 	    $('#DevelopmentField').slideDown(500);	    
 	}
-	
+
+	//$('#divUI').wrapInner('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Si visualiza la resolución ya no se le otorgarán puntos por resolverlo.</p>');
+	//$("#divUI").dialog({
+	//    resizable: false,
+    //    title: "¿Está seguro?",
+	//    height: 140,
+	//    //minWidth: 500,
+	//    modal: true,
+	//    buttons: {
+	//        'Si': function () {
+	//            $(this).dialog("close");
+	//        },
+	//        'No': function () {
+	//            $(this).dialog("close");
+	//        }
+	//    }
+	//});
+		
 	var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
 	//var urlaction = "@Url.Action(Exercise,ShowDevelop)";
 	$.ajax({
@@ -49,10 +75,10 @@ function ViewDevelopment(UserId, ExerciseId) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (response) {
-	        alert(response.responseText);
+            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response.responseText + '</i></p>');            
 	    },
-        success: function (response) {
-	        alert(response);
+        success: function (response) {            
+            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');            
 	    }
     });
 		
@@ -60,11 +86,13 @@ function ViewDevelopment(UserId, ExerciseId) {
 
 function copyAnswer() {
     $('#answer').val(solutionEditor.getMathML());
-    var isValid = ($('#answer').val() != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>");
-    if (isValid)
-        return true;    
-    else
-        alert("ERROR: Debe escribir una respuesta.");
+    if ($('#answer').val() != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>") {
+        $('.message').empty();
+        return true;
+    }        
+    else {
+        $('.message').wrapInner('<span class="help-block"></span><span class="text-danger">&diams; Escriba la solución</span>');
+    }        
 
     return false;
 }

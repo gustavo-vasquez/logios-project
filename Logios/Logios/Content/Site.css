@@ -6,6 +6,15 @@
      text-indent: -9999px;
 }*/
 
+html, 
+body {
+    height: 100%;    
+}
+
+footer {
+    padding-bottom: 10px;
+}
+
 .wrapper{
     /*background: url('/Content/images/Landing image.png') no-repeat   center center fixed;*/
     background: url('/Content/images/bg3.jpg') no-repeat   center center fixed;
@@ -32,12 +41,23 @@ color:white;
 }
 
 #logo_letras {
-    font-family:UncialAntiqua-regular;
+    font-family: UncialAntiqua-regular;
 }
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;    
+    background: url(images/Background7_edited.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-shadow {
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
+    box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.61);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -89,11 +109,6 @@ div.topic-exercises-container h3 {
 
 .vertical-space {
     height: 60px;
-}
-
-#solutionContainer {
-    width: 500px;
-    height: 200px;
 }
 
 .exercise-legend {

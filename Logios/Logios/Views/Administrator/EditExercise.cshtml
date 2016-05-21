@@ -7,7 +7,7 @@
 <h1><b>@ViewBag.Title</b></h1>
 <hr />
 
-<div class="container-fluid">
+<div>
     <div class="row">
         <div class="col-lg-3">
             <h2 class="exercise-legend">Enunciado: </h2>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-lg-9">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="overflow: auto;">
                 <div class="panel-body">
                     <div id="problemContainer"></div>
                 </div>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-lg-9">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="overflow: auto;">
                 <div class="panel-body">
                     <div id="developmentContainer"></div>
                 </div>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="col-lg-9">            
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="overflow: auto;">
                 <div class="panel-body">
                     <div id="solutionContainer"></div>
                 </div>
@@ -69,6 +69,9 @@
                         new { Id = "EditForm", @class = "form", role = "form" }))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Exercise.Problem)
+        @Html.HiddenFor(m => m.Exercise.Development)
+        @Html.HiddenFor(m => m.Exercise.Solution)
         <div class="row">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Temática y descripción: </h2>
@@ -77,16 +80,13 @@
 
             <div class="col-lg-9">
                 <div class="col-lg-5" style="padding-top: 25px;">
-                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control", size = "7", multiple = "" })
+                    @Html.DropDownListFor(m => m.Topic.TopicId, Model.ComboTopics, null, new { @class = "form-control font-larger", size = "7", multiple = "" })
                 </div>
                 <div class="col-lg-7" style="padding-top: 25px;">
-                    @Html.TextAreaFor(m => m.Exercise.Description, 6, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })
+                    @Html.TextAreaFor(m => m.Exercise.Description, 7, 1, new { @class = "form-control", placeholder = "Escriba una descripción..." })
                 </div>
             </div>
-        </div>
-        @Html.HiddenFor(m => m.Exercise.Problem)
-        @Html.HiddenFor(m => m.Exercise.Development)
-        @Html.HiddenFor(m => m.Exercise.Solution)
+        </div>       
 
         <div class="vertical-space"></div>
 
