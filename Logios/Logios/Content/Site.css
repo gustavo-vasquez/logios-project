@@ -6,6 +6,15 @@
      text-indent: -9999px;
 }*/
 
+html, 
+body {
+    height: 100%;    
+}
+
+footer {
+    padding-bottom: 10px;
+}
+
 .wrapper{
     /*background: url('/Content/images/Landing image.png') no-repeat   center center fixed;*/
     background: url('/Content/images/bg3.jpg') no-repeat   center center fixed;
