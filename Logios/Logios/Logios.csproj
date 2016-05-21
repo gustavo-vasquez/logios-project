@@ -178,8 +178,10 @@
     <Compile Include="Controllers\ExerciseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\TopicAreaController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="DTOs\ExerciseDTO.cs" />
     <Compile Include="DTOs\TopicDTO.cs" />
@@ -204,6 +206,11 @@
     <Compile Include="Migrations\201605172313062_AddIsDeletedToExercise.Designer.cs">
       <DependentUpon>201605172313062_AddIsDeletedToExercise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605211625134_UserAdminWithRoles.cs" />
+    <Compile Include="Migrations\201605211625134_UserAdminWithRoles.Designer.cs">
+      <DependentUpon>201605211625134_UserAdminWithRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
     <Compile Include="Entities\UserExercise.cs" />
@@ -235,6 +242,7 @@
     <Compile Include="Migrations\DataGenerators\TopicDataGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\CreateExerciseViewModel.cs" />
     <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
@@ -256,6 +264,16 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
@@ -503,6 +521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605172313062_AddIsDeletedToExercise.resx">
       <DependentUpon>201605172313062_AddIsDeletedToExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605211625134_UserAdminWithRoles.resx">
+      <DependentUpon>201605211625134_UserAdminWithRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

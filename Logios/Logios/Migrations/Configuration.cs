@@ -22,7 +22,8 @@ namespace Logios.Migrations
                 new ExerciseDataGenerator(),
                 new TrophyDataGenerator(),
                 new TopicAreaDataGenerator(),
-                new TopicAreaTopicDataGenerator()
+                new TopicAreaTopicDataGenerator(),
+                new ApplicationUserGenerator()
             };
         }
 
@@ -34,7 +35,7 @@ namespace Logios.Migrations
             context.Topics.Clear();
             context.TopicAreas.Clear();
             context.Trophies.Clear();
-
+            
             context.SaveChanges();
 
             // Recorrer el listado de generadores de data y llamar a su método GenerateData en orden
