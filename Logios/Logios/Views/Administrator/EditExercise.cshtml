@@ -106,7 +106,7 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="http://www.wiris.net/demo/editor/editor"></script>
+    @Scripts.Render("~/Scripts/formulaEditor.js")
     @Scripts.Render("~/Scripts/editExercise.js")
     <script>serializeModel(@Html.Raw(Json.Encode(Model.Exercise)));</script>
 }

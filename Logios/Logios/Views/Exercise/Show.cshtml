@@ -132,7 +132,7 @@
 @section scripts {        
         @Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
         @Scripts.Render("~/Scripts/controlPanel.js")
-        <script src="http://www.wiris.net/demo/editor/editor"></script>
+        @Scripts.Render("~/Scripts/formulaEditor.js")
         @Scripts.Render("~/Scripts/exercise.js")
         <script>pagination('@Model.isFirst', '@Model.isLast');</script>
     }

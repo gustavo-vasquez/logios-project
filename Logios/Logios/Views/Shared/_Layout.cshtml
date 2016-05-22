@@ -24,6 +24,11 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Ejercicio 1", "Show", "Exercise", new { id = "1" }, null)</li>
                     <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
