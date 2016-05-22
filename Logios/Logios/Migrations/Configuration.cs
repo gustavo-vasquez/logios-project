@@ -18,12 +18,12 @@ namespace Logios.Migrations
 
             this.DataGenerators = new List<IDataGenerator>()
             {
+                new ApplicationUserGenerator(),
                 new TopicDataGenerator(),
                 new ExerciseDataGenerator(),
                 new TrophyDataGenerator(),
                 new TopicAreaDataGenerator(),
-                new TopicAreaTopicDataGenerator(),
-                new ApplicationUserGenerator()
+                new TopicAreaTopicDataGenerator()                
             };
         }
 

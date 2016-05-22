@@ -26,7 +26,7 @@ namespace Logios.Services
             return new SelectList(topics, "TopicId", "Description");
         }
 
-        public Boolean? CreateNewExercise(CreateExerciseViewModel model)
+        public Boolean? CreateNewExercise(CreateExerciseViewModel model, string userId)
         {
             try
             {
@@ -37,6 +37,7 @@ namespace Logios.Services
                 exercise.Solution = model.Exercise.Solution;
                 exercise.Description = model.Exercise.Description;                
                 exercise.Topic = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);
+                exercise.User = context.Users.FirstOrDefault(u => u.Id == userId);
                 context.Exercises.Add(exercise);
                 context.SaveChanges();
 
@@ -69,7 +70,7 @@ namespace Logios.Services
             return model;
         }
 
-        public Boolean? EditCurrentExercise(int id, EditExerciseViewModel model)
+        public Boolean? EditCurrentExercise(int id, EditExerciseViewModel model, string userId)
         {
             try
             {                
@@ -79,6 +80,7 @@ namespace Logios.Services
                 exerciseToEdit.Solution = model.Exercise.Solution;
                 exerciseToEdit.Description = model.Exercise.Description;
                 exerciseToEdit.Topic = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);
+                exerciseToEdit.User = context.Users.FirstOrDefault(u => u.Id == userId);
                 context.SaveChanges();                
 
                 return true;

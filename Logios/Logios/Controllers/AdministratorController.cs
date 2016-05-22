@@ -1,5 +1,6 @@
 ﻿using Logios.Models;
 using Logios.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace Logios.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var result = adminServices.CreateNewExercise(model);
+                    var result = adminServices.CreateNewExercise(model, User.Identity.GetUserId());
                     return PartialView("_CreateExerciseResult", result);
                 }
 
@@ -61,7 +62,7 @@ namespace Logios.Controllers
             {
                 if(ModelState.IsValid)
                 {
-                    var result = adminServices.EditCurrentExercise(id, model);
+                    var result = adminServices.EditCurrentExercise(id, model, User.Identity.GetUserId());
                     return PartialView("_EditExerciseResult", result);                    
                 }
 

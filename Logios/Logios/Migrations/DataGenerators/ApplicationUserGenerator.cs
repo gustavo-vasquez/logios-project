@@ -27,11 +27,33 @@ namespace Logios.Migrations.DataGenerators
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var userToInsert = new ApplicationUser { UserName = "ADMIN", Email = "administrator@example.com" };
+                var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
                 userManager.Create(userToInsert, "Admin12$");
-                userManager.AddToRole(userToInsert.Id, "Admin");
+                userManager.AddToRole(userToInsert.Id, "Admin");                
+                context.UserProfiles.Add(userProfile);
             }
-           
-                context.SaveChanges();
+
+            if (!(context.Users.Any(u => u.UserName == "Cosme_Fulanito")))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var userToInsert = new ApplicationUser { UserName = "Cosme_Fulanito", Email = "cosme@fulanito.com" };
+                var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
+                userManager.Create(userToInsert, "Cosme123$");                
+                context.UserProfiles.Add(userProfile);
+            }
+
+            if (!(context.Users.Any(u => u.UserName == "zapallo_88")))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var userToInsert = new ApplicationUser { UserName = "zapallo_88", Email = "zapallo@zapallo.com" };
+                var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
+                userManager.Create(userToInsert, "ZApallo1<");                
+                context.UserProfiles.Add(userProfile);
+            }
+
+            context.SaveChanges();
 
         }
     }

@@ -23,7 +23,7 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
     });
     problemEditor.insertInto(document.getElementById('problemContainer'));
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
     });
     developmentEditor.insertInto(document.getElementById('developmentContainer'));
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"><removeTab ref="contextual" /></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
     });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));    
 });
