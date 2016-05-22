@@ -1,0 +1,28 @@
+﻿@model Logios.Entities.UserExercise
+
+<script>$("#confirmDialog").modal('show');</script>
+
+<div id="confirmDialog" class="modal" data-backdrop="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center"><b>¿Está seguro?</b></h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>Una vez que vea la resolución ya no se le otorgarán puntos por resolver el ejercicio.</h4>                    
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-block btn-success" onclick="doAction('@Model.UserId','@Model.ExerciseId');">Si</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">No</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

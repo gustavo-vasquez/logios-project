@@ -50,8 +50,25 @@
             </div>
 
             <div class="col-lg-9">            
-                <blockquote class="exercise-bg">                
-                    <button id="ViewDevelopment" class="btn btn-block btn-default" onclick="ViewDevelopment('@User.Identity.GetUserId()','@Model.Exercise.ExerciseId');">Visualizar desarrollo</button>
+                <blockquote class="exercise-bg">
+                    @using (Ajax.BeginForm(
+                    "ShowDevelop",
+                    "Exercise",
+                    new { userId = User.Identity.GetUserId(), exerciseId = Model.Exercise.ExerciseId },
+                    new AjaxOptions {
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "divUI"
+                    },
+                    new
+                    {
+                        Id = "ShowDevelopForm",
+                        @Class = "form",
+                        role = "form"
+                    }))
+                    {
+                        <button type="submit" id="ViewDevelopment" class="btn btn-block btn-default">Visualizar desarrollo</button>
+                    }                    
                     <div class="clearfix"><br /></div>
                     <p style="font-size: larger !important;" id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
                 </blockquote>

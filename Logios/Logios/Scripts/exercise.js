@@ -42,46 +42,26 @@ $(document).ready(function () {
     solutionEditor.insertInto(document.getElementById('solutionContainer'));        
 });
 
-function ViewDevelopment(UserId, ExerciseId) {
-	if ($('#DevelopmentField').is(':hidden'))
-	{
-	    $('#ViewDevelopment').hide();
-	    $('#DevelopmentField').slideDown(500);	    
-	}
-
-	//$('#divUI').wrapInner('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Si visualiza la resolución ya no se le otorgarán puntos por resolverlo.</p>');
-	//$("#divUI").dialog({
-	//    resizable: false,
-    //    title: "¿Está seguro?",
-	//    height: 140,
-	//    //minWidth: 500,
-	//    modal: true,
-	//    buttons: {
-	//        'Si': function () {
-	//            $(this).dialog("close");
-	//        },
-	//        'No': function () {
-	//            $(this).dialog("close");
-	//        }
-	//    }
-	//});
-		
-	var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
-	//var urlaction = "@Url.Action(Exercise,ShowDevelop)";
-	$.ajax({
-	    url: "/Exercise/ShowDevelop",
-	    type: 'POST',
+function doAction(UserId, ExerciseId) {
+    var jsonObject = { "UserId": UserId, "ExerciseId": ExerciseId };
+    
+    $.ajax({
+        url: "/Exercise/ShowDevelop",
+        type: 'POST',
         data: JSON.stringify(jsonObject),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (response) {
-            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response.responseText + '</i></p>');            
-	    },
-        success: function (response) {            
-            $('.clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');            
-	    }
+            $("#confirmDialog").modal('hide');
+            $('blockquote .clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response.responseText + '</i></p>');            
+        },
+        success: function (response) {
+            $("#confirmDialog").modal('hide');
+            $('#ViewDevelopment').hide();            
+            $('#DevelopmentField').slideDown(500);
+            $('blockquote .clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');
+        }
     });
-		
 }
 
 function copyAnswer() {

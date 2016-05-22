@@ -53,6 +53,12 @@ namespace Logios.Controllers
             return PartialView("_Result", result);
         }
 
+        [HttpGet]
+        public ActionResult ShowDevelop(string userId, int exerciseId)
+        {
+            return PartialView("_ConfirmDialog", new UserExercise { UserId = userId, ExerciseId = exerciseId });
+        }
+
         [HttpPost]
         public ActionResult ShowDevelop(UserExercise model)
         {
@@ -69,7 +75,7 @@ namespace Logios.Controllers
             services.UpdateUserExercise(model.UserId, model.ExerciseId, true);
             return Json("Acabas de visualizar la resolución. Ya no puedes ganar puntos por este ejercicio");
 
-        }        
+        }                
         
         public JsonResult Pagination(int id)
         {
