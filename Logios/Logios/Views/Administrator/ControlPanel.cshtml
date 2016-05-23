@@ -12,6 +12,31 @@
     <h1><b><span class="glyphicon glyphicon-cog"></span> @ViewBag.Title</b></h1>
     <h3><i>¿Que desea hacer?</i></h3>
     <hr />
+
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#exerciseAdmin" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-edit"></span> Administrar ejercicios</a></li>
+            <li class=""><a id="tabUserAdmin" href="#userAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a></li>
+            <li class=""><a href="#trophyAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-glass"></span> Administrar trofeos</a></li>
+            <li class=""><a href="#reportAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span> Reportes</a></li>            
+            <li class=""><a href="#statsAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-stats"></span> Estadísticas</a></li>            
+        </ul>
+
+        <div id="myTabContent" class="tab-content tab-background">
+            <div class="tab-pane fade active in" id="exerciseAdmin">                
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            </div>
+            <div class="tab-pane fade" id="userAdmin">                
+            </div>
+            <div class="tab-pane fade" id="trophyAdmin">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+            </div>
+            <div class="tab-pane fade" id="reportAdmin">
+                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-12">
         <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info">Crear nuevo ejercicio</a>
         <a href="@Url.Action("EditExercise", "Administrator", new { id = 1 })" class="btn btn-info">Editar ejercicio 1</a>
@@ -27,6 +52,11 @@
 
 <div id="divModal"></div>
 
+<div id="loadAnimation" class="hide">
+    <img src="~/Content/images/loading7_orange.gif" alt="loading" width="100" class="center-block" />
+</div>
+
 @section scripts {     
+    @Scripts.Render("~/Scripts/tabs.js")
     @Scripts.Render("~/Scripts/controlPanel.js")
 }

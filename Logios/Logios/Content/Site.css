@@ -172,6 +172,19 @@ div blockquote {
     font-size: larger;
 }
 
+.tab-background {
+    padding: 30px;
+    margin-bottom: 20px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-color: #dddddd;
+}
+
+.head-align th {
+    text-align: center;
+}
+
 /*.wrs_container span {
     text-transform: lowercase !important;
 }*/

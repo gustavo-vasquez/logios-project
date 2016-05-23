@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Logios.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdministratorController : Controller
     {
         AdministratorServices adminServices = new AdministratorServices();

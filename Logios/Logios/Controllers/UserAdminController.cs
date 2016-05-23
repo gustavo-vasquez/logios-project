@@ -55,8 +55,12 @@ namespace Logios.Controllers
         // GET: /Users/
         public async Task<ActionResult> Index()
         {
-            return View(await UserManager.Users.ToListAsync());
+            return PartialView("_Index", await UserManager.Users.ToListAsync());
         }
+        //public async Task<ActionResult> Index()
+        //{
+        //    return View(await UserManager.Users.ToListAsync());
+        //}
 
         //
         // GET: /Users/Details/5

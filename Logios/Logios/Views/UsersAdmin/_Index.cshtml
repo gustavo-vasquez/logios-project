@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Logios.Entities.ApplicationUser>
+
+@{ 
+    WebGrid userList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "registeredUsers");
+    int userCount = 0;
+}
+
+<h2>Usuarios registrados</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear nuevo usuario</a>
+</p>
+<br />
+
+<div>
+    @userList.GetHtml(
+        htmlAttributes: new { id = "registeredUsers" },
+        tableStyle: "table table-hover table-striped table-bordered text-center",
+        headerStyle: "head-align",
+        rowStyle: "active",
+        alternatingRowStyle: "active",
+        fillEmptyRows: false,
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primero",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Último >>",
+
+        columns: userList.Columns(
+                        userList.Column("", canSort: false, header: "Nº", format: item => userCount = userCount + 1),
+                        userList.Column("UserName", canSort: false, header: "Nombre de usuario"),
+                        userList.Column("Email", canSort: false, header: "E-mail"),
+                        userList.Column("EmailConfirmed", canSort: false, header: "E-mail confirmado", format: (item) => ( item.EmailConfirmed ? "Si" : "No" )),
+                        userList.Column("Id", canSort: false, header: "Acciones",
+                                format: @<text>
+                                            <a href="@Url.Action("Edit", new { id = @item.Id })" class="btn btn-xs btn-success">
+                                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                                            </a>
+                                            
+                                            <a href="@Url.Action("Delete", new { id = @item.Id })" class="btn btn-xs btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                                            </a>
+                                        </text> ))
+    )
+</div>
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>*@
+
