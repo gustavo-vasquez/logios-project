@@ -53,8 +53,8 @@
                                 @foreach (var item in (SelectList)ViewBag.RoleId)
                                 {
                                     <div>                                        
-                                        <input type="radio" name="SelectedRoles" value="@item.Value" />
-                                        <label>@item.Value</label>
+                                        <input type="radio" id="@item.Value" name="SelectedRoles" value="@item.Value" />
+                                        <label for="@item.Value" >@item.Value</label>
                                     </div>                                                                        
                                 }                                  
                         </div>                        
@@ -64,7 +64,7 @@
                 <div class="form-group">
                     <div class="col-md-9 col-md-offset-7">
                         <button type="submit" class="btn btn-success">Confirmar</button>
-                        <button type="reset" class="btn btn-danger">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href = '/Administrator/ControlPanel';">Cancelar</button>
                     </div>
                 </div>
             </fieldset>        

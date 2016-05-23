@@ -37,34 +37,22 @@
                                                 <span class="glyphicon glyphicon-pencil"></span> Editar
                                             </a>
                                             
-                                            <a href="@Url.Action("Delete", new { id = @item.Id })" class="btn btn-xs btn-danger">
+                                            @*<a id="deleteUser" href="@Url.Action("Delete", new { id = @item.Id })" class="btn btn-xs btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                                            </a>*@
+                                            
+                                            <a id="deleteUser" onclick="deleteUser('@item.id');" class="btn btn-xs btn-danger">
                                                 <span class="glyphicon glyphicon-remove"></span> Borrar
                                             </a>
                                         </text> ))
     )
 </div>
 
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+<script type="text/javascript">
+    function gettoken() {
+        var token = '@Html.AntiForgeryToken()';
+        token = $(token).val();
+        return token;
     }
-</table>*@
+</script>
 

@@ -1,6 +1,7 @@
 ﻿using Logios.Entities;
 using Logios.Models;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -124,7 +125,7 @@ namespace Logios.Controllers
                     return View();
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ControlPanel", "Administrator");
             }
             ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
             return View();
@@ -150,6 +151,7 @@ namespace Logios.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                UserName = user.UserName,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -163,8 +165,8 @@ namespace Logios.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
-        {
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,UserName")] EditUserViewModel editUser, params string[] selectedRole)
+    {
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByIdAsync(editUser.Id);
@@ -173,7 +175,7 @@ namespace Logios.Controllers
                     return HttpNotFound();
                 }
 
-                user.UserName = editUser.Email;
+                user.UserName = editUser.UserName;
                 user.Email = editUser.Email;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
@@ -194,9 +196,9 @@ namespace Logios.Controllers
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ControlPanel", "Administrator");
             }
-            ModelState.AddModelError("", "Something failed.");
+            ModelState.AddModelError("", "Ha ocurrido un error.");
             return View();
         }
 
@@ -213,7 +215,8 @@ namespace Logios.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            //return View(user);
+            return Json(user, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -240,7 +243,8 @@ namespace Logios.Controllers
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                return RedirectToAction("Index");
+                //return RedirectToAction("ControlPanel", "Administrator");
+                return Json(new { Url = "/Administrator/ControlPanel" });
             }
             return View();
         }
