@@ -3,50 +3,74 @@
     ViewBag.Title = "Crear usuario";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h1>@ViewBag.Title</h1>
+<hr />
 
-@using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<div class="col-md-12">
+    <div class="col-md-6 col-md-offset-3">
+@using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { id = "CreateForm", @class = "form-horizontal", role = "form" }))
 {
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-error" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">
-            Select User Role
-        </label>
-        <div class="col-md-10">
-            @foreach (var item in (SelectList)ViewBag.RoleId)
-            {
-                <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
-                @Html.Label(item.Value, new { @class = "control-label" })
-            }
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Create" />
-        </div>
-    </div>
+    @Html.AntiForgeryToken()       
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+            <fieldset>
+                <legend class="text-info">Crear una nueva cuenta</legend>
+                <div class="form-group">
+                    <label for="Email" class="col-md-3 control-label">E-mail:</label>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail..." })                        
+                        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                    </div>                    
+                </div>
+
+                <div class="form-group">
+                    <label for="UserName" class="col-md-3 control-label">Nombre de usuario:</label>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Nombre de usuario..." })
+                        @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Password" class="col-md-3 control-label">Contraseña:</label>
+                    <div class="col-md-9">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password..." })                        
+                        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ConfirmPassword" class="col-md-3 control-label">Confirmar contraseña:</label>
+                    <div class="col-md-9">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirmar contraseña..." })                        
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Elegir rol:</label>
+                    <div class="col-md-9" style="padding-left: 40px;">
+                        <div class="radio">                            
+                                @foreach (var item in (SelectList)ViewBag.RoleId)
+                                {
+                                    <div>                                        
+                                        <input type="radio" name="SelectedRoles" value="@item.Value" />
+                                        <label>@item.Value</label>
+                                    </div>                                                                        
+                                }                                  
+                        </div>                        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-7">
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="reset" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </fieldset>        
 }
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

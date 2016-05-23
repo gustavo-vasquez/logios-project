@@ -185,6 +185,10 @@ div blockquote {
     text-align: center;
 }
 
+.radio label {
+    margin-left: -15px !important;
+}
+
 /*.wrs_container span {
     text-transform: lowercase !important;
 }*/

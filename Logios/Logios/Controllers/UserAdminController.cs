@@ -81,8 +81,8 @@ namespace Logios.Controllers
         // GET: /Users/Create
         public async Task<ActionResult> Create()
         {
-            //Get the list of Roles
-            ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");
+            //Get the list of Roles            
+            ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");            
             return View();
         }
 
@@ -93,12 +93,19 @@ namespace Logios.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new ApplicationUser { UserName = userViewModel.UserName, Email = userViewModel.Email };
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
                 //Add User to the selected Roles 
                 if (adminresult.Succeeded)
                 {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var userProfile = new UserProfile { UserID = user.Id, Points = 0 };
+                        context.UserProfiles.Add(userProfile);
+                        context.SaveChanges();
+                    }
+
                     if (selectedRoles != null)
                     {
                         var result = await UserManager.AddToRolesAsync(user.Id, selectedRoles);
