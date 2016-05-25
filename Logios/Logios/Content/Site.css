@@ -15,6 +15,11 @@ footer {
     padding-bottom: 10px;
 }
 
+.padding-zero {
+    padding-left:0 !important;
+    padding-right:0 !important;
+}
+
 .wrapper{
     /*background: url('/Content/images/Landing image.png') no-repeat   center center fixed;*/
     background: url('/Content/images/bg3.jpg') no-repeat   center center fixed;
@@ -25,20 +30,23 @@ footer {
     height:100%;
 }
 
-.landingpage {
-color:white;
-}
-
-#logo {
-    height:30px;
-    margin:10px;
-}
-
 @font-face {
     font-family:UncialAntiqua-regular;
     src:url('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
     src:local('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
 }
+
+.landingpage {
+color:white;
+}
+
+#logo {
+    font-family: UncialAntiqua-regular;
+    height:30px;
+    margin:10px;
+}
+
+
 
 #logo_letras {
     font-family: UncialAntiqua-regular;

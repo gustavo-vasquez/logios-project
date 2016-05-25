@@ -19,7 +19,7 @@ namespace Logios.Services
 
             using (var context = new ApplicationDbContext())
             {
-                var topicAreas = context.TopicAreas.ToList();
+                var topicAreas = context.TopicAreas.OrderBy(x => x.Description).ToList();
                 var topicAreaTopics = context.TopicAreaTopics.ToList();
                 var topics = context.Topics.ToList();
 
@@ -27,7 +27,8 @@ namespace Logios.Services
                 {
                     var topicsForThisArea = topicAreaTopics
                                                .Where(tat => tat.TopicAreaId == topicArea.TopicAreaId)
-                                               .Select(tat => tat.Topic);
+                                               .Select(tat => tat.Topic)
+                                               .OrderBy(t => t.Description);
 
                     var topicAreaName = topicArea.Description;
 
