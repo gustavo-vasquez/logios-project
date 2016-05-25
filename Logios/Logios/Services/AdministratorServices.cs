@@ -1,6 +1,7 @@
 ﻿using Logios.DTOs;
 using Logios.Entities;
 using Logios.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,22 @@ namespace Logios.Services
             {
                 return false;
             }
+        }
+
+        public IEnumerable<ApplicationUser> SortSelectListBy(string filter, ApplicationUserManager UserManager)
+        {
+            List<ApplicationUser> ordenedList;
+
+            if(filter == "asc")
+            {
+               ordenedList = UserManager.Users.OrderBy(u => u.UserName).ToList();
+            }            
+            else
+            {
+                ordenedList = UserManager.Users.OrderByDescending(u => u.UserName).ToList();
+            }
+
+            return ordenedList;
         }
     }
 }

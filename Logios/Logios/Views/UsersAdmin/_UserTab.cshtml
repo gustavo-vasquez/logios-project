@@ -1,15 +1,29 @@
 ﻿@model IEnumerable<Logios.Entities.ApplicationUser>
 
-@{ 
+@{
     WebGrid userList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "registeredUsers");
     int userCount = 0;
 }
 
 <h2>Usuarios registrados</h2>
+<br />
 
-<p>
-    <a href="@Url.Action("Create")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear nuevo usuario</a>
-</p>
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("Create")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear nuevo usuario</a>
+    </div>
+    <div class="col-md-1">
+        <h4 class="text-muted">Ordenar:</h4>
+    </div>
+    
+    @using (Ajax.BeginForm("SortUsers", "UsersAdmin", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "userAdmin" }, new { id = "sortForm", @class = "form-inline", role = "form" }))
+    {
+        <div class="col-md-4">
+            @Html.DropDownList("filterList", ViewData["list"] as SelectList, new { @class = "form-control" })
+            <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-right"></span></button>
+        </div>
+    }            
+</div>
 <br />
 
 <div>
@@ -28,19 +42,14 @@
 
         columns: userList.Columns(
                         userList.Column("", canSort: false, header: "Nº", format: item => userCount = userCount + 1),
-                        userList.Column("UserName", canSort: true, header: "Nombre de usuario"),
+                        userList.Column("UserName", canSort: false, header: "Nombre de usuario"),
                         userList.Column("Email", canSort: false, header: "E-mail"),
-                        userList.Column("EmailConfirmed", canSort: false, header: "E-mail confirmado", format: (item) => ( item.EmailConfirmed ? "Si" : "No" )),
+                        userList.Column("EmailConfirmed", canSort: false, header: "E-mail confirmado", format: (item) => (item.EmailConfirmed ? "Si" : "No")),
                         userList.Column("Id", canSort: false, header: "Acciones",
                                 format: @<text>
                                             <a href="@Url.Action("Edit", new { id = @item.Id })" class="btn btn-xs btn-success">
                                                 <span class="glyphicon glyphicon-pencil"></span> Editar
-                                            </a>
-                                            
-                                            @*<a id="deleteUser" href="@Url.Action("Delete", new { id = @item.Id })" class="btn btn-xs btn-danger">
-                                                <span class="glyphicon glyphicon-remove"></span> Borrar
-                                            </a>*@
-                                            
+                                            </a>                            
                                             <a id="deleteUser" onclick="deleteUser('@item.id');" class="btn btn-xs btn-danger">
                                                 <span class="glyphicon glyphicon-remove"></span> Borrar
                                             </a>
@@ -53,6 +62,5 @@
         var token = '@Html.AntiForgeryToken()';
         token = $(token).val();
         return token;
-    }
+    }    
 </script>
-

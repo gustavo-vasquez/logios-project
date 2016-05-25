@@ -2,11 +2,11 @@
     var animation = $("#loadAnimation").html();
 
     //$("#exerciseAdmin").html(animation);
-    //$("#exerciseAdmin").load("/UsersAdmin/Index");
+    //$("#exerciseAdmin").load("/UsersAdmin/ExerciseTab");
 
     $("#tabUserAdmin").click(function () {
         $("#userAdmin").html(animation);
-        $("#userAdmin").load("/UsersAdmin/Index");
+        $("#userAdmin").load("/UsersAdmin/UserTab");
     });    
 });
 

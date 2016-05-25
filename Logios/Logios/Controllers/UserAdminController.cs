@@ -1,5 +1,6 @@
 ﻿using Logios.Entities;
 using Logios.Models;
+using Logios.Services;
 using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using System;
@@ -54,14 +55,34 @@ namespace Logios.Controllers
 
         //
         // GET: /Users/
-        public async Task<ActionResult> Index()
-        {
-            return PartialView("_Index", await UserManager.Users.ToListAsync());
-        }
         //public async Task<ActionResult> Index()
         //{
-        //    return View(await UserManager.Users.ToListAsync());
-        //}
+        //    return PartialView("_Index", await UserManager.Users.ToListAsync());
+        //}        
+
+        public async Task<ActionResult> UserTab()
+        {
+            var list = new SelectList(new[]
+                           {
+                               new { value = "asc", text = "Alfabeticamente (A-Z)" },
+                               new { value = "desc", text = "Alfabeticamente (Z-A)" }
+                           }, "value", "text", "asc");
+            ViewData["list"] = list;
+
+            return PartialView("_UserTab", await UserManager.Users.OrderBy(u => u.UserName).ToListAsync());
+        }
+
+        [HttpPost]
+        public ActionResult SortUsers(string filterList)
+        {
+            var list = new SelectList(new[]
+                           {
+                               new { value = "asc", text = "Alfabeticamente (A-Z)" },
+                               new { value = "desc", text = "Alfabeticamente (Z-A)" }                               
+                           }, "value", "text", filterList);
+            ViewData["list"] = list;
+            return PartialView("_UserTab", new AdministratorServices().SortSelectListBy(filterList, UserManager));            
+        }
 
         //
         // GET: /Users/Details/5
