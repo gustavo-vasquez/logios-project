@@ -1,0 +1,56 @@
+﻿@model Logios.Models.ReportViewModel
+
+@{
+    ViewBag.Title = "Reportar ejercicio";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<hr />
+
+<div class="col-md-12">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm("Report", "Exercise", FormMethod.Post, new { id = "ReportForm", @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend class="text-info">Rellene el formulario</legend>
+                <div class="form-group">
+                    <label class="col-md-4 text-right">Reportar:</label>
+                    <div class="col-md-8">
+                        <label class="text-muted">Ejercicio Nº @Model.Exercise.ExerciseId</label>                        
+                        <input type="hidden" name="exerciseId" value="@Model.Exercise.ExerciseId" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 text-right">Subido por:</label>
+                    <div class="col-md-8">
+                        <label class="text-muted">@Model.Exercise.User.UserName</label>
+                        <input type="hidden" name="uploadName" value="@Model.Exercise.User.UserName" />                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Cause" class="col-md-4 text-right">Causa:</label>
+                    <div class="col-md-8">                        
+                        @Html.TextAreaFor(r => r.Cause, 4, 1, new { @class = "form-control", placeholder = "Insertar causa..." })
+                        @Html.ValidationMessageFor(r => r.Cause, null, new { @class = "text-danger" })
+                    </div>
+                </div>                                
+
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-8">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href = '/Exercise/Show/' + @Model.Exercise.ExerciseId;">Cancelar</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

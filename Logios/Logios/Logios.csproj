@@ -253,6 +253,7 @@
     <Compile Include="Models\ExercisesByAreaViewModel.cs" />
     <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ReportViewModel.cs" />
     <Compile Include="Models\TopicAreaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdministratorServices.cs" />
@@ -283,6 +284,7 @@
     <Content Include="Views\Exercise\_ConfirmDialog.cshtml" />
     <Content Include="Views\UsersAdmin\_Index.cshtml" />
     <Content Include="Views\UsersAdmin\_UserTab.cshtml" />
+    <Content Include="Views\Exercise\Report.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />

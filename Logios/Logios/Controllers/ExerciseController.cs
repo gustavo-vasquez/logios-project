@@ -8,7 +8,7 @@ using Logios.Services;
 using System.Web.Script.Serialization;
 using Logios.Entities;
 using Microsoft.AspNet.Identity;
-
+using Logios.Models;
 
 namespace Logios.Controllers
 {
@@ -75,7 +75,35 @@ namespace Logios.Controllers
             services.UpdateUserExercise(model.UserId, model.ExerciseId, true);
             return Json("Acabas de visualizar la resolución. Ya no puedes ganar puntos por este ejercicio");
 
-        }                
+        }
+        
+        public ActionResult Report(int id)
+        {
+            return View(services.GetReportData(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Report(ReportViewModel model, int exerciseId, string uploadName)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    services.SendReport(model.Cause, exerciseId, uploadName, User.Identity.GetUserId());
+
+                    return RedirectToAction("Show", "Exercise", new { id = exerciseId });
+                }
+
+                throw new Exception();
+            }
+            catch(Exception ex)
+            {
+                return Content("<script>alert('" + ex.Message + "');</script>");
+                //return View(services.GetReportData(exerciseId));
+            }            
+            
+        }
         
         public JsonResult Pagination(int id)
         {
