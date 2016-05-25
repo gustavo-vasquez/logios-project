@@ -1,6 +1,23 @@
 ﻿ @model Boolean?
 
-<script>$('#resultModal').modal('show');</script>
+<script>
+    var resultModal = $('#resultModal')
+
+    resultModal.modal({
+        keyboard: true,
+        backdrop: 'static',
+        show: true
+    });
+
+    function closeModal(result) {
+        if (result) {
+            resultModal.modal('hide');
+            window.location.reload(true);
+        } else {
+            resultModal.modal('hide');
+        }
+    }
+</script>
 
 @if (Model.Value)
 {
@@ -19,10 +36,10 @@
                     <div class="modal-footer">
                         <div class="col-md-12">
                             <div class="col-md-9 col-md-pull-5">
-                                <button type="button" class="btn btn-primary">Compartir en Twitter</button>
+                                <button type="button" class="btn btn-primary" onclick="closeModal(true)">Compartir en Twitter</button>
                             </div>
                             <div class="col-md-3 pull-right">
-                                <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-info" onclick="closeModal(true)">Cerrar</button>
                             </div>
                         </div>
                     </div>
@@ -30,10 +47,6 @@
             </div>
         </div>
     </div>
-
-    @*<div class="alert alert-dismissible alert-success col-lg-4 col-lg-push-4">
-            <p class="text-center label-success"><b>¡Respuesta correcta!</b></p>
-        </div>*@
 }
 else
 {
@@ -50,15 +63,11 @@ else
                     </div>
                     <div class="modal-footer">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Inténtalo de nuevo</button>
+                            <button type="button" class="btn btn-info"  onclick="closeModal(false)">Inténtalo de nuevo</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    @*<div class="alert alert-dismissible alert-danger col-lg-4 col-lg-push-4">
-            <p class="text-center"><b>¡Incorrecto!</b></p>
-        </div>*@
 }
