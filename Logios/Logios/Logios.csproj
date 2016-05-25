@@ -286,6 +286,7 @@
     <Content Include="Views\UsersAdmin\_Index.cshtml" />
     <Content Include="Views\UsersAdmin\_UserTab.cshtml" />
     <Content Include="Views\Administrator\_ExerciseAdministration.cshtml" />
+    <Content Include="Views\Manage\_ConfigurationUserPanel.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />
@@ -538,8 +539,6 @@
     <Folder Include="Scripts\MathJax\fonts\HTML-CSS\TeX\" />
     <Folder Include="Scripts\MathJax\jax\" />
     <Folder Include="Scripts\MathJax\localization\" />
-    <Folder Include="Views\ApplicationUsers\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
