@@ -22,6 +22,14 @@ namespace Logios.Migrations.DataGenerators
                 userManager.Create(roleManager);
             }
 
+            if (!context.Roles.Any(r => r.Name == "Usuario"))
+            {
+                var userStore = new RoleStore<IdentityRole>(context);
+                var userManager = new RoleManager<IdentityRole>(userStore);
+                var roleManager = new IdentityRole { Name = "Usuario" };
+                userManager.Create(roleManager);
+            }
+
             if (!(context.Users.Any(u => u.UserName == "ADMIN")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);

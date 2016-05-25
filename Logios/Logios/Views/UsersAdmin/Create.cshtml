@@ -10,8 +10,7 @@
     <div class="col-md-6 col-md-offset-3">
 @using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { id = "CreateForm", @class = "form-horizontal", role = "form" }))
 {
-    @Html.AntiForgeryToken()       
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()           
             <fieldset>
                 <legend class="text-info">Crear una nueva cuenta</legend>
                 <div class="form-group">
@@ -53,7 +52,7 @@
                                 @foreach (var item in (SelectList)ViewBag.RoleId)
                                 {
                                     <div>                                        
-                                        <input type="radio" id="@item.Value" name="SelectedRoles" value="@item.Value" />
+                                        <input type="radio" id="@item.Value" name="SelectedRoles" value="@item.Value" checked="@(item.Value == "Usuario" ? "checked" : "")" />
                                         <label for="@item.Value" >@item.Value</label>
                                     </div>                                                                        
                                 }                                  
