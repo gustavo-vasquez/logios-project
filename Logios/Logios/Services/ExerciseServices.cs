@@ -44,7 +44,7 @@ namespace Logios.Services
         {
             this.Refresh();
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
-            var allExercises = context.Exercises.ToList();
+            var allExercises = context.Exercises.Where(a => a.IsDeleted == false && a.Topic.Description == exercise.Topic.Description).ToList();
             var index = allExercises.IndexOf(exercise);
 
             ExerciseViewModel exerciseToShow = new ExerciseViewModel();
@@ -61,7 +61,7 @@ namespace Logios.Services
         public IEnumerable<Exercise> GetExercisesByTopic(int topicId)
         {
             var exercises = context.Exercises
-                                   .Where(e => e.Topic.TopicId == topicId)
+                                   .Where(e => e.Topic.TopicId == topicId && e.IsDeleted == false)
                                    .ToList();
             return exercises;
         }
