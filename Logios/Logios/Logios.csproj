@@ -276,6 +276,7 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
+    <Content Include="Scripts\manage.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
@@ -292,6 +293,8 @@
     <Content Include="Views\Administrator\_ExerciseAdministration.cshtml" />
     <Content Include="Views\Manage\_ConfigurationUserPanel.cshtml" />
     <Content Include="Views\Exercise\Report.cshtml" />
+    <Content Include="Views\Manage\_BadgesAndPointsUserPanel.cshtml" />
+    <Content Include="Views\Manage\_ExerciseUserPanel.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />

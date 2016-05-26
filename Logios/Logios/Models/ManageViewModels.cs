@@ -83,4 +83,15 @@ namespace Logios.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class BadgesAndPointsUserPanelViewModel
+    {
+        public int Points { get; set; }
+    }
+
+    public class ExerciseUserPanelViewModel
+    {
+        public int ResolvedExercises { get; set; }
+        public int FailedExercises { get; set; }
+    }
 }

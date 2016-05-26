@@ -322,6 +322,29 @@ namespace Logios.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        // GET - Llamado por Ajax en el control panel
+        public PartialViewResult LoadBadgesAndPointsPanel()
+        {
+            var model = new BadgesAndPointsUserPanelViewModel()
+            {
+                Points = 20
+            };
+
+            return PartialView("_BadgesAndPointsUserPanel", model);
+        }
+
+        // GET - Llamado por Ajax en el control panel
+        public PartialViewResult LoadExercisesPanel()
+        {
+            var model = new ExerciseUserPanelViewModel()
+            {
+                ResolvedExercises = 10,
+                FailedExercises = 2
+            };
+
+            return PartialView("_ExerciseUserPanel", model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
