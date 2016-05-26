@@ -7,6 +7,8 @@ using Logios.Entities;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Logios.Extensions;
+using System.Net.Mail;
+using System.Net;
 
 namespace Logios.Services
 {
@@ -108,6 +110,47 @@ namespace Logios.Services
             userProfile.Points += 1;
             
             context.SaveChanges();
+        }
+
+        public ReportViewModel GetReportData(int id)
+        {
+            ReportViewModel model = new ReportViewModel();
+            model.Exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+
+            return model;
+        }
+
+        public void SendReport(string cause, int exerciseId, string uploadName, string userId)
+        {
+            try
+            {
+                var fromAdress = "team.logios.proyect@gmail.com";
+                const string fromPassword = "logios2016";
+
+                var toAdress = context.Users.FirstOrDefault(u => u.UserName == uploadName).Email;
+                var userName = context.Users.FirstOrDefault(u => u.Id == userId).UserName;                
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(fromAdress, "Logios");
+                mailMessage.To.Add(toAdress);
+                mailMessage.Subject = "Un usuario ha reportado un ejercicio - Logios";
+                mailMessage.Body = "El usuario " + userName + " ha enviado un reporte para el ejercicio Nº" + exerciseId + ".\n\nCausa del reporte: " + cause;
+
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                //client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Credentials = new NetworkCredential(fromAdress, fromPassword);
+                client.Timeout = 20000;
+
+                client.Send(mailMessage);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

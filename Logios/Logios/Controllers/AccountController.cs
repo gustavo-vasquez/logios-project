@@ -170,6 +170,8 @@ namespace Logios.Controllers
                         context.UserProfiles.Add(userProfile);
                         context.SaveChanges();
                     }
+                    UserManager.AddToRole(user.Id, "Usuario");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
