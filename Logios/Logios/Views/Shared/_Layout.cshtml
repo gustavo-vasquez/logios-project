@@ -32,7 +32,9 @@
             </div>
         </div>
     </div>
-    <div class="container body-content" style="background-color: white;">        
+
+    <div class="container body-content" style="background-color: white;">                
+
         @RenderBody()
 
         <div class="clearfix"></div>
@@ -53,6 +55,12 @@
     </div>
 
     <div id='goTop'></div>
+
+    <div id="CookieDiv" class="container alert alert-dismissible alert-info visit hide">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong>AVISO: </strong> Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.</p>
+        <p>Al continuar navegando entendemos que aceptas el uso de cookies. <a href="#" class="alert-link">Más información.</a></p>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/jquery.gotop.min.js")

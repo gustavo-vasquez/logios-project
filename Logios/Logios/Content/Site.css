@@ -15,6 +15,18 @@ footer {
     padding-bottom: 10px;
 }
 
+.visit {
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    border-radius: 0px !important;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
 .padding-zero {
     padding-left:0 !important;
     padding-right:0 !important;
