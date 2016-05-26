@@ -234,3 +234,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/Logios/Logios/App_Data/Logios_Database.sql

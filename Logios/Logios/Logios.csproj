@@ -288,7 +288,6 @@
     <Content Include="Views\UsersAdmin\Delete.cshtml" />
     <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Content Include="Views\Exercise\_ConfirmDialog.cshtml" />
-    <Content Include="Views\UsersAdmin\_Index.cshtml" />
     <Content Include="Views\UsersAdmin\_UserTab.cshtml" />
     <Content Include="Views\Administrator\_ExerciseAdministration.cshtml" />
     <Content Include="Views\Manage\_ConfigurationUserPanel.cshtml" />

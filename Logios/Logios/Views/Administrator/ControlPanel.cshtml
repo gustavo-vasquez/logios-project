@@ -14,23 +14,23 @@
     <hr />
 
     <div>
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#exerciseAdmin" data-toggle="tab" aria-expanded="true"><span class="glyphicon glyphicon-edit"></span> Administrar ejercicios</a></li>
-            <li class=""><a id="tabUserAdmin" href="#userAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a></li>
-            <li class=""><a href="#trophyAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-glass"></span> Administrar trofeos</a></li>
-            <li class=""><a href="#reportAdmin" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span> Reportes</a></li>                        
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#exerciseAdmin" aria-controls="exerciseAdmin" data-toggle="tab" role="tab" aria-expanded="true"><span class="glyphicon glyphicon-edit"></span> Administrar ejercicios</a></li>
+            <li role="presentation" class=""><a id="tabUserAdmin" aria-controls="userAdmin" href="#userAdmin" role="tab" data-toggle="tab" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a></li>
+            <li role="presentation" class=""><a href="#trophyAdmin" aria-controls="trophyAdmin" data-toggle="tab" role="tab" aria-expanded="false"><span class="glyphicon glyphicon-glass"></span> Administrar trofeos</a></li>
+            <li role="presentation" class=""><a href="#reportAdmin" aria-controls="reportAdmin" data-toggle="tab" role="tab" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span> Reportes</a></li>                        
         </ul>
 
         <div id="myTabContent" class="tab-content tab-background">
-            <div class="tab-pane fade active in" id="exerciseAdmin">                
+            <div role="tabpanel" class="tab-pane fade active in" id="exerciseAdmin">                
                 @{Html.RenderPartial("_ExerciseAdministration");}
             </div>
-            <div class="tab-pane fade" id="userAdmin">                
+            <div role="tabpanel" class="tab-pane fade" id="userAdmin">                
             </div>
-            <div class="tab-pane fade" id="trophyAdmin">
+            <div role="tabpanel" class="tab-pane fade" id="trophyAdmin">
                 <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
             </div>
-            <div class="tab-pane fade" id="reportAdmin">
+            <div role="tabpanel" class="tab-pane fade" id="reportAdmin">
                 <p>La información de reportes no está disponible en este momento.</p>
             </div>
         </div>

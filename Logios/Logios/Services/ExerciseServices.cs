@@ -124,7 +124,7 @@ namespace Logios.Services
         {
             try
             {
-                var fromAdress = "team.logios.proyect@gmail.com";
+                var fromAdress = "team.logios.project@gmail.com";
                 const string fromPassword = "logios2016";
 
                 var toAdress = context.Users.FirstOrDefault(u => u.UserName == uploadName).Email;
@@ -134,7 +134,9 @@ namespace Logios.Services
                 mailMessage.From = new MailAddress(fromAdress, "Logios");
                 mailMessage.To.Add(toAdress);
                 mailMessage.Subject = "Un usuario ha reportado un ejercicio - Logios";
-                mailMessage.Body = "El usuario " + userName + " ha enviado un reporte para el ejercicio Nº" + exerciseId + ".\n\nCausa del reporte: " + cause;
+                //mailMessage.Body = "El usuario " + userName + " ha enviado un reporte para el ejercicio Nº" + exerciseId + ".\n\nCausa del reporte: " + cause;
+                mailMessage.Body = "<div style=\"border:1px solid #8E8E8E;\"><div style=\"background-color:darkblue;text-align:center;font-size:30px;padding:10px;\"><label style=\"color:white; background-color: darkblue;\"><b>El usuario " + userName + " ha enviado un reporte para el ejercicio Nº " + exerciseId + "</b></label></div><div style=\"text-align: center; padding: 25px;\"><h3 style=\"color: #317eac; font-size: 26px;\"><b>Causa del reporte:</b></h3><h3 style=\"font-size: 24px;color:#4C4C4C;\"><b>" + cause + "</b></h3></div><p style=\"padding-left:20px;\">&copy; " + DateTime.Now.Year + " Logios</p></div>";
+                mailMessage.IsBodyHtml = true;
 
                 SmtpClient client = new SmtpClient();
                 client.Host = "smtp.gmail.com";

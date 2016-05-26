@@ -47,17 +47,19 @@ namespace Logios.Migrations.DataGenerators
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var userToInsert = new ApplicationUser { UserName = "Cosme_Fulanito", Email = "cosme@fulanito.com" };
                 var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
-                userManager.Create(userToInsert, "Cosme123$");                
+                userManager.Create(userToInsert, "Cosme123$");
+                userManager.AddToRole(userToInsert.Id, "Admin");
                 context.UserProfiles.Add(userProfile);
             }
 
-            if (!(context.Users.Any(u => u.UserName == "zapallo_88")))
+            if (!(context.Users.Any(u => u.UserName == "Testing")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "zapallo_88", Email = "zapallo@zapallo.com" };
+                var userToInsert = new ApplicationUser { UserName = "Testing", Email = "testing@testing.com" };
                 var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
-                userManager.Create(userToInsert, "ZApallo1<");                
+                userManager.Create(userToInsert, "Testing22$");
+                userManager.AddToRole(userToInsert.Id, "Usuario");
                 context.UserProfiles.Add(userProfile);
             }
 

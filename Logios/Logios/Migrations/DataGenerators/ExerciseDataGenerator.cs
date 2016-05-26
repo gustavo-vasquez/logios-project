@@ -39,7 +39,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>x</mi><mo>=</mo><mn>2</mn></math>",
                     Description = "Descripcion del ejercicio...",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "zapallo@zapallo.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
                 }
             };
 
