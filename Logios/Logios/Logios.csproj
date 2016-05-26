@@ -275,6 +275,7 @@
     <Content Include="Content\images\logo_v3.1.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
+    <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
