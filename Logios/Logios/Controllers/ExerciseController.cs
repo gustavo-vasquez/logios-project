@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using Logios.Entities;
 using Microsoft.AspNet.Identity;
 using Logios.Models;
+using System.Net;
 
 namespace Logios.Controllers
 {
@@ -27,10 +28,18 @@ namespace Logios.Controllers
             if (id != null)
             {                           
                 var exerciseToShow = services.GetExerciseInformation(id);
-                return View(exerciseToShow);
+
+                if(exerciseToShow.Exercise != null)
+                {
+                    return View(exerciseToShow);
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }                
             }
             else
-                return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
 
         [HttpPost]

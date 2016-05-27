@@ -44,6 +44,12 @@ namespace Logios.Services
         {
             this.Refresh();
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
+
+            if (exercise == null || exercise.IsDeleted == true)
+            {
+                return new ExerciseViewModel();
+            }
+
             var allExercises = context.Exercises.Where(a => a.IsDeleted == false && a.Topic.Description == exercise.Topic.Description).ToList();
             var index = allExercises.IndexOf(exercise);
 
