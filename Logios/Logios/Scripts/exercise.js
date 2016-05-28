@@ -37,7 +37,8 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '24px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+        'autoformat': true
     });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));        
 });

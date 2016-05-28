@@ -28,7 +28,8 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+        'autoformat': true
     });
     problemEditor.insertInto(document.getElementById('problemContainer'));
     problemEditor.setMathML(dataModel.Problem);
@@ -37,7 +38,8 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+        'autoformat': true
     });
     developmentEditor.insertInto(document.getElementById('developmentContainer'));
     developmentEditor.setMathML(dataModel.Development);
@@ -46,7 +48,8 @@ $(document).ready(function () {
         'language': 'es',
         'fontFamily': 'Times New Roman',
         'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>'
+        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+        'autoformat': true
     });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
     solutionEditor.setMathML(dataModel.Solution);        
