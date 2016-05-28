@@ -45,16 +45,14 @@ $(function () {
 
 function searchExercise() {
     // Guardarme los dos campos del formulario
+    var searchBarValue = $('input#searchInput').val()
     var topicId = parseInt($('input[name="topicId"]').val());
     var lastTopicIdInput = $('input#lastTopicId');
     var lastTopicId = parseInt($('input#lastTopicId').val());
     var topicDescription = $('input#searchInput').val();
 
-    // Sacar el registro de busquedas del usuario de local storage
-    var searches = storage.get(userId);
-
     // Si quere buscar lo mismo dos veces seguidas, no hago nada
-    if (lastTopicId === topicId || isNaN(topicId)) {
+    if (!inputIsValid(searchBarValue) || lastTopicId === topicId || isNaN(topicId)) {
         return false;
     }
     
@@ -63,6 +61,9 @@ function searchExercise() {
         lastTopicIdInput.val(topicId);
         return;
     }
+
+    // Sacar el registro de busquedas del usuario de local storage
+    var searches = storage.get(userId);
 
     // Actualizar el valor de la ultima busqueda realizada
     lastTopicIdInput.val(topicId);
@@ -152,4 +153,39 @@ function animateResults() {
     // Borrar las tags y volver a generarlas por si una pasa a tener mas busquedas
     $('#search-tags').empty();
     generateSearchTags();
+}
+
+function inputIsValid(searchValue) {
+    var alertElement = $('#badSearchAlert');
+
+    var topicLabels = $.map(parsedTopics, function (topic, index) {
+                                return topic.label;
+                            });
+
+    // Verificar si lo que pusieron en la barra de busqueda es uno de los temas que tenemos.
+    if (topicLabels.indexOf(searchValue) > -1) {
+        return true;
+    }
+
+    // Si no salió es porque tengo que mostrar el alert, si ya lo estoy mostrando, no hago nada.
+    if (alertElement.length > 0) {
+        return false;
+    }
+
+    // Generar el HMTL del alert y convertirlo en un objeto jQuery.
+    var newAlert = $('<div id="badSearchAlert" class="alert alert-danger fade in">\
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\
+                        Búsqueda inválida\
+                     </div>');
+
+    // Agregar el cartel con efecto de fadeIn.
+    newAlert.hide().fadeIn().appendTo(searchForm);
+
+    setTimeout(function () {
+        $('#badSearchAlert').fadeOut('slow', function () {
+            $('#badSearchAlert').remove();
+        });        
+    }, 2500);
+
+    return false;
 }
