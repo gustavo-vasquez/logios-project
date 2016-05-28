@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Logios.Models;
+using System.Collections.Generic;
 
 namespace Logios.Controllers
 {
@@ -336,11 +337,16 @@ namespace Logios.Controllers
         // GET - Llamado por Ajax en el control panel
         public PartialViewResult LoadExercisesPanel()
         {
-            var model = new ExerciseUserPanelViewModel()
+            var model = new ExerciseUserPanelViewModel();
+
+            var algebraExercises = new Dictionary<string, int>()
             {
-                ResolvedExercises = 10,
-                FailedExercises = 2
+                { "Polinomios", 5 },
+                { "Ecuaciones de primer grado", 3 },
+                { "Ecuaciones de segundo grado", 2 }
             };
+
+            model.Statistics["Algebra"] = algebraExercises;
 
             return PartialView("_ExerciseUserPanel", model);
         }

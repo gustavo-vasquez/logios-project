@@ -91,7 +91,11 @@ namespace Logios.Models
 
     public class ExerciseUserPanelViewModel
     {
-        public int ResolvedExercises { get; set; }
-        public int FailedExercises { get; set; }
+        public Dictionary<string, Dictionary<string,int>> Statistics { get; set; }
+
+        public ExerciseUserPanelViewModel()
+        {
+            this.Statistics = new Dictionary<string, Dictionary<string, int>>();
+        }
     }
 }

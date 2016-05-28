@@ -1,5 +1,22 @@
 ﻿@model Logios.Models.ExerciseUserPanelViewModel
 <div>
-    <p>Ejercicios resueltos bien de una = @Model.ResolvedExercises</p>
-    <p>Ejercicios resueltos mal = @Model.FailedExercises</p>
+    @foreach (var topicAreaDescription in Model.Statistics.Keys)
+    {
+        int total = 0;
+
+        Model.Statistics[topicAreaDescription]
+            .Select(ts => ts.Value)
+            .ToList()
+            .ForEach(v => total += v);
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="topic-area-statistics-title">@topicAreaDescription <span class="badge resolved-exercises-header"> @total </span></h3>
+                @foreach (var topicStatistics in Model.Statistics[topicAreaDescription])
+                {
+                    <p class="topic-statistics">@topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span> </p>
+                }                
+            </div>
+        </div>
+    }
 </div>
