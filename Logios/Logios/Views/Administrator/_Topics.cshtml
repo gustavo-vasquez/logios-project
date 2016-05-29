@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<Logios.Entities.Topic>
 
 @{
-    WebGrid topicList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdTopics");
-    int topicCount = 0;
+    WebGrid topicList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdTopics");    
 }
 
 <h2>Tópicos existentes</h2>
@@ -29,18 +28,25 @@
         nextText: "Siguiente >",
         lastText: "Último >>",
 
-        columns: topicList.Columns(
-                        topicList.Column("", canSort: false, header: "Nº", format: item => topicCount = topicCount + 1),
+        columns: topicList.Columns(                        
                         topicList.Column("TopicId", canSort: false, header: "ID"),
                         topicList.Column("Description", canSort: false, header: "Descripción"),                        
                         topicList.Column("TopicId", canSort: false, header: "Acciones",
                                 format: @<text>
-                            <a href="@Url.Action("EditTopic", new { id = @item.TopicId })" class="btn btn-xs btn-success">
-                                <span class="glyphicon glyphicon-pencil"></span> Editar
-                            </a>
-                            <a id="deleteTopic" onclick="deleteTopic('@item.TopicId');" class="btn btn-xs btn-danger">
-                                <span class="glyphicon glyphicon-remove"></span> Borrar
-                            </a>
-                                </text> ))
+                                            <a href="@Url.Action("EditTopic", new { id = @item.TopicId })" class="btn btn-xs btn-success">
+                                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                                            </a>
+                                            <a id="deleteTopic" onclick="deleteTopic('@item.TopicId');" class="btn btn-xs btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                                            </a>
+                                        </text> ))
     )
 </div>
+
+<script type="text/javascript">
+    function gettoken() {
+        var token = '@Html.AntiForgeryToken()';
+        token = $(token).val();
+        return token;
+    }
+</script>

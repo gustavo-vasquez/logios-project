@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -108,10 +109,19 @@ namespace Logios.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    adminServices.CreateNewTopic(model.Description);
+                    if(!adminServices.CheckTopicExist(model.Description))
+                    {
+                        adminServices.CreateNewTopic(model.Description);
+                        return RedirectToAction("ControlPanel", "Administrator");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Description", "- La temática escrita ya existe.");
+                        return View(model);
+                    }                    
                 }
 
-                return RedirectToAction("ControlPanel", "Administrator");
+                return View(model);
             }
             catch(Exception ex)
             {
@@ -132,8 +142,16 @@ namespace Logios.Controllers
             {
                 if(ModelState.IsValid)
                 {
-                    adminServices.EditThisTopic(model);
-                    return RedirectToAction("ControlPanel", "Administrator");
+                    if(!adminServices.CheckTopicExist(model.Description))
+                    {
+                        adminServices.EditThisTopic(model);
+                        return RedirectToAction("ControlPanel", "Administrator");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Description", "- La temática escrita ya existe.");
+                        return View(model);
+                    }
                 }
 
                 return View(model);
@@ -142,6 +160,43 @@ namespace Logios.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
             }            
+        }
+
+        public ActionResult DeleteTopic(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var topic = adminServices.GetTopicById(Convert.ToInt32(id));
+
+            if(topic == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            return Json(topic, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost, ActionName("DeleteTopic")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteTopicConfirmed(int? id)
+        {
+            try
+            {
+                if(id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                adminServices.DeleteTopic(id);
+                return Json(new { Url = "/Administrator/ControlPanel" });
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
