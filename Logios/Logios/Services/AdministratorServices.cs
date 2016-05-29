@@ -124,5 +124,44 @@ namespace Logios.Services
 
             return ordenedList;
         }
+
+        public List<Topic> GetTopicsCreated()
+        {
+            return context.Topics.ToList();
+        }
+
+        public void CreateNewTopic(string description)
+        {
+            try
+            {
+                Topic topic = new Topic();
+                topic.TopicId = context.Topics.Count() + 1;
+                topic.Description = description;
+
+                context.Topics.Add(topic);
+                context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public TopicDTO GetTopicById(int id)
+        {
+            TopicDTO topicToEdit = new TopicDTO();
+            Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
+            topicToEdit.TopicId = topicDB.TopicId;
+            topicToEdit.Description = topicDB.Description;
+
+            return topicToEdit;
+        }
+
+        public void EditThisTopic(TopicDTO model)
+        {            
+            Topic topicToEdit = context.Topics.FirstOrDefault(t => t.TopicId == model.TopicId);
+            topicToEdit.Description = model.Description;
+            context.SaveChanges();            
+        }
     }
 }

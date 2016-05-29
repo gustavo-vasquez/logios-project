@@ -296,6 +296,9 @@
     <Content Include="Views\Manage\_BadgesAndPointsUserPanel.cshtml" />
     <Content Include="Views\Manage\_ExerciseUserPanel.cshtml" />
     <Content Include="Views\Error\NoScript.cshtml" />
+    <Content Include="Views\Administrator\_Topics.cshtml" />
+    <Content Include="Views\Administrator\CreateTopic.cshtml" />
+    <Content Include="Views\Administrator\EditTopic.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />

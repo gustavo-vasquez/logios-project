@@ -10,6 +10,8 @@ namespace Logios.DTOs
     {
         [Required(ErrorMessage = "&diams; Debe elegir una temática.")]
         public int TopicId { get; set; }
+
+        [Required(ErrorMessage = "&diams; Debe escribir una descripción.")]
         public string Description { get; set; }
     }
 }

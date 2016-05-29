@@ -4,6 +4,11 @@
     //$("#exerciseAdmin").html(animation);
     //$("#exerciseAdmin").load("/UsersAdmin/ExerciseTab");
 
+    $("#tabTopicAdmin").click(function () {
+        $("#topicAdmin").html(animation);
+        $("#topicAdmin").load("/Administrator/Topics");
+    });
+
     $("#tabUserAdmin").click(function () {
         $("#userAdmin").html(animation);
         $("#userAdmin").load("/UsersAdmin/UserTab");

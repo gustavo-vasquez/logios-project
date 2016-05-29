@@ -1,4 +1,5 @@
-﻿using Logios.Models;
+﻿using Logios.DTOs;
+using Logios.Models;
 using Logios.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -88,7 +89,59 @@ namespace Logios.Controllers
             TempData["result"] = adminServices.DeleteExerciseFromDB(id);
 
             return RedirectToAction("ControlPanel", "Administrator");
-            //return View("ControlPanel");
+        }
+
+        public ActionResult Topics()
+        {
+            return PartialView("_Topics", adminServices.GetTopicsCreated());
+        }
+
+        public ActionResult CreateTopic()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateTopic(TopicDTO model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    adminServices.CreateNewTopic(model.Description);
+                }
+
+                return RedirectToAction("ControlPanel", "Administrator");
+            }
+            catch(Exception ex)
+            {
+                return Content("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+
+        public ActionResult EditTopic(int id)
+        {
+            return View(adminServices.GetTopicById(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTopic(TopicDTO model)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    adminServices.EditThisTopic(model);
+                    return RedirectToAction("ControlPanel", "Administrator");
+                }
+
+                return View(model);
+            }            
+            catch
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            }            
         }
     }
 }

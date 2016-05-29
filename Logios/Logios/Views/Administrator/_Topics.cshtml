@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Logios.Entities.Topic>
+
+@{
+    WebGrid topicList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdTopics");
+    int topicCount = 0;
+}
+
+<h2>Tópicos existentes</h2>
+<br />
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("CreateTopic")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear tópico</a>
+    </div>
+</div>
+<br />
+
+<div>
+    @topicList.GetHtml(
+        htmlAttributes: new { id = "createdTopics" },
+        tableStyle: "table table-hover table-striped table-bordered text-center",
+        headerStyle: "head-align",
+        rowStyle: "active",
+        alternatingRowStyle: "active",
+        fillEmptyRows: false,
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primero",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Último >>",
+
+        columns: topicList.Columns(
+                        topicList.Column("", canSort: false, header: "Nº", format: item => topicCount = topicCount + 1),
+                        topicList.Column("TopicId", canSort: false, header: "ID"),
+                        topicList.Column("Description", canSort: false, header: "Descripción"),                        
+                        topicList.Column("TopicId", canSort: false, header: "Acciones",
+                                format: @<text>
+                            <a href="@Url.Action("EditTopic", new { id = @item.TopicId })" class="btn btn-xs btn-success">
+                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                            </a>
+                            <a id="deleteTopic" onclick="deleteTopic('@item.TopicId');" class="btn btn-xs btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                            </a>
+                                </text> ))
+    )
+</div>
