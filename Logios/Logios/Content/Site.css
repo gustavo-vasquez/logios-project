@@ -220,6 +220,20 @@ div blockquote {
 .vertical-space-3 {
     margin-bottom: 60px;
 }
+
+.topic-area-statistics-title {
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+}
+
+span.badge.resolved-exercises {
+    float: right;
+}
+
+span.badge.resolved-exercises-header {
+    float: right;
+    font-size: 20px;
+}
 /*.wrs_container span {
     text-transform: lowercase !important;
 }*/

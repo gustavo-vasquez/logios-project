@@ -275,6 +275,15 @@
     <Content Include="Content\images\logo_v3.1.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
+    <Content Include="Content\images\trophys\laurel_bronze.svg" />
+    <Content Include="Content\images\trophys\laurel_oro.svg" />
+    <Content Include="Content\images\trophys\laurel_plata.svg" />
+    <Content Include="Content\images\trophys\moneda_bronze.svg" />
+    <Content Include="Content\images\trophys\moneda_oro.svg" />
+    <Content Include="Content\images\trophys\moneda_plata.svg" />
+    <Content Include="Content\images\trophys\pergamino_bronze.svg" />
+    <Content Include="Content\images\trophys\pergamino_oro.svg" />
+    <Content Include="Content\images\trophys\pergamino_plata.svg" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
     <Content Include="Scripts\manage.js" />
