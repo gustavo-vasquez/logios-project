@@ -338,15 +338,9 @@ namespace Logios.Controllers
         public PartialViewResult LoadExercisesPanel()
         {
             var model = new ExerciseUserPanelViewModel();
+            var userId = User.Identity.GetUserId();
 
-            var algebraExercises = new Dictionary<string, int>()
-            {
-                { "Polinomios", 5 },
-                { "Ecuaciones de primer grado", 3 },
-                { "Ecuaciones de segundo grado", 2 }
-            };
-
-            model.Statistics["Algebra"] = algebraExercises;
+            model.SetExercisesResolvedByTopic(userId);
 
             return PartialView("_ExerciseUserPanel", model);
         }
