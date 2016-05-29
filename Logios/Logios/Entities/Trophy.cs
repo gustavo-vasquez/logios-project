@@ -13,6 +13,7 @@ namespace Logios.Entities
 
         public string Description { get; set; }
         public int Points { get; set; }
+        public string Image { get; set; }
 
         public List<UserTrophy> UserTrophy { get; set; }
     }
