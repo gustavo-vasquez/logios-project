@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Logios.Entities;
+using System.Linq;
+using System;
 
 namespace Logios.Models
 {
@@ -96,6 +99,37 @@ namespace Logios.Models
         public ExerciseUserPanelViewModel()
         {
             this.Statistics = new Dictionary<string, Dictionary<string, int>>();
+        }
+
+        public void SetExercisesResolvedByTopic(string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var topicAreas = context.TopicAreas.ToList().OrderBy(x => x.Description);
+                var resolvedExercises = context.UserExercise
+                                                    .Where(x => x.UserId == userId)
+                                                    .Select(x => x.Exercise);
+
+                foreach (var topicArea in topicAreas)
+                {
+                    var resolvedExercisesByArea = new Dictionary<string, int>();
+
+                    var topicsInArea = context.TopicAreaTopics
+                                                    .Where(x => x.TopicAreaId == topicArea.TopicAreaId)
+                                                    .Select(x => x.Topic)
+                                                    .ToList();
+
+                    foreach (var topic in topicsInArea)
+                    {
+                        var resolvedCount = resolvedExercises
+                                                .Count(x => x.Topic.TopicId == topic.TopicId);
+
+                        resolvedExercisesByArea.Add(topic.Description, resolvedCount);
+                    }
+
+                    this.Statistics.Add(topicArea.Description, resolvedExercisesByArea);
+                }
+            }
         }
     }
 }
