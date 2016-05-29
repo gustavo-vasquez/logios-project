@@ -127,7 +127,7 @@ namespace Logios.Services
 
         public List<Topic> GetTopicsCreated()
         {
-            return context.Topics.ToList();
+            return context.Topics.Where(t => t.IsDeleted == false).ToList();
         }
 
         public void CreateNewTopic(string description)
@@ -157,11 +157,28 @@ namespace Logios.Services
             return topicToEdit;
         }
 
+        public bool CheckTopicExist(string description)
+        {
+            if(context.Topics.FirstOrDefault(t => t.Description == description) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public void EditThisTopic(TopicDTO model)
         {            
             Topic topicToEdit = context.Topics.FirstOrDefault(t => t.TopicId == model.TopicId);
             topicToEdit.Description = model.Description;
             context.SaveChanges();            
+        }
+
+        public void DeleteTopic(int? id)
+        {
+            Topic topicToDelete = context.Topics.FirstOrDefault(t => t.TopicId == id);
+            topicToDelete.IsDeleted = true;
+            context.SaveChanges();
         }
     }
 }

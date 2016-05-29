@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201605220427472_AddUserToExercise.Designer.cs">
       <DependentUpon>201605220427472_AddUserToExercise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605290427203_AddIsDeletedToTopic.cs" />
+    <Compile Include="Migrations\201605290427203_AddIsDeletedToTopic.Designer.cs">
+      <DependentUpon>201605290427203_AddIsDeletedToTopic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
@@ -595,6 +599,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605220427472_AddUserToExercise.resx">
       <DependentUpon>201605220427472_AddUserToExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605290427203_AddIsDeletedToTopic.resx">
+      <DependentUpon>201605290427203_AddIsDeletedToTopic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

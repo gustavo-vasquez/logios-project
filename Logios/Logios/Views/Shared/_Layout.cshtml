@@ -28,8 +28,7 @@
                     <li>@Html.ActionLink("Ejercicio 1", "Show", "Exercise", new { id = "1" }, null)</li>                    
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>                        
+                        <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>                        
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

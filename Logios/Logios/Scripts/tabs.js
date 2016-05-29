@@ -40,3 +40,29 @@ function deleteUser(userId) {
         }    
     })
 }
+
+function deleteTopic(topicId) {
+
+    $.ajax({
+        url: "/Administrator/DeleteTopic/" + topicId,
+        type: 'GET',
+        error: function (response) {
+            alert("Error al procesar solicitud.");
+        },
+        success: function (topicData) {
+            if (confirm("¿Realmente desea eliminar el tópico llamado " + topicData.Description + "?\n\n NOTA: Esto puede deshacerse más adelante desde la base de datos.")) {
+                $.ajax({
+                    url: "/Administrator/DeleteTopic/",
+                    data: { id: topicData.TopicId, __RequestVerificationToken: gettoken() },
+                    type: 'POST',
+                    error: function (response) {
+                        alert("Error al procesar solicitud.");
+                    },
+                    success: function (response) {
+                        window.location.href = response.Url;
+                    }
+                })
+            }
+        }
+    })
+}

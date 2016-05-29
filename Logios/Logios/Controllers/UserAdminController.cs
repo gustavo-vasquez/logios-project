@@ -231,12 +231,14 @@ namespace Logios.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var user = await UserManager.FindByIdAsync(id);
+
             if (user == null)
             {
                 return HttpNotFound();
             }
-            //return View(user);
+            
             return Json(user, JsonRequestBehavior.AllowGet);
         }
 
