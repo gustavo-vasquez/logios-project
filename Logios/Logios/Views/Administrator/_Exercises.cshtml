@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Logios.Models.ExercisesPanelViewModel>
+
+@{
+    WebGrid exerciseList = new WebGrid(Model, canPage: true, rowsPerPage: 10, ajaxUpdateContainerId: "createdExercises");
+}
+
+<h2>Ejercicios existentes</h2>
+
+<br />
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear ejercicio</a>
+    </div>
+</div>
+
+<br />
+
+<div>
+    @exerciseList.GetHtml(
+        htmlAttributes: new { id = "createdExercises" },
+        tableStyle: "table table-hover table-striped table-bordered text-center",
+        headerStyle: "head-align",
+        rowStyle: "active",
+        alternatingRowStyle: "active",
+        fillEmptyRows: false,
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primero",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Último >>",        
+
+        columns: exerciseList.Columns(
+                        exerciseList.Column("ExerciseId", canSort: false, header: "ID"),
+                        exerciseList.Column("Description", canSort: false, header: "Descripción"),
+                        exerciseList.Column("TopicName", canSort: false, header: "Temática"),                        
+                        exerciseList.Column("IsDeleted", canSort: false, header: "Disponible", format: (item) => (item.IsDeleted ? "No" : "Si")),                        
+                        exerciseList.Column("UserName", canSort: false, header: "Creado por:"),
+                        exerciseList.Column("ExerciseId", canSort: false, header: "Acción",
+                                format: @<text>
+                                            <a href="@Url.Action("Show", "Exercise", new { id = @item.ExerciseId })">Visualizar</a>
+                                        </text> )
+                        )
+    )
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div>
+    <div class="row vertical-space-1">
+        <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info">Crear nuevo ejercicio</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 1 })" class="btn btn-info">Editar ejercicio 1</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 2 })" class="btn btn-info">Editar ejercicio 2</a>
+        <a href="@Url.Action("EditExercise", "Administrator", new { id = 3 })" class="btn btn-info">Editar ejercicio 3</a>
+    </div>
+
+    <div class="row form-inline">
+        <input id="valor" class="form-control" />
+        <a class="btn btn-info" onclick="deleteExercise(document.getElementById('valor').value);">Eliminar ejercicio</a>
+    </div>
+</div>*@

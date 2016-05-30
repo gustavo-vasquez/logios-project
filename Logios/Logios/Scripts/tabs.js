@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
     var animation = $("#loadAnimation").html();
 
-    //$("#exerciseAdmin").html(animation);
-    //$("#exerciseAdmin").load("/UsersAdmin/ExerciseTab");
+    $("#exerciseAdmin").html(animation);
+    $("#exerciseAdmin").load("/Administrator/Exercises");
 
     $("#tabTopicAdmin").click(function () {
         $("#topicAdmin").html(animation);

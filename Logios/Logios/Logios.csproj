@@ -256,6 +256,7 @@
     <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
     <Compile Include="Models\ExercisesByAreaViewModel.cs" />
+    <Compile Include="Models\ExercisesPanelViewModel.cs" />
     <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReportViewModel.cs" />
@@ -303,7 +304,7 @@
     <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Content Include="Views\Exercise\_ConfirmDialog.cshtml" />
     <Content Include="Views\UsersAdmin\_UserTab.cshtml" />
-    <Content Include="Views\Administrator\_ExerciseAdministration.cshtml" />
+    <Content Include="Views\Administrator\_Exercises.cshtml" />
     <Content Include="Views\Manage\_ConfigurationUserPanel.cshtml" />
     <Content Include="Views\Exercise\Report.cshtml" />
     <Content Include="Views\Manage\_BadgesAndPointsUserPanel.cshtml" />

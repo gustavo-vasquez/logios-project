@@ -22,9 +22,20 @@ namespace Logios.Services
 
         public IEnumerable<SelectListItem> GetAllTopics()
         {
-            var topics = context.Topics.ToList();            
+            var topics = context.Topics.Where(t => t.IsDeleted == false).ToList();
 
             return new SelectList(topics, "TopicId", "Description");
+        }
+
+        public IEnumerable<ExercisesPanelViewModel> GetAllExercises()
+        {
+            ExercisesPanelViewModel exercisesPanel = new ExercisesPanelViewModel();
+            var exerciseData = from e in context.Exercises
+                               join t in context.Topics on e.Topic.TopicId equals t.TopicId
+                               join u in context.Users on e.User.Id equals u.Id
+                               select new ExercisesPanelViewModel { ExerciseId = e.ExerciseId, Description = e.Description, IsDeleted = e.IsDeleted, TopicName = t.Description, UserName = u.UserName };
+
+            return exerciseData;
         }
 
         public Boolean? CreateNewExercise(CreateExerciseViewModel model, string userId)
@@ -55,14 +66,13 @@ namespace Logios.Services
             var exerciseCreated = context.Exercises.FirstOrDefault(e => e.ExerciseId == exerciseId);
             var model = new EditExerciseViewModel();
             var exercise = new ExerciseDTO();
-            var topic = new TopicDTO();
+            var topic = new Topic();
 
             exercise.Problem = exerciseCreated.Problem;
             exercise.Development = exerciseCreated.Development;
             exercise.Solution = exerciseCreated.Solution;
             exercise.Description = exerciseCreated.Description;            
-            topic.TopicId = exerciseCreated.Topic.TopicId;
-            topic.Description = exerciseCreated.Topic.Description;
+            topic.TopicId = exerciseCreated.Topic.TopicId;            
 
             model.Exercise = exercise;
             model.Topic = topic;

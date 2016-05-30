@@ -21,10 +21,15 @@ namespace Logios.Controllers
         {
             return View();
         }
+        
+        public ActionResult Exercises()
+        {
+            return PartialView("_Exercises", adminServices.GetAllExercises());
+        }
 
         public ActionResult AddExercise()
         {
-            var model = new CreateExerciseViewModel();
+            var model = new CreateExerciseViewModel();            
             model.ComboTopics = adminServices.GetAllTopics();
 
             return View(model);
@@ -46,8 +51,8 @@ namespace Logios.Controllers
                 throw new Exception();
             }            
             catch
-            {                
-                return View(model);
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }            
         }
 
