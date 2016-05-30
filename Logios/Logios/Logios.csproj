@@ -182,6 +182,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\TopicAreaController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\TrophiesController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="DTOs\ExerciseDTO.cs" />
@@ -313,6 +314,11 @@
     <Content Include="Views\Administrator\_Topics.cshtml" />
     <Content Include="Views\Administrator\CreateTopic.cshtml" />
     <Content Include="Views\Administrator\EditTopic.cshtml" />
+    <Content Include="Views\Trophies\Create.cshtml" />
+    <Content Include="Views\Trophies\Delete.cshtml" />
+    <Content Include="Views\Trophies\Details.cshtml" />
+    <Content Include="Views\Trophies\Edit.cshtml" />
+    <Content Include="Views\Trophies\Index.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />

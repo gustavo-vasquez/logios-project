@@ -2,4 +2,24 @@
 
 <div>
     <p>Points = @Model.Points</p>
-</div>
+    <p>
+        @foreach (var badges in Model.Trophys.Keys)
+        {
+            int total = 0;
+
+            Model.Trophys
+                .Select(t => t.Value)
+                .ToList();
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="topic-area-statistics-title"> <span class="badge resolved-exercises-header"> @total </span></h3>
+                    @foreach (var topicStatistics in Model.Trophys)
+                {
+            <p class="topic-statistics">@topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span> </p>
+                    }
+                </div>
+                </div>
+        }
+        </p>
+        </div>

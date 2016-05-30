@@ -326,10 +326,10 @@ namespace Logios.Controllers
         // GET - Llamado por Ajax en el control panel
         public PartialViewResult LoadBadgesAndPointsPanel()
         {
-            var model = new BadgesAndPointsUserPanelViewModel()
-            {
-                Points = 20
-            };
+            var model = new BadgesAndPointsUserPanelViewModel();
+            { 
+                model.Points = 20;
+            }
 
             return PartialView("_BadgesAndPointsUserPanel", model);
         }

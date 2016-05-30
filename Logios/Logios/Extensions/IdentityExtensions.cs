@@ -18,12 +18,40 @@ namespace Logios.Extensions
 
         public static int GetCurrentPoints(this IIdentity identity, string userId)
         {
+            
             using (var context =new ApplicationDbContext())
             {
-                var points = context.UserProfiles.Find(userId).Points;
+                var points = 0;
+
+                //var queryResult = from ut in context.UserTrophies
+                //                  where ut.UserId == userId
+                //                  select ut.TrophyId;
+
+                //foreach (var trophy in queryResult)
+                //{
+                //    points += context.Trophies.Find(trophy).Points;
+                //}
+
+                var userTrophiesPoints = context.UserTrophies
+                                                        .Where(x => x.UserId == userId)
+                                                        .Select(x => x.Trophy.Points)
+                                                        .ToList();
+
+                foreach (var trophyPoints in userTrophiesPoints)
+                    {
+                        points += trophyPoints;
+                    }
+
+
+                    points += context.UserProfiles.Find(userId).Points;
+
                 return points;
             }
+            
+            
         }
+
+        
 
     }
 }
