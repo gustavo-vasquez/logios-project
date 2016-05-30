@@ -1,4 +1,5 @@
 ﻿using Logios.DTOs;
+using Logios.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Logios.Models
     public class EditExerciseViewModel
     {
         public ExerciseDTO Exercise { get; set; }
-        public TopicDTO Topic { get; set; }
+        public Topic Topic { get; set; }
         public IEnumerable<SelectListItem> ComboTopics { get; set; }
     }
 }
