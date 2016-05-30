@@ -16,6 +16,7 @@ namespace Logios.Controllers
     public class ExerciseController : Controller
     {
         static ExerciseServices services = new ExerciseServices();
+        private TrophyService TrophyService = new TrophyService();
 
         // GET: Exercise
         public ActionResult Create()
@@ -57,6 +58,8 @@ namespace Logios.Controllers
                     services.UpdateUserExercise(currentUser, id, false);
                     services.SumPoints(currentUser);
                 }
+
+                this.TrophyService.UpdateUserTrophies(currentUser);
             }
             
             return PartialView("_Result", result);
