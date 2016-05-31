@@ -27,6 +27,14 @@ namespace Logios.Controllers
             return PartialView("_Exercises", adminServices.GetAllExercises());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchExercises(string topicDescription)
+        {
+            ViewData["searchBox"] = topicDescription;
+            return PartialView("_Exercises", adminServices.SearchExercisesByTopic(topicDescription));
+        }
+
         public ActionResult AddExercise()
         {
             var model = new CreateExerciseViewModel();            

@@ -12,6 +12,20 @@
     <div class="col-md-3">
         <a href="@Url.Action("AddExercise", "Administrator")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear ejercicio</a>
     </div>
+    @using (Ajax.BeginForm(
+        "SearchExercises",
+        "Administrator",
+        new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "exerciseAdmin" },
+        new { id = "searchExercisesForm", @class = "form", role = "form" }))
+    {    
+        @Html.AntiForgeryToken()
+        <div class="col-md-4">
+            <input type="text" name="topicDescription" class="form-control" value="@ViewData["searchBox"]" placeholder="Buscar por temática..." />
+        </div>
+        <div>
+            <button class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    }
 </div>
 
 <br />
@@ -28,13 +42,13 @@
         firstText: "<< Primero",
         previousText: "< Anterior",
         nextText: "Siguiente >",
-        lastText: "Último >>",        
+        lastText: "Último >>",
 
         columns: exerciseList.Columns(
                         exerciseList.Column("ExerciseId", canSort: false, header: "ID"),
                         exerciseList.Column("Description", canSort: false, header: "Descripción"),
-                        exerciseList.Column("TopicName", canSort: false, header: "Temática"),                        
-                        exerciseList.Column("IsDeleted", canSort: false, header: "Disponible", format: (item) => (item.IsDeleted ? "No" : "Si")),                        
+                        exerciseList.Column("TopicName", canSort: false, header: "Temática"),
+                        exerciseList.Column("IsDeleted", canSort: false, header: "Disponible", format: (item) => (item.IsDeleted ? "No" : "Si")),
                         exerciseList.Column("UserName", canSort: false, header: "Creado por:"),
                         exerciseList.Column("ExerciseId", canSort: false, header: "Acción",
                                 format: @<text>

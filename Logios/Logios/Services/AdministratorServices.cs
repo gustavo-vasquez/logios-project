@@ -28,12 +28,24 @@ namespace Logios.Services
         }
 
         public IEnumerable<ExercisesPanelViewModel> GetAllExercises()
-        {
-            ExercisesPanelViewModel exercisesPanel = new ExercisesPanelViewModel();
+        {            
             var exerciseData = from e in context.Exercises
                                join t in context.Topics on e.Topic.TopicId equals t.TopicId
                                join u in context.Users on e.User.Id equals u.Id
                                select new ExercisesPanelViewModel { ExerciseId = e.ExerciseId, Description = e.Description, IsDeleted = e.IsDeleted, TopicName = t.Description, UserName = u.UserName };
+
+            return exerciseData;
+        }
+
+        public IEnumerable<ExercisesPanelViewModel> SearchExercisesByTopic(string topicDescription)
+        {            
+            var exerciseData = this.GetAllExercises();
+
+            if(topicDescription != "")
+            {
+                var exercisesFiltered = exerciseData.Where(ed => ed.TopicName.ToLower() == topicDescription.ToLower()).ToList();
+                return exercisesFiltered;
+            }
 
             return exerciseData;
         }
