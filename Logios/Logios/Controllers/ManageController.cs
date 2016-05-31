@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Logios.Models;
 using System.Collections.Generic;
+using Logios.Services;
 
 namespace Logios.Controllers
 {
@@ -16,6 +17,7 @@ namespace Logios.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private UserBadgesAndPointsServices UserBadgesAndPoints = new UserBadgesAndPointsServices();
 
         public ManageController()
         {
@@ -326,10 +328,14 @@ namespace Logios.Controllers
         // GET - Llamado por Ajax en el control panel
         public PartialViewResult LoadBadgesAndPointsPanel()
         {
+            
             var model = new BadgesAndPointsUserPanelViewModel();
-            { 
-                model.Points = 20;
-            }
+
+            var UserPoints = this.UserBadgesAndPoints.GetPointsByUser(User.Identity.GetUserId());
+            var UserTrophies = this.UserBadgesAndPoints.GetAllBadgesByUser(User.Identity.GetUserId());
+
+            model.Points = UserPoints;
+            model.Badges = UserTrophies;
 
             return PartialView("_BadgesAndPointsUserPanel", model);
         }

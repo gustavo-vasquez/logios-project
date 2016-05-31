@@ -5,6 +5,7 @@ using Microsoft.Owin.Security;
 using Logios.Entities;
 using System.Linq;
 using System;
+using Logios.DTOs;
 
 namespace Logios.Models
 {
@@ -90,6 +91,7 @@ namespace Logios.Models
     public class BadgesAndPointsUserPanelViewModel
     {
         public int Points { get; set; }
+        public IEnumerable<UserBadgesDTO> Badges { get; set; }
     }
 
     public class ExerciseUserPanelViewModel

@@ -1,25 +1,18 @@
 ﻿@model Logios.Models.BadgesAndPointsUserPanelViewModel
+@using Microsoft.AspNet.Identity
+@using Logios.Extensions
+
 
 <div>
-    <p>Points = @Model.Points</p>
-    <p>
-        @foreach (var badges in Model.Trophys.Keys)
+    <div class="col-md-4">
+        <h3 class="topic-area-statistics-title">Puntos Totales<span class="badge resolved-exercises-header">@User.Identity.GetCurrentPoints(User.Identity.GetUserId())</span></h3>
+
+        <p class="topic-statistics">Puntos por ejercicios resueltos<span class="badge resolved-exercises"> @Model.Points </span> </p>
+
+        @foreach (var badges in Model.Badges)
         {
-            int total = 0;
-
-            Model.Trophys
-                .Select(t => t.Value)
-                .ToList();
-
-            <div class="row">
-                <div class="col-md-4">
-                    <h3 class="topic-area-statistics-title"> <span class="badge resolved-exercises-header"> @total </span></h3>
-                    @foreach (var topicStatistics in Model.Trophys)
-                {
-            <p class="topic-statistics">@topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span> </p>
-                    }
-                </div>
-                </div>
+            <p class="topic-statistics">@badges.DescriptionTrophy <span class="badge resolved-exercises"> @badges.TrophyPoints </span> <img src="@badges.ImageTrophy" style="height:30px" /> </p>
+            
         }
-        </p>
-        </div>
+    </div>        
+</div>

@@ -42,7 +42,7 @@ namespace Logios.Extensions
                         points += trophyPoints;
                     }
 
-
+                    
                     points += context.UserProfiles.Find(userId).Points;
 
                 return points;
