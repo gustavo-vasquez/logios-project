@@ -6,11 +6,12 @@
 
 @*<div class="vertical-space"></div>*@
 <div class="col-lg-6">
-    <h1 id="logo_letras" class="landingpage">LOGIOS</h1>
-    <h4 class="landingpage"> Con esta nueva herramienta podrás practicar todos tus ejercicios en un solo lugar. Que esperas para probar LOGIOS</h4>
+    <h1 id="logo_letras" class="landingpage" style="font-size: 60px;">Logios</h1>
+    <h2 class="landingpage">Con esta nueva herramienta podrás practicar todos tus ejercicios en un solo lugar.</h2>
+    <h2 class="landingpage">¡Que esperas para probar LOGIOS!</h2>
 </div>
 <div class="col-md-6 landingpage">
-        <h2 class="landingpage">@ViewBag.Title.</h2>
+        <h2 class="landingpage">@ViewBag.Title</h2>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
