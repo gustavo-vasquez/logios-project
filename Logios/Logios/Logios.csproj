@@ -269,6 +269,7 @@
     <Compile Include="Services\AdministratorServices.cs" />
     <Compile Include="Services\ExerciseServices.cs" />
     <Compile Include="Services\RegisterServices.cs" />
+    <Compile Include="Services\RoleServices.cs" />
     <Compile Include="Services\TopicAreaService.cs" />
     <Compile Include="Services\TopicsService.cs" />
     <Compile Include="Services\UserBadgesAndPointsServices.cs" />

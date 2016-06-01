@@ -1,5 +1,6 @@
 ﻿using Logios.Entities;
 using Logios.Models;
+using Logios.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -103,18 +104,29 @@ namespace Logios.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(RoleViewModel roleViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var role = new IdentityRole(roleViewModel.Name);
-                var roleresult = await RoleManager.CreateAsync(role);
-                if (!roleresult.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError("", roleresult.Errors.First());
-                    return View();
+                    var role = new IdentityRole(roleViewModel.Name);
+                    var roleresult = await RoleManager.CreateAsync(role);
+
+                    if (!roleresult.Succeeded)
+                    {
+                        ModelState.AddModelError("Name", "- El rol especificado ya existe.");
+                        return View(roleViewModel);
+                    }
+
+                    return RedirectToAction("ControlPanel", "Administrator");
                 }
-                return RedirectToAction("ControlPanel", "Administrator");
+
+                return View(roleViewModel);
             }
-            return View();
+            catch
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            }
+            
         }
 
         //
@@ -125,11 +137,14 @@ namespace Logios.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var role = await RoleManager.FindByIdAsync(id);
+
             if (role == null)
             {
                 return HttpNotFound();
             }
+
             RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
             return View(roleModel);
         }
@@ -140,14 +155,32 @@ namespace Logios.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] RoleViewModel roleModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var role = await RoleManager.FindByIdAsync(roleModel.Id);
-                role.Name = roleModel.Name;
-                await RoleManager.UpdateAsync(role);
-                return RedirectToAction("ControlPanel", "Administrator");
+                if (ModelState.IsValid)
+                {
+                    var role = await RoleManager.FindByIdAsync(roleModel.Id);
+                    role.Name = roleModel.Name;
+
+                    if (!new RoleServices().RoleExist(role.Name))
+                    {
+                        await RoleManager.UpdateAsync(role);
+                        return RedirectToAction("ControlPanel", "Administrator");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Name", "- El rol especificado ya existe.");
+                        return View(roleModel);
+                    }
+
+                }
+
+                return View(roleModel);
             }
-            return View();
+            catch
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            }                        
         }
 
         //

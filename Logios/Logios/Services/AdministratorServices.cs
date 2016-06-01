@@ -201,6 +201,6 @@ namespace Logios.Services
             Topic topicToDelete = context.Topics.FirstOrDefault(t => t.TopicId == id);
             topicToDelete.IsDeleted = true;
             context.SaveChanges();
-        }
+        }        
     }
 }
