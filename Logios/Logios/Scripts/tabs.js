@@ -12,7 +12,17 @@
     $("#tabUserAdmin").click(function () {
         $("#userAdmin").html(animation);
         $("#userAdmin").load("/UsersAdmin/UserTab");
-    });    
+    });
+
+    $("#tabUserAdmin").click(function () {
+        $("#userAdmin").html(animation);
+        $("#userAdmin").load("/UsersAdmin/UserTab");
+    });
+
+    $("#tabRoleAdmin").click(function () {
+        $("#roleAdmin").html(animation);
+        $("#roleAdmin").load("/RolesAdmin/Roles");
+    });
 });
 
 function deleteUser(userId) {
@@ -54,6 +64,32 @@ function deleteTopic(topicId) {
                 $.ajax({
                     url: "/Administrator/DeleteTopic/",
                     data: { id: topicData.TopicId, __RequestVerificationToken: gettoken() },
+                    type: 'POST',
+                    error: function (response) {
+                        alert("Error al procesar solicitud.");
+                    },
+                    success: function (response) {
+                        window.location.href = response.Url;
+                    }
+                })
+            }
+        }
+    })
+}
+
+
+function deleteRole(roleId) {
+    $.ajax({
+        url: "/RolesAdmin/Delete/" + roleId,
+        type: 'GET',
+        error: function (response) {
+            alert("Error al procesar solicitud.");
+        },
+        success: function (roleData) {
+            if (confirm("¿Realmente desea eliminar el rol llamado " + roleData.Name + "?")) {
+                $.ajax({
+                    url: "/RolesAdmin/Delete/",
+                    data: { id: roleData.Id, __RequestVerificationToken: gettoken() },
                     type: 'POST',
                     error: function (response) {
                         alert("Error al procesar solicitud.");

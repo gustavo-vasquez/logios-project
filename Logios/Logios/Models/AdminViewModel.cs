@@ -10,7 +10,7 @@ namespace Logios.Models
     public class RoleViewModel
     {
         public string Id { get; set; }
-        [Required(AllowEmptyStrings = false)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo Nombre es obligatorio.")]
         [Display(Name = "RoleName")]
         public string Name { get; set; }
     }

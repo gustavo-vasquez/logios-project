@@ -1,39 +1,33 @@
 ﻿@model Logios.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear rol";
 }
-
-<h2>Create.</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Role.</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<h1>@ViewBag.Title</h1>
+<hr />
+<div class="col-md-12">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm("Create", "RolesAdmin", FormMethod.Post, new { id = "CreateRoleForm", @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend class="text-info">Crear un nuevo rol.</legend>
+                <div class="form-group">
+                    <label for="Description" class="col-md-3 control-label">Nombre:</label>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(r => r.Name, new { @class = "form-control", placeholder = "Nombre..." })
+                        @Html.ValidationMessageFor(r => r.Name, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-7">
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href = '/Administrator/ControlPanel';">Cancelar</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    WebGrid rolesList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdRoles");
+}
+
+<h2>Roles existentes</h2>
+
+<br />
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("Create", "RolesAdmin")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear nuevo rol</a>
+    </div>    
+</div>
+
+<br />
+
+<div class="overflow">
+    @rolesList.GetHtml(
+        htmlAttributes: new { id = "createdRoles" },
+        tableStyle: "table table-hover table-striped table-bordered text-center",
+        headerStyle: "head-align",
+        rowStyle: "active",
+        alternatingRowStyle: "active",
+        fillEmptyRows: false,
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primero",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Último >>",
+
+        columns: rolesList.Columns(
+                        rolesList.Column("Id", canSort: false, header: "ID"),
+                        rolesList.Column("Name", canSort: false, header: "Nombre"),
+                        rolesList.Column("Id", canSort: false, header: "Acciones",
+                                format: @<text>
+                                            <a href="@Url.Action("Edit", "RolesAdmin", new { id = @item.Id })" class="btn btn-xs btn-success">
+                                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                                            </a>
+                                            <a id="deleteTopic" onclick="deleteRole('@item.Id');" class="btn btn-xs btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                                            </a>
+                                        </text> )
+                        )
+    )
+</div>
+
+<script type="text/javascript">
+    function gettoken() {
+        var token = '@Html.AntiForgeryToken()';
+        token = $(token).val();
+        return token;
+    }
+</script>

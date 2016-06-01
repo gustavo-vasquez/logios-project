@@ -324,6 +324,7 @@
     <Content Include="Views\Trophies\Details.cshtml" />
     <Content Include="Views\Trophies\Edit.cshtml" />
     <Content Include="Views\Trophies\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\_Roles.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />

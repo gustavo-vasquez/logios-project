@@ -42,6 +42,10 @@ footer {
     height:100%;
 }
 
+.overflow {
+    overflow: auto !important;
+}
+
 @font-face {
     font-family:UncialAntiqua-regular;
     src:url('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');

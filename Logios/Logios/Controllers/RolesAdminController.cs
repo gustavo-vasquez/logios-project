@@ -60,6 +60,11 @@ namespace Logios.Controllers
             return View(RoleManager.Roles);
         }
 
+        public ActionResult Roles()
+        {
+            return PartialView("_Roles", RoleManager.Roles);
+        }
+
         //
         // GET: /Roles/Details/5
         public async Task<ActionResult> Details(string id)
@@ -107,7 +112,7 @@ namespace Logios.Controllers
                     ModelState.AddModelError("", roleresult.Errors.First());
                     return View();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ControlPanel", "Administrator");
             }
             return View();
         }
@@ -132,7 +137,6 @@ namespace Logios.Controllers
         //
         // POST: /Roles/Edit/5
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] RoleViewModel roleModel)
         {
@@ -141,7 +145,7 @@ namespace Logios.Controllers
                 var role = await RoleManager.FindByIdAsync(roleModel.Id);
                 role.Name = roleModel.Name;
                 await RoleManager.UpdateAsync(role);
-                return RedirectToAction("Index");
+                return RedirectToAction("ControlPanel", "Administrator");
             }
             return View();
         }
@@ -154,12 +158,16 @@ namespace Logios.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var role = await RoleManager.FindByIdAsync(id);
+
             if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(role);
+
+            //return View(role);
+            return Json(role, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -193,7 +201,8 @@ namespace Logios.Controllers
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return Json(new { Url = "/Administrator/ControlPanel" });
             }
             return View();
         }
