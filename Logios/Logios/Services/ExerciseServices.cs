@@ -32,12 +32,20 @@ namespace Logios.Services
 
         public bool CheckAnswer(int id, string answer)
         {
-            var solution = context.Exercises.FirstOrDefault(e => e.ExerciseId == id).Solution;            
+            var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
 
-            if(answer.ToLower().Replace("<mo>&#x000a0;</mo>", "") != solution.ToLower().Replace("<mo>&#x000a0;</mo>", ""))
-                return false;            
-            else            
-                return true;                     
+            if (exercise == null)
+            {
+                throw new ArgumentException(string.Format("No se encontró un ejercicio con Id = {0}", id));
+            }
+
+            var mathJaxSpace = @"<mo>&#x000A0;</mo>";
+            var parsedAnswer = answer.Replace(mathJaxSpace, string.Empty).Trim();
+            var parsedSolution = exercise.Solution.Replace(mathJaxSpace, string.Empty).Trim();
+
+            var answerIsCorrect = parsedAnswer.EqualsIgnoreCase(parsedSolution);
+
+            return answerIsCorrect;
         }
 
         public ExerciseViewModel GetExerciseInformation(int? id)

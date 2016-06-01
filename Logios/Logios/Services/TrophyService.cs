@@ -19,10 +19,11 @@ namespace Logios.Services
             };
         }
 
-        public void UpdateUserTrophies(string userId)
+        public Trophy UpdateUserTrophies(string userId)
         {
             using (var context = new ApplicationDbContext())
             {
+                Trophy newTrophy = null;
                 var trophies = context.Trophies;
 
                 foreach (var trophy in trophies)
@@ -35,8 +36,15 @@ namespace Logios.Services
                     }
 
                     var condition = this.TrophyConditions[trophyName];
-                    condition.CheckCondition(userId);
+                    var obtainedTrophy = condition.CheckCondition(userId);
+
+                    if (obtainedTrophy && newTrophy == null)
+                    {
+                        newTrophy = trophy;
+                    }
                 }
+
+                return newTrophy;
             }
         }
     }

@@ -152,8 +152,9 @@ div blockquote {
     font-size: 13px !important;
 }
 
-.exercise-bg {
+blockquote.exercise-bg {
     background-color: rgb(243, 242, 242);
+    margin-bottom: 0;
 }
 
 #loginForm div.checkbox {
