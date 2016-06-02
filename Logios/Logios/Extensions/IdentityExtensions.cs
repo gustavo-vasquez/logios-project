@@ -10,11 +10,14 @@ namespace Logios.Extensions
 {
     public static class IdentityExtensions 
     {
-        //public static string GetCurrentPoints(this IIdentity identity)
-        //{
-        //    var claim = ((ClaimsIdentity)identity).FindFirst("Points");
-        //    return (claim != null) ? claim.Value : string.Empty;
-        //}
+        public static string GetUserEmail(this IIdentity identity,string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Users.Find(userId).Email;
+            }
+            
+        }
 
         public static int GetCurrentPoints(this IIdentity identity, string userId)
         {
@@ -22,16 +25,6 @@ namespace Logios.Extensions
             using (var context =new ApplicationDbContext())
             {
                 var points = 0;
-
-                //var queryResult = from ut in context.UserTrophies
-                //                  where ut.UserId == userId
-                //                  select ut.TrophyId;
-
-                //foreach (var trophy in queryResult)
-                //{
-                //    points += context.Trophies.Find(trophy).Points;
-                //}
-
                 var userTrophiesPoints = context.UserTrophies
                                                         .Where(x => x.UserId == userId)
                                                         .Select(x => x.Trophy.Points)
