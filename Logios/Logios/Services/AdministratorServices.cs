@@ -147,41 +147,70 @@ namespace Logios.Services
             return ordenedList;
         }
 
-        public List<Topic> GetTopicsCreated()
+        public IEnumerable<TopicPanelViewModel> GetTopicsCreated()
         {
-            return context.Topics.Where(t => t.IsDeleted == false).ToList();
+            var topicData = from t in context.Topics
+                            join tat in context.TopicAreaTopics on t.TopicId equals tat.TopicId
+                            join a in context.TopicAreas on tat.TopicAreaId equals a.TopicAreaId
+                            where t.IsDeleted == false
+                            select new TopicPanelViewModel { TopicId = t.TopicId, Description = t.Description, Area = a.Description };
+
+            return topicData;
         }
 
-        public void CreateNewTopic(string description)
+        public IEnumerable<SelectListItem> GetTopicAreas()
         {
-            try
-            {
-                Topic topic = new Topic();
-                topic.TopicId = context.Topics.Count() + 1;
-                topic.Description = description;
+            var topicAreas = context.TopicAreas.Where(x => x.IsDeleted == false).ToList();
 
-                context.Topics.Add(topic);
-                context.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+            return new SelectList(topicAreas, "TopicAreaId", "Description");
         }
 
-        public TopicDTO GetTopicById(int id)
+        public void CreateNewTopic(string description, int areaId)
+        {            
+            Topic topic = new Topic();
+            topic.TopicId = context.Topics.Count() + 1;
+            topic.Description = description;
+
+            TopicAreaTopic topicAreaTopic = new TopicAreaTopic();
+            topicAreaTopic.TopicId = topic.TopicId;
+            topicAreaTopic.TopicAreaId = areaId;
+
+            context.Topics.Add(topic);
+            context.TopicAreaTopics.Add(topicAreaTopic);
+            context.SaveChanges();                        
+        }
+
+        public TopicDTO GetTopicById(int? id)
         {
-            TopicDTO topicToEdit = new TopicDTO();
+            //TopicViewModel topicToEdit = new TopicViewModel { Topic = new TopicDTO() };
+            //Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
+            //topicToEdit.Topic.TopicId = topicDB.TopicId;
+            //topicToEdit.Topic.Description = topicDB.Description;
+
+            //return topicToEdit;
             Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
-            topicToEdit.TopicId = topicDB.TopicId;
-            topicToEdit.Description = topicDB.Description;
+            TopicDTO topic = new TopicDTO();
+            topic.TopicId = topicDB.TopicId;
+            topic.Description = topicDB.Description;
+
+            return topic;
+        }
+
+        public TopicViewModel GetTopicModelById(int id)
+        {
+            TopicViewModel topicToEdit = new TopicViewModel { Topic = new TopicDTO(), TopicArea = new TopicAreaDTO() };
+            Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
+            topicToEdit.Topic.TopicId = topicDB.TopicId;
+            topicToEdit.Topic.Description = topicDB.Description;
+            topicToEdit.TopicArea.TopicAreaId = context.TopicAreaTopics.FirstOrDefault(x => x.TopicId == id).TopicAreaId;
+            topicToEdit.TopicArea.ComboTopicAreas = this.GetTopicAreas();
 
             return topicToEdit;
         }
 
-        public bool CheckTopicExist(string description)
+        public bool TopicExist(string description)
         {
-            if(context.Topics.FirstOrDefault(t => t.Description == description) == null)
+            if (context.Topics.FirstOrDefault(t => t.Description.ToLower() == description.ToLower()) == null)
             {
                 return false;
             }
@@ -189,17 +218,50 @@ namespace Logios.Services
             return true;
         }
 
-        public void EditThisTopic(TopicDTO model)
+        public bool TopicExist(string description, int topicId)
+        {
+            if(context.Topics.FirstOrDefault(t => t.Description.ToLower() == description.ToLower() && t.TopicId != topicId) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void EditThisTopic(TopicViewModel model)
         {            
-            Topic topicToEdit = context.Topics.FirstOrDefault(t => t.TopicId == model.TopicId);
-            topicToEdit.Description = model.Description;
+            Topic topicToEdit = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);
+            topicToEdit.Description = model.Topic.Description;
+
+            TopicAreaTopic areaTopic = context.TopicAreaTopics.FirstOrDefault(x => x.TopicId == model.Topic.TopicId);
+            areaTopic.TopicAreaId = model.TopicArea.TopicAreaId;
+
             context.SaveChanges();            
+        }
+
+        public bool CanDeleteTopic(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                try
+                {
+                    context.TopicAreaTopics.First(x => x.TopicId == id);
+                    context.Exercises.First(e => e.Topic.TopicId == id);                    
+                }
+                catch
+                {
+                    return true;
+                }
+
+                return false;
+            }
         }
 
         public void DeleteTopic(int? id)
         {
-            Topic topicToDelete = context.Topics.FirstOrDefault(t => t.TopicId == id);
+            var topicToDelete = context.Topics.FirstOrDefault(t => t.TopicId == id);
             topicToDelete.IsDeleted = true;
+
             context.SaveChanges();
         }        
     }

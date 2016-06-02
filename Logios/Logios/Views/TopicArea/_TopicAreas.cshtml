@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Logios.Entities.TopicArea>
+
+@{
+    WebGrid areaList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdAreas");
+}
+
+<h2>Áreas temáticas existentes</h2>
+
+<br />
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("CreateArea", "TopicArea")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear nueva área</a>
+    </div>
+</div>
+
+<br />
+
+<div class="overflow">
+    @areaList.GetHtml(
+        htmlAttributes: new { id = "createdAreas" },
+        tableStyle: "table table-hover table-striped table-bordered text-center",
+        headerStyle: "head-align",
+        rowStyle: "active",
+        alternatingRowStyle: "active",
+        fillEmptyRows: false,
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primero",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Último >>",
+
+        columns: areaList.Columns(
+                        areaList.Column("TopicAreaId", canSort: false, header: "ID"),
+                        areaList.Column("Description", canSort: false, header: "Descripción"),
+                        areaList.Column("TopicAreaId", canSort: false, header: "Acciones",
+                                format: @<text>
+                                            <a href="@Url.Action("EditArea", "TopicArea", new { id = @item.TopicAreaId })" class="btn btn-xs btn-success">
+                                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                                            </a>
+                                            <a id="deleteTopic" onclick="deleteArea('@item.TopicAreaId');" class="btn btn-xs btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span> Borrar
+                                            </a>
+                                        </text> )
+                        )
+    )
+</div>
+
+<script type="text/javascript">
+    function gettoken() {
+        var token = '@Html.AntiForgeryToken()';
+        token = $(token).val();
+        return token;
+    }
+</script>

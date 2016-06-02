@@ -1,4 +1,5 @@
-﻿using Logios.Entities;
+﻿using Logios.DTOs;
+using Logios.Entities;
 using Logios.Models;
 using System;
 using System.Collections.Generic;
@@ -95,6 +96,104 @@ namespace Logios.Services
             }
 
             return fakeTopics;
+        }
+
+        public List<TopicArea> GetTopicAreas()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.TopicAreas.Where(x => x.IsDeleted == false).ToList();
+            }
+        }
+
+        public bool AreaExists(string description)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                if(context.TopicAreas.FirstOrDefault(x => x.Description.ToLower() == description.ToLower()) == null)
+                {
+                    return false;
+                }
+
+                return true;
+            }            
+        }
+
+        public bool AreaExists(string description, int topicAreaId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                if (context.TopicAreas.FirstOrDefault(x => x.Description.ToLower() == description.ToLower() && x.TopicAreaId != topicAreaId) == null)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
+        public void CreateNewArea(TopicAreaDTO model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                TopicArea topicArea = new TopicArea();
+                topicArea.TopicAreaId = context.TopicAreas.Count() + 1;
+                topicArea.Description = model.Description;
+                context.TopicAreas.Add(topicArea);
+                context.SaveChanges();
+            }
+        }
+
+        public TopicAreaDTO GetTopicAreaById(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                TopicAreaDTO topicAreaDto = new TopicAreaDTO();
+                var topicAreaDB = context.TopicAreas.FirstOrDefault(x => x.TopicAreaId == id);
+                topicAreaDto.TopicAreaId = topicAreaDB.TopicAreaId;
+                topicAreaDto.Description = topicAreaDB.Description;
+
+                return topicAreaDto;
+            }
+        }
+        
+        public void EditThisArea(TopicAreaDTO model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                TopicArea topicAreaToEdit = context.TopicAreas.FirstOrDefault(x => x.TopicAreaId == model.TopicAreaId);
+                topicAreaToEdit.Description = model.Description;
+
+                context.SaveChanges();
+            }                
+        }
+
+        public bool CanDeleteArea(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                try
+                {
+                    context.TopicAreaTopics.First(x => x.TopicAreaId == id);
+                }
+                catch
+                {
+                    return true;
+                }
+
+                return false;                
+            }
+        }
+
+        public void DeleteArea(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var areaToDelete = context.TopicAreas.FirstOrDefault(x => x.TopicAreaId == id);
+                areaToDelete.IsDeleted = true;
+
+                context.SaveChanges();
+            }
         }
     }
 }
