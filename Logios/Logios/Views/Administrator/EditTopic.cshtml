@@ -28,6 +28,7 @@
                     <div class="col-md-9">
                         @Html.DropDownListFor(m => m.TopicArea.TopicAreaId, Model.TopicArea.ComboTopicAreas, "Elija una opción...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.TopicArea.TopicAreaId, null, new { @class = "text-danger" })
+                        <input type="hidden" id="TopicArea_Description" name="TopicArea.Description" value="a" />
                     </div>
                 </div>                                
 

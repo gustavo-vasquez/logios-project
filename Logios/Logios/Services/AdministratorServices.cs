@@ -244,8 +244,7 @@ namespace Logios.Services
             using (var context = new ApplicationDbContext())
             {
                 try
-                {
-                    context.TopicAreaTopics.First(x => x.TopicId == id);
+                {                    
                     context.Exercises.First(e => e.Topic.TopicId == id);                    
                 }
                 catch
