@@ -186,6 +186,7 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="DTOs\ExerciseDTO.cs" />
+    <Compile Include="DTOs\TopicAreaDTO.cs" />
     <Compile Include="DTOs\TopicDTO.cs" />
     <Compile Include="DTOs\UserBadgesDTO.cs" />
     <Compile Include="Entities\ApplicationDbContext.cs" />
@@ -223,6 +224,10 @@
     <Compile Include="Migrations\201605290427203_AddIsDeletedToTopic.Designer.cs">
       <DependentUpon>201605290427203_AddIsDeletedToTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606021923298_AddIsDeletedToTopicArea.cs" />
+    <Compile Include="Migrations\201606021923298_AddIsDeletedToTopicArea.Designer.cs">
+      <DependentUpon>201606021923298_AddIsDeletedToTopicArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
@@ -256,7 +261,9 @@
     <Compile Include="Migrations\DataGenerators\TrophyDataGenerator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\AreaViewModel.cs" />
     <Compile Include="Models\CreateExerciseViewModel.cs" />
+    <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
     <Compile Include="Models\ExercisesByAreaViewModel.cs" />
@@ -265,6 +272,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReportViewModel.cs" />
     <Compile Include="Models\TopicAreaViewModel.cs" />
+    <Compile Include="Models\TopicPanelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdministratorServices.cs" />
     <Compile Include="Services\ExerciseServices.cs" />
@@ -326,6 +334,9 @@
     <Content Include="Views\Trophies\Edit.cshtml" />
     <Content Include="Views\Trophies\Index.cshtml" />
     <Content Include="Views\RolesAdmin\_Roles.cshtml" />
+    <Content Include="Views\TopicArea\_TopicAreas.cshtml" />
+    <Content Include="Views\TopicArea\CreateArea.cshtml" />
+    <Content Include="Views\TopicArea\EditArea.cshtml" />
     <Content Include="Views\Manage\ChangeName.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\HoldOn.min.css" />
@@ -617,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605290427203_AddIsDeletedToTopic.resx">
       <DependentUpon>201605290427203_AddIsDeletedToTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606021923298_AddIsDeletedToTopicArea.resx">
+      <DependentUpon>201606021923298_AddIsDeletedToTopicArea.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

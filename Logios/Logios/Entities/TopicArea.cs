@@ -9,6 +9,7 @@ namespace Logios.Entities
     {
         public int TopicAreaId { get; set; }
         public string Description { get; set; }
+        public bool IsDeleted { get; set; }
 
         public List<TopicAreaTopic> TopicAreaTopic { get; set; }
     }

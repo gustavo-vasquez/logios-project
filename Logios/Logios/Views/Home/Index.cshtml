@@ -3,11 +3,16 @@
     ViewBag.Title = "Logios - Sapere aude";
 }
 
-<div class="wrapper clearfix">
-
-    @Html.Partial("_LandingPage")
-
-</div>
+@if (!Request.IsAuthenticated)
+{
+    <div class="wrapper clearfix">
+        @Html.Partial("_LandingPage")
+    </div>
+}
+else
+{
+    <div class="text-center" style="padding-top: 60px; font-family: UncialAntiqua-regular; font-size: 80px;"><p>Logios</p></div>
+}
 
 <div class="jumbotron padding-zero exercise-search-box">
     @using (Ajax.BeginForm(

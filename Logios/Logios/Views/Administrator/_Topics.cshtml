@@ -1,16 +1,16 @@
-﻿@model IEnumerable<Logios.Entities.Topic>
+﻿@model IEnumerable<Logios.Models.TopicPanelViewModel>
 
 @{
-    WebGrid topicList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdTopics");    
+    WebGrid topicList = new WebGrid(Model, canPage: true, rowsPerPage: 10, ajaxUpdateContainerId: "createdTopics");    
 }
 
-<h2>Tópicos existentes</h2>
+<h2>Temáticas existentes</h2>
 <br />
 
 <div class="row">
-    <div class="col-md-3">
-        <a href="@Url.Action("CreateTopic")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear tópico</a>
-    </div>
+    <div class="col-md-2">
+        <a href="@Url.Action("CreateTopic")" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Crear temática</a>
+    </div>    
 </div>
 <br />
 
@@ -28,9 +28,10 @@
         nextText: "Siguiente >",
         lastText: "Último >>",
 
-        columns: topicList.Columns(                        
+        columns: topicList.Columns(
                         topicList.Column("TopicId", canSort: false, header: "ID"),
-                        topicList.Column("Description", canSort: false, header: "Descripción"),                        
+                        topicList.Column("Description", canSort: false, header: "Descripción"),
+                        topicList.Column("Area", canSort: false, header: "Área"),
                         topicList.Column("TopicId", canSort: false, header: "Acciones",
                                 format: @<text>
                                             <a href="@Url.Action("EditTopic", new { id = @item.TopicId })" class="btn btn-xs btn-success">

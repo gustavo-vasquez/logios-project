@@ -112,67 +112,71 @@ namespace Logios.Controllers
 
         public ActionResult CreateTopic()
         {
-            return View();
+            var model = new TopicViewModel { TopicArea = new TopicAreaDTO() };
+            model.TopicArea.ComboTopicAreas = adminServices.GetTopicAreas();
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateTopic(TopicDTO model)
+        public ActionResult CreateTopic(TopicViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if(!adminServices.CheckTopicExist(model.Description))
+                    if(!adminServices.TopicExist(model.Topic.Description))
                     {
-                        adminServices.CreateNewTopic(model.Description);
+                        adminServices.CreateNewTopic(model.Topic.Description, model.TopicArea.TopicAreaId);
                         return RedirectToAction("ControlPanel", "Administrator");
                     }
                     else
                     {
-                        ModelState.AddModelError("Description", "- La temática escrita ya existe.");
+                        ModelState.AddModelError("Topic.Description", "- La temática escrita ya existe.");
+                        model.TopicArea.ComboTopicAreas = adminServices.GetTopicAreas();
                         return View(model);
                     }                    
                 }
 
-                return View(model);
+                throw new Exception();
             }
-            catch(Exception ex)
+            catch
             {
-                return Content("<script>alert('" + ex.Message + "');</script>");
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
             }
         }
 
         public ActionResult EditTopic(int id)
-        {
-            return View(adminServices.GetTopicById(id));
+        {            
+            return View(adminServices.GetTopicModelById(id));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditTopic(TopicDTO model)
+        public ActionResult EditTopic(TopicViewModel model)
         {
-            try
-            {
+            //try
+            //{
                 if(ModelState.IsValid)
                 {
-                    if(!adminServices.CheckTopicExist(model.Description))
+                    if(!adminServices.TopicExist(model.Topic.Description, model.Topic.TopicId))
                     {
                         adminServices.EditThisTopic(model);
                         return RedirectToAction("ControlPanel", "Administrator");
                     }
                     else
                     {
-                        ModelState.AddModelError("Description", "- La temática escrita ya existe.");
+                        ModelState.AddModelError("Topic.Description", "- La temática escrita ya existe.");
                         return View(model);
                     }
                 }
 
                 return View(model);
-            }            
-            catch
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
-            }            
+            //}            
+            //catch
+            //{
+            //    return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
+            //}            
         }
 
         public ActionResult DeleteTopic(int? id)
@@ -182,7 +186,7 @@ namespace Logios.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var topic = adminServices.GetTopicById(Convert.ToInt32(id));
+            var topic = adminServices.GetTopicById(id);
 
             if(topic == null)
             {
@@ -201,6 +205,11 @@ namespace Logios.Controllers
                 if(id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                if (!adminServices.CanDeleteTopic(Convert.ToInt32(id)))
+                {
+                    return Json(new { Message = "No se puede eliminar esta temática porque tiene al menos un ejercicio asignado." });
                 }
 
                 adminServices.DeleteTopic(id);
