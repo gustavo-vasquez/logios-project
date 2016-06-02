@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title | Logios</title>
     @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.gotop.min.js")
 </head>
 <body>
     <noscript>
@@ -64,9 +68,6 @@
         <p><strong>AVISO: </strong> Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.</p>
         <p>Al continuar navegando entendemos que aceptas el uso de cookies. <a href="#" class="alert-link">Más información.</a></p>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/jquery.gotop.min.js")
     <script>$('#goTop').goTop({ appear: 20 });</script>
     @RenderSection("scripts", required: false)
 </body>

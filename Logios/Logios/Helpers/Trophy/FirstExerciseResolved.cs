@@ -15,7 +15,9 @@ namespace Logios.Helpers.Trophy
             using (var context = new ApplicationDbContext())
             {
                 var hasResolvedAnExercise = context.UserExercise.Any(x => x.UserId == userId);
-                var doesntHaveTheTrophy = !context.UserTrophies.Any(x => x.Trophy.Description == TrophyDescription);
+                var doesntHaveTheTrophy = !context.UserTrophies
+                                                      .Any(x => x.Trophy.Description == TrophyDescription
+                                                             && x.UserId == userId);
 
                 if (hasResolvedAnExercise && doesntHaveTheTrophy)
                 {

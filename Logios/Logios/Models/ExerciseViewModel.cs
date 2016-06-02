@@ -14,5 +14,6 @@ namespace Logios.Models
         public bool isLast { get; set; }
         public int? backExerciseId { get; set; }
         public int? nextExerciseId { get; set; }
+        public Trophy NewTrophy { get; set; }
     }
 }
