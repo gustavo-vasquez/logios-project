@@ -1,4 +1,5 @@
 ﻿using Logios.Entities;
+using Logios.Enums;
 using Logios.Helpers.Trophy;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace Logios.Services
         {
             this.TrophyConditions = new Dictionary<string, ITrophyCondition>()
             {
-                { "Primer Trofeo", new FirstExerciseResolved() }
+                { Trophies.EruditoNovato, new FirstExerciseResolved() },
+                { Trophies.EruditoAvanzado, new FiveExercisesResolved() },
+                { Trophies.EruditoExperto, new TenExercisesResolved() }
             };
         }
 

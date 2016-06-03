@@ -120,14 +120,19 @@
                     <div class="modal-dialog vertical-align-center">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title text-center text-success"><b>¡Nuevo Trofeo! <span class="glyphicon glyphicon-ok-circle"></span></b></h3>
+                                <div class="text-center">
+                                    <img src="@Model.NewTrophy.Image" class="trophy-image" />
+                                </div>
                             </div>
                             <div class="modal-body text-center">
-                                <h4>¡Felicitaciones!</h4>
-                                <h4>Has obtenido el trofeo '@Model.NewTrophy.Description' que te otorga @Model.NewTrophy.Points puntos!.</h4>
+                                <h2 class="trophy-title">¡Felicitaciones!</h2>
+                                <h4>Has obtenido el trofeo <strong>@Model.NewTrophy.Description</strong> por @Model.NewTrophy.Reason, que te otorga @Model.NewTrophy.Points puntos!.</h4>
                             </div>
                             <div class="modal-footer">
                                 <div class="col-md-12">
+                                    <div class="col-md-9 col-md-pull-5">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Compartir en Twitter</button>
+                                    </div>
                                     <div class="col-md-3 pull-right">
                                         <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
                                     </div>
@@ -139,11 +144,16 @@
             </div>
 
             <script type="text/javascript">
-                var trophyModal = $('#trophyModal');
 
-                trophyModal.modal({
-                    show: true
-                })
+                function openTrophyModal() {
+                    var trophyModal = $('#trophyModal');
+
+                    trophyModal.modal({
+                        show: true
+                    });
+                }
+
+                openTrophyModal();
             </script>
         }
 

@@ -12,7 +12,30 @@ namespace Logios.Migrations.DataGenerators
         {
             var trophies = new List<Trophy>()
             {
-                new Trophy { TrophyId = 1, Description = "Primer Trofeo", Points = 20 }
+                new Trophy
+                {
+                    TrophyId = 1,
+                    Description = "Erudito Novato",
+                    Points = 5,
+                    Image = "/Content/images/trophys/laurel_bronze.svg",
+                    Reason = "resolver tu primer ejercicio sin ver el desarrollo"
+                },
+                new Trophy
+                {
+                    TrophyId = 2,
+                    Description = "Erudito Avanzado",
+                    Points = 10,
+                    Image = "/Content/images/trophys/laurel_plata.svg",
+                    Reason = "resolver cinco ejercicio sin ver el desarrollo"
+                },
+                new Trophy
+                {
+                    TrophyId = 3,
+                    Description = "Erudito Experto",
+                    Points = 15,
+                    Image = "/Content/images/trophys/laurel_oro.svg",
+                    Reason = "resolver diez ejercicio sin ver el desarrollo"
+                }
             };
 
             trophies.ForEach(t => context.Trophies.Add(t));

@@ -1,12 +1,4 @@
-﻿/*a.logo {
-    background: url(/content/images/LOGO_V2.0.svg) no-repeat top left;
-     display: block;
-     width: 150px;
-     height: 150px;
-     text-indent: -9999px;
-}*/
-
-html, 
+﻿html, 
 body {
     height: 100%;    
 }
@@ -106,6 +98,7 @@ body {
 
 .exercise-search-box {
     background-color: transparent;
+    padding-bottom: 0;
     margin: 0;
 }
 
@@ -129,6 +122,7 @@ div.topic-exercises-container h3 {
 
 #topicAreaSearchBox {
     background-color: transparent;
+    padding-bottom: 0;
 }
 
 .search-tag {
@@ -246,9 +240,15 @@ span.badge.resolved-exercises-header {
     float: right;
     font-size: 20px;
 }
-/*.wrs_container span {
-    text-transform: lowercase !important;
-}*/
+
+img.trophy-image {
+    height: 100px;
+    width: 100px;
+}
+
+.trophy-title {
+    margin-top: 0;
+}
 
 /*.sidebox-social {
     padding: 0 0 5px 0;
