@@ -28,8 +28,7 @@
                 </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Ejercicio 1", "Show", "Exercise", new { id = "1" }, null)</li>                    
+                <ul class="nav navbar-nav">                    
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>                        

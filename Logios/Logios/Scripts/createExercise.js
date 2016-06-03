@@ -5,19 +5,7 @@ var solutionEditor;
 $(document).ready(function () {
     $('#CreateForm').removeData('validator').removeData('unobtrusiveValidation');
     $.validator.setDefaults({ ignore: [] });
-    $.validator.unobtrusive.parse('#CreateForm');        
-
-    $("#stepTwo").click(function () {
-        scrollToAnchor('stepTwo');
-    });
-
-    $("#stepThree").click(function () {
-        scrollToAnchor('stepThree');
-    });
-
-    $("#backToStepOne").click(function () {
-        $('html,body').animate({ scrollTop: '0px' }, 'slow');
-    });    
+    $.validator.unobtrusive.parse('#CreateForm');            
 
     problemEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
@@ -46,11 +34,6 @@ $(document).ready(function () {
     });
     solutionEditor.insertInto(document.getElementById('solutionContainer'));    
 });
-
-function scrollToAnchor(idToGo) {
-    var aTag = $("a[name='" + idToGo + "']");
-    $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
-}
 
 function isNotEmpty(data) {
     return (data != "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>");

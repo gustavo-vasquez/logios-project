@@ -11,7 +11,7 @@ namespace Logios.Models
     public class EditExerciseViewModel
     {
         public ExerciseDTO Exercise { get; set; }
-        public Topic Topic { get; set; }
+        public TopicDTO Topic { get; set; }
         public IEnumerable<SelectListItem> ComboTopics { get; set; }
     }
 }

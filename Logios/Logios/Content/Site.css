@@ -69,6 +69,12 @@ footer {
     font-family: UncialAntiqua-regular;
 }
 
+.homeLogo {
+    padding-top: 60px;
+    font-family: UncialAntiqua-regular;
+    font-size: 80px;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;    

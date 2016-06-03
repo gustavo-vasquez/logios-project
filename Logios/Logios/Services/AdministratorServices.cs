@@ -78,7 +78,7 @@ namespace Logios.Services
             var exerciseCreated = context.Exercises.FirstOrDefault(e => e.ExerciseId == exerciseId);
             var model = new EditExerciseViewModel();
             var exercise = new ExerciseDTO();
-            var topic = new Topic();
+            var topic = new TopicDTO();
 
             exercise.Problem = exerciseCreated.Problem;
             exercise.Development = exerciseCreated.Development;

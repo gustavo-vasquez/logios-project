@@ -10,19 +10,7 @@ function serializeModel(data) {
 $(document).ready(function () {
     $('#EditForm').removeData('validator').removeData('unobtrusiveValidation');
     $.validator.setDefaults({ ignore: [] });
-    $.validator.unobtrusive.parse('#EditForm');
-
-    $("#stepTwo").click(function () {
-        scrollToAnchor('stepTwo');
-    });
-
-    $("#stepThree").click(function () {
-        scrollToAnchor('stepThree');
-    });
-
-    $("#backToStepOne").click(function () {
-        $('html,body').animate({ scrollTop: '0px' }, 'slow');
-    });
+    $.validator.unobtrusive.parse('#EditForm');    
 
     problemEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
@@ -54,11 +42,6 @@ $(document).ready(function () {
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
     solutionEditor.setMathML(dataModel.Solution);        
 });
-
-function scrollToAnchor(idToGo) {
-    var aTag = $("a[name='" + idToGo + "']");
-    $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
-}
 
 function passData() {
     $('#Exercise_Problem').val(problemEditor.getMathML());
