@@ -105,7 +105,12 @@ function deleteRole(roleId) {
                         alert("Error al procesar solicitud.");
                     },
                     success: function (response) {
-                        window.location.href = response.Url;
+                        if (response.Message != null) {
+                            alert(response.Message);
+                        }
+                        else {
+                            window.location.href = response.Url;
+                        }
                     }
                 })
             }

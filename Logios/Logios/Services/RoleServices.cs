@@ -12,13 +12,30 @@ namespace Logios.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                if (context.Roles.FirstOrDefault(r => r.Name == name) == null)
+                if (context.Roles.FirstOrDefault(r => r.Name.ToLower() == name.ToLower()) == null)
                 {
                     return false;
                 }
 
                 return true;
             }            
+        }
+
+        public bool CanDeleteRole(string id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                try
+                {
+                    context.Database.SqlQuery<int>("Select 1 from AspNetUserRoles where RoleId='" + id + "'").First<int>();
+                }
+                catch
+                {
+                    return true;
+                }
+
+                return false;
+            }
         }
     }
 }

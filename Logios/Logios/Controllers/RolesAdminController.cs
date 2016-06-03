@@ -215,12 +215,21 @@ namespace Logios.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
+
                 var role = await RoleManager.FindByIdAsync(id);
+
                 if (role == null)
                 {
                     return HttpNotFound();
                 }
+
+                if (!new RoleServices().CanDeleteRole(id))
+                {
+                    return Json(new { Message = "No se puede eliminar este rol porque tiene al menos un usuario asignado." });
+                }
+
                 IdentityResult result;
+
                 if (deleteUser != null)
                 {
                     result = await RoleManager.DeleteAsync(role);
@@ -229,12 +238,13 @@ namespace Logios.Controllers
                 {
                     result = await RoleManager.DeleteAsync(role);
                 }
+
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                //return RedirectToAction("Index");
+                
                 return Json(new { Url = "/Administrator/ControlPanel" });
             }
             return View();
