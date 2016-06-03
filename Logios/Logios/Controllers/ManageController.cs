@@ -35,9 +35,9 @@ namespace Logios.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -215,8 +215,35 @@ namespace Logios.Controllers
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
-
+        
+        //GET /Manage/ChangeName
+        public ActionResult ChangeName()
+        {
+            return View();
+        }
         //
+        
+        //POST /Manage/ChangeName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeName(ChangeUserNameViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                user.UserName = model.NewName;
+                
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Ha ocurrido un error.");
+            return View();
+        }
+
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
@@ -362,7 +389,8 @@ namespace Logios.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

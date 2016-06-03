@@ -61,7 +61,18 @@ namespace Logios.Models
         [Compare("NewPassword", ErrorMessage = "El campo Nueva contraseña y Confirmar no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
+    public class ChangeUserNameViewModel
+    {
 
+       
+        [Display(Name = "Usuario Actual")]
+        public string OldName { get; set; }
+
+        [Required(ErrorMessage = "El campo nuevo usuario es obligatorio.")]
+        [Display(Name = "Nuevo nombre de usuario")]
+        public string NewName { get; set; }
+
+    }
     public class AddPhoneNumberViewModel
     {
         [Required]
