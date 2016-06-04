@@ -64,7 +64,7 @@ footer {
 .homeLogo {
     padding-top: 60px;
     font-family: UncialAntiqua-regular;
-    font-size: 80px;
+    font-size: 90px;
 }
 
 body {
@@ -103,8 +103,8 @@ body {
 }
 
 .exercise-search-result {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 div.exercise-card div.thumbnail {
