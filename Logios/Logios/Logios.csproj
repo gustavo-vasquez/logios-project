@@ -302,6 +302,7 @@
     <Content Include="Content\images\logo_v3.1.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
+    <Content Include="Content\images\thumbnails\Polinomios.png" />
     <Content Include="Content\images\trophys\laurel_bronze.svg" />
     <Content Include="Content\images\trophys\laurel_oro.svg" />
     <Content Include="Content\images\trophys\laurel_plata.svg" />
@@ -464,7 +465,6 @@
     <Content Include="Views\Administrator\_DeleteExerciseResult.cshtml" />
     <Content Include="Views\Administrator\_DeleteForm.cshtml" />
     <Content Include="Views\TopicArea\ExercisesByArea.cshtml" />
-    <Resource Include="Content\images\thumbnails\Polinomios.png" />
     <Resource Include="Content\images\thumbnails\Derivadas.png" />
     <Content Include="Content\images\crunchify-follow-sprite.png" />
     <Content Include="Content\images\social-icons-sprite.png" />
