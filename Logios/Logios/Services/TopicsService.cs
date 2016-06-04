@@ -21,7 +21,7 @@ namespace Logios.Services
                 var result = new List<TopicDTO>();
                 topics.ForEach(t => result.Add(new TopicDTO { TopicId = t.TopicId, Description = t.Description }));
 
-                return result;
+                return result.OrderBy(r => r.Description);
             }
         }
 
