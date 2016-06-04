@@ -1,8 +1,17 @@
 ﻿// La variable userId esta definida en la vista y tiene el Id del usuario de Identity
 var parsedTopics = [],
-    searchForm;
+    searchForm,
+    KEYS = {
+        ENTER: 13,
+        BACKSPACE: 8,
+        DELETE: 46
+    };
 
 $(function () {
+    var searchInput = $('#searchInput'),
+        searchButton = $('#exerciseSearchButton'),
+        closingAutocomplete = false;
+
     $.ajax({
         url: '/Home/GetTopics',
         method: 'GET',
@@ -17,26 +26,52 @@ $(function () {
                             };
                         });
 
-        $('#searchInput').autocomplete({
+        searchInput.autocomplete({
             source: parsedTopics,
-            autoFocus: true,
+            delay: 50,
+            minLength: 0,
+            close: function()
+            {
+                closingAutocomplete = true;
+                setTimeout(function() { closingAutocomplete = false; }, 300);
+            },
             select: function (event, ui) {
                 var selectedTopic = ui.item;
+
+                event.preventDefault();
+                
                 $('input[name="topicId"]').val(selectedTopic.id);
+                $(this).val(selectedTopic.label);
+
+                searchButton.click();
+            }
+        });
+
+        searchInput.on('focus', function () {
+            if (!closingAutocomplete) {
+                $(this).autocomplete("search");
+            }                
+        });
+
+
+        searchInput.on('keyup', function (event) {
+            if (event.keyCode === KEYS.ENTER) {
+                searchForm.submit();
+            }
+        });
+
+        searchInput.on('keydown', function (event) {
+            //console.dir(event);
+            var newValue = event.target.value;
+
+            if ( (newValue.length === 0) && (event.keyCode === KEYS.BACKSPACE || event.keyCode === KEYS.DELETE) ) {
+                $(this).autocomplete("search");
             }
         });
     }
 
     // obtener el form
     searchForm = $('#exerciseSearchForm');
-
-    $('#searchInput').on('keyup', function (event) {
-        // 13 es el ENTER, esto es para que aprentando ENTER en el autocomplete lo mande de una
-        // y no haga falta apretar ENTER dos veces para mandar la búsqueda.
-        if (event.keyCode == 13) {
-            searchForm.submit();
-        }
-    });
 
     searchForm.submit(searchExercise);
 
