@@ -21,10 +21,12 @@
                             <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
                                 <h3>Ejercicio - @exercise.ExerciseId</h3>
                             </a>
-                            <p>@exercise.Description</p>
+                            <p class="exercise-description">@exercise.Description</p>
                         </div>
                     </div>
                 </div>
             }
+
+            @Scripts.Render("~/Scripts/exerciseResult.js")
         }        
 </div>

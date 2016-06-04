@@ -107,6 +107,12 @@ body {
     margin-bottom: 30px;
 }
 
+.exercise-description {
+    min-height: 40px;
+    max-height: 40px;
+    overflow: hidden;
+}
+
 div.exercise-card div.thumbnail {
     border-color: #999999;
 }

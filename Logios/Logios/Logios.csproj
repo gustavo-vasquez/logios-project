@@ -312,6 +312,7 @@
     <Content Include="Content\images\trophys\pergamino_bronze.svg" />
     <Content Include="Content\images\trophys\pergamino_oro.svg" />
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
+    <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
     <Content Include="Scripts\manage.js" />
