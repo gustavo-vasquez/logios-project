@@ -1,12 +1,4 @@
-﻿/*a.logo {
-    background: url(/content/images/LOGO_V2.0.svg) no-repeat top left;
-     display: block;
-     width: 150px;
-     height: 150px;
-     text-indent: -9999px;
-}*/
-
-html, 
+﻿html, 
 body {
     height: 100%;    
 }
@@ -106,13 +98,13 @@ body {
 
 .exercise-search-box {
     background-color: transparent;
+    padding-bottom: 0;
     margin: 0;
 }
 
 .exercise-search-result {
-    /* Same padding than Jumbotron from bootstrap */
-    padding-left: 60px;
-    padding-right: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 div.exercise-card div.thumbnail {
@@ -127,8 +119,10 @@ div.topic-exercises-container h3 {
     color: #033c73;
 }
 
-#topicAreaSearchBox {
+.topic-area-search-box {
     background-color: transparent;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 .search-tag {
@@ -246,9 +240,15 @@ span.badge.resolved-exercises-header {
     float: right;
     font-size: 20px;
 }
-/*.wrs_container span {
-    text-transform: lowercase !important;
-}*/
+
+img.trophy-image {
+    height: 100px;
+    width: 100px;
+}
+
+.trophy-title {
+    margin-top: 0;
+}
 
 /*.sidebox-social {
     padding: 0 0 5px 0;

@@ -196,10 +196,13 @@
     <Compile Include="Entities\TopicArea.cs" />
     <Compile Include="Entities\TopicAreaTopic.cs" />
     <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Enums\Trophies.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Trophy\FirstExerciseResolved.cs" />
+    <Compile Include="Helpers\Trophy\FiveExercisesResolved.cs" />
     <Compile Include="Helpers\Trophy\ITrophyCondition.cs" />
+    <Compile Include="Helpers\Trophy\TenExercisesResolved.cs" />
     <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.cs" />
     <Compile Include="Migrations\201605082205455_Remove_IdentityFromKeyFields.Designer.cs">
       <DependentUpon>201605082205455_Remove_IdentityFromKeyFields.cs</DependentUpon>
@@ -227,6 +230,10 @@
     <Compile Include="Migrations\201606021923298_AddIsDeletedToTopicArea.cs" />
     <Compile Include="Migrations\201606021923298_AddIsDeletedToTopicArea.Designer.cs">
       <DependentUpon>201606021923298_AddIsDeletedToTopicArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606030008541_AddReasonToTrophy.cs" />
+    <Compile Include="Migrations\201606030008541_AddReasonToTrophy.Designer.cs">
+      <DependentUpon>201606030008541_AddReasonToTrophy.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
@@ -631,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606021923298_AddIsDeletedToTopicArea.resx">
       <DependentUpon>201606021923298_AddIsDeletedToTopicArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606030008541_AddReasonToTrophy.resx">
+      <DependentUpon>201606030008541_AddReasonToTrophy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
