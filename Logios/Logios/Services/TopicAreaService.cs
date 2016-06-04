@@ -10,8 +10,11 @@ namespace Logios.Services
 {
     public class TopicAreaService
     {
+        private ExerciseServices ExerciseServices;
+
         public TopicAreaService()
         {
+            this.ExerciseServices = new ExerciseServices();
         }
 
         public TopicAreaViewModel GetAll()
@@ -46,7 +49,7 @@ namespace Logios.Services
             return result;
         }
 
-        public ExercisesByAreaViewModel GetExercisesByTopicArea(string topicAreaDescription)
+        public ExercisesByAreaViewModel GetExercisesByTopicArea(string userId, string topicAreaDescription)
         {
             var result = new ExercisesByAreaViewModel();
 
@@ -66,9 +69,7 @@ namespace Logios.Services
                 foreach (var topic in result.Topics)
                 {
                     var newViewModel = new ExerciseResultViewModel();
-                    newViewModel.Exercises = context.Exercises
-                                                        .Where(e => e.Topic.TopicId == topic.TopicId)
-                                                        .ToList();
+                    newViewModel.Exercises = this.ExerciseServices.GetExerciseDTOsByTopic(userId, topic.TopicId);
 
                     newViewModel.TopicImageUrl = string.Concat("/Content/images/thumbnails/", topic.Description, ".png");
 

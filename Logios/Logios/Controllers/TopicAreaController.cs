@@ -1,5 +1,6 @@
 ﻿using Logios.DTOs;
 using Logios.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace Logios.Controllers
 
         public ActionResult ExercisesByArea(string topicAreaDescription)
         {
-            var viewModel = this.TopicAreaService.GetExercisesByTopicArea(topicAreaDescription);
+            var userId = User.Identity.GetUserId();
+            var viewModel = this.TopicAreaService.GetExercisesByTopicArea(userId, topicAreaDescription);
             return View(viewModel);
         }
 

@@ -1,6 +1,8 @@
-﻿using Logios.Entities;
+﻿using Logios.DTOs;
+using Logios.Entities;
 using Logios.Models;
 using Logios.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +30,11 @@ namespace Logios.Controllers
             {
                 var id = int.Parse(topicId);
 
-                var exercises = ExerciseService.GetExercisesByTopic(id);
                 var topic = this.TopicService.GetById(id);
+                var exercises = ExerciseService.GetExercisesByTopic(id);
+                var userId = User.Identity.GetUserId();
 
-                resultsViewModel.Exercises = exercises;
+                resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsByTopic(userId, id);
                 resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png");
             }            
 

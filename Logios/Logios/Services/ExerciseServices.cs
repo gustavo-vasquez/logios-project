@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Logios.Extensions;
 using System.Net.Mail;
 using System.Net;
+using Logios.DTOs;
 
 namespace Logios.Services
 {
@@ -90,6 +91,28 @@ namespace Logios.Services
                                    .Where(e => e.Topic.TopicId == topicId)
                                    .ToList();
             return exercises;
+        }
+
+        public IEnumerable<ExerciseDTO> GetExerciseDTOsByTopic(string userId, int topicId)
+        {
+            var exercises = this.GetExercisesByTopic(topicId);
+
+            var exercisesDTOs = exercises
+                                    .Select(x => new ExerciseDTO
+                                    {
+                                        ExerciseId = x.ExerciseId,
+                                        Description = x.Description,
+                                        Problem = x.Problem,
+                                        Solution = x.Solution,
+                                        Development = x.Development
+                                    })
+                                    .ToList();
+
+            var userExercises = context.UserExercise.Where(x => x.UserId == userId);
+
+            exercisesDTOs.ForEach(x => x.Resolved = userExercises.Any(y => y.ExerciseId == x.ExerciseId));
+
+            return exercisesDTOs;
         }
 
         public bool CheckUserHasRecord(string userId,int id)

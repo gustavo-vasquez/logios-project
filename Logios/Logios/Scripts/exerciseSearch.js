@@ -94,6 +94,7 @@ function searchExercise() {
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {
         lastTopicIdInput.val(topicId);
+        $("#SearchBar").scrollToMe(50, 800);
         return;
     }
 
@@ -113,7 +114,7 @@ function searchExercise() {
 
     storage.set(userId, searches);
 
-    $("#SearchBar").scrollToMe();    
+    $("#SearchBar").scrollToMe(50, 800);
 }
 
 function generateSearchTags() {
@@ -227,8 +228,11 @@ function inputIsValid(searchValue) {
 }
 
 jQuery.fn.extend({
-    scrollToMe: function () {
-        var x = jQuery(this).offset().top - 100;
-        jQuery('html,body').animate({ scrollTop: x }, 400);
+    scrollToMe: function (offset, speed) {
+        var y = offset || 100;
+        var animationSpeed = speed || 400;
+        var position = jQuery(this).offset().top - y;
+
+        jQuery('html,body').animate({ scrollTop: position }, animationSpeed);
     }
 });

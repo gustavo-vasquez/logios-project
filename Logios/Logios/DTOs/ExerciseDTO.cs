@@ -8,6 +8,8 @@ namespace Logios.DTOs
 {
     public class ExerciseDTO
     {
+        public int ExerciseId { get; set; }
+
         [Required(ErrorMessage = "&diams; Debe escribir el enunciado.")]
         //[RegularExpression("^((?!\\b<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>\\b).)*$", ErrorMessage = "&diams; Debe escribir un problema a resolver.")]
         public string Problem { get; set; }
@@ -22,6 +24,8 @@ namespace Logios.DTOs
 
         [Required(ErrorMessage = "&diams; Debe escribir una descripción.")]
         //[RegularExpression("^((?!\\bHola\\b).)*$", ErrorMessage = "&diams; No puede escribir Hola.")]
-        public string Description { get; set; }        
+        public string Description { get; set; }
+
+        public bool Resolved { get; set; }
     }
 }
