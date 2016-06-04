@@ -112,6 +112,8 @@ function searchExercise() {
     });
 
     storage.set(userId, searches);
+
+    $("#SearchBar").scrollToMe();    
 }
 
 function generateSearchTags() {
@@ -223,3 +225,10 @@ function inputIsValid(searchValue) {
 
     return false;
 }
+
+jQuery.fn.extend({
+    scrollToMe: function () {
+        var x = jQuery(this).offset().top - 100;
+        jQuery('html,body').animate({ scrollTop: x }, 400);
+    }
+});
