@@ -174,8 +174,7 @@ function inputIsValid(searchValue) {
 
     // Generar el HMTL del alert y convertirlo en un objeto jQuery.
     var newAlert = $('<div id="badSearchAlert" class="alert alert-danger fade in">\
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\
-                        Búsqueda inválida\
+                        No hay coincidencias con la temática ingresada.\
                      </div>');
 
     // Agregar el cartel con efecto de fadeIn.
@@ -185,7 +184,7 @@ function inputIsValid(searchValue) {
         $('#badSearchAlert').fadeOut('slow', function () {
             $('#badSearchAlert').remove();
         });        
-    }, 2500);
+    }, 9500);
 
     return false;
 }
