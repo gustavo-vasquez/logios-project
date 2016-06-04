@@ -9,12 +9,9 @@ namespace Logios.Migrations.DataGenerators
     public class TopicAreaTopicDataGenerator : IDataGenerator
     {
         public void GenerateData(ApplicationDbContext context)
-        {
-            var topic1 = context.Topics.FirstOrDefault(x => x.Description == "Derivadas");
-            var topic2 = context.Topics.FirstOrDefault(x => x.Description == "Polinomios");
-            var topic3 = context.Topics.FirstOrDefault(x => x.Description == "Integrales");
-            var topicArea1 = context.TopicAreas.FirstOrDefault(x => x.Description == "Algebra");
-            var topicArea2 = context.TopicAreas.FirstOrDefault(x => x.Description == "Analisis Matematico");
+        {            
+            var topic1 = context.Topics.FirstOrDefault(x => x.Description == "Polinomios");            
+            var topicArea1 = context.TopicAreas.FirstOrDefault(x => x.Description == "Algebra");            
 
             var newTopicAreaTopics = new List<TopicAreaTopic>()
             {
@@ -24,21 +21,7 @@ namespace Logios.Migrations.DataGenerators
                     Topic = topic1,
                     TopicArea = topicArea1,
                     TopicAreaId = topicArea1.TopicAreaId
-                },
-                new TopicAreaTopic()
-                {
-                    TopicId = topic2.TopicId,
-                    Topic = topic2,
-                    TopicArea = topicArea1,
-                    TopicAreaId = topicArea1.TopicAreaId
-                },
-                new TopicAreaTopic()
-                {
-                    TopicId = topic3.TopicId,
-                    Topic = topic3,
-                    TopicArea = topicArea2,
-                    TopicAreaId = topicArea2.TopicAreaId
-                }
+                }                
             };
 
             newTopicAreaTopics.ForEach(t => context.TopicAreaTopics.Add(t));

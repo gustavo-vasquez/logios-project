@@ -55,8 +55,6 @@ footer {
     margin:10px;
 }
 
-
-
 #logo_letras {
     font-family: UncialAntiqua-regular;
 }
@@ -248,6 +246,10 @@ img.trophy-image {
 
 .trophy-title {
     margin-top: 0;
+}
+
+.text-default {
+    color: black;
 }
 
 /*.sidebox-social {

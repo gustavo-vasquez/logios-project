@@ -31,7 +31,7 @@
         columns: topicList.Columns(
                         topicList.Column("TopicId", canSort: false, header: "ID"),
                         topicList.Column("Description", canSort: false, header: "Descripción"),
-                        topicList.Column("Area", canSort: false, header: "Área"),
+                        topicList.Column("Area", canSort: false, header: "Corresponde al área"),
                         topicList.Column("TopicId", canSort: false, header: "Acciones",
                                 format: @<text>
                                             <a href="@Url.Action("EditTopic", new { id = @item.TopicId })" class="btn btn-xs btn-success">

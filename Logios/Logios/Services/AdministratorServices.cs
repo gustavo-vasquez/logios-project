@@ -155,7 +155,7 @@ namespace Logios.Services
                             where t.IsDeleted == false
                             select new TopicPanelViewModel { TopicId = t.TopicId, Description = t.Description, Area = a.Description };
 
-            return topicData;
+            return topicData.OrderBy(x => x.Description);
         }
 
         public IEnumerable<SelectListItem> GetTopicAreas()
