@@ -8,7 +8,7 @@
     <b>EJERCICIO Nº @Model.Exercise.ExerciseId &nbsp;</b>    
 </h1>
 <span>Temática: </span>
-<span class="label label-lg label-default">@Model.topicName</span>
+<span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">
     <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
     <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -129,11 +129,12 @@
                                 <h4>Has obtenido el trofeo <strong>@Model.NewTrophy.Description</strong> por @Model.NewTrophy.Reason, que te otorga @Model.NewTrophy.Points puntos!.</h4>
                             </div>
                             <div class="modal-footer">
-                                <div class="col-md-12">
-                                    <div class="col-md-9 col-md-pull-5">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Compartir en Twitter</button>
+                                <div>
+                                    <div class="col-md-9 col-md-pull-6">
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="¡He ganado el trofeo @Model.NewTrophy.Description en Logios! Tu también puedes ganarlo, ¡anímate!" data-size="large">Tweet</a>
+                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>    
                                     </div>
-                                    <div class="col-md-3 pull-right">
+                                    <div class="col-md-3 col-md-pull-1">
                                         <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
                                     </div>
                                 </div>

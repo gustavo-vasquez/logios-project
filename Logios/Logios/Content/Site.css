@@ -105,6 +105,11 @@ body {
     margin-bottom: 30px;
 }
 
+.exercise-title {
+    max-height: 26px;
+    overflow: hidden;
+}
+
 .exercise-description {
     min-height: 40px;
     max-height: 40px;

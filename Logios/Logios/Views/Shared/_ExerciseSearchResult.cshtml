@@ -1,6 +1,6 @@
 ﻿@model Logios.Models.ExerciseResultViewModel
 
-<div class="row vertical-space-2">
+<div class="row vertical-space-1">
         @if (Model.Exercises.Count() == 0)
         {
             <div class="col-xs-12">
@@ -20,7 +20,14 @@
                         </a>
                         <div class="caption">
                             <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
-                                <h3>Ejercicio - @exercise.ExerciseId</h3>
+                                @if (exercise.Resolved)
+                                {
+                                    <h3 class="exercise-title text-success">Ejercicio - @exercise.ExerciseId <span class="glyphicon glyphicon-ok"></span></h3>
+                                }
+                                else
+                                {
+                                    <h3 class="exercise-title">Ejercicio - @exercise.ExerciseId</h3>
+                                }
                             </a>
                             <p class="exercise-description">@exercise.Description</p>
                         </div>
