@@ -8,7 +8,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/jquery.gotop.min.js")
+    @Scripts.Render("~/Scripts/jquery.gotop.min.js")    
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();            
+        });
+    </script>
 </head>
 <body>
     <noscript>
@@ -24,7 +29,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="@Url.Action("Index", "Home")">
-                    <img id="logo" src='@Url.Content("/content/images/LOGO_V3.1.png")' title="Logios - Sapere aude" />
+                    <img id="logo" src='@Url.Content("/content/images/LOGO_V3.1.png")' data-toggle="tooltip" data-placement="bottom" title="Logios - Sapere aude" />
                 </a>
             </div>
             <div class="navbar-collapse collapse">

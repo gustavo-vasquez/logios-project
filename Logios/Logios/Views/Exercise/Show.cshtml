@@ -11,8 +11,8 @@
 <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">
     <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
-    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 <hr class="vertical-space-3" />
 

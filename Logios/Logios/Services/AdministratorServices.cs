@@ -181,13 +181,7 @@ namespace Logios.Services
         }
 
         public TopicDTO GetTopicById(int? id)
-        {
-            //TopicViewModel topicToEdit = new TopicViewModel { Topic = new TopicDTO() };
-            //Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
-            //topicToEdit.Topic.TopicId = topicDB.TopicId;
-            //topicToEdit.Topic.Description = topicDB.Description;
-
-            //return topicToEdit;
+        {            
             Topic topicDB = context.Topics.FirstOrDefault(t => t.TopicId == id);
             TopicDTO topic = new TopicDTO();
             topic.TopicId = topicDB.TopicId;
@@ -231,10 +225,8 @@ namespace Logios.Services
         public void EditThisTopic(TopicViewModel model)
         {            
             Topic topicToEdit = context.Topics.FirstOrDefault(t => t.TopicId == model.Topic.TopicId);
-            topicToEdit.Description = model.Topic.Description;
-
-            TopicAreaTopic areaTopic = context.TopicAreaTopics.FirstOrDefault(x => x.TopicId == model.Topic.TopicId);
-            areaTopic.TopicAreaId = model.TopicArea.TopicAreaId;
+            topicToEdit.Description = model.Topic.Description;            
+            context.Database.ExecuteSqlCommand("Update TopicAreaTopics set TopicAreaId = " + model.TopicArea.TopicAreaId + " where TopicId = " + model.Topic.TopicId);
 
             context.SaveChanges();            
         }

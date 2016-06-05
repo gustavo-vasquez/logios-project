@@ -8,13 +8,13 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="@Url.Action("Index", "Manage")" title="Ver perfil"><span class="glyphicon glyphicon-user"></span> Bienvenido: @User.Identity.GetUserName()</a>
+                <a href="@Url.Action("Index", "Manage")" data-toggle="tooltip" data-placement="bottom" title="Ver perfil"><span class="glyphicon glyphicon-user"></span> Bienvenido: @User.Identity.GetUserName()</a>
             </li>
             <li>
-                <a href="" title="Puntos"><span class="glyphicon glyphicon-screenshot"></span> @User.Identity.GetCurrentPoints(User.Identity.GetUserId())</a>
+                <a href="" data-toggle="tooltip" data-placement="bottom" title="Puntos"><span class="glyphicon glyphicon-screenshot"></span> @User.Identity.GetCurrentPoints(User.Identity.GetUserId())</a>
             </li>
             <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
+                <a href="javascript:document.getElementById('logoutForm').submit()" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"><span class="glyphicon glyphicon-log-out"></span> Salir</a>
             </li>
         </ul>
     }
