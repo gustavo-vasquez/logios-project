@@ -22,21 +22,19 @@ namespace Logios.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Search(string topicId)
+        public PartialViewResult Search(string topicDescription)
         {
             var resultsViewModel = new ExerciseResultViewModel();
 
-            if (!string.IsNullOrEmpty(topicId))
+            if (!string.IsNullOrEmpty(topicDescription))
             {
-                var id = int.Parse(topicId);
-
-                var topic = this.TopicService.GetById(id);
-                var exercises = ExerciseService.GetExercisesByTopic(id);
+                var topic = TopicService.GetByDescription(topicDescription);
+                var exercises = ExerciseService.GetExercisesByTopic(topicDescription);
                 var userId = User.Identity.GetUserId();
 
-                resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsByTopic(userId, id);
+                resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsByTopic(userId, topic.TopicId);
                 resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png");
-            }            
+            }
 
             return PartialView("_ExerciseSearchResult", resultsViewModel);
         }

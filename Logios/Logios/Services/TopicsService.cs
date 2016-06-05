@@ -29,7 +29,16 @@ namespace Logios.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                var result = context.Topics.Where(t => t.TopicId == id).FirstOrDefault();
+                var result = context.Topics.First(t => t.TopicId == id);
+                return result;
+            }
+        }
+
+        public Topic GetByDescription(string description)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var result = context.Topics.First(t => t.Description == description);
                 return result;
             }
         }

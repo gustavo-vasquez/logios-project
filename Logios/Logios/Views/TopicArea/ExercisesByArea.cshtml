@@ -9,7 +9,7 @@
 @for (int i = 0; i < topics.Count; i++)
 {
     <div class="topic-exercises-container">
-        <h3>@topics[i].Description</h3>
+        <h3 class="text-logios">@topics[i].Description</h3>
         <div>
             @{Html.RenderPartial("_ExerciseSearchResult", exerciseResults[i]);}
         </div>

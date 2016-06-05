@@ -83,12 +83,15 @@ namespace Logios.Services
 
         public IEnumerable<Exercise> GetExercisesByTopic(string topicDescription)
         {
-            var topicId = context.Topics
-                                    .FirstOrDefault(x => topicDescription.EqualsIgnoreCase(x.Description))
-                                    .TopicId;
+            var topic = context.Topics.FirstOrDefault(x => x.Description == topicDescription);
+
+            if (topic == null)
+            {
+                throw new ArgumentException(string.Format("A Topic with description '{0}' was not found", topicDescription));
+            }
 
             var exercises = context.Exercises
-                                   .Where(e => e.Topic.TopicId == topicId)
+                                   .Where(e => e.Topic.TopicId == topic.TopicId)
                                    .ToList();
             return exercises;
         }

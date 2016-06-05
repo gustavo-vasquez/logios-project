@@ -1,5 +1,5 @@
 ﻿// La variable userId esta definida en la vista y tiene el Id del usuario de Identity
-var parsedTopics = [],
+var topics = [],
     searchForm,
     KEYS = {
         ENTER: 13,
@@ -19,15 +19,12 @@ $(function () {
     });
 
     function configureAutocomplete(rawTopics) {
-        parsedTopics = $.map(rawTopics, function (topic, index) {
-                            return {
-                                label: topic.Description,
-                                id: topic.TopicId
-                            };
-                        });
+        topics = $.map(rawTopics, function (topic, index) {
+                     return topic.Description;
+                 });
 
         searchInput.autocomplete({
-            source: parsedTopics,
+            source: topics,
             delay: 50,
             minLength: 0,
             close: function()
@@ -36,13 +33,11 @@ $(function () {
                 setTimeout(function() { closingAutocomplete = false; }, 300);
             },
             select: function (event, ui) {
-                var selectedTopic = ui.item;
-
                 event.preventDefault();
-                
-                $('input[name="topicId"]').val(selectedTopic.id);
-                $(this).val(selectedTopic.label);
 
+                var selectedTopic = ui.item.label;
+                
+                $(this).val(selectedTopic);
                 searchButton.click();
             }
         });
@@ -80,32 +75,32 @@ $(function () {
 
 function searchExercise() {
     // Guardarme los dos campos del formulario
-    var searchBarValue = $('input#searchInput').val()
-    var topicId = parseInt($('input[name="topicId"]').val());
-    var lastTopicIdInput = $('input#lastTopicId');
-    var lastTopicId = parseInt($('input#lastTopicId').val());
-    var topicDescription = $('input#searchInput').val();
+    var searchInput = $('input#searchInput');
+    var lastTopicInput = $('input#lastTopic');
+    var resultArea = $("#SearchBar");
 
-    // Si quere buscar lo mismo dos veces seguidas, no hago nada
-    if (!inputIsValid(searchBarValue) || lastTopicId === topicId || isNaN(topicId)) {
+    var topic = searchInput.val();
+    var lastTopic = lastTopicInput.val();
+
+    // Si quere buscar lo mismo dos veces seguidas o lo que busca no es un tema válido, no hago nada
+    if (!inputIsValid(topic) || lastTopic === topic) {
         return false;
     }
+
+    // Actualizar el valor de la ultima busqueda realizada
+    lastTopicInput.val(topic);
     
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {
-        lastTopicIdInput.val(topicId);
-        $("#SearchBar").scrollToMe(50, 800);
+        resultArea.scrollToMe(50, 800);
         return;
     }
 
     // Sacar el registro de busquedas del usuario de local storage
     var searches = storage.get(userId);
 
-    // Actualizar el valor de la ultima busqueda realizada
-    lastTopicIdInput.val(topicId);
-
     // Sumarle uno a la lista de busquedas realizadas por el usuario, validar si es la primera vez que busca eso
-    addOneToSearchCount(searches, topicDescription, topicId);
+    addOneToSearchCount(searches, topic);
 
     // Ordernar el array y actualizar el local storage
     searches.sort(function (search1, search2) {
@@ -114,7 +109,7 @@ function searchExercise() {
 
     storage.set(userId, searches);
 
-    $("#SearchBar").scrollToMe(50, 800);
+    resultArea.scrollToMe(50, 800);
 }
 
 function generateSearchTags() {
@@ -159,8 +154,8 @@ function getTopicByDescription(topicDescription) {
     return theSearch;
 }
 
-function addOneToSearchCount(searches, topicDescription, topicId) {
-    if (topicDescription === '' || isNaN(topicId)) {
+function addOneToSearchCount(searches, topicDescription) {
+    if (topicDescription === '') {
         return;
     }
 
@@ -177,7 +172,6 @@ function addOneToSearchCount(searches, topicDescription, topicId) {
     if (found === false) {
         searches.push({
             description: topicDescription,
-            id: topicId,
             searchCount: 1
         });
     }
@@ -195,13 +189,16 @@ function animateResults() {
 
 function inputIsValid(searchValue) {
     var alertElement = $('#badSearchAlert');
-
-    var topicLabels = $.map(parsedTopics, function (topic, index) {
-                                return topic.label;
-                            });
+    var topicIsValid = false;
 
     // Verificar si lo que pusieron en la barra de busqueda es uno de los temas que tenemos.
-    if (topicLabels.indexOf(searchValue) > -1) {
+    topics.forEach(function (topic) {
+        if (topic.toLowerCase() === searchValue.toLowerCase()) {
+            topicIsValid = true;
+        }
+    });
+
+    if (topicIsValid) {
         return true;
     }
 
