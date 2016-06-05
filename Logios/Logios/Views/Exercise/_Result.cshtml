@@ -1,8 +1,6 @@
 ﻿ @model Boolean?
 
-<script>        
-    $('#tweetBtn').attr('data-text', '¡Resolví un ejercicio de ' + $('#NameOfTopic').text() + ' en Logios! ¡Pruébalo ahora!');
-
+<script>            
     var resultModal = $('#resultModal')
 
     resultModal.modal({
@@ -36,12 +34,9 @@
                         <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
                     </div>
                     <div class="modal-footer">
-                        <div>
-                            <div class="col-md-9 col-md-pull-6">
-                                <a id="tweetBtn" href="https://twitter.com/share" class="twitter-share-button" data-text="" data-size="large"></a>
-                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>                                    
-                            </div>
-                            <div class="col-md-3 col-md-pull-1">
+                        <div class="col-md-12">                            
+                            @Html.Partial("_ShareButtons")                            
+                            <div class="col-md-3">
                                 <button type="button" class="btn btn-info" onclick="closeModal(true)">Cerrar</button>
                             </div>
                         </div>
