@@ -78,12 +78,13 @@ function searchExercise() {
     var searchInput = $('input#searchInput');
     var lastTopicInput = $('input#lastTopic');
     var resultArea = $("#SearchBar");
+    var searchResults = $('.exercise-card').length > 0;
 
     var topic = searchInput.val();
     var lastTopic = lastTopicInput.val();
 
-    // Si quere buscar lo mismo dos veces seguidas o lo que busca no es un tema válido, no hago nada
-    if (!inputIsValid(topic) || lastTopic === topic) {
+    // Si quere buscar lo mismo dos veces seguidas y no hay resultados o lo que busca no es un tema válido, no hago nada
+    if (!inputIsValid(topic) || (lastTopic === topic && searchResults)) {
         return false;
     }
 
