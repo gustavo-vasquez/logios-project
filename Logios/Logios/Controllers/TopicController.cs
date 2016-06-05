@@ -1,5 +1,6 @@
 ﻿using Logios.Models;
 using Logios.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,11 @@ namespace Logios.Controllers
         // GET: Topic
         public ActionResult Index(int topicId)
         {
-            var exercises = this.ExerciseService.GetExercisesByTopic(topicId);
+            var userId = User.Identity.GetUserId();
             var topic = this.TopicService.GetById(topicId);
+
+            var exercises = this.ExerciseService.GetExerciseDTOsByTopic(userId, topicId);
+            
             var resultsViewModel = new ExerciseResultViewModel()
             {
                 Exercises = exercises,
