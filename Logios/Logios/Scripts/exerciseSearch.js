@@ -226,6 +226,9 @@ function inputIsValid(searchValue) {
     return false;
 }
 
+
+//Extensión de JQuery
+
 jQuery.fn.extend({
     scrollToMe: function () {
         var x = jQuery(this).offset().top - 100;
