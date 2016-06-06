@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Áreas temáticas";
 }
-<h1>Búsqueda por áreas temáticas</h1>
-<h4>Haz click en un área o tema para ver todos los ejercicios relacionados</h4>
+<h1 class="topic-area-statistics-title">Búsqueda por áreas temáticas</h1>
+<h4 class="vertical-space-1">Haz click en un área o tema para ver todos los ejercicios relacionados</h4>
 @{ int colNumber = 0; }
 @foreach (var topicArea in Model.TopicsByArea.Keys)
 {

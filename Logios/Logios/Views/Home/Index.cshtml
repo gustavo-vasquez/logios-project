@@ -14,7 +14,7 @@ else
     <div class="text-center homeLogo"><p>Logios</p></div>        
 }
 
-<div class="jumbotron padding-zero exercise-search-box">
+<div id="SearchArea" class="jumbotron padding-zero exercise-search-box">
     @using (Ajax.BeginForm(
                 "Search",
                 "Home",
@@ -36,18 +36,22 @@ else
             )
     )
     {
-        <div id="SearchBar" class="form-group">
+        <div class="form-group">
             <div class="input-group input-group-lg search-box">
                 <input type="hidden" id="lastTopic" />
+                <input type="hidden" id="lastCheck" />                
                 <input id="searchInput" name="topicDescription" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
                 <span class="input-group-btn">
                     <button id="exerciseSearchButton" class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
-        <div class="form-group">
-            <h4 id="search-tags">
+        <div class="form-group row">            
+            <h4 id="search-tags" class="col-md-9">
             </h4>
+            <div class="col-md-3 checkbox-inline">
+                <label style="cursor: pointer; font-weight: normal;">@Html.CheckBox("onlyNotResolved") Sólo mostrar ejercicios no resueltos</label>
+            </div>
         </div>
     }
 </div>

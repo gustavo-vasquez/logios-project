@@ -10,20 +10,16 @@ namespace Logios.DTOs
     {
         public int ExerciseId { get; set; }
 
-        [Required(ErrorMessage = "&diams; Debe escribir el enunciado.")]
-        //[RegularExpression("^((?!\\b<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>\\b).)*$", ErrorMessage = "&diams; Debe escribir un problema a resolver.")]
+        [Required(ErrorMessage = "&diams; Debe escribir el enunciado.")]        
         public string Problem { get; set; }
 
-        [Required(ErrorMessage = "&diams; Debe escribir el desarrollo.")]
-        //[RegularExpression("^((?!\b<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>\b).)*$", ErrorMessage = "&diams; Debe escribir el desarrollo.")]
+        [Required(ErrorMessage = "&diams; Debe escribir el desarrollo.")]        
         public string Development { get; set; }
 
-        [Required(ErrorMessage = "&diams; Debe escribir una solución.")]
-        //[RegularExpression("^((?!\\b<math xmlns=\"http://www.w3.org/1998/Math/MathML\"/>\\b).)*$", ErrorMessage = "&diams; Debe escribir la solución.")]
+        [Required(ErrorMessage = "&diams; Debe escribir una solución.")]        
         public string Solution { get; set; }
 
-        [Required(ErrorMessage = "&diams; Debe escribir una descripción.")]
-        //[RegularExpression("^((?!\\bHola\\b).)*$", ErrorMessage = "&diams; No puede escribir Hola.")]
+        [Required(ErrorMessage = "&diams; Debe escribir una descripción.")]        
         public string Description { get; set; }
 
         public bool Resolved { get; set; }

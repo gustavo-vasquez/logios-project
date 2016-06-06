@@ -118,6 +118,52 @@ namespace Logios.Services
             return exercisesDTOs;
         }
 
+        public IEnumerable<ExerciseDTO> GetExerciseDTOsCards(string userId, int topicId, bool onlyNotResolved)
+        {
+            var exercises = this.GetExercisesByTopic(topicId);
+            var userExercises = context.UserExercise.Where(x => x.UserId == userId);
+
+            if (onlyNotResolved)
+            {
+                List<ExerciseDTO> exercisesDTOs = new List<ExerciseDTO>();
+
+                foreach (var item in exercises)
+                {
+                    if (!userExercises.Any(x => x.ExerciseId == item.ExerciseId && x.UserId == userId))
+                    {
+                        exercisesDTOs.Add(new ExerciseDTO
+                        {
+                            ExerciseId = item.ExerciseId,
+                            Description = item.Description,
+                            Problem = item.Problem,
+                            Solution = item.Solution,
+                            Development = item.Development,
+                            Resolved = false
+                        });
+                    }
+                }
+
+                return exercisesDTOs;
+            }
+            else
+            {                
+                var exercisesDTOs = exercises
+                                        .Select(x => new ExerciseDTO
+                                        {
+                                            ExerciseId = x.ExerciseId,
+                                            Description = x.Description,
+                                            Problem = x.Problem,
+                                            Solution = x.Solution,
+                                            Development = x.Development
+                                        })
+                                        .ToList();
+
+                exercisesDTOs.ForEach(x => x.Resolved = userExercises.Any(y => y.ExerciseId == x.ExerciseId));
+
+                return exercisesDTOs;
+            }
+        }
+
         public bool CheckUserHasRecord(string userId,int id)
         {
             var isRecorded = context.UserExercise.Any(e => e.UserId == userId && e.ExerciseId == id);

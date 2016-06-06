@@ -104,19 +104,23 @@ function searchExercise() {
     // Guardarme los dos campos del formulario
     var searchInput = $('input#searchInput');
     var lastTopicInput = $('input#lastTopic');
-    var resultArea = $("#SearchBar");
+    var lastCheckInput = $('input#lastCheck');
+    var resultArea = $("#SearchArea");
     var searchResults = $('.exercise-card').length > 0;
 
     var topic = searchInput.val();
+    var check = ($("#onlyNotResolved").is(":checked")).toString();
     var lastTopic = lastTopicInput.val();
+    var lastCheck = lastCheckInput.val();
 
     // Si quere buscar lo mismo dos veces seguidas y no hay resultados o lo que busca no es un tema válido, no hago nada
-    if (!inputIsValid(topic) || (lastTopic === topic && searchResults)) {
+    if (!inputIsValid(topic) || (lastTopic === topic && searchResults && lastCheck === check)) {
         return false;
     }
 
     // Actualizar el valor de la ultima busqueda realizada
     lastTopicInput.val(topic);
+    lastCheckInput.val($("#onlyNotResolved").is(":checked"));
     
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {

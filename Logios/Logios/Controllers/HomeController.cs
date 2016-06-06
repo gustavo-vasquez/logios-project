@@ -22,7 +22,7 @@ namespace Logios.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Search(string topicDescription)
+        public PartialViewResult Search(string topicDescription, bool onlyNotResolved)
         {
             var resultsViewModel = new ExerciseResultViewModel();
 
@@ -32,7 +32,7 @@ namespace Logios.Controllers
                 var exercises = ExerciseService.GetExercisesByTopic(topicDescription);
                 var userId = User.Identity.GetUserId();
 
-                resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsByTopic(userId, topic.TopicId);
+                resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsCards(userId, topic.TopicId, onlyNotResolved);                
                 resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png");
             }
 
