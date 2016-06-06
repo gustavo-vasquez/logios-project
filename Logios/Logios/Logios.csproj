@@ -302,6 +302,9 @@
     <Content Include="Content\images\logo_v3.1.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
+    <Content Include="Content\images\share_social\1465195920_twitter_circle.png" />
+    <Content Include="Content\images\share_social\1465196475_google_circle.png" />
+    <Content Include="Content\images\share_social\1465196478_facebook_circle.png" />
     <Content Include="Content\images\thumbnails\Polinomios.png" />
     <Content Include="Content\images\trophys\laurel_bronze.svg" />
     <Content Include="Content\images\trophys\laurel_oro.svg" />
@@ -350,7 +353,6 @@
     <Content Include="Views\Exercise\_ShareButtons.cshtml" />
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
-    <Content Include="Content\HoldOn.min.css" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\LOGO_V2.0.svg" />
@@ -376,7 +378,6 @@
     <Content Include="Scripts\dc.js" />
     <Content Include="Scripts\editExercise.js" />
     <Content Include="Scripts\formulaEditor.js" />
-    <Content Include="Scripts\HoldOn.js" />
     <Content Include="Scripts\jquery.gotop.js" />
     <Content Include="Scripts\jquery.gotop.min.js" />
     <Content Include="Scripts\MathJax\config\Accessible-full.js" />

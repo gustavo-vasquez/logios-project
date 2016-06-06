@@ -1,15 +1,6 @@
 ﻿var solutionEditor;
 
-//HoldOn.open({
-//    theme: 'sk-circle',
-//    message: 'Cargando ejercicio...'
-//});
-
-$(document).ready(function () {    
-    //setTimeout(function () {
-    //    HoldOn.close();
-    //}, 5000);
-
+$(document).ready(function () {        
     MathJax.Hub.Config({
         //jax: ["input/MathML", "output/CommonHTML"],
 
