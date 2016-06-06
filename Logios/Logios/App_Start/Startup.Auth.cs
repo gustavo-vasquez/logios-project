@@ -87,7 +87,8 @@ namespace Logios
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = "711585564011-ic7qih1oqipn69p8l89dqveo1c8hi0d5.apps.googleusercontent.com",
-                ClientSecret = "YY4qfZEJ2tin6Y7XCbwEnLTT"
+                ClientSecret = "YY4qfZEJ2tin6Y7XCbwEnLTT",
+                CallbackPath = new PathString("/signin-google")
             });
         }
     }
