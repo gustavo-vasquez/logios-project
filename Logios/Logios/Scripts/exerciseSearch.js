@@ -12,6 +12,28 @@ $(function () {
         searchButton = $('#exerciseSearchButton'),
         closingAutocomplete = false;
 
+    // Deshabilitar los elementos de busqueda hasta que se carguen los temas
+    searchInput.attr('disabled', 'disabled');
+    searchButton.attr('disabled', 'disabled');
+
+    var tooltip = $('<img src="Content/images/ajax-loader.gif" alt="loading" style="height:20px;" /> <strong> Cargando la lista de temas, espera por favor&hellip; </strong>');
+
+    searchInput.tooltipster({
+        content: tooltip,
+        theme: 'tooltipster-logios'
+    });
+
+    searchInput.tooltipster('show');
+
+    //Para mostrarle el loading a Juan el miercoles, despues borrar.
+    //setTimeout(function () {
+    //    $.ajax({
+    //        url: '/Home/GetTopics',
+    //        method: 'GET',
+    //        success: configureAutocomplete
+    //    });
+    //}, 3000);
+
     $.ajax({
         url: '/Home/GetTopics',
         method: 'GET',
@@ -63,6 +85,11 @@ $(function () {
                 $(this).autocomplete("search");
             }
         });
+
+        searchButton.removeAttr('disabled');
+        searchInput.removeAttr('disabled');
+        searchInput.tooltipster('destroy');
+        searchInput.removeAttr('title');
     }
 
     // obtener el form

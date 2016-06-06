@@ -297,6 +297,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\logo_v3.0.png" />
     <Content Include="Content\images\LOGO_V3.0.svg" />
     <Content Include="Content\images\logo_v3.1.png" />
@@ -315,9 +316,12 @@
     <Content Include="Content\images\trophys\pergamino_bronze.svg" />
     <Content Include="Content\images\trophys\pergamino_oro.svg" />
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
+    <Content Include="Content\tooltipster-logios.css" />
+    <Content Include="Content\tooltipster.css" />
     <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
+    <Content Include="Scripts\jquery.tooltipster.min.js" />
     <Content Include="Scripts\manage.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
