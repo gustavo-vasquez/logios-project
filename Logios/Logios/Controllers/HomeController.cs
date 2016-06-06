@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Logios.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private ExerciseServices ExerciseService = new ExerciseServices();
