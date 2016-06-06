@@ -126,13 +126,13 @@
                             </div>
                             <div class="modal-body text-center">
                                 <h2 class="trophy-title">¡Felicitaciones!</h2>
-                                <h4>Has obtenido el trofeo <strong id="TrophyName">@Model.NewTrophy.Description</strong> por @Model.NewTrophy.Reason, que te otorga @Model.NewTrophy.Points puntos!.</h4>
+                                <h4>Has obtenido el trofeo <strong>@Model.NewTrophy.Description</strong> por @Model.NewTrophy.Reason, que te otorga @Model.NewTrophy.Points puntos!.</h4>
                             </div>
                             <div class="modal-footer">
                                 <div class="col-md-12">                                    
-                                    @Html.Partial("_ShareTrophy")                                    
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                                    @Html.Partial("_ShareTrophy", Model.NewTrophy.Description)                                    
+                                    <div class="col-md-3" style="padding-left: 25px; padding-top: 5px;">
+                                        <button type="button" class="btn btn-info btn-block" data-dismiss="modal">Aceptar</button>
                                     </div>
                                 </div>
                             </div>
