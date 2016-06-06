@@ -5,8 +5,12 @@ namespace Logios.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
-        [Display(Name = "E-mail")]
+        [Required(ErrorMessage = "Debes escribir un nombre")]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Debes escribir un mail valido")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
