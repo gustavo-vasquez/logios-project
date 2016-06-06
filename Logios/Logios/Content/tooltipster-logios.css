@@ -1,0 +1,13 @@
+﻿.tooltipster-logios {
+	border-radius: 5px; 
+	border: 1px solid #033c73;
+	background: rgba(3, 60, 115, 0.85);
+	color: #fff;
+}
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-logios .tooltipster-content {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 8px 10px;
+}

@@ -7,7 +7,10 @@
             if (element.innerHTML.length >= 56) {
                 var tooltipText = element.innerHTML;
                 $(element).html(element.innerHTML.substr(0, 56) + '&hellip;'); // &hellip es la entidad HTML de ellipsis (...)
-                $(element).attr('title', tooltipText);
+                $(element).tooltipster({
+                    content: tooltipText,
+                    theme: 'tooltipster-logios'
+                });
             }
         });
     }
