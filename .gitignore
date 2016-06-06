@@ -235,3 +235,7 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 /Logios/Logios/App_Data/Logios_Database.sql
+
+# App keys for social login
+/Logios/Logios/App_Start/Startup.Auth.cs
+

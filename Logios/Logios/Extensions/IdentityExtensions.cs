@@ -1,4 +1,6 @@
 ﻿using Logios.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +37,20 @@ namespace Logios.Extensions
                         points += trophyPoints;
                     }
 
-                    
+                try
+                {
                     points += context.UserProfiles.Find(userId).Points;
+                }
+                catch {
+                    var userProfile = new UserProfile { UserID = userId, Points = 0 };
+                    context.UserProfiles.Add(userProfile);
+                    context.SaveChanges();
+                    var userStore = new UserStore<ApplicationUser>(context);
+                    var userManager = new UserManager<ApplicationUser>(userStore);
+                    userManager.AddToRole(userId, "Usuario");
+                    points += context.UserProfiles.Find(userId).Points;
+                    
+                }
 
                 return points;
             }

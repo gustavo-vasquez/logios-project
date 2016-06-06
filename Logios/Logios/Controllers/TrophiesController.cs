@@ -10,6 +10,7 @@ using Logios.Entities;
 
 namespace Logios.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TrophiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
