@@ -5,16 +5,18 @@
 }
 
 <div class="vertical-space"></div>
-<div class="col-md-offset-3 col-md-6">
-    <h2>@ViewBag.Title.</h2>
+<div class="col-md-12">
+    <h2>@ViewBag.Title</h2>
+</div>
+<div class="col-md-6">    
     <div class="row">
         <div class="col-md-12">
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Complete los siguientes campos para iniciar sesión.</h4>
-                    <hr />
+                    <h4 class="topic-area-statistics-title vertical-space-1">Complete los siguientes campos para iniciar sesión.</h4>                    
+
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         <label for="UserName" class="col-md-4 control-label">Nombre de usuario:</label>
@@ -43,10 +45,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <p class="text-right">
-                            @Html.ActionLink("¿Aún no es usuario? Registrese ahora", "Register")
-                        </p>
+                    <div class="form-group col-md-12 pull-right">
+                        <div class="pull-right">
+                            @Html.ActionLink("¿Aún no es usuario? Registrese ahora", "Register", null, new { @class = "text-info"})
+                        </div>                        
                     </div>
                     @* Enable this once you have account confirmation enabled for password reset functionality
                         <p>
@@ -54,13 +56,13 @@
                         </p>*@
                 }
             </section>
-        </div>
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
+        </div>        
     </div>
+</div>
+<div class="col-md-6">    
+    <section id="socialLoginForm">
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </section>    
 </div>
 
 @section Scripts {

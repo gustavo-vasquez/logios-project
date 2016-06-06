@@ -49,9 +49,16 @@ else
         <div class="form-group row">            
             <h4 id="search-tags" class="col-md-9">
             </h4>
-            <div class="col-md-3 checkbox-inline">
-                <label style="cursor: pointer; font-weight: normal;">@Html.CheckBox("onlyNotResolved") Sólo mostrar ejercicios no resueltos</label>
-            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="col-md-3 checkbox-inline">
+                    <label style="cursor: pointer; font-weight: normal;">@Html.CheckBox("onlyNotResolved") Sólo mostrar ejercicios no resueltos</label>
+                </div>
+            }
+            else
+            {
+                @Html.CheckBox("onlyNotResolved", false, new { style = "visibility: hidden;" })
+            }
         </div>
     }
 </div>
