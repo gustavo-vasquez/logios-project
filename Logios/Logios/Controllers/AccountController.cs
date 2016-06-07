@@ -173,7 +173,8 @@ namespace Logios.Controllers
                 {
                     using (var context = new ApplicationDbContext())
                     {
-                        var userProfile = new UserProfile { UserID = user.Id, Points = 0 };
+                        string imagePath = new UserProfileServices().UploadAvatar(model, Server);
+                        var userProfile = new UserProfile { UserID = user.Id, Points = 0, ImagePath = imagePath };
                         context.UserProfiles.Add(userProfile);
                         context.SaveChanges();
                     }

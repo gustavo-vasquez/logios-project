@@ -41,15 +41,15 @@ namespace Logios.Extensions
                 {
                     points += context.UserProfiles.Find(userId).Points;
                 }
-                catch {
-                    var userProfile = new UserProfile { UserID = userId, Points = 0 };
+                catch
+                {
+                    var userProfile = new UserProfile { UserID = userId, Points = 0, ImagePath = "1465327785_profle.png" };
                     context.UserProfiles.Add(userProfile);
                     context.SaveChanges();
                     var userStore = new UserStore<ApplicationUser>(context);
                     var userManager = new UserManager<ApplicationUser>(userStore);
                     userManager.AddToRole(userId, "Usuario");
-                    points += context.UserProfiles.Find(userId).Points;
-                    
+                    points += context.UserProfiles.Find(userId).Points;                    
                 }
 
                 return points;

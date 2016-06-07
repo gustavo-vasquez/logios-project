@@ -14,5 +14,6 @@ namespace Logios.Entities
         public ApplicationUser ApplicationUser { get; set; }
 
         public int Points { get; set; }
+        public string ImagePath { get; set; }
     }
 }

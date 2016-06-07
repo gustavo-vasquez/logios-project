@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201606030008541_AddReasonToTrophy.Designer.cs">
       <DependentUpon>201606030008541_AddReasonToTrophy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.cs" />
+    <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.Designer.cs">
+      <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
     <Compile Include="Entities\Trophy.cs" />
@@ -290,6 +294,7 @@
     <Compile Include="Services\TopicsService.cs" />
     <Compile Include="Services\UserBadgesAndPointsServices.cs" />
     <Compile Include="Services\TrophyService.cs" />
+    <Compile Include="Services\UserProfileServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +305,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\1465327785_profle.png" />
     <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\avatars\1465327785_profle.png" />
     <Content Include="Content\images\login_social\social-Google-square2.png" />
     <Content Include="Content\images\login_social\social-Facebook-square2.png" />
     <Content Include="Content\images\login_social\social-Twitter-square2.png" />
@@ -654,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606030008541_AddReasonToTrophy.resx">
       <DependentUpon>201606030008541_AddReasonToTrophy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606071444135_AddImagePathToUserProfile.resx">
+      <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

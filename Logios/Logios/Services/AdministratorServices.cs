@@ -262,6 +262,6 @@ namespace Logios.Services
             topicToDelete.IsDeleted = true;
 
             context.SaveChanges();
-        }        
+        }                
     }
 }
