@@ -307,8 +307,8 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
     <Content Include="Content\images\share_social\1465195920_twitter_circle.png" />
-    <Content Include="Content\images\share_social\1465196475_google_circle.png" />
     <Content Include="Content\images\share_social\1465196478_facebook_circle.png" />
+    <Content Include="Content\images\share_social\1465196475_google_circle.png" />
     <Content Include="Content\images\thumbnails\Polinomios.png" />
     <Content Include="Content\images\trophys\laurel_bronze.svg" />
     <Content Include="Content\images\trophys\laurel_oro.svg" />
