@@ -60,7 +60,7 @@ namespace Logios.Controllers
         //    return PartialView("_Index", await UserManager.Users.ToListAsync());
         //}        
 
-        public async Task<ActionResult> UserTab()
+        public ActionResult UserTab()
         {
             var list = new SelectList(new[]
                            {
@@ -69,7 +69,8 @@ namespace Logios.Controllers
                            }, "value", "text", "asc");
             ViewData["list"] = list;
 
-            return PartialView("_UserTab", await UserManager.Users.OrderBy(u => u.UserName).ToListAsync());
+            //return PartialView("_UserTab", await UserManager.Users.OrderBy(u => u.UserName).ToListAsync());
+            return PartialView("_UserTab", new AdministratorServices().GetUsersList());
         }
 
         [HttpPost]

@@ -280,6 +280,7 @@
     <Compile Include="Models\ReportViewModel.cs" />
     <Compile Include="Models\TopicAreaViewModel.cs" />
     <Compile Include="Models\TopicPanelViewModel.cs" />
+    <Compile Include="Models\UsersListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdministratorServices.cs" />
     <Compile Include="Services\ExerciseServices.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\1465327785_profle.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\login_social\social-Google-square2.png" />
     <Content Include="Content\images\login_social\social-Facebook-square2.png" />

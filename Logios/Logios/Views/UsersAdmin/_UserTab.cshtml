@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Logios.Entities.ApplicationUser>
+﻿@model IEnumerable<Logios.Models.UsersListViewModel>
 
 @{
     WebGrid userList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "registeredUsers");
@@ -44,7 +44,8 @@
                         userList.Column("", canSort: false, header: "Nº", format: item => userCount = userCount + 1),
                         userList.Column("UserName", canSort: false, header: "Nombre de usuario"),
                         userList.Column("Email", canSort: false, header: "E-mail"),
-                        userList.Column("EmailConfirmed", canSort: false, header: "E-mail confirmado", format: (item) => (item.EmailConfirmed ? "Si" : "No")),
+                        //userList.Column("EmailConfirmed", canSort: false, header: "E-mail confirmado", format: (item) => (item.EmailConfirmed ? "Si" : "No")),
+                        userList.Column("Role", canSort: false, header: "Rol asignado"),
                         userList.Column("Id", canSort: false, header: "Acciones",
                                 format: @<text>
                                             <a href="@Url.Action("Edit", new { id = @item.Id })" class="btn btn-xs btn-success">

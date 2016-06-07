@@ -18,7 +18,7 @@ namespace Logios.Services
         {
             this.context.Dispose();
             this.context = new ApplicationDbContext();
-        }
+        }        
 
         public IEnumerable<SelectListItem> GetAllTopics()
         {
@@ -131,17 +131,25 @@ namespace Logios.Services
             }
         }
 
-        public IEnumerable<ApplicationUser> SortSelectListBy(string filter, ApplicationUserManager UserManager)
+        public IEnumerable<UsersListViewModel> GetUsersList()
         {
-            List<ApplicationUser> ordenedList;
+            return context.Database.SqlQuery<UsersListViewModel>("select u.Id, u.UserName, u.Email, r.Name as Role from AspNetUsers as u inner join AspNetUserRoles as ur on u.Id=ur.UserId inner join AspNetRoles as r on r.Id=ur.RoleId order by u.UserName asc").ToList();
+        }
+
+        public IEnumerable<UsersListViewModel> SortSelectListBy(string filter, ApplicationUserManager UserManager)
+        {
+            //List<ApplicationUser> ordenedList;
+            IEnumerable<UsersListViewModel> ordenedList;
 
             if(filter == "asc")
             {
-               ordenedList = UserManager.Users.OrderBy(u => u.UserName).ToList();
+                //ordenedList = UserManager.Users.OrderBy(u => u.UserName).ToList();
+                ordenedList = this.GetUsersList();
             }            
             else
             {
-                ordenedList = UserManager.Users.OrderByDescending(u => u.UserName).ToList();
+                //ordenedList = UserManager.Users.OrderByDescending(u => u.UserName).ToList();
+                ordenedList = context.Database.SqlQuery<UsersListViewModel>("select u.Id, u.UserName, u.Email, r.Name as Role from AspNetUsers as u inner join AspNetUserRoles as ur on u.Id=ur.UserId inner join AspNetRoles as r on r.Id=ur.RoleId order by u.UserName desc").ToList();
             }
 
             return ordenedList;
