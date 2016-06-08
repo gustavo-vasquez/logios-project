@@ -134,6 +134,10 @@ div.topic-exercises-container {
     padding-top: 0;
 }
 
+#search-tags {
+    margin-top: 5px;
+}
+
 .search-tag {
     margin-right: 10px;
     cursor: pointer;

@@ -98,29 +98,49 @@ $(function () {
     searchForm.submit(searchExercise);
 
     generateSearchTags();
+
+    // Configuracion para ocultar y mostrar ejercicios resueltos.
+    $('#showResolvedExercises').click(toggleResolvedExercises);
+
+    function toggleResolvedExercises(event) {
+        var checkboxIsTurnedOn = $(this).is(':checked'),
+            resolvedExercises = $('h3.exercise-title.text-success').parents('.exercise-card'),
+            lastTopicInput = $('input#lastTopic');
+
+        if (checkboxIsTurnedOn) {
+            resolvedExercises.each(function (index, element) {
+                $(element).show();
+            });
+        } else {
+            resolvedExercises.each(function (index, element) {
+                $(element).hide();
+            });
+        }
+
+        // Resetear el valor del ultimo tema buscado para que se pueda volver a realizar una busqueda.
+        lastTopicInput.val('');
+    }
 });
 
 function searchExercise() {
     // Guardarme los dos campos del formulario
     var searchInput = $('input#searchInput');
     var lastTopicInput = $('input#lastTopic');
-    var lastCheckInput = $('input#lastCheck');
+    var showResolvedCheckbox = $('input#showResolvedExercises');
     var resultArea = $("#SearchArea");
     var searchResults = $('.exercise-card').length > 0;
 
     var topic = searchInput.val();
-    var check = ($("#onlyNotResolved").is(":checked")).toString();
     var lastTopic = lastTopicInput.val();
-    var lastCheck = lastCheckInput.val();
 
     // Si quere buscar lo mismo dos veces seguidas y no hay resultados o lo que busca no es un tema válido, no hago nada
-    if (!inputIsValid(topic) || (lastTopic === topic && searchResults && lastCheck === check)) {
+    if (!inputIsValid(topic) || (lastTopic === topic && searchResults)) {
         return false;
     }
 
     // Actualizar el valor de la ultima busqueda realizada
     lastTopicInput.val(topic);
-    lastCheckInput.val($("#onlyNotResolved").is(":checked"));
+    showResolvedCheckbox.val(showResolvedCheckbox.is(':checked'));
     
     // Si no esta logueado solo lo mando, y no actualizo las labels de busqueda rapida.
     if (userId === '') {
