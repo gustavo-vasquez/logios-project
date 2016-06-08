@@ -303,6 +303,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\exerciseSwitch.css" />
     <Content Include="Content\images\1465327785_profle.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\avatars\1465327785_profle.png" />

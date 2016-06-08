@@ -47,17 +47,23 @@ else
             </div>
         </div>
         <div class="form-group row">            
-            <h4 id="search-tags" class="col-md-9">
+            <h4 id="search-tags" class="col-md-8">
             </h4>
             @if (Request.IsAuthenticated)
             {
-                <div class="col-md-3 checkbox-inline">
-                    <label style="cursor: pointer; font-weight: normal;">@Html.CheckBox("onlyNotResolved") Sólo mostrar ejercicios no resueltos</label>
+                <div class="col-md-4 switch-column">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="showResolvedExercises" class="onoffswitch-checkbox" id="showResolvedExercises" checked />
+                        <label class="onoffswitch-label" for="showResolvedExercises">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
                 </div>
             }
             else
             {
-                @Html.CheckBox("onlyNotResolved", false, new { style = "visibility: hidden;" })
+                @Html.CheckBox("showResolvedExercises", true, new { style = "visibility: hidden;" })
             }
         </div>
     }

@@ -118,12 +118,12 @@ namespace Logios.Services
             return exercisesDTOs;
         }
 
-        public IEnumerable<ExerciseDTO> GetExerciseDTOsCards(string userId, int topicId, bool onlyNotResolved)
+        public IEnumerable<ExerciseDTO> GetExerciseDTOsCards(string userId, int topicId, bool showResolvedExercises)
         {
             var exercises = this.GetExercisesByTopic(topicId);
             var userExercises = context.UserExercise.Where(x => x.UserId == userId);
 
-            if (onlyNotResolved)
+            if (!showResolvedExercises)
             {
                 List<ExerciseDTO> exercisesDTOs = new List<ExerciseDTO>();
 
