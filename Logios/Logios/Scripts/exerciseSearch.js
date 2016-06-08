@@ -109,11 +109,11 @@ $(function () {
 
         if (checkboxIsTurnedOn) {
             resolvedExercises.each(function (index, element) {
-                $(element).show();
+                $(element).fadeIn(600);
             });
         } else {
             resolvedExercises.each(function (index, element) {
-                $(element).hide();
+                $(element).fadeOut(600);
             });
         }
 
