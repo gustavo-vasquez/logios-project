@@ -12,11 +12,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/jquery.gotop.min.js")
     @Scripts.Render("~/Scripts/jquery.tooltipster.min.js")
-    <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();            
-        });
-    </script>
+    @Scripts.Render("~/Scripts/site.js")    
 </head>
 <body>
     <noscript>
@@ -74,8 +70,7 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <p><strong>AVISO: </strong> Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.</p>
         <p>Al continuar navegando entendemos que aceptas el uso de cookies. <a href="#" class="alert-link">Más información.</a></p>
-    </div>
-    <script>$('#goTop').goTop({ appear: 20 });</script>
+    </div>    
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -106,5 +106,19 @@ namespace Logios.Services
                 }                                                
             }
         }
+
+        public void ResetAvatar(string userId, HttpServerUtilityBase server)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var userProfile = context.UserProfiles.First(x => x.UserID == userId);
+                if(!String.IsNullOrEmpty(userProfile.ImagePath))
+                {
+                    File.Delete(server.MapPath("~/Content/images/avatars/") + userProfile.ImagePath);
+                    userProfile.ImagePath = defaultImage;
+                    context.SaveChanges();
+                }                
+            }
+        }
     }
 }

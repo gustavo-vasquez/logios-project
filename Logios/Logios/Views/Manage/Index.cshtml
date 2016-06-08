@@ -2,8 +2,10 @@
     ViewBag.Title = "Perfil de usuario";
 }
 
-<div class="vertical-space"></div>
 <div class="col-md-12 container">
+    <h2><b>Configuración de usuario</b></h2>
+    <hr />
+
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#profilePanel" aria-controls="profilePanel" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> Administrar Perfil</a></li>
         <li role="presentation"><a href="#badgesAndPointsPanel" aria-controls="badgesAndPointsPanel" role="tab" data-toggle="tab" data-url='@Url.Action("LoadBadgesAndPointsPanel","Manage")'><span class="glyphicon glyphicon-glass"></span> Trofeos y Puntos</a></li>
@@ -22,5 +24,6 @@
     </div>
 </div>
 
-<script src="~/Scripts/jquery-2.1.4.min.js"></script>
-<script src="~/Scripts/manage.js"></script>
+@section scripts {
+        <script src="~/Scripts/manage.js"></script>    
+    }

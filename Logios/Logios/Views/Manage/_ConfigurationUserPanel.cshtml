@@ -9,7 +9,7 @@
 
 <div class="row">    
     <p class="text-success">@ViewBag.StatusMessage</p>
-    <div class="col-md-6">
+    <div class="col-md-7">
 
         <div class="form-group">
             <label class="col-md-5 control-label">E-mail:</label>
@@ -102,29 +102,74 @@
             <hr />*@
 
     </div>    
+
+    <div id="trashIcon" class="col-md-1 col-md-pull-4 trash-avatar" style="float: right; z-index: 9999; padding-left: 0px;">        
+        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#resetAvatarModal"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Eliminar avatar"></span></button>        
+    </div>
     
     @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { id = "changeAvatarForm", enctype = "multipart/form-data" }))
     {
         <div class="col-md-3" style="border: 1px solid gray; border-radius: 3px; padding-top: 20px;">
             <div class="row text-center">
-                <img src="~/Content/images/avatars/@Model.ProfilePicture" width="192" />
+                <img src="~/Content/images/avatars/@Model.ProfilePicture" width="128" />
             </div>        
             <div class="row">            
                 @Html.AntiForgeryToken();
-                <label for="newAvatar" class="btn btn-sm btn-block btn-info">Cambiar imágen de perfil</label>
+                <label for="newAvatar" class="btn btn-sm btn-block btn-info"><span class="glyphicon glyphicon-picture"></span> Cambiar imágen de perfil</label>
                 @Html.TextBoxFor(m => m.newAvatar, new { type = "file", style = "display: none;" })                                                
             </div>                                                            
         </div>
-        <div class="col-md-3 col-md-offset-6">
+        <div class="col-md-3 col-md-offset-7">
             @Html.ValidationMessageFor(m => m.newAvatar, null, new { @class = "text-danger" })
         </div>
-    }
+    }    
 </div>
+
+<div id="resetAvatarModal" class="modal fade">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title text-center"><b>¿Está seguro?</b></h3>
+                </div>
+                <div class="modal-body text-center">                    
+                    <h4>Está a punto de eliminar su imágen de perfil.</h4>                    
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <form id="deleteAvatarForm" action="/Manage/DeleteAvatar" method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-block btn-success"><span class="glyphicon glyphicon-ok"></span> Confirmar</button>
+                            </form>
+                        </div>                        
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-block btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     $('#newAvatar').change(function () {
         $('#changeAvatarForm').submit();
     });
+
+    if("@Model.ProfilePicture" != "1465327785_profle.png") {
+        $('#changeAvatarForm, #trashIcon').hover(function () {
+            $('#trashIcon').removeClass('trash-avatar');
+        });
+
+        $('#changeAvatarForm, #trashIcon').mouseleave(function () {
+            $('#trashIcon').addClass('trash-avatar');
+        });    
+    }
 </script>
 
     

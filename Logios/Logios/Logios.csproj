@@ -334,6 +334,7 @@
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
     <Content Include="Scripts\jquery.tooltipster.min.js" />
     <Content Include="Scripts\manage.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />

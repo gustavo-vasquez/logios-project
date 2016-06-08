@@ -277,6 +277,10 @@ img.trophy-image {
     max-width: 100%;
 }
 
+.trash-avatar {
+    display: none;
+}
+
 /*.sidebox-social {
     padding: 0 0 5px 0;
 }
