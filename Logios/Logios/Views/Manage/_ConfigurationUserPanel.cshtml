@@ -103,21 +103,26 @@
 
     </div>    
     
-    <div class="col-md-3" style="border: 1px solid gray; border-radius: 3px; padding-top: 10px;">
-        <div class="row text-center" style="padding-bottom: 10px;">
-            <img src="~/Content/images/avatars/1465327785_profle.png" width="128" />
+    @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { id = "changeAvatarForm", enctype = "multipart/form-data" }))
+    {
+        <div class="col-md-3" style="border: 1px solid gray; border-radius: 3px; padding-top: 20px;">
+            <div class="row text-center">
+                <img src="~/Content/images/avatars/@Model.ProfilePicture" width="192" />
+            </div>        
+            <div class="row">            
+                @Html.AntiForgeryToken();
+                <label for="newAvatar" class="btn btn-sm btn-block btn-info">Cambiar imágen de perfil</label>
+                @Html.TextBoxFor(m => m.newAvatar, new { type = "file", style = "display: none;" })                                                
+            </div>                                                            
         </div>
-        <div class="row">
-            <form id="changeAvatarForm" action="/Manage/Index" method="post" enctype="multipart/form-data">
-                <label for="profilePicture" class="btn btn-sm btn-block btn-info">Cambiar imágen de perfil</label>
-                <input type="file" id="profilePicture" style="display: none;" />
-            </form>
+        <div class="col-md-3 col-md-offset-6">
+            @Html.ValidationMessageFor(m => m.newAvatar, null, new { @class = "text-danger" })
         </div>
-    </div>
+    }
 </div>
 
 <script>
-    $('#profilePicture').change(function () {
+    $('#newAvatar').change(function () {
         $('#changeAvatarForm').submit();
     });
 </script>

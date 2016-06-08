@@ -73,7 +73,8 @@ namespace Logios.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                ProfilePicture = new UserProfileServices().GetProfilePicture(userId)
             };
             return View(model);
         }
@@ -389,6 +390,38 @@ namespace Logios.Controllers
             base.Dispose(disposing);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Index(ManageMessageId? message, IndexViewModel viewModel)
+        {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña ha cambiado."
+                : message == ManageMessageId.SetPasswordSuccess ? "La contraseña ha sido configurada."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "La verificación en dos pasos ha sido configurada."
+                : message == ManageMessageId.Error ? "Un error ha ocurrido."
+                : message == ManageMessageId.AddPhoneSuccess ? "Tu nº de teléfono ha sido añadido."
+                : message == ManageMessageId.RemovePhoneSuccess ? "El nº de teléfono ha sido eliminado."
+                : "";
+
+            var userId = User.Identity.GetUserId();
+
+            if (ModelState.IsValid)
+            {
+                new UserProfileServices().EditAvatar(userId, viewModel.newAvatar, Server);
+            }                                    
+
+            var model = new IndexViewModel
+            {
+                HasPassword = HasPassword(),
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                ProfilePicture = new UserProfileServices().GetProfilePicture(userId)
+            };
+
+            return View(model);
+        }
         
         #region Helpers
         // Used for XSRF protection when adding external logins

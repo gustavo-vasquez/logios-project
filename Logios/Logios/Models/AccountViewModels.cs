@@ -149,7 +149,7 @@ namespace Logios.Models
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format("*Tamaño máximo de imágen = 2 MB");
+            return string.Format("Tamaño máximo de imágen = 2 MB");
         }
     }
 
@@ -172,7 +172,7 @@ namespace Logios.Models
 
         public override string FormatErrorMessage(string name)
         {
-            return string.Format("*Foto inválida. Tipos de imágen soportadas: {0}.", System.String.Join(", ", _types));
+            return string.Format("Foto inválida. Tipos de imágen soportadas: {0}.", System.String.Join(", ", _types));
         }
     }
 }

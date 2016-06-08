@@ -18,7 +18,13 @@ namespace Logios.Services
             {
                 try
                 {
-                    return context.UserProfiles.FirstOrDefault(x => x.UserID == userId).ImagePath;
+                    var image = context.UserProfiles.First(x => x.UserID == userId).ImagePath;
+                    if(!String.IsNullOrEmpty(image))
+                    {
+                        return image;
+                    }
+
+                    throw new ArgumentNullException();
                 }
                 catch
                 {
@@ -57,6 +63,48 @@ namespace Logios.Services
             }
 
             return defaultImage;
+        }
+
+        public void EditAvatar(string userId, HttpPostedFileBase profilePicture, HttpServerUtilityBase server)
+        {            
+            using (var context = new ApplicationDbContext())
+            {
+                string userName = context.Users.FirstOrDefault(u => u.Id == userId).UserName;
+                UserProfile userProfile = new UserProfile();
+
+                // Verifica que el usuario ha elegido un archivo
+                if (profilePicture != null && profilePicture.ContentLength > 0)
+                {
+                    // Obtiene información de la imagen
+                    var fileName = Path.GetFileName(profilePicture.FileName);
+                    //var contentLength = picture.ContentLength;
+                    //var contentType = picture.ContentType;
+
+                    // Obtiene datos del archivo
+                    byte[] data = new byte[] { };
+                    using (var binaryReader = new BinaryReader(profilePicture.InputStream))
+                    {
+                        data = binaryReader.ReadBytes(profilePicture.ContentLength);
+                    }
+
+                    // Guarda imagen en el servidor
+                    string pathToSave = server.MapPath("~/Content/images/avatars/") + userName + Path.GetExtension(fileName);
+                    using (FileStream image = System.IO.File.Create(pathToSave, data.Length))
+                    {
+                        image.Write(data, 0, data.Length);
+                    }
+
+                    userProfile = context.UserProfiles.FirstOrDefault(x => x.UserID == userId);
+                    userProfile.ImagePath = userName + Path.GetExtension(profilePicture.FileName);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    userProfile = context.UserProfiles.FirstOrDefault(x => x.UserID == userId);
+                    userProfile.ImagePath = defaultImage;
+                    context.SaveChanges();
+                }                                                
+            }
         }
     }
 }

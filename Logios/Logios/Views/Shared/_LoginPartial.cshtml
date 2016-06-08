@@ -11,7 +11,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
             @{ string profilePicture = new UserProfileServices().GetProfilePicture(User.Identity.GetUserId()); }
-            <a href="@Url.Action("Index", "Manage")" data-toggle="tooltip" data-placement="bottom" title="Ver perfil"><img src="~/Content/images/avatars/@profilePicture" width="24" alt="imagen_de_perfil"/> Bienvenido: @User.Identity.GetUserName()</a>
+            <a href="@Url.Action("Index", "Manage")" data-toggle="tooltip" data-placement="bottom" title="Ver perfil"><img src="~/Content/images/avatars/@profilePicture" width="20" alt="imagen_de_perfil"/> Bienvenido: @User.Identity.GetUserName()</a>
             </li>
             <li>
                 <a href="" data-toggle="tooltip" data-placement="bottom" title="Puntos"><span class="glyphicon glyphicon-screenshot"></span> @User.Identity.GetCurrentPoints(User.Identity.GetUserId())</a>

@@ -16,6 +16,11 @@ namespace Logios.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public string ProfilePicture { get; set; }
+
+        [FileSize((2 * 1024 * 1024))]
+        [FileTypes("jpg,jpeg,png")]
+        public System.Web.HttpPostedFileBase newAvatar { get; set; }
     }
 
     public class ManageLoginsViewModel
