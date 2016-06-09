@@ -36,7 +36,11 @@
                 <ul class="nav navbar-nav">                    
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Panel de control", "ControlPanel", "Administrator")</li>                        
+                        <li>
+                            <a href="@Url.Action("ControlPanel", "Administrator")" data-toggle="tooltip" data-placement="bottom" title="Administrar toda la información">
+                                <span class="glyphicon glyphicon-cog"></span> Panel de control
+                            </a>
+                        </li>                        
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -44,25 +48,20 @@
         </div>
     </div>
 
-    <div class="container body-content" style="background-color: white;">                
-
-        @RenderBody()
-
-        <div class="clearfix"></div>
-        <br />
-        <footer class="row">
-            <div class="col-lg-12">
-                <hr />
-                <p>&copy; @DateTime.Now.Year Logios - Sapere aude</p>
-            </div>
-            @*<div class="col-lg-5 pull-right sidebox sidebox-social">
-                    <span class="col-lg-offset-4">Seguínos en:</span>
-                    <a class="sm-rss" href="http://feeds.feedburner.com/Logios" rel="external" target="_blank" title="Subscribirse">RSS Feed</a>
-                    <a class="sm-goo" href="https://plus.google.com/u/0/" rel="publisher" target="_blank" title="Perfil de Google+">Google+</a>
-                    <a class="sm-twi" href="http://twitter.com" target="_blank" title="Perfil de Twitter">Twitter</a>
-                    <a class="sm-fac" href="https://www.facebook.com/" target="_blank" title="Perfil de Facebook">Facebook</a>
-                </div>*@
-        </footer>
+    <div class="container body-content" style="background-color: white; min-height: 93%;">                
+        @RenderBody()                  
+    </div>
+    <div class="clearfix"></div>
+    <div class="container" style="background-color: white;">
+        <hr />        
+        <p>&copy; @DateTime.Now.Year Logios - Sapere aude <span class="pull-right">Visita: <a class="text-default" href="http://twitter.com"><img src="~/Content/images/share_social/1465195920_twitter_circle.png" width="16" /> @@Logios_OK</a></span></p>        
+        @*<div class="col-md-6 pull-right sidebox sidebox-social">
+            <span class="col-lg-offset-5">Seguínos en:</span>
+            <a class="sm-rss" href="http://feeds.feedburner.com/Logios" rel="external" target="_blank" title="Subscribirse">RSS Feed</a>
+            <a class="sm-goo" href="https://plus.google.com/u/0/" rel="publisher" target="_blank" title="Perfil de Google+">Google+</a>
+            <a class="sm-twi" href="http://twitter.com" target="_blank" title="Perfil de Twitter">Twitter</a>
+            <a class="sm-fac" href="https://www.facebook.com/" target="_blank" title="Perfil de Facebook">Facebook</a>
+        </div>*@
     </div>
 
     <div id='goTop'></div>
