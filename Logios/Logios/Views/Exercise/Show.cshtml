@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Ejercicio Nº " + Model.Exercise.ExerciseId;
 }
-
 <div class="vertical-space-1"></div>
 <div class="row">
     <div class="col-md-12">
@@ -87,7 +86,43 @@
 
     @if (Request.IsAuthenticated)
     {
-        <div class="row vertical-space-3">
+        <div class="row vertical-space-2">
+            <div class="col-lg-3">
+                <h2 class="exercise-legend">Solución: </h2>
+                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>
+            </div>
+            <div id="divSolution" class="col-lg-9">
+                <blockquote class="exercise-bg">
+                    <div id="solutionContainer"></div>
+                    @using (Ajax.BeginForm(
+                    "Show",
+                    "Exercise",
+                    new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "DivResult"
+                    },
+                    new
+                    {
+                        Id = "ResultForm",
+                        @Class = "form",
+                        role = "form"
+                    }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <div class="form-inline">
+                            <input type="hidden" id="answer" name="answer" />
+                            <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                            <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
+                            <div class="message"></div>
+                        </div>
+                    }
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="row vertical-space-2">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Solución <span class="glyphicon glyphicon-arrow-right"></span></h2>
                 <h5 class="text-danger" style="font-size: 17px;">&raquo; En caso de no saber como expresar la solución, revisa nuevamente el enunciado</h5>
@@ -153,13 +188,13 @@
                     }))
                     {
                         <button type="submit" id="ViewDevelopment" class="btn btn-block btn-info"><span class="glyphicon glyphicon-eye-open"></span> Visualizar desarrollo</button>
-                    }                    
+                    }
                     <div class="clearfix notice"></div>
                     <div id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</div>
                     <div class="overflow"></div>
                 </div>                
             </div>
-        </div>        
+        </div>
 
         <!-- MODAL DE TROFEO -->
         if (Model.NewTrophy != null)
@@ -214,7 +249,7 @@
         <div class="row">
             <div class="col-lg-9 col-lg-push-3">
                 <h3 style="color: red"><strong>Debes <a href="@Url.Action("Login", "Account")" style="color: red; text-decoration: underline">iniciar sesión</a> para resolver los ejercicios y ver su desarrollo</strong></h3>
-            </div>            
+            </div>
         </div>
     }
     
