@@ -195,6 +195,7 @@
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\TopicArea.cs" />
     <Compile Include="Entities\TopicAreaTopic.cs" />
+    <Compile Include="Entities\UserFavorite.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Enums\Trophies.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -238,6 +239,10 @@
     <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.cs" />
     <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.Designer.cs">
       <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606121647521_AddUserFavoriteTable.cs" />
+    <Compile Include="Migrations\201606121647521_AddUserFavoriteTable.Designer.cs">
+      <DependentUpon>201606121647521_AddUserFavoriteTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
@@ -667,6 +672,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606071444135_AddImagePathToUserProfile.resx">
       <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606121647521_AddUserFavoriteTable.resx">
+      <DependentUpon>201606121647521_AddUserFavoriteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
