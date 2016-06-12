@@ -330,6 +330,7 @@
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
+    <Content Include="Content\video\library.mp4" />
     <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
@@ -369,6 +370,7 @@
     <Content Include="Views\Manage\ChangeName.cshtml" />
     <Content Include="Views\Exercise\_ShareButtons.cshtml" />
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
+    <Content Include="Views\Home\_HomeSocialLogin.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />

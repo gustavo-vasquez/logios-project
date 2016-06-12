@@ -5,8 +5,8 @@
 
 @if (!Request.IsAuthenticated)
 {
-    <div class="wrapper clearfix">
-        @Html.Partial("_LandingPage")
+    <div class="jumbotron wrapper clearfix">                            
+            @Html.Partial("_LandingPage")                
     </div>
 }
 else
@@ -40,7 +40,7 @@ else
             <div class="input-group input-group-lg search-box">
                 <input type="hidden" id="lastTopic" />
                 <input type="hidden" id="lastCheck" />                
-                <input id="searchInput" name="topicDescription" type="text" class="form-control" placeholder="Busca un tema, ej: Integrales" />
+                <input id="searchInput" name="topicDescription" type="text" class="form-control decorate" placeholder="Busca un tema, ej: Integrales" />
                 <span class="input-group-btn">
                     <button id="exerciseSearchButton" class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
