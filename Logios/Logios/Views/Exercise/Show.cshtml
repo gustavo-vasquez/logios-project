@@ -11,8 +11,8 @@
 <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">
     <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
-    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 <hr class="vertical-space-3" />
 
@@ -43,7 +43,43 @@
     </div>
     @if (Request.IsAuthenticated)
     {
-        <div class="row vertical-space-3">
+        <div class="row vertical-space-2">
+            <div class="col-lg-3">
+                <h2 class="exercise-legend">Solución: </h2>
+                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>
+            </div>
+            <div id="divSolution" class="col-lg-9">
+                <blockquote class="exercise-bg">
+                    <div id="solutionContainer"></div>
+                    @using (Ajax.BeginForm(
+                    "Show",
+                    "Exercise",
+                    new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "DivResult"
+                    },
+                    new
+                    {
+                        Id = "ResultForm",
+                        @Class = "form",
+                        role = "form"
+                    }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <div class="form-inline">
+                            <input type="hidden" id="answer" name="answer" />
+                            <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                            <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
+                            <div class="message"></div>
+                        </div>
+                    }
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="row vertical-space-2">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Desarrollo: </h2>
                 <h4><i>&raquo; Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.</i></h4>
@@ -74,43 +110,7 @@
                 </blockquote>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-3">
-                <h2 class="exercise-legend">Solución: </h2>
-                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>            
-            </div>
-
-            <div id="divSolution" class="col-lg-9">
-                <blockquote class="exercise-bg">
-                    <div id="solutionContainer"></div>
-                    @using (Ajax.BeginForm(
-                        "Show",
-                        "Exercise",
-                        new AjaxOptions()
-                        {
-                            HttpMethod = "POST",
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = "DivResult"
-                        },
-                        new
-                        {
-                            Id = "ResultForm",
-                            @Class = "form",
-                            role = "form"
-                        }))
-                        {
-                            @Html.AntiForgeryToken();
-                            <div class="form-inline">
-                                <input type="hidden" id="answer" name="answer" />
-                                <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
-                                <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
-                                <div class="message"></div>
-                            </div>
-                        }                            
-                </blockquote>
-            </div>
-        </div>
+        
 
         <!-- MODAL DE TROFEO -->
         if (Model.NewTrophy != null)
@@ -162,8 +162,10 @@
     }
     else
     {
-        <div class="alert alert-info col-lg-4 col-lg-push-4">
-            <p class="text-center"><strong>Debes iniciar sesión para poder resolver los ejercicios</strong></p>
+        <div class="col-md-4 col-md-push-4">
+            <h2 class="text-center text-danger">
+                <strong><i>Debes <a href="@Url.Action("Login", "Account")" class="text-danger" style="text-decoration: underline;">iniciar sesión</a> para visualizar el desarrollo y resolver los ejercicios</i></strong>
+            </h2>
         </div>
     }
     
