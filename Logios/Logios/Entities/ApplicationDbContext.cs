@@ -27,6 +27,6 @@ namespace Logios.Entities
         public DbSet<TopicArea> TopicAreas { get; set; }
         public DbSet<TopicAreaTopic> TopicAreaTopics { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
-
+        public DbSet<UserFavorite> UserFavorites { get; set; }
     }
 }
