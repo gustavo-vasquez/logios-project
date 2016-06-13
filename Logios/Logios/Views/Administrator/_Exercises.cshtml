@@ -19,7 +19,7 @@
         new { id = "searchExercisesForm", @class = "form", role = "form" }))
     {    
         @Html.AntiForgeryToken()
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-8">
             <input type="text" name="topicDescription" class="form-control" value="@ViewData["searchBox"]" placeholder="Buscar por temática..." />
         </div>
         <div>
@@ -33,7 +33,7 @@
 <div class="overflow">
     @exerciseList.GetHtml(
         htmlAttributes: new { id = "createdExercises" },
-        tableStyle: "table table-hover table-striped table-bordered text-center",
+        tableStyle: "table table-hover table-striped table-bordered text-center table-responsive",
         headerStyle: "head-align",
         rowStyle: "active",
         alternatingRowStyle: "active",

@@ -16,20 +16,22 @@
         <h4 class="text-muted">Ordenar:</h4>
     </div>
     
-    @using (Ajax.BeginForm("SortUsers", "UsersAdmin", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "userAdmin" }, new { id = "sortForm", @class = "form-inline", role = "form" }))
+    @using (Ajax.BeginForm("SortUsers", "UsersAdmin", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "userAdmin" }, new { id = "sortForm", role = "form" }))
     {
-        <div class="col-md-4">
-            @Html.DropDownList("filterList", ViewData["list"] as SelectList, new { @class = "form-control" })
+        <div class="col-md-3 col-xs-8">
+            @Html.DropDownList("filterList", ViewData["list"] as SelectList, new { @class = "form-control" })            
+        </div>
+        <div>
             <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-sort"></span></button>
         </div>
     }            
 </div>
 <br />
 
-<div>
+<div class="overflow">
     @userList.GetHtml(
         htmlAttributes: new { id = "registeredUsers" },
-        tableStyle: "table table-hover table-striped table-bordered text-center",
+        tableStyle: "table table-hover table-striped table-bordered text-center table-responsive",
         headerStyle: "head-align",
         rowStyle: "active",
         alternatingRowStyle: "active",
