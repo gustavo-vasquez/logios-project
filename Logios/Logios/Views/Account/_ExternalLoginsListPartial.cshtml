@@ -20,7 +20,7 @@
                 <div class="col-md-12 col-md-offset-3">
                     @foreach (AuthenticationDescription p in loginProviders)
                     {
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-xs-4">
                             <button type="submit" class="button-transparent" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" data-toggle="tooltip" title="Inicia sesión utilizando tu cuenta de @p.Caption">
                                 <img src="~/Content/images/login_social/social-@p.AuthenticationType-square2.png" width="64" />
                             </button>
