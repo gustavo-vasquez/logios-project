@@ -28,6 +28,11 @@
         $("#roleAdmin").html(animation);
         $("#roleAdmin").load("/RolesAdmin/Roles");
     });
+
+    $("#tabTrophyAdmin").click(function () {
+        $("#trophyAdmin").html(animation);
+        $("#trophyAdmin").load("/Trophies/TrophiesList");
+    });
 });
 
 function deleteUser(userId) {

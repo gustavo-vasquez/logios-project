@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Logios.Entities.Trophy>
+
+@{
+    WebGrid trophiesList = new WebGrid(Model, canPage: false, ajaxUpdateContainerId: "createdTrophies");
+}
+
+<h2 class="topic-area-statistics-title">Listado de trofeos</h2>
+
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{ 
+    <div>
+        @trophiesList.GetHtml(
+            htmlAttributes: new { id = "createdTrophies" },
+            tableStyle: "table table-hover text-center",
+            headerStyle: "head-align logios-header",
+            rowStyle: "active",        
+            alternatingRowStyle: "active",
+            fillEmptyRows: false,
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primero",
+            previousText: "< Anterior",
+            nextText: "Siguiente >",
+            lastText: "Último >>",
+
+            columns: trophiesList.Columns(
+                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Imágen",
+                                format: @<text>
+                                            <img src="@item.Image" width="48" alt="trophy_laurel" />
+                                        </text>
+                            ),
+                            trophiesList.Column("Description", canSort: false, style: "col-vcenter", header: "Nombre"),
+                            trophiesList.Column("Reason", canSort: false, style: "col-vcenter", header: "Requisito"),
+                            trophiesList.Column("Points", canSort: false, style: "col-vcenter", header: "Premio (Puntos)"),
+                            trophiesList.Column("TrophyId", canSort: false, style: "col-vcenter", header: "Acción",
+                                    format: @<text>
+                                                <a href="@Url.Action("Edit", new { id = @item.TrophyId })">
+                                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                                                </a>                                            
+                                            </text> ))
+            )
+    </div>
+}
+else
+{
+    <div>
+        @trophiesList.GetHtml(
+            htmlAttributes: new { id = "createdTrophies" },
+            tableStyle: "table table-hover text-center",
+            headerStyle: "head-align logios-header",
+            rowStyle: "active",
+            alternatingRowStyle: "active",
+            fillEmptyRows: false,
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primero",
+            previousText: "< Anterior",
+            nextText: "Siguiente >",
+            lastText: "Último >>",
+
+            columns: trophiesList.Columns(
+                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Imágen",
+                                format: @<text>
+                                <img src="@item.Image" width="48" alt="trophy_laurel" />
+                                </text>
+                            ),
+                            trophiesList.Column("Description", canSort: false, style: "col-vcenter", header: "Nombre"),
+                            trophiesList.Column("Reason", canSort: false, style: "col-vcenter", header: "Requisito"),
+                            trophiesList.Column("Points", canSort: false, style: "col-vcenter", header: "Premio (Puntos)")
+                            )
+            )
+    </div>
+}

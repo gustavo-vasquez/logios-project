@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Logios.Entities;
+using Logios.Services;
 
 namespace Logios.Controllers
 {
@@ -14,11 +15,17 @@ namespace Logios.Controllers
     public class TrophiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly TrophyService trophyServices = new TrophyService();
 
         // GET: Trophies
         public ActionResult Index()
         {
             return View(db.Trophies.ToList());
+        }
+
+        public PartialViewResult TrophiesList()
+        {
+            return PartialView("_TrophiesList", db.Trophies.ToList());
         }
 
         // GET: Trophies/Details/5

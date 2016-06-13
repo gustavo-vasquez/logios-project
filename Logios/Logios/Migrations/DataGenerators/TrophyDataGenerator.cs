@@ -26,7 +26,7 @@ namespace Logios.Migrations.DataGenerators
                     Description = "Erudito Avanzado",
                     Points = 10,
                     Image = "/Content/images/trophys/laurel_plata.svg",
-                    Reason = "resolver cinco ejercicio sin ver el desarrollo"
+                    Reason = "resolver cinco ejercicios sin ver el desarrollo"
                 },
                 new Trophy
                 {
@@ -34,7 +34,7 @@ namespace Logios.Migrations.DataGenerators
                     Description = "Erudito Experto",
                     Points = 15,
                     Image = "/Content/images/trophys/laurel_oro.svg",
-                    Reason = "resolver diez ejercicio sin ver el desarrollo"
+                    Reason = "resolver diez ejercicios sin ver el desarrollo"
                 }
             };
 

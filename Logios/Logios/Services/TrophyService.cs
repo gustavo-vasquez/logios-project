@@ -1,6 +1,7 @@
 ﻿using Logios.Entities;
 using Logios.Enums;
 using Logios.Helpers.Trophy;
+using Logios.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,14 @@ namespace Logios.Services
                 }
 
                 return newTrophy;
+            }
+        }
+        
+        public IEnumerable<Trophy> GetAllTrophies()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Trophies.ToList();
             }
         }
     }

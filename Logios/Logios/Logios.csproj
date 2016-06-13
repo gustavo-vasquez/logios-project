@@ -284,6 +284,7 @@
     <Compile Include="Models\ReportViewModel.cs" />
     <Compile Include="Models\TopicAreaViewModel.cs" />
     <Compile Include="Models\TopicPanelViewModel.cs" />
+    <Compile Include="Models\TrophiesListViewModel.cs" />
     <Compile Include="Models\UsersListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdministratorServices.cs" />
@@ -371,6 +372,7 @@
     <Content Include="Views\Exercise\_ShareButtons.cshtml" />
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
     <Content Include="Views\Home\_HomeSocialLogin.cshtml" />
+    <Content Include="Views\Trophies\_TrophiesList.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />

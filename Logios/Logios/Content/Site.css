@@ -141,6 +141,15 @@ div.topic-exercises-container {
     outline: 0;    
 }
 
+.logios-header {
+    background-color: #033c73;
+    color: white;
+}
+
+.col-vcenter {
+    vertical-align: middle !important;
+}
+
 .topic-area-search-box {
     background-color: transparent;
     padding-bottom: 0;
