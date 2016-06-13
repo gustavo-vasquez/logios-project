@@ -307,6 +307,14 @@ img.trophy-image {
     display: none;
 }
 
+.hide-column {
+    display: none;
+}
+
+.fade-trophy {
+    opacity: 0.4 !important;
+}
+
 /*.sidebox-social {
     padding: 0 0 5px 0;
 }

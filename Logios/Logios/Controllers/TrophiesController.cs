@@ -8,16 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using Logios.Entities;
 using Logios.Services;
+using Microsoft.AspNet.Identity;
 
 namespace Logios.Controllers
-{
-    [Authorize(Roles = "Admin")]
+{    
     public class TrophiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly TrophyService trophyServices = new TrophyService();
 
         // GET: Trophies
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Trophies.ToList());
@@ -28,7 +29,14 @@ namespace Logios.Controllers
             return PartialView("_TrophiesList", db.Trophies.ToList());
         }
 
+        [Authorize]
+        public ActionResult TrophiesWon()
+        {
+            return Json(trophyServices.GetTrophiesWon(User.Identity.GetUserId()), JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Trophies/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,6 +52,7 @@ namespace Logios.Controllers
         }
 
         // GET: Trophies/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +61,7 @@ namespace Logios.Controllers
         // POST: Trophies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TrophyId,Description,Points,Image")] Trophy trophy)
@@ -67,6 +77,7 @@ namespace Logios.Controllers
         }
 
         // GET: Trophies/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +95,7 @@ namespace Logios.Controllers
         // POST: Trophies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TrophyId,Description,Points,Image")] Trophy trophy)
@@ -98,6 +110,7 @@ namespace Logios.Controllers
         }
 
         // GET: Trophies/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +126,7 @@ namespace Logios.Controllers
         }
 
         // POST: Trophies/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

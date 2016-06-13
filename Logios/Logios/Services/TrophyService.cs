@@ -59,5 +59,21 @@ namespace Logios.Services
                 return context.Trophies.ToList();
             }
         }
+
+        public IEnumerable<int> GetTrophiesWon(string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var trophiesIds = context.UserTrophies.Where(x => x.UserId == userId).ToList();
+                List<int> trophiesWonList = new List<int>();
+
+                foreach (var t in trophiesIds)
+                {
+                    trophiesWonList.Add(t.TrophyId);
+                }
+
+                return trophiesWonList;
+            }
+        }
     }
 }

@@ -7,14 +7,14 @@
 <h2 class="topic-area-statistics-title">Listado de trofeos</h2>
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-{ 
+{     
     <div>
         @trophiesList.GetHtml(
             htmlAttributes: new { id = "createdTrophies" },
             tableStyle: "table table-hover text-center",
             headerStyle: "head-align logios-header",
-            rowStyle: "active",        
-            alternatingRowStyle: "active",
+            rowStyle: "active fade-trophy",
+            alternatingRowStyle: "active fade-trophy",
             fillEmptyRows: false,
             mode: WebGridPagerModes.All,
             firstText: "<< Primero",
@@ -23,7 +23,8 @@
             lastText: "Último >>",
 
             columns: trophiesList.Columns(
-                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Imágen",
+                            trophiesList.Column(null, null, format: @<input type="hidden" name="IDHidden[@item.TrophyId]" value="@item.TrophyId" />),
+                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Medalla",
                                 format: @<text>
                                             <img src="@item.Image" width="48" alt="trophy_laurel" />
                                         </text>
@@ -41,14 +42,14 @@
     </div>
 }
 else
-{
+{        
     <div>
         @trophiesList.GetHtml(
             htmlAttributes: new { id = "createdTrophies" },
             tableStyle: "table table-hover text-center",
             headerStyle: "head-align logios-header",
-            rowStyle: "active",
-            alternatingRowStyle: "active",
+            rowStyle: "active fade-trophy",
+            alternatingRowStyle: "active fade-trophy",
             fillEmptyRows: false,
             mode: WebGridPagerModes.All,
             firstText: "<< Primero",
@@ -57,7 +58,8 @@ else
             lastText: "Último >>",
 
             columns: trophiesList.Columns(
-                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Imágen",
+                            trophiesList.Column(null, null, format: @<input type="hidden" name="IDHidden[@item.TrophyId]" value="@item.TrophyId" />),                                              
+                            trophiesList.Column("Image", canSort: false, style: "col-vcenter", header: "Medalla",
                                 format: @<text>
                                 <img src="@item.Image" width="48" alt="trophy_laurel" />
                                 </text>
@@ -69,3 +71,22 @@ else
             )
     </div>
 }
+
+<h4 class="trophyCount text-success"></h4>
+
+<script>
+    // Distingue los trofeos ganados de los que faltan conseguir en la grilla
+    $.ajax({
+        url: "/Trophies/TrophiesWon",
+        type: 'GET',
+        error: function (response) {
+            alert("Error al procesar solicitud.");
+        },
+        success: function (trophiesWonListData) {
+            $('.trophyCount').wrapInner("Trofeos ganados: " + trophiesWonListData.length);
+
+            for (i = 0; i < trophiesWonListData.length; i++)
+                $("input[name='IDHidden[" + trophiesWonListData[i] + "]']").closest('tr').removeClass('fade-trophy');
+        }
+    })
+</script>
