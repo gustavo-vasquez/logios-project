@@ -98,7 +98,7 @@ namespace Logios.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TrophyId,Description,Points,Image")] Trophy trophy)
+        public ActionResult Edit([Bind(Include = "TrophyId,Description,Reason,Points,Image")] Trophy trophy)
         {
             if (ModelState.IsValid)
             {

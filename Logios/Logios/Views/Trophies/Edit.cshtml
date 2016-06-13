@@ -1,56 +1,54 @@
 ﻿@model Logios.Entities.Trophy
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar trofeo";
 }
 
-<h2>Edit</h2>
+<div class="vertical-space"></div>
+<div class="col-md-offset-3 col-md-6">
+    <h2>@ViewBag.Title.</h2>
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Trophy</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @using (Html.BeginForm("Edit", "Trophies", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
         @Html.HiddenFor(model => model.TrophyId)
-
+        <h4>Complete los siguientes campos</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            <label class="col-md-4 control-label">Descripción:</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Points, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Points, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Points, "", new { @class = "text-danger" })
+            <label class="col-md-4 control-label">Requisito:</label>
+            <div class="col-md-7">
+                @Html.TextAreaFor(m => m.Reason, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            <label class="col-md-4 control-label">Puntos:</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Points, new { type = "number", @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <label class="col-md-4 control-label">Ruta de imágen:</label>
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Image, new { @class = "form-control" })
             </div>
         </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Confirmar" class="btn btn-info" />
+            </div>
+        </div>
+    }
 </div>
 
 @section Scripts {

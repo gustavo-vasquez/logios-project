@@ -34,7 +34,7 @@
                             trophiesList.Column("Points", canSort: false, style: "col-vcenter", header: "Premio (Puntos)"),
                             trophiesList.Column("TrophyId", canSort: false, style: "col-vcenter", header: "Acción",
                                     format: @<text>
-                                                <a href="@Url.Action("Edit", new { id = @item.TrophyId })">
+                                                <a href="@Url.Action("Edit", "Trophies", new { id = @item.TrophyId })">
                                                     <span class="glyphicon glyphicon-pencil"></span> Editar
                                                 </a>                                            
                                             </text> ))
