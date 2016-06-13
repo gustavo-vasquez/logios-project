@@ -336,6 +336,7 @@
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
     <Content Include="Content\video\library.mp4" />
+    <Content Include="Scripts\exerciseFavorites.js" />
     <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />

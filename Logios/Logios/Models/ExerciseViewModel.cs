@@ -15,5 +15,6 @@ namespace Logios.Models
         public int? backExerciseId { get; set; }
         public int? nextExerciseId { get; set; }
         public Trophy NewTrophy { get; set; }
+        public bool Favorited { get; set; }
     }
 }

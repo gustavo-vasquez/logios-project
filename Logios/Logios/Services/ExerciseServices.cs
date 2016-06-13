@@ -122,6 +122,7 @@ namespace Logios.Services
         {
             var exercises = this.GetExercisesByTopic(topicId);
             var userExercises = context.UserExercise.Where(x => x.UserId == userId);
+            var userFavorites = context.UserFavorites.Where(x => x.UserId == userId);
 
             if (!showResolvedExercises)
             {
@@ -143,6 +144,7 @@ namespace Logios.Services
                     }
                 }
 
+                exercisesDTOs.ForEach(x => x.Favorited = userFavorites.Any(y => y.ExerciseId == x.ExerciseId));
                 return exercisesDTOs;
             }
             else
@@ -159,6 +161,7 @@ namespace Logios.Services
                                         .ToList();
 
                 exercisesDTOs.ForEach(x => x.Resolved = userExercises.Any(y => y.ExerciseId == x.ExerciseId));
+                exercisesDTOs.ForEach(x => x.Favorited = userFavorites.Any(y => y.ExerciseId == x.ExerciseId));
 
                 return exercisesDTOs;
             }

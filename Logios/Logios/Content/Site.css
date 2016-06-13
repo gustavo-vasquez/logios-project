@@ -298,38 +298,12 @@ img.trophy-image {
     display: none;
 }
 
-/*.sidebox-social {
-    padding: 0 0 5px 0;
-}
-.sidebox {    
-    overflow: hidden;
-    margin: 0px 0px 15px 0px;
-    min-width: 300px;
-}
-.sidebox-social a:link, .sidebox-social a:visited, .sidebox-social a:hover, .sidebox-social a:active {
+.favorite-star {
+    cursor: pointer;
     float: right;
-    width: 32px;
-    height: 32px;
-    margin: 0px 15px 10px 12px;
-    padding: 0;
-    text-indent: -9999em;
-    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-    background-color: transparent;
-    background-image: url('images/crunchify-follow-sprite.png');
-    background-repeat: no-repeat;
 }
-.sm-rss {
-    background-position: 0 0;
+
+h1 .favorite-star {
+    float: none;
+    font-size: 32px;
 }
-.sm-goo {
-    background-position: 0 -32px;
-}
-.sm-fac {
-    background-position: 0 -64px;
-}
-.sm-twi {
-    background-position: 0 -160px;
-}
-.sm-wor {
-    background-position: 0 -192px;
-}*/
