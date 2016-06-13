@@ -306,3 +306,12 @@ img.trophy-image {
 .trash-avatar {
     display: none;
 }
+
+.hide-column {
+    display: none;
+}
+
+.fade-trophy {
+    opacity: 0.4 !important;
+}
+
