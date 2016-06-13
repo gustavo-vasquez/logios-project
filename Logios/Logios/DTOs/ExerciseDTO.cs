@@ -23,5 +23,7 @@ namespace Logios.DTOs
         public string Description { get; set; }
 
         public bool Resolved { get; set; }
+
+        public bool Favorited { get; set; }
     }
 }

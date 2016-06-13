@@ -307,6 +307,15 @@ img.trophy-image {
     display: none;
 }
 
+.favorite-star {
+    cursor: pointer;
+    float: right;
+}
+
+h1 .favorite-star {
+    float: none;
+    font-size: 32px;
+}
 .hide-column {
     display: none;
 }
