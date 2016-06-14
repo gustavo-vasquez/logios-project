@@ -49,7 +49,7 @@ namespace Logios.Services
             return answerIsCorrect;
         }
 
-        public ExerciseViewModel GetExerciseInformation(int? id)
+        public ExerciseViewModel GetExerciseInformation(int? id, string userId)
         {
             this.Refresh();
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
@@ -69,6 +69,7 @@ namespace Logios.Services
             exerciseToShow.isLast = (allExercises.Count() > 0 && index == allExercises.Count() - 1);
             exerciseToShow.backExerciseId = (index > 0) ? allExercises[index - 1].ExerciseId : id;
             exerciseToShow.nextExerciseId = (index < allExercises.Count() - 1) ? allExercises[index + 1].ExerciseId : id;
+            exerciseToShow.isResolved = context.UserExercise.Any(x => x.ExerciseId == id && x.UserId == userId);
 
             return exerciseToShow;
         }        

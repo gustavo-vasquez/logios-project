@@ -4,9 +4,19 @@
     ViewBag.Title = "Ejercicio Nº " + Model.Exercise.ExerciseId;
 }
 
-<h1>
-    <b>EJERCICIO Nº @Model.Exercise.ExerciseId &nbsp;</b>    
-</h1>
+@if (Model.isResolved)
+{
+    <h1 class="text-success">
+        <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>        
+        <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
+    </h1>
+}
+else
+{
+    <h1>
+        <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>        
+    </h1>
+}
 <span>Temática: </span>
 <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">

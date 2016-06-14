@@ -29,7 +29,7 @@ namespace Logios.Controllers
         {
             if (id != null)
             {                           
-                var exerciseToShow = services.GetExerciseInformation(id);
+                var exerciseToShow = services.GetExerciseInformation(id, User.Identity.GetUserId());
 
                 if(exerciseToShow.Exercise != null)
                 {
@@ -116,14 +116,7 @@ namespace Logios.Controllers
             {
                 return Content("<script>alert('" + ex.Message + "');</script>");
                 //return View(services.GetReportData(exerciseId));
-            }            
-            
-        }
-        
-        public JsonResult Pagination(int id)
-        {
-            return Json(JsonConvert.SerializeObject(services.GetExerciseInformation(id)), JsonRequestBehavior.AllowGet);
-        }
-
+            }                        
+        }                
     }
 }

@@ -86,7 +86,7 @@ namespace Logios.Models
 
         [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*[!$%^&*()_+=\-`{}:@~#';<>?/.,|])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial (Mínimo 6 caracteres).")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 letra y un 1 número (Mínimo 6 caracteres).")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -110,7 +110,7 @@ namespace Logios.Models
 
         [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*[!$%^&*()_+=\-`{}:@~#';<>?/.,|])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial (Mínimo 6 caracteres).")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 letra y un 1 número (Mínimo 6 caracteres).")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
