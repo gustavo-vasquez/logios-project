@@ -125,7 +125,7 @@ namespace Logios.Models
             {
                 var topicAreas = context.TopicAreas.ToList().OrderBy(x => x.Description);
                 var resolvedExercises = context.UserExercise
-                                                    .Where(x => x.UserId == userId)
+                                                    .Where(x => x.UserId == userId && x.ShowedSolution == false)
                                                     .Select(x => x.Exercise);
 
                 foreach (var topicArea in topicAreas)

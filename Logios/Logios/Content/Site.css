@@ -315,3 +315,6 @@ img.trophy-image {
     opacity: 0.4 !important;
 }
 
+.effect img:hover {
+    opacity: 0.5 !important;
+}

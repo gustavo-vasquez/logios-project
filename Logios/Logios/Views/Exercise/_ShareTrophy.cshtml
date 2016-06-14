@@ -6,7 +6,7 @@
 
 <!-- Share on Twitter -->
 <div class="col-md-2">
-    <a class="twitter popup" href="http://twitter.com/share?text=¡He ganado el trofeo @Model en Logios! Tú también puedes ganarlo, ¡anímate!" title="Twitter"><img src="~/Content/images/share_social/1465195920_twitter_circle.png" width="48" alt="Twittear" /></a>
+    <a class="twitter popup effect" href="http://twitter.com/share?text=¡He ganado el trofeo @Model en Logios! Tú también puedes ganarlo, ¡anímate! @Request.Url.AbsoluteUri" title="Compartir en Twitter"><img src="~/Content/images/share_social/1465195920_twitter_circle.png" width="48" alt="Twittear" /></a>
     <script>
       $('.popup').click(function(event) {
         var width  = 575,
@@ -36,7 +36,7 @@
             u = location.href; t = document.title; window.open('http://www.facebook.com/sharer.php?u=https://developers.facebook.com/docs/plugins/', 'sharer', 'toolbar=0,status=0,width=626,height=436'); return false;
         }
     </script>
-    <a href="http://www.facebook.com/share.php?u=<url>" onclick="return fbs_click()" target="_blank" title="Facebook"><img src="~/Content/images/share_social/1465196478_facebook_circle.png" width="48" alt="Facebook" /></a>
+    <a href="http://www.facebook.com/share.php?u=<url>" class="effect" onclick="return fbs_click()" target="_blank" title="Compartir en Facebook"><img src="~/Content/images/share_social/1465196478_facebook_circle.png" width="48" alt="Facebook" /></a>
 </div>
 
 <!-- Share on Google+ -->
@@ -50,5 +50,5 @@
           return false;
         }
     </script>
-    <a title="share on google+" href="https://plus.google.com/share?url=<url>" onclick="return googleplusbtn('http://www.ole.com.ar/')"><img src="~/Content/images/share_social/1465196475_google_circle.png" width="48" alt="Google+" /></a>
+    <a title="Compartir en Google+" href="https://plus.google.com/share?url=<url>" class="effect" onclick="return googleplusbtn('http://www.ole.com.ar/')"><img src="~/Content/images/share_social/1465196475_google_circle.png" width="48" alt="Google+" /></a>
 </div>
