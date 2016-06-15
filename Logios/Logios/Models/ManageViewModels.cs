@@ -150,4 +150,39 @@ namespace Logios.Models
             }
         }
     }
+
+    public class FavoriteExercisesPanelViewModel
+    {
+        public List<FavoriteExerciseDTO> FavoriteExercises;
+
+        public FavoriteExercisesPanelViewModel()
+        {
+            this.FavoriteExercises = new List<FavoriteExerciseDTO>();
+        }
+
+        public void LoadFavoriteExercises(string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var favoriteExercises = context.UserFavorites.Where(x => x.UserId == userId).ToList();
+                var userExercises = context.UserExercise.Where(x => x.UserId == userId).ToList();
+
+                foreach (var favoriteExercise in favoriteExercises)
+                {
+                    var newFavoriteExerciseDTO = new FavoriteExerciseDTO();
+                    var exercise = context.Exercises.First(x => x.ExerciseId == favoriteExercise.ExerciseId);
+
+                    newFavoriteExerciseDTO.ExerciseId = exercise.ExerciseId;
+                    newFavoriteExerciseDTO.Description = exercise.Description;
+
+                    var resolved = userExercises.Any(x => x.ExerciseId == exercise.ExerciseId
+                                                       && x.ShowedSolution == false);
+
+                    newFavoriteExerciseDTO.Resolved = resolved;
+
+                    this.FavoriteExercises.Add(newFavoriteExerciseDTO);
+                }
+            }
+        }
+    }
 }

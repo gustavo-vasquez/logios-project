@@ -186,6 +186,7 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="DTOs\ExerciseDTO.cs" />
+    <Compile Include="DTOs\FavoriteExerciseDTO.cs" />
     <Compile Include="DTOs\TopicAreaDTO.cs" />
     <Compile Include="DTOs\TopicDTO.cs" />
     <Compile Include="DTOs\UserBadgesDTO.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\TopicArea.cs" />
     <Compile Include="Entities\TopicAreaTopic.cs" />
+    <Compile Include="Entities\UserFavorite.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Enums\Trophies.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -238,6 +240,10 @@
     <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.cs" />
     <Compile Include="Migrations\201606071444135_AddImagePathToUserProfile.Designer.cs">
       <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606121647521_AddUserFavoriteTable.cs" />
+    <Compile Include="Migrations\201606121647521_AddUserFavoriteTable.Designer.cs">
+      <DependentUpon>201606121647521_AddUserFavoriteTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DataGenerators\ApplicationUserGenerator.cs" />
     <Compile Include="Migrations\DataGenerators\TopicAreaTopicDataGenerator.cs" />
@@ -332,6 +338,7 @@
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
     <Content Include="Content\video\library.mp4" />
+    <Content Include="Scripts\exerciseFavorites.js" />
     <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
@@ -373,6 +380,7 @@
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
     <Content Include="Views\Home\_HomeSocialLogin.cshtml" />
     <Content Include="Views\Trophies\_TrophiesList.cshtml" />
+    <Content Include="Views\Manage\_FavoriteExercisesUserPanel.cshtml" />
     <Content Include="Views\Exercise\HelperEditor.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
@@ -670,6 +678,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606071444135_AddImagePathToUserProfile.resx">
       <DependentUpon>201606071444135_AddImagePathToUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606121647521_AddUserFavoriteTable.resx">
+      <DependentUpon>201606121647521_AddUserFavoriteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

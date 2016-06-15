@@ -17,6 +17,17 @@ else
         <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>        
     </h1>
 }
+@if (Request.IsAuthenticated)
+{
+    if (Model.Favorited)
+    {
+        <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId"></span>
+    }
+    else
+    {
+        <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId"></span>
+    }
+}
 <span>Temática: </span>
 <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
 <div class="pull-right">
@@ -189,5 +200,6 @@ else
         @Scripts.Render("~/Scripts/controlPanel.js")
         @Scripts.Render("~/Scripts/formulaEditor.js")
         @Scripts.Render("~/Scripts/exercise.js")
+        @Scripts.Render("~/Scripts/exerciseFavorites.js")
         <script>pagination('@Model.isFirst', '@Model.isLast');</script>
     }

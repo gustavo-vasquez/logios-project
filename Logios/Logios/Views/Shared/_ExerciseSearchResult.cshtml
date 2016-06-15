@@ -1,4 +1,5 @@
 ﻿@model Logios.Models.ExerciseResultViewModel
+@using Microsoft.AspNet.Identity
 
 <div class="row vertical-space-1">
         @if (Model.Exercises.Count() == 0)
@@ -19,16 +20,45 @@
                             <img src="@Model.TopicImageUrl" alt="Imagen del ejercicio">
                         </a>
                         <div class="caption">
-                            <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
-                                @if (exercise.Resolved)
-                                {
-                                    <h3 class="exercise-title text-success">Ejercicio - @exercise.ExerciseId <span class="glyphicon glyphicon-ok"></span></h3>
-                                }
-                                else
-                                {
-                                    <h3 class="exercise-title text-logios">Ejercicio - @exercise.ExerciseId</h3>
-                                }
-                            </a>
+                            @if (exercise.Resolved)
+                            {
+                                <h3 class="exercise-title text-success">
+                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                                        Ejercicio - @exercise.ExerciseId
+                                    </a>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        if (@exercise.Favorited)
+                                        {
+                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                        }
+                                    }
+                                </h3>
+                            }
+                            else
+                            {
+                                <h3 class="exercise-title text-logios">
+                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                                        Ejercicio - @exercise.ExerciseId
+                                    </a>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        if (@exercise.Favorited)
+                                        {
+                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                        }
+                                    }
+                                </h3>
+                            }
                             <p class="exercise-description">@exercise.Description</p>
                         </div>
                     </div>
@@ -36,5 +66,6 @@
             }
 
             @Scripts.Render("~/Scripts/exerciseResult.js")
-        }        
+            @Scripts.Render("~/Scripts/exerciseFavorites.js")
+        }
 </div>

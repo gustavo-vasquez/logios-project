@@ -15,7 +15,7 @@ namespace Logios.Controllers
 {
     public class ExerciseController : Controller
     {
-        static ExerciseServices services = new ExerciseServices();
+        static ExerciseServices ExerciseService = new ExerciseServices();
         private TrophyService TrophyService = new TrophyService();
         private static Trophy NewTrophy;
 
@@ -28,11 +28,18 @@ namespace Logios.Controllers
         public ActionResult Show(int? id)
         {
             if (id != null)
-            {                           
-                var exerciseToShow = services.GetExerciseInformation(id, User.Identity.GetUserId());
+            {
+                var userId = User.Identity.GetUserId();
+                var exerciseToShow = ExerciseService.GetExerciseInformation(id, userId);
 
                 if(exerciseToShow.Exercise != null)
                 {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        exerciseToShow.Favorited = context.UserFavorites.Any(x => x.ExerciseId == id
+                                                                               && x.UserId == userId);
+                    }
+
                     exerciseToShow.NewTrophy = NewTrophy;
                     NewTrophy = null;
                     return View(exerciseToShow);
@@ -52,14 +59,14 @@ namespace Logios.Controllers
         {
             var currentUser = User.Identity.GetUserId();
 
-            bool? result = services.CheckAnswer(id, answer);
+            bool? result = ExerciseService.CheckAnswer(id, answer);
 
             if (result.Value)
             {
-                if (!services.CheckUserHasRecord(currentUser, id))
+                if (!ExerciseService.CheckUserHasRecord(currentUser, id))
                 {
-                    services.UpdateUserExercise(currentUser, id, false);
-                    services.SumPoints(currentUser);
+                    ExerciseService.UpdateUserExercise(currentUser, id, false);
+                    ExerciseService.SumPoints(currentUser);
                 }
 
                 NewTrophy = this.TrophyService.UpdateUserTrophies(currentUser);
@@ -82,19 +89,19 @@ namespace Logios.Controllers
                 return Json("Error en la carga");
             }
 
-            if (services.CheckUserHasRecord(model.UserId,model.ExerciseId))
+            if (ExerciseService.CheckUserHasRecord(model.UserId,model.ExerciseId))
             {
                 return Json("Ya habías resuelto este ejercicio");
             }
 
-            services.UpdateUserExercise(model.UserId, model.ExerciseId, true);
+            ExerciseService.UpdateUserExercise(model.UserId, model.ExerciseId, true);
             return Json("Acabas de visualizar la resolución. Ya no puedes ganar puntos por este ejercicio");
 
         }
         
         public ActionResult Report(int id)
         {
-            return View(services.GetReportData(id));
+            return View(ExerciseService.GetReportData(id));
         }
 
         [HttpPost]
@@ -105,7 +112,7 @@ namespace Logios.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    services.SendReport(model.Cause, exerciseId, uploadName, User.Identity.GetUserId());
+                    ExerciseService.SendReport(model.Cause, exerciseId, uploadName, User.Identity.GetUserId());
 
                     return RedirectToAction("Show", "Exercise", new { id = exerciseId });
                 }
@@ -116,8 +123,39 @@ namespace Logios.Controllers
             {
                 return Content("<script>alert('" + ex.Message + "');</script>");
                 //return View(services.GetReportData(exerciseId));
-            }                        
+            }            
+            
         }
+        
+        
+
+        [HttpPost]
+        public void ToggleFavorite()
+        {
+            var userId = User.Identity.GetUserId();
+            var exerciseId = int.Parse(Request.Form["exerciseId"]);
+
+            using (var context = new ApplicationDbContext())
+            {
+                var exercise = context.UserFavorites.FirstOrDefault(x => x.ExerciseId == exerciseId
+                                                                      && x.UserId == userId);
+                if (exercise != null)
+                {
+                    context.UserFavorites.Remove(exercise);
+                }
+                else
+                {
+                    context.UserFavorites.Add(new UserFavorite()
+                    {
+                        UserId = userId,
+                        ExerciseId = exerciseId
+                    });
+                }
+
+                context.SaveChanges();
+            }
+        }
+         
         
         [HttpGet]
         public ActionResult HelperEditor()

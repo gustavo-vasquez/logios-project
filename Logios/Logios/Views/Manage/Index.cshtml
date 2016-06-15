@@ -11,6 +11,7 @@
         <li role="presentation"><a href="#badgesAndPointsPanel" aria-controls="badgesAndPointsPanel" role="tab" data-toggle="tab" data-url='@Url.Action("LoadBadgesAndPointsPanel","Manage")'><span class="glyphicon glyphicon-gift"></span> Trofeos y Puntos</a></li>
         <li role="presentation"><a href="#exercisePanel" aria-controls="exercisePanel" role="tab" data-toggle="tab" data-url='@Url.Action("LoadExercisesPanel","Manage")'><span class="glyphicon glyphicon-stats"></span> Estadisticas de Ejercicios</a></li>
         <li role="presentation"><a href="#trophiesPanel" aria-controls="trophiesPanel" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-glass"></span> Ver trofeos</a></li>
+        <li role="presentation"><a href="#favoriteExercisePanel" aria-controls="favoriteExercisePanel" role="tab" data-toggle="tab" data-url='@Url.Action("LoadFavoriteExercisesPanel","Manage")'><span class="glyphicon glyphicon-star"></span> Ejercicios favoritos</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -24,6 +25,8 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="trophiesPanel">
             @{Html.RenderPartial("~/Views/Trophies/_TrophiesList.cshtml", new Logios.Services.TrophyService().GetAllTrophies());}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="favoriteExercisePanel">
         </div>
     </div>
 </div>
