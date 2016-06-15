@@ -379,6 +379,17 @@ namespace Logios.Controllers
             return PartialView("_ExerciseUserPanel", model);
         }
 
+        // GET - Llamado por Ajax en el control panel
+        public PartialViewResult LoadFavoriteExercisesPanel()
+        {
+            var model = new FavoriteExercisesPanelViewModel();
+            var userId = User.Identity.GetUserId();
+
+            model.LoadFavoriteExercises(userId);
+
+            return PartialView("_FavoriteExercisesUserPanel", model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
