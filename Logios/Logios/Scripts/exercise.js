@@ -31,7 +31,11 @@ $(document).ready(function () {
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));        
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));
+
+    $('#btnHelper').click(function () {
+        window.open("/Exercise/HelperEditor", "", "width=530,height=320");
+    });
 });
 
 function doAction(UserId, ExerciseId) {
@@ -53,7 +57,7 @@ function doAction(UserId, ExerciseId) {
             $('#DevelopmentField').slideDown(500);
             $('blockquote .clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');
         }
-    });
+    });    
 }
 
 function copyAnswer() {

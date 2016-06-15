@@ -373,6 +373,7 @@
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
     <Content Include="Views\Home\_HomeSocialLogin.cshtml" />
     <Content Include="Views\Trophies\_TrophiesList.cshtml" />
+    <Content Include="Views\Exercise\HelperEditor.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />

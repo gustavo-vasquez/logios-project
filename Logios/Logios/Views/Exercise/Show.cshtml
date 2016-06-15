@@ -88,7 +88,8 @@ else
         <div class="row">
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Solución: </h2>
-                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>            
+                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>                            
+                <button id="btnHelper" href="https://www.google.com.ar" class="btn btn-default text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Cuentas auxiliares</button>                
             </div>
 
             <div id="divSolution" class="col-lg-9">
@@ -111,13 +112,15 @@ else
                         }))
                         {
                             @Html.AntiForgeryToken();
-                            <div class="form-inline">
-                                <input type="hidden" id="answer" name="answer" />
-                                <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
-                                <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
-                                <div class="message"></div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="hidden" id="answer" name="answer" />
+                                    <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                                    <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
+                                </div>                                
                             </div>
-                        }                            
+                            <div class="message"></div>
+                    }                            
                 </blockquote>
             </div>
         </div>

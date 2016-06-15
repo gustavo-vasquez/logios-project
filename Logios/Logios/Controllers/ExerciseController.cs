@@ -117,6 +117,12 @@ namespace Logios.Controllers
                 return Content("<script>alert('" + ex.Message + "');</script>");
                 //return View(services.GetReportData(exerciseId));
             }                        
-        }                
+        }
+        
+        [HttpGet]
+        public ActionResult HelperEditor()
+        {
+            return View();
+        }
     }
 }

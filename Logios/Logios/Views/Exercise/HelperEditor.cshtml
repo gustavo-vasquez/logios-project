@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Helper editor</title>
+    @Scripts.Render("~/Scripts/jquery-2.1.4.min.js")
+    @Scripts.Render("~/Scripts/formulaEditor.js")
+    <script>
+        var helperEditor;
+        window.onload = function () {
+            helperEditor = com.wiris.jsEditor.JsEditor.newInstance({
+                'language': 'es',
+                'fontFamily': 'Times New Roman',
+                'fontSize': '24px',
+                'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+                'autoformat': true
+            });
+            helperEditor.insertInto(document.getElementById('helperContainer'));
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div id="helperContainer" style="height: 300px;"></div> 
+    </div>
+</body>
+</html>
