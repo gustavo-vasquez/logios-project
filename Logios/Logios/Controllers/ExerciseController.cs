@@ -28,9 +28,9 @@ namespace Logios.Controllers
         public ActionResult Show(int? id)
         {
             if (id != null)
-            {                           
-                var exerciseToShow = ExerciseService.GetExerciseInformation(id);
+            {
                 var userId = User.Identity.GetUserId();
+                var exerciseToShow = ExerciseService.GetExerciseInformation(id, userId);
 
                 if(exerciseToShow.Exercise != null)
                 {
@@ -129,7 +129,8 @@ namespace Logios.Controllers
         
         public JsonResult Pagination(int id)
         {
-            return Json(JsonConvert.SerializeObject(ExerciseService.GetExerciseInformation(id)), JsonRequestBehavior.AllowGet);
+            var userId = User.Identity.GetUserId();
+            return Json(JsonConvert.SerializeObject(ExerciseService.GetExerciseInformation(id, userId)), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
