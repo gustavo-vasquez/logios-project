@@ -186,6 +186,7 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserTrophiesController.cs" />
     <Compile Include="DTOs\ExerciseDTO.cs" />
+    <Compile Include="DTOs\FavoriteExerciseDTO.cs" />
     <Compile Include="DTOs\TopicAreaDTO.cs" />
     <Compile Include="DTOs\TopicDTO.cs" />
     <Compile Include="DTOs\UserBadgesDTO.cs" />
@@ -377,6 +378,7 @@
     <Content Include="Views\Exercise\_ShareButtons.cshtml" />
     <Content Include="Views\Exercise\_ShareTrophy.cshtml" />
     <Content Include="Views\Home\_HomeSocialLogin.cshtml" />
+    <Content Include="Views\Manage\_FavoriteExercisesUserPanel.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />

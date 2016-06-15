@@ -2,7 +2,8 @@
     $(function () {
         var tabNames = [
                 'badgesAndPointsPanel',
-                'exercisePanel'
+                'exercisePanel',
+                'favoriteExercisePanel'
             ];
 
         setupTabs(tabNames);
