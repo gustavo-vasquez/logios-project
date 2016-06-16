@@ -38,9 +38,9 @@
     </div>
     <div class="col-md-9 col-xs-10 text-right">
         <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
-        <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a id="randomEx" href="@Url.Action("Show", new { id = new Random().Next(1, Model.maxExerciseId) })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ejercicio aleatorio"><span class="glyphicon glyphicon-random"></span></a>
-        <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a id="randomEx" href="@Url.Action("Show", new { id = new Random().Next(1, Model.maxExerciseId) })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ejercicio aleatorio"><span class="glyphicon glyphicon-random"></span></a>
+        <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 </div>
 <hr class="vertical-space-2" />

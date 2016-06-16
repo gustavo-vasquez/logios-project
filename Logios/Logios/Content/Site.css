@@ -332,6 +332,10 @@ h1 .favorite-star {
     font-size: 32px;
 }
 
+.is-disabled {        
+    pointer-events: none !important;
+}
+
 .hide-column {
     display: none;
 }
@@ -346,9 +350,9 @@ h1 .favorite-star {
 
 /* Arbol de ejercicios resueltos */
 .topic-menu {
-        cursor: pointer;
-        font-size: larger;        
-    }
+    cursor: pointer;
+    font-size: larger;        
+}
 
 #menu_gral {        
     margin-left: -40px;

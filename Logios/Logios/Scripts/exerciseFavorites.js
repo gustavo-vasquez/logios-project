@@ -17,6 +17,7 @@
             $this.tooltip('hide').attr('data-original-title', 'Quitar de favoritos').tooltip('fixTitle').tooltip('show');            
         }
 
+        $this.addClass('is-disabled');
         var exerciseId = $this.data('exerciseId');
 
         $.ajax({
@@ -25,8 +26,11 @@
             contentType: 'application/x-www-form-urlencoded',
             data: {
                 exerciseId: exerciseId
+            },
+            success: function (response) {
+                $this.removeClass('is-disabled');
             }
-        });
+        });        
     });
 
     removeFavoriteButtons.click(function (event) {

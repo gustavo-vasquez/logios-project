@@ -131,7 +131,7 @@ namespace Logios.Controllers
 
         [HttpPost]
         public void ToggleFavorite()
-        {
+        {            
             var userId = User.Identity.GetUserId();
             var exerciseId = int.Parse(Request.Form["exerciseId"]);
 
