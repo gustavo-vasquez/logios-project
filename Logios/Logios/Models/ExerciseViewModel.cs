@@ -17,5 +17,6 @@ namespace Logios.Models
         public Trophy NewTrophy { get; set; }
         public bool isResolved { get; set; }
         public bool Favorited { get; set; }
+        public int maxExerciseId { get; set; }
     }
 }

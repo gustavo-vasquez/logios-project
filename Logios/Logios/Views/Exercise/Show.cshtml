@@ -4,36 +4,44 @@
     ViewBag.Title = "Ejercicio Nº " + Model.Exercise.ExerciseId;
 }
 
-@if (Model.isResolved)
-{
-    <h1 class="text-success">
-        <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>        
-        <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
-    </h1>
-}
-else
-{
-    <h1>
-        <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>        
-    </h1>
-}
-@if (Request.IsAuthenticated)
-{
-    if (Model.Favorited)
+<div class="row container-fluid">
+    @if (Model.isResolved)
     {
-        <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId"></span>
+        <h1 class="text-success">
+            <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+            <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
+        </h1>
     }
     else
     {
-        <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId"></span>
+        <h1>
+            <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+        </h1>
     }
-}
-<span>Temática: </span>
-<span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
-<div class="pull-right">
-    <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
-    <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <span>Temática: </span>
+        <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
+        @if (Request.IsAuthenticated)
+        {
+            if (Model.Favorited)
+            {
+                <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+            }
+        }
+    </div>
+    <div class="col-md-9 col-xs-10 text-right">
+        <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
+        <a id="prevEx" href="@Url.Action("Show", "Exercise", new { id = Model.backExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio anterior"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a id="randomEx" href="@Url.Action("Show", new { id = new Random().Next(1, Model.maxExerciseId) })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ejercicio aleatorio"><span class="glyphicon glyphicon-random"></span></a>
+        <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-default" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
 </div>
 <hr class="vertical-space-2" />
 

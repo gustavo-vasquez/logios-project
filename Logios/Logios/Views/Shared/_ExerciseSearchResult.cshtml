@@ -23,19 +23,20 @@
                             @if (exercise.Resolved)
                             {
                                 <h3 class="exercise-title text-success">
-                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })" class="text-success">
                                         Ejercicio - @exercise.ExerciseId
                                     </a>
                                     <span class="glyphicon glyphicon-ok"></span>
                                     @if (Request.IsAuthenticated)
                                     {
-                                        if (@exercise.Favorited)
+                                        <script>$('[data-toggle="tooltip"]').tooltip();</script>
+                                        if (exercise.Favorited)
                                         {
-                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId" data-toggle="tooltip" title="Quitar de favoritos"></span>
                                         }
                                         else
                                         {
-                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId" data-toggle="tooltip" title="Marcar como favorito"></span>
                                         }
                                     }
                                 </h3>
@@ -48,13 +49,14 @@
                                     </a>
                                     @if (Request.IsAuthenticated)
                                     {
-                                        if (@exercise.Favorited)
+                                        <script>$('[data-toggle="tooltip"]').tooltip();</script>
+                                        if (exercise.Favorited)
                                         {
-                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                            <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@exercise.ExerciseId" data-toggle="tooltip" title="Quitar de favoritos"></span>
                                         }
                                         else
                                         {
-                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId"></span>
+                                            <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@exercise.ExerciseId" data-toggle="tooltip" title="Marcar como favorito"></span>
                                         }
                                     }
                                 </h3>

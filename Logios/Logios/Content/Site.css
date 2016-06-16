@@ -312,6 +312,21 @@ img.trophy-image {
     float: right;
 }
 
+.favorite-star:hover {
+    opacity: 0.6;
+}
+
+.fix-star {
+    font-size: 32px;
+    margin-top: -10px;    
+}
+
+@media(min-width: 1200px) {
+    .fix-star {
+        margin-right: 46px;
+    }
+}
+
 h1 .favorite-star {
     float: none;
     font-size: 32px;

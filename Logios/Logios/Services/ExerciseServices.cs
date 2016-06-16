@@ -70,6 +70,10 @@ namespace Logios.Services
             exerciseToShow.backExerciseId = (index > 0) ? allExercises[index - 1].ExerciseId : id;
             exerciseToShow.nextExerciseId = (index < allExercises.Count() - 1) ? allExercises[index + 1].ExerciseId : id;
             exerciseToShow.isResolved = context.UserExercise.Any(x => x.ExerciseId == id && x.UserId == userId);
+            exerciseToShow.maxExerciseId = context.Exercises.Where(e => e.ExerciseId != id && e.IsDeleted == false)
+                                                            .OrderByDescending(e => e.ExerciseId)
+                                                            .Select(e => e.ExerciseId)
+                                                            .First();
 
             return exerciseToShow;
         }        
