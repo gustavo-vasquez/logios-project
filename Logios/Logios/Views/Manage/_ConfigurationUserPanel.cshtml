@@ -31,11 +31,11 @@
             <div class="col-md-7">                
                 @if (Model.HasPassword)
                 {
-                    @Html.ActionLink("Cambiar la contraseña", "ChangePassword", null, new { @class = "btn btn-sm btn-info" })
+                    <a class="btn btn-sm btn-info" href="@Url.Action("ChangePassword")"><span class="glyphicon glyphicon-eye-close"></span> Cambiar la contraseña</a>
                 }
                 else
                 {
-                    @Html.ActionLink("Crear contraseña", "SetPassword", null, new { @class = "btn btn-sm btn-info" })
+                    <a class="btn btn-sm btn-info" href="@Url.Action("SetPassword")"><span class="glyphicon glyphicon-eye-close"></span> Crear contraseña</a>                    
                 }                
             </div>
         </div>

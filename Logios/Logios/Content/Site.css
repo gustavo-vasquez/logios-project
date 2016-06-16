@@ -316,6 +316,7 @@ h1 .favorite-star {
     float: none;
     font-size: 32px;
 }
+
 .hide-column {
     display: none;
 }
@@ -326,4 +327,27 @@ h1 .favorite-star {
 
 .effect img:hover {
     opacity: 0.5 !important;
+}
+
+/* Arbol de ejercicios resueltos */
+.topic-menu {
+        cursor: pointer;
+        font-size: larger;        
+    }
+
+#menu_gral {        
+    margin-left: -40px;
+}
+
+#menu_gral ul {
+    list-style-type: none;            
+}        
+
+#menu_gral a {
+    text-decoration: none;            
+    line-height: 2.5rem;
+}   
+
+#menu_gral a:hover {
+    color: forestgreen;
 }

@@ -1,42 +1,36 @@
 ﻿@model Logios.Models.ExerciseUserPanelViewModel
 @{ int colNumber = 0; }
 
-<style>
-    .topic-menu {
-        cursor: pointer;
-        font-size: larger;        
-    }
-
-    #menu_gral {        
-        margin-left: -40px;
-    }
-
-    #menu_gral ul {
-        list-style-type: none;            
-    }        
-
-    #menu_gral a {
-        text-decoration: none;            
-        line-height: 2.5rem;
-    }            
-</style>
-
 <script>
-    function openExercises() {        
-        if ($('.topic-menu').next('ul').css('display') == 'none') {
-            $('.topic-menu > span:first').removeClass('glyphicon glyphicon-chevron-right');
-            $('.topic-menu > span:first').addClass('glyphicon glyphicon-chevron-down')
-            $('.topic-menu').next('ul').css('display', 'block');
+    function openExercises(topicName) {        
+        if ($('.' + topicName + '').next('ul').css('display') == 'none') {            
+            $('.' + topicName + ' > span:first').removeClass('glyphicon glyphicon-chevron-right');
+            $('.' + topicName + ' > span:first').addClass('glyphicon glyphicon-chevron-down');
+            $('.' + topicName + '').next('ul').css('display', 'block');
+
+            if($('ul[name=' + topicName + '] li').length == 0 ) {
+                $.ajax({
+                    url: "/Manage/ExercisesTree?topicName=" + topicName,
+                    type: 'GET',                
+                    error: function (response) {                    
+                        alert('Error: ' + response.responseText);
+                    },
+                    success: function (treeArray) {
+                        for (i = 0; i < treeArray.length; i++) {
+                            $('ul[name=' + topicName + ']').append('<li><a href="/Exercise/Show/' + treeArray[i] + '"><span class="glyphicon glyphicon-file"></span> Ejercicio ' + treeArray[i] + '</a></li>');
+                        }
+                        treeListed = true;
+                    }
+                });
+            }
         }
         else {
-            $('.topic-menu > span:first').removeClass('glyphicon glyphicon-chevron-down');
-            $('.topic-menu > span:first').addClass('glyphicon glyphicon-chevron-right')
-            $('.topic-menu').next('ul').css('display', 'none');
+            $('.' + topicName + ' > span:first').removeClass('glyphicon glyphicon-chevron-down');
+            $('.' + topicName + ' > span:first').addClass('glyphicon glyphicon-chevron-right');
+            $('.' + topicName + '').next('ul').css('display', 'none');
         }
     }
 </script>
-
-
 
 <div>
     @foreach (var topicAreaDescription in Model.Statistics.Keys)
@@ -59,12 +53,10 @@
                         @foreach (var topicStatistics in Model.Statistics[topicAreaDescription])
                         {
                             <li class="topic-statistics">
-                                <a onclick="openExercises();" class="text-info topic-menu">
+                                <a onclick="openExercises('@topicStatistics.Key');" class="text-info topic-menu @topicStatistics.Key">
                                     <span class="glyphicon glyphicon-chevron-right"></span> @topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span>
                                 </a>
-                                <ul style="display: none;">
-                                    <li><a href="#"><span class="glyphicon glyphicon-file"></span> Ejercicio 1</a></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-file"></span> Ejercicio 5</a></li>
+                                <ul name="@topicStatistics.Key" style="display: none;">                                    
                                 </ul>
                             </li>
                         }

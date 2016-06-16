@@ -453,6 +453,12 @@ namespace Logios.Controllers
 
             return View("Index", model);
         }
+
+        [HttpGet]
+        public ActionResult ExercisesTree(string topicName)
+        {            
+            return Json(new ExerciseServices().GetExercisesResolved(User.Identity.GetUserId(), topicName), JsonRequestBehavior.AllowGet);
+        }
         
         #region Helpers
         // Used for XSRF protection when adding external logins

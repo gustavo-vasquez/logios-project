@@ -202,6 +202,24 @@ namespace Logios.Services
             context.SaveChanges();
         }
 
+        public IEnumerable<int> GetExercisesResolved(string userId, string topicName)
+        {
+            List<int> tree = new List<int>();
+            List<int> allResolvedIds = context.UserExercise.Where(x => x.UserId == userId).Select(x => x.ExerciseId).ToList();
+            var topicId = context.Topics.FirstOrDefault(t => t.Description == topicName).TopicId;
+            var exercises = context.Exercises;
+
+            foreach(var exerciseId in allResolvedIds)
+            {
+                if (exercises.Any(e => e.ExerciseId == exerciseId && e.Topic.TopicId == topicId))
+                {
+                    tree.Add(exerciseId);
+                }
+            }
+
+            return tree;
+        }
+
         public ReportViewModel GetReportData(int id)
         {
             ReportViewModel model = new ReportViewModel();
