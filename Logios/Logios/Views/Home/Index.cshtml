@@ -5,8 +5,14 @@
 
 @if (!Request.IsAuthenticated)
 {
-    <div class="jumbotron wrapper clearfix">                            
-            @Html.Partial("_LandingPage")                
+<div class="jumbotron jumbotron-video clearfix">                            
+        <video id="video-background" poster="/Content/images/bg3.jpg" preload="auto" muted autoplay loop>
+            <source src="~/Content/video/library_reading_hall.mp4" type="video/mp4" />
+            @*<source src="~/Content/video/library_reading_hall.webm" type="video/webm" />*@
+        </video>
+        <div>
+            @Html.Partial("_LandingPage")
+        </div>
     </div>
 }
 else
