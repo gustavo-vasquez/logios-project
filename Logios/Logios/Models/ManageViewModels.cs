@@ -67,13 +67,12 @@ namespace Logios.Models
         public string ConfirmPassword { get; set; }
     }
     public class ChangeUserNameViewModel
-    {
-
-       
+    {       
         [Display(Name = "Usuario Actual")]
         public string OldName { get; set; }
 
-        [Required(ErrorMessage = "El campo nuevo usuario es obligatorio.")]
+        [Required(ErrorMessage = "El campo Nuevo nombre es obligatorio.")]
+        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario sólo puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
         [Display(Name = "Nuevo nombre de usuario")]
         public string NewName { get; set; }
 

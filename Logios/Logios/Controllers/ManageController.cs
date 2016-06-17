@@ -238,9 +238,18 @@ namespace Logios.Controllers
                 }
 
                 user.UserName = model.NewName;
+                var result = await UserManager.UpdateAsync(user);                
+
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                AddErrors(result);
+                return View();
                 
-                return RedirectToAction("Index");
             }
+
             ModelState.AddModelError("", "Ha ocurrido un error.");
             return View();
         }

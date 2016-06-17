@@ -12,7 +12,7 @@
     <p class="text-success">@ViewBag.StatusMessage</p>
     <div class="col-md-7">
 
-        <div class="form-group">
+        <div class="form-group vertical-space-2">
             <label class="col-md-5 control-label">E-mail:</label>
             <div class="col-md-7">
                 <label class="text-default">@User.Identity.GetUserEmail(User.Identity.GetUserId())</label>                
@@ -21,12 +21,13 @@
 
         <div class="form-group">
             <label class="col-md-5 control-label">Nombre de usuario:</label>
-            <div class="col-md-7">
-                <label class="text-default">@User.Identity.Name @Html.ActionLink("Cambiar", "ChangeName")</label>
+            <div class="col-md-7">                
+                <label class="text-default">@User.Identity.Name</label>                
+                <a href="@Url.Action("ChangeName")" class="text-danger"><b>[Modificar]</b></a>
             </div>
-        </div>
+        </div>        
 
-        <div class="form-group vertical-space-2">
+        <div class="form-group vertical-space-2" style="padding-top: 40px;">
             <label class="col-md-5 control-label">Contraseña:</label>
             <div class="col-md-7">                
                 @if (Model.HasPassword)
@@ -110,7 +111,7 @@
     
     @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { id = "changeAvatarForm", enctype = "multipart/form-data" }))
     {
-        <div class="col-md-3" style="border: 1px solid gray; border-radius: 3px; padding-top: 20px;">
+        <div class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1" style="border: 1px solid gray; border-radius: 3px; padding-top: 20px;">
             <div class="row text-center">
                 <img src="~/Content/images/avatars/@Model.ProfilePicture" width="128" />
             </div>        
@@ -120,7 +121,7 @@
                 @Html.TextBoxFor(m => m.newAvatar, new { type = "file", style = "display: none;" })                                                
             </div>                                                            
         </div>
-        <div class="col-md-3 col-md-offset-7">
+        <div class="col-md-3 col-md-offset-7 text-center">
             @Html.ValidationMessageFor(m => m.newAvatar, null, new { @class = "text-danger" })
         </div>
     }    

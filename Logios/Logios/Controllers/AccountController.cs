@@ -78,12 +78,16 @@ namespace Logios.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            var userRoles = UserManager.GetRoles(SignInManager.UserManager.Users.FirstOrDefault(e => e.UserName == model.UserName).Id);
-            if(userRoles.Cast<string>().SingleOrDefault(i => i == "Disabled")=="Disabled")
+
+            if(result != SignInStatus.Failure)
             {
-                ModelState.AddModelError("", "Intento de acceso no válido. El Usuario se encuentra deshabilitado");
-                return View(model);
-            }
+                var userRoles = UserManager.GetRoles(SignInManager.UserManager.Users.FirstOrDefault(e => e.UserName == model.UserName).Id);
+                if (userRoles.Cast<string>().SingleOrDefault(i => i == "Disabled") == "Disabled")
+                {
+                    ModelState.AddModelError("", "Intento de acceso no válido. El Usuario se encuentra deshabilitado");
+                    return View(model);
+                }
+            }                        
             
             switch (result)
             {
