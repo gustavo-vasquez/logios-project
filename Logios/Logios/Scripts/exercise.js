@@ -36,6 +36,15 @@ $(document).ready(function () {
     $('#btnHelper').click(function () {
         window.open("/Exercise/HelperEditor", "", "width=530,height=320");
     });
+
+    // Configurar visita guiada para la página de ejercicio.
+    $('#joyRideTipContent').joyride({
+        autoStart: true,
+        //cookieMonster: true,
+        //cookieName: 'logiosTour',
+        modal: true,
+        expose: true
+    });
 });
 
 function doAction(UserId, ExerciseId) {

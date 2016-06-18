@@ -9,6 +9,14 @@
     {
         <h1 class="text-success">
             <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+            @if (Model.Favorited)
+            {
+                <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+            }
             <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
         </h1>
     }
@@ -16,6 +24,17 @@
     {
         <h1>
             <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+                @if (Request.IsAuthenticated)
+                {
+                    if (Model.Favorited)
+                    {
+                        <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+                    }
+                }
         </h1>
     }
 </div>
@@ -24,17 +43,6 @@
     <div class="col-md-3">
         <span>Temática: </span>
         <span id="NameOfTopic" class="label label-lg label-default">@Model.topicName</span>
-        @if (Request.IsAuthenticated)
-        {
-            if (Model.Favorited)
-            {
-                <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
-            }
-            else
-            {
-                <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
-            }
-        }
     </div>
     <div class="col-md-9 col-xs-10 text-right">
         <span>Subido por <i>@Model.Exercise.User.UserName</i> &nbsp;</span>
@@ -64,7 +72,7 @@
         </div>
 
         <div class="col-lg-9">
-            <blockquote class="exercise-bg">                
+            <blockquote id="enunciado" class="exercise-bg">                
                 <p style="font-size: larger !important;">@Html.Raw(Model.Exercise.Problem)</p>
                 <small>Cada ejercicio suma 1 punto la primera vez</small>
             </blockquote>
@@ -78,7 +86,7 @@
                 <h4><i>&raquo; Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.</i></h4>
             </div>
 
-            <div class="col-lg-9">            
+            <div id="desarrollo" class="col-lg-9">            
                 <blockquote class="exercise-bg">
                     @using (Ajax.BeginForm(
                     "ShowDevelop",
@@ -202,6 +210,37 @@
     <div id="divModal"></div>
     <div id="divUI"></div>
 </div>
+
+<!-- Visita Guiada -->
+<ol id="joyRideTipContent">
+    <li data-button="Siguiente">
+        <h3>Página de ejercicio</h3>
+        <p>Veamos como utilizar la página de ejercicio.</p>
+    </li>
+
+    <li data-id="enunciado" data-button="Siguiente" data-options="tipLocation:left;tipAnimation:fade">
+        <h3>Enunciado</h3>
+        <p>
+            Aquí puedes ver el enunciado del problema, lee atentamente el enunciado antes de comenzar a resolver
+            el ejercicio porque en él encontrarás la forma de expresar el resultado.
+        </p>
+    </li>
+
+    <li data-id="divSolution" data-button="Siguiente" data-options="tipLocation:left;tipAnimation:fade">
+        <h3>Respuesta</h3>
+        <p>
+            SOLO DEBES ESCRIBIR LA RESPUESTA, NO EL DESARROLLO. <br />
+            Recibirás un punto por cada ejercicio que resuelvas correctamente sin ver el desarrollo. Revisa el enunciado para saber como expresar la respuesta correctamente.
+        </p>
+    </li>
+    
+    <li data-id="desarrollo" data-button="Finalizar" data-options="tipLocation:left;tipAnimation:fade">
+        <h3>Desarrollo</h3>
+        <p>
+            Si no sabes como resolver el ejercicio puedes presionar aquí para ver como resolverlo, pero ya no podrás obtener puntos por este ejercicio.
+        </p>
+    </li>
+</ol>
 
 @section scripts {        
         @Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
