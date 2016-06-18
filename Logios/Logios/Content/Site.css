@@ -43,6 +43,10 @@ footer {
     height: 100%;
     position: relative;
     overflow: hidden;
+    border-radius: 0px !important;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 1);
+    -moz-box-shadow:    0px 0px 3px 1px rgba(0, 0, 0, 1);
+    box-shadow:         0px 0px 3px 1px rgba(0, 0, 0, 1);
 }
 
 #video-background { 
@@ -77,6 +81,7 @@ footer {
 .landingpage {
     color: white !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .landingpage a:hover {
@@ -85,12 +90,25 @@ footer {
 
 #logo {
     font-family: UncialAntiqua-regular;
-    height:30px;
-    margin:10px;
+    height: 30px;
+    margin: 10px;
 }
 
 #logo_letras {
     font-family: UncialAntiqua-regular;
+}
+
+#landing_message ul {
+    list-style-type: none;
+}
+
+#landing_message li {
+    font-size: 20px;
+    font-weight: normal !important;    
+}
+
+#landing_message li > span {
+    font-size: 16px;    
 }
 
 .homeLogo {

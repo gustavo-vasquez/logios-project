@@ -6,7 +6,7 @@
 @if (!Request.IsAuthenticated)
 {
 <div class="jumbotron jumbotron-video clearfix">                            
-        <video id="video-background" poster="/Content/images/bg3.jpg" preload="auto" muted autoplay loop>
+        <video id="video-background" poster="/Content/images/bg3.jpg" preload="auto" muted autoplay loop oncontextmenu="return false;">
             <source src="~/Content/video/library_reading_hall.mp4" type="video/mp4" />
             @*<source src="~/Content/video/library_reading_hall.webm" type="video/webm" />*@
         </video>
