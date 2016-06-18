@@ -25,15 +25,6 @@ $(function () {
 
     searchInput.tooltipster('show');
 
-    //Para mostrarle el loading a Juan el miercoles, despues borrar.
-    //setTimeout(function () {
-    //    $.ajax({
-    //        url: '/Home/GetTopics',
-    //        method: 'GET',
-    //        success: configureAutocomplete
-    //    });
-    //}, 3000);
-
     $.ajax({
         url: '/Home/GetTopics',
         method: 'GET',
@@ -78,7 +69,6 @@ $(function () {
         });
 
         searchInput.on('keydown', function (event) {
-            //console.dir(event);
             var newValue = event.target.value;
 
             if ( (newValue.length === 0) && (event.keyCode === KEYS.BACKSPACE || event.keyCode === KEYS.DELETE) ) {
@@ -137,6 +127,9 @@ function searchExercise() {
     if (!inputIsValid(topic) || (lastTopic === topic && searchResults)) {
         return false;
     }
+
+    // Poner el cartel de loading
+    toggleLoading(true);
 
     // Actualizar el valor de la ultima busqueda realizada
     lastTopicInput.val(topic);
@@ -232,6 +225,9 @@ function addOneToSearchCount(searches, topicDescription) {
 function animateResults() {
     // Animar la seccion de resultados
     $('#exerciseSearchResult').hide();
+
+    toggleLoading(false);
+
     $('#exerciseSearchResult').slideDown('slow');
 
     // Borrar las tags y volver a generarlas por si una pasa a tener mas busquedas
@@ -276,9 +272,22 @@ function inputIsValid(searchValue) {
     return false;
 }
 
+function toggleLoading(enable) {
+    var searchButton = $('#exerciseSearchButton'),
+        loadingSign = '<div id="searchLoading" class="alert-info text-center"> <strong> <img src="Content/images/loading.gif" style="width:50px; height:50px;"  alt="loading image" /> Cargando resultados </strong> </div>',
+        $resultArea = $('#exerciseSearchResult');
+
+    if (enable) {
+        searchButton.attr('disabled', 'disabled');
+        $resultArea.empty();
+        $resultArea.append(loadingSign);
+    } else {
+        searchButton.removeAttr('disabled');
+        $resultArea.detach('#searchLoading');
+    }
+}
 
 //Extensión de JQuery
-
 jQuery.fn.extend({
     scrollToMe: function (offset, speed) {
         var y = offset || 100;
