@@ -342,6 +342,9 @@
     <Content Include="Scripts\exerciseResult.js" />
     <Content Include="Scripts\firstVisit.js" />
     <Content Include="Scripts\formulaEditor%28editExercise%29.js" />
+    <Content Include="Content\joyride-2.1.css" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.joyride-2.1.js" />
     <Content Include="Scripts\jquery.tooltipster.min.js" />
     <Content Include="Scripts\manage.js" />
     <Content Include="Scripts\site.js" />

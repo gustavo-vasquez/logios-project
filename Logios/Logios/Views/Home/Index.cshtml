@@ -80,6 +80,30 @@ else
     @Html.Partial("_TopicAreaSearch")
 </div>
 
+<!-- Visita Guiada -->
+<ol id="joyRideTipContent">
+    <li data-button="Siguiente">
+        <h3>Bienvenido a Logios</h3>
+        <p>Vamos a ver algunas de las funcionalidades que tenemos disponibles para ti.</p>
+    </li>
+
+    <li data-id="searchInput" data-button="Siguiente" data-options="tipLocation:top;tipAnimation:fade">
+        <h3>Búsqueda de ejercicios</h3>
+        <p>
+            Esta es la barra de búsquedas, al hacer click verás una lista de todos los temas disponibles. <br />
+            Puedes escribir el que quieras para filtrar la lista y encontrarlo más facilmente.
+        </p>
+    </li>
+
+    <li data-id="topicAreaNavigation" data-button="Finalizar" data-options="tipLocation:top;tipAnimation:fade">
+        <h3>Navegación por áreas</h3>
+        <p>
+            Si quieres navegar el sitio para descubrir todos los temas que tenemos, la mejor forma es accediendo a está sección.
+        </p>
+    </li>
+</ol>
+
+
 <script type="text/javascript">
     var userId = '@User.Identity.GetUserId()';
 </script>

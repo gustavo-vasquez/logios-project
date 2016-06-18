@@ -110,6 +110,15 @@ $(function () {
         // Resetear el valor del ultimo tema buscado para que se pueda volver a realizar una busqueda.
         lastTopicInput.val('');
     }
+
+    // Configurar visita guiada para el home
+    $('#joyRideTipContent').joyride({
+        autoStart: true,
+        //cookieMonster: true,
+        //cookieName: 'logiosTour',
+        modal: true,
+        expose: true
+    });
 });
 
 function searchExercise() {

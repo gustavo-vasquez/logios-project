@@ -11,7 +11,9 @@ namespace Logios
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-2.1.4.min.js",
                         "~/Scripts/jquery.unobtrusive-ajax.min.js",
-                        "~/Scripts/jquery-ui-1.11.4.min.js"));
+                        "~/Scripts/jquery-ui-1.11.4.min.js",
+                        "~/Scripts/jquery.cookie.js",
+                        "~/Scripts/jquery.joyride-2.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
