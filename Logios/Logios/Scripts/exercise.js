@@ -37,14 +37,17 @@ $(document).ready(function () {
         window.open("/Exercise/HelperEditor", "", "width=530,height=320");
     });
 
-    // Configurar visita guiada para la página de ejercicio.
     $('#joyRideTipContent').joyride({
-        autoStart: true,
-        //cookieMonster: true,
-        //cookieName: 'logiosTour',
         modal: true,
         expose: true
     });
+
+    $('.tutorial-button').click(function (event) {
+        launchTutorial(false);
+    });
+
+    // Lanzar la visita guiada automaticamente al abrir la pagina.
+    launchTutorial(true);
 });
 
 function doAction(UserId, ExerciseId) {
@@ -90,4 +93,20 @@ function pagination(isFirst, isLast) {
     if (isLast == "True") {        
         document.getElementById("nextEx").className += " disabled";
     }    
+}
+
+function launchTutorial(automatic) {
+    var cookieAlreadyExists = $.cookie('logiosTutorialExercise');
+
+    // Si es automatico y ya existe la cookie, no hacer nada.
+    if (automatic && cookieAlreadyExists) {
+        return;
+    }
+
+    // Si es automatico pero no existe la cookie crearla (y luego ejecutarlo)
+    if (automatic) {
+        $.cookie('logiosTutorialExercise', 'tutorial run', { expires: 1024 });
+    }
+
+    $('#joyRideTipContent').joyride('restart');
 }

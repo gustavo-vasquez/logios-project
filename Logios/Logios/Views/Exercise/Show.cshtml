@@ -18,23 +18,25 @@
                 <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
             }
             <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
+            <button class="btn btn-info tutorial-button"> <span class="glyphicon glyphicon-question-sign"></span> </button>
         </h1>
     }
     else
     {
         <h1>
             <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
-                @if (Request.IsAuthenticated)
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.Favorited)
                 {
-                    if (Model.Favorited)
-                    {
-                        <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
-                    }
-                    else
-                    {
-                        <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
-                    }
+                    <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
                 }
+                else
+                {
+                    <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+                }
+            }
+            <button class="btn btn-info tutorial-button"> <span class="glyphicon glyphicon-question-sign"></span> </button>
         </h1>
     }
 </div>
@@ -234,10 +236,17 @@
         </p>
     </li>
     
-    <li data-id="desarrollo" data-button="Finalizar" data-options="tipLocation:left;tipAnimation:fade">
+    <li data-id="desarrollo" data-button="Siguiente" data-options="tipLocation:left;tipAnimation:fade">
         <h3>Desarrollo</h3>
         <p>
             Si no sabes como resolver el ejercicio puedes presionar aquí para ver como resolverlo, pero ya no podrás obtener puntos por este ejercicio.
+        </p>
+    </li>
+
+    <li data-class="tutorial-button" data-button="Finalizar" data-options="tipLocation:right;tipAnimation:fade">
+        <h3>Ayuda</h3>
+        <p>
+            Si necesitas volver a ver la ayuda solo presiona esta botón.
         </p>
     </li>
 </ol>
