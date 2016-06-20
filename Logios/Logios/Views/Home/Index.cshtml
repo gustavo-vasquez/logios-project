@@ -17,6 +17,7 @@
 }
 else
 {
+    <button class="btn btn-info tutorial-button pull-right" style="margin-top:20px;"> <span class="glyphicon glyphicon-question-sign"></span> </button>
     <div class="text-center homeLogo"><p>Logios</p></div>        
 }
 
@@ -79,6 +80,44 @@ else
 <div id="topicAreaSearchBox" class="jumbotron padding-zero text-center topic-area-search-box">
     @Html.Partial("_TopicAreaSearch")
 </div>
+
+<!-- Visita Guiada -->
+<ol id="joyRideTipContent">
+    <li data-button="Siguiente">
+        <h3>Bienvenido a Logios</h3>
+        <p>Vamos a ver algunas de las funcionalidades que tenemos disponibles para ti.</p>
+    </li>
+
+    <li data-id="searchInput" data-button="Siguiente" data-options="tipLocation:top;tipAnimation:fade">
+        <h3>Búsqueda de ejercicios</h3>
+        <p>
+            Esta es la barra de búsquedas, al hacer click verás una lista de todos los temas disponibles. <br />
+            Puedes escribir el que quieras para filtrar la lista y encontrarlo más facilmente.
+        </p>
+    </li>
+
+    <li data-class="onoffswitch" data-button="Siguiente" data-options="tipLocation:left;tipAnimation:fade">
+        <h3>Filtrar ejercicios resueltos</h3>
+        <p>
+            Si desactivas este botón, no verás los ejercicios que ya has resuelto en los resultados de tu búsqueda.
+        </p>
+    </li>
+
+    <li data-id="topicAreaNavigation" data-button="Siguiente" data-options="tipLocation:top;tipAnimation:fade">
+        <h3>Navegación por áreas</h3>
+        <p>
+            Si quieres navegar el sitio para descubrir todos los temas que tenemos, la mejor forma es accediendo a está sección.
+        </p>
+    </li>
+
+    <li data-class="tutorial-button" data-button="Finalizar" data-options="tipLocation:left;tipAnimation:fade">
+        <h3>Ayuda</h3>
+        <p>
+            Para volver a ver la ayuda presiona este botón.
+        </p>
+    </li>
+</ol>
+
 
 <script type="text/javascript">
     var userId = '@User.Identity.GetUserId()';

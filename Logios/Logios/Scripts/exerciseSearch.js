@@ -110,6 +110,18 @@ $(function () {
         // Resetear el valor del ultimo tema buscado para que se pueda volver a realizar una busqueda.
         lastTopicInput.val('');
     }
+
+    $('#joyRideTipContent').joyride({
+        modal: true,
+        expose: true
+    });
+
+    // Configurar visita guiada para el home
+    $('.tutorial-button').click(function (event) {
+        launchTutorial(false);
+    });
+
+    launchTutorial(true);
 });
 
 function searchExercise() {
@@ -285,6 +297,23 @@ function toggleLoading(enable) {
         searchButton.removeAttr('disabled');
         $resultArea.detach('#searchLoading');
     }
+}
+
+function launchTutorial(automatic) {
+    var cookieAlreadyExists = $.cookie('logiosTutorialHome');
+
+    // Si es automatico y ya existe la cookie, no hacer nada.
+    if (automatic && cookieAlreadyExists) {
+        return;
+    }
+
+    // Si es automatico pero no existe la cookie crearla (y luego ejecutarlo)
+    if (automatic) {
+        $.cookie('logiosTutorialHome', 'tutorial run', { expires: 1024 });
+    }
+
+    // Ejecutar el tutorial configurado.
+    $('#joyRideTipContent').joyride('restart');
 }
 
 //Extensión de JQuery
