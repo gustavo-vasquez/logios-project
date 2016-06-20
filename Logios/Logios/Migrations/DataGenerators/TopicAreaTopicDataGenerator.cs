@@ -10,7 +10,8 @@ namespace Logios.Migrations.DataGenerators
     {
         public void GenerateData(ApplicationDbContext context)
         {            
-            var topic1 = context.Topics.FirstOrDefault(x => x.Description == "Polinomios");            
+            var topic1 = context.Topics.FirstOrDefault(x => x.Description == "Polinomios");
+            var topic2 = context.Topics.FirstOrDefault(x => x.Description == "Matrices");
             var topicArea1 = context.TopicAreas.FirstOrDefault(x => x.Description == "Algebra");            
 
             var newTopicAreaTopics = new List<TopicAreaTopic>()
@@ -21,7 +22,15 @@ namespace Logios.Migrations.DataGenerators
                     Topic = topic1,
                     TopicArea = topicArea1,
                     TopicAreaId = topicArea1.TopicAreaId
-                }                
+                },
+
+                new TopicAreaTopic()
+                {
+                    TopicId = topic2.TopicId,
+                    Topic = topic2,
+                    TopicArea = topicArea1,
+                    TopicAreaId = topicArea1.TopicAreaId
+                }
             };
 
             newTopicAreaTopics.ForEach(t => context.TopicAreaTopics.Add(t));

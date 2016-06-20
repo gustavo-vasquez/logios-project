@@ -13,7 +13,8 @@ namespace Logios.Migrations.DataGenerators
         {
             var newTopics = new List<Topic>
             {                
-                new Topic { TopicId = 1, Description = "Polinomios" },                
+                new Topic { TopicId = 1, Description = "Polinomios" },
+                new Topic { TopicId = 2, Description = "Matrices" },
             };
 
             newTopics.ForEach(t => context.Topics.Add(t));

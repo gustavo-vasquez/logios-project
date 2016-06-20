@@ -65,7 +65,7 @@
 
         <div class="col-lg-9">
             <blockquote class="exercise-bg">                
-                <p style="font-size: larger !important;">@Html.Raw(Model.Exercise.Problem)</p>
+                <p style="font-size: 20px !important;">@Html.Raw(Model.Exercise.Problem)</p>
                 <small>Cada ejercicio suma 1 punto la primera vez</small>
             </blockquote>
         </div>
@@ -99,8 +99,9 @@
                         <button type="submit" id="ViewDevelopment" class="btn btn-block btn-default">Visualizar desarrollo</button>
                     }                    
                     <div class="clearfix"><br /></div>
-                    <p style="font-size: larger !important;" id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
-                </blockquote>
+                    <p style="font-size: 20px !important;" id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
+                    <div class="overflow"></div>
+                </blockquote>                
             </div>
         </div>
 
@@ -108,7 +109,7 @@
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Solución: </h2>
                 <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>                            
-                <button id="btnHelper" class="btn btn-sm btn-default text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Cuentas auxiliares</button>                
+                <button id="btnHelper" class="btn btn-sm btn-default text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Hacer cuentas auxiliares</button>                
             </div>
 
             <div id="divSolution" class="col-lg-9">
