@@ -15,18 +15,18 @@
         window.onload = function () {
             helperEditor = com.wiris.jsEditor.JsEditor.newInstance({
                 'language': 'es',
-                'fontFamily': 'Times New Roman',
-                'fontSize': '24px',
+                'fontFamily': 'Tahoma',
+                'fontSize': '22px',
                 'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
                 'autoformat': true
-            });
-            helperEditor.insertInto(document.getElementById('helperContainer'));
+            });            
+            helperEditor.insertInto(document.getElementById('helperContainer'));            
         }
     </script>
 </head>
 <body>
     <div>
-        <div id="helperContainer" style="height: 300px;"></div> 
+        <div id="helperContainer" style="height: 300px;"></div>                 
     </div>
 </body>
 </html>

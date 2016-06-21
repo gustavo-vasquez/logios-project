@@ -91,7 +91,7 @@ namespace Logios.Controllers
 
             if (ExerciseService.CheckUserHasRecord(model.UserId,model.ExerciseId))
             {
-                return Json("Ya habías resuelto este ejercicio");
+                return Json("Ya habías visto/resuelto este ejercicio");
             }
 
             ExerciseService.UpdateUserExercise(model.UserId, model.ExerciseId, true);

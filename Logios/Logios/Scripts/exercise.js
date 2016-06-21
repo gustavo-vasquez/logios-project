@@ -1,33 +1,10 @@
 ﻿var solutionEditor;
 
-$(document).ready(function () {        
-    MathJax.Hub.Config({
-        //jax: ["input/MathML", "output/CommonHTML"],
-
-        MathML: {
-            extensions: ["content-mathml.js"]
-        },
-
-        "HTML-CSS": {
-            availableFonts: ["STIX", "TeX", "Gyre-Pagella"],
-            preferredFont: "Gyre-Pagella",
-            scale: 100,
-            webFont: "Gyre-Pagella",
-            undefinedFamily: "STIXGeneral, 'Arial Unicode MS', serif",
-            matchFontHeight: false,
-            linebreaks: { automatic: true }
-        },
-
-        CommonHTML: {
-            scale: 100,
-            //linebreaks: { automatic: true }
-        },
-    });
-
+$(document).ready(function () {            
     solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
-        'fontFamily': 'Times New Roman',
-        'fontSize': '24px',
+        'fontFamily': 'Tahoma',
+        'fontSize': '22px',
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
@@ -61,13 +38,13 @@ function doAction(UserId, ExerciseId) {
         dataType: 'json',
         error: function (response) {
             $("#confirmDialog").modal('hide');
-            $('blockquote .clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response.responseText + '</i></p>');            
+            $('.notice').wrapInner('<p class="text-danger" style="font-size: 18px; padding-bottom: 20px;"><b><i>' + response.responseText + '</i></b></p>');
         },
         success: function (response) {
             $("#confirmDialog").modal('hide');
             $('#ViewDevelopment').hide();            
             $('#DevelopmentField').slideDown(500);
-            $('blockquote .clearfix').wrapInner('<p class="text-danger" style="padding-bottom: 20px;"><i>' + response + '</i></p>');
+            $('.notice').wrapInner('<p class="text-danger" style="font-size: 18px; padding-bottom: 20px;"><b><i>' + response + '</i></b></p>');
         }
     });    
 }

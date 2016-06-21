@@ -4,41 +4,43 @@
     ViewBag.Title = "Ejercicio Nº " + Model.Exercise.ExerciseId;
 }
 
-<div class="row container-fluid">
-    @if (Model.isResolved)
-    {
-        <h1 class="text-success">
-            <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
-            @if (Model.Favorited)
-            {
-                <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
-            }
-            else
-            {
-                <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
-            }
-            <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
-            <button class="btn btn-info tutorial-button"> <span class="glyphicon glyphicon-question-sign"></span> </button>
-        </h1>
-    }
-    else
-    {
-        <h1>
-            <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
-            @if (Request.IsAuthenticated)
-            {
-                if (Model.Favorited)
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.isResolved)
+        {
+            <h1 class="text-success vertical-space-1">
+                <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+                @if (Model.Favorited)
                 {
-                    <span class="glyphicon glyphicon-star text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
+                    <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
                 }
                 else
                 {
-                    <span class="glyphicon glyphicon-star-empty text-warning favorite-star fix-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+                    <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
                 }
-            }
-            <button class="btn btn-info tutorial-button"> <span class="glyphicon glyphicon-question-sign"></span> </button>
-        </h1>
-    }
+                <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
+                <button class="button-transparent tutorial-button pull-right" data-toggle="tooltip" data-placement="left" title="Visita guiada"><img src="~/Content/images/1466540006_help-512x512px.png" width="40" alt="guide_tour" /></button>
+            </h1>
+        }
+        else
+        {
+            <h1 class="vertical-space-1">
+                <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+                @if (Request.IsAuthenticated)
+                {
+                    if (Model.Favorited)
+                    {
+                        <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-star-empty text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Marcar como favorito"></span>
+                    }
+                }
+                <button class="button-transparent tutorial-button pull-right" data-toggle="tooltip" data-placement="left" title="Visita guiada"><img src="~/Content/images/1466540006_help-512x512px.png" width="40" alt="guide_tour" /></button>
+            </h1>
+        }
+    </div>
 </div>
 
 <div class="row">
@@ -53,11 +55,11 @@
         <a id="nextEx" href="@Url.Action("Show", "Exercise", new { id = Model.nextExerciseId })" class="btn btn-sm btn-info" data-toggle="tooltip" title="Ir a ejercicio siguiente"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 </div>
-<hr class="vertical-space-2" />
+<hr class="vertical-space-1" />
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
-    <div class="row vertical-space-3">
+    <div class="row vertical-space-1">
         <div class="col-md-2 col-xs-3">
             <a href="@Url.Action("EditExercise", "Administrator", new { id = Model.Exercise.ExerciseId })" class="btn btn-sm btn-primary col-md-12"><span class="glyphicon glyphicon-edit"></span> Editar</a>
         </div>
@@ -70,26 +72,66 @@
 <div class="row container-fluid">    
     <div class="row vertical-space-3">
         <div class="col-lg-3">
-            <h2 class="exercise-legend">Enunciado: </h2>
+            <h2 class="exercise-legend">Enunciado <span class="glyphicon glyphicon-arrow-right"></span></h2>
         </div>
 
         <div class="col-lg-9">
-            <blockquote id="enunciado" class="exercise-bg">                
-                <p style="font-size: 20px !important;">@Html.Raw(Model.Exercise.Problem)</p>
-                <small>Cada ejercicio suma 1 punto la primera vez</small>
+            <div id="enunciado" class="exercise-bg overflow">                
+                <div>@Html.Raw(Model.Exercise.Problem)</div>                
+            </div>
+        </div>
+    </div>
+
+    <div class="row vertical-space-3">
+        <div class="col-lg-3">
+            <h2 class="exercise-legend">Solución <span class="glyphicon glyphicon-arrow-right"></span></h2>
+            <h4><i class="text-danger">&raquo; En caso de no saber como expresar la solución, revisa nuevamente el enunciado</i></h4>
+            <button id="btnHelper" class="btn btn-sm btn-default text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Hacer cuentas auxiliares</button>
+        </div>
+
+        <div id="divSolution" class="col-lg-9">
+            <blockquote class="exercise-bg">
+                <div id="solutionContainer"></div>
+                @using (Ajax.BeginForm(
+                    "Show",
+                    "Exercise",
+                    new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "DivResult"
+                    },
+                    new
+                    {
+                        Id = "ResultForm",
+                        @Class = "form",
+                        role = "form"
+                    }))
+                {
+                    @Html.AntiForgeryToken();
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="hidden" id="answer" name="answer" />
+                            <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
+                            <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
+                        </div>
+                    </div>
+                    <div class="message"></div>
+                }
             </blockquote>
         </div>
     </div>
+
     @if (Request.IsAuthenticated)
     {
-        <div class="row vertical-space-3">
+        <div class="row vertical-space-2">
             <div class="col-lg-3">
-                <h2 class="exercise-legend">Desarrollo: </h2>
-                <h4><i>&raquo; Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos.</i></h4>
+                <h2 class="exercise-legend">Desarrollo <span class="glyphicon glyphicon-arrow-right"></span></h2>
+                <h4><i>&raquo; Al ver el proceso de resolución del ejercicio, no se le otorgarán puntos</i></h4>
             </div>
 
             <div id="desarrollo" class="col-lg-9">            
-                <blockquote class="exercise-bg">
+                <div class="exercise-bg overflow">
                     @using (Ajax.BeginForm(
                     "ShowDevelop",
                     "Exercise",
@@ -106,54 +148,14 @@
                         role = "form"
                     }))
                     {
-                        <button type="submit" id="ViewDevelopment" class="btn btn-block btn-default">Visualizar desarrollo</button>
+                        <button type="submit" id="ViewDevelopment" class="btn btn-block btn-info"><span class="glyphicon glyphicon-eye-open"></span> Visualizar desarrollo</button>
                     }                    
-                    <div class="clearfix"><br /></div>
-                    <p style="font-size: 20px !important;" id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</p>
+                    <div class="clearfix notice"></div>
+                    <div id="DevelopmentField" hidden>@Html.Raw(Model.Exercise.Development)</div>
                     <div class="overflow"></div>
-                </blockquote>                
+                </div>                
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3">
-                <h2 class="exercise-legend">Solución: </h2>
-                <h4><i class="text-danger">&raquo; La respuesta tiene que ser lo más completa posible (ej.: si una ecuación da 2, debe escribir x=2)</i></h4>                            
-                <button id="btnHelper" class="btn btn-sm btn-default text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Hacer cuentas auxiliares</button>                
-            </div>
-
-            <div id="divSolution" class="col-lg-9">
-                <blockquote class="exercise-bg">
-                    <div id="solutionContainer"></div>
-                    @using (Ajax.BeginForm(
-                        "Show",
-                        "Exercise",
-                        new AjaxOptions()
-                        {
-                            HttpMethod = "POST",
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = "DivResult"
-                        },
-                        new
-                        {
-                            Id = "ResultForm",
-                            @Class = "form",
-                            role = "form"
-                        }))
-                        {
-                            @Html.AntiForgeryToken();
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="hidden" id="answer" name="answer" />
-                                    <button type="submit" class="btn btn-success" onclick="return copyAnswer();">Verificar respuesta</button>
-                                    <a href="http://www.wiris.com/es/editor/docs/manual/basic-formula-edition" target="_blank" class="alert-link text-info" style="font-size: x-large;" data-toggle="tooltip" data-placement="right" title="¿Necesita ayuda?"><span class="glyphicon glyphicon-question-sign"></span></a>
-                                </div>                                
-                            </div>
-                            <div class="message"></div>
-                    }                            
-                </blockquote>
-            </div>
-        </div>
+        </div>        
 
         <!-- MODAL DE TROFEO -->
         if (Model.NewTrophy != null)

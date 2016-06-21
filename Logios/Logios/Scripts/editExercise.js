@@ -14,9 +14,8 @@ $(document).ready(function () {
 
     problemEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
-        'fontFamily': 'Tahoma',
-        'fontStyle': 'normal',
-        'fontSize': '20px',
+        'fontFamily': 'Tahoma',        
+        'fontSize': '22px',
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
@@ -25,9 +24,8 @@ $(document).ready(function () {
 
     developmentEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
-        'fontFamily': 'Tahoma',
-        'fontStyle': 'normal',
-        'fontSize': '20px',
+        'fontFamily': 'Tahoma',        
+        'fontSize': '22px',
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
@@ -36,9 +34,8 @@ $(document).ready(function () {
 
     solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
         'language': 'es',
-        'fontFamily': 'Tahoma',
-        'fontStyle': 'normal',
-        'fontSize': '20px',
+        'fontFamily': 'Tahoma',        
+        'fontSize': '22px',
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });

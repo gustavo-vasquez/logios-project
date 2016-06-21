@@ -231,9 +231,12 @@ div blockquote {
     font-size: 13px !important;
 }
 
-blockquote.exercise-bg {
+.exercise-bg {
     background-color: rgb(243, 242, 242);
     margin-bottom: 0;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
 }
 
 #loginForm div.checkbox {
@@ -413,4 +416,12 @@ h1 .favorite-star {
 
 #menu_gral a:hover {
     color: forestgreen;
+}
+
+.tutorial-button {
+    margin-right: -5px !important;
+}
+
+#MathJax-Element-1-Frame, #MathJax-Element-2-Frame {
+    font-size: 22px !important;        
 }

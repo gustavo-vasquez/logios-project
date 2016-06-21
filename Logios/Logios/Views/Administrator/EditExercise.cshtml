@@ -10,45 +10,39 @@
 <div>
     <div class="row">
         <div class="col-lg-3">
-            <h2 class="exercise-legend">Enunciado: </h2>
+            <h2 class="exercise-legend">Enunciado <span class="glyphicon glyphicon-arrow-right"></span></h2>
             <h4><i>&raquo;PRIMER PASO: Escriba el problema a resolver.</i></h4>
         </div>
 
-        <div class="col-lg-9">
-            <div class="panel panel-default" style="overflow: auto;">
-                <div class="panel-body">
-                    <div id="problemContainer"></div>
-                </div>
-            </div>            
+        <div class="col-lg-9 vertical-space-1">
+            <div class="exercise-bg overflow">
+                <div id="problemContainer"></div>
+            </div>          
         </div>
     </div>    
 
     <div class="row">
         <div class="col-lg-3">
-            <h2 class="exercise-legend">Desarrollo: </h2>
+            <h2 class="exercise-legend">Desarrollo <span class="glyphicon glyphicon-arrow-right"></span></h2>
             <h4><i>&raquo;SEGUNDO PASO: Desarrolle detalladamente cada paso para resolver el ejercicio.</i></h4>
         </div>
 
-        <div class="col-lg-9">
-            <div class="panel panel-default" style="overflow: auto;">
-                <div class="panel-body">
-                    <div id="developmentContainer"></div>
-                </div>
+        <div class="col-lg-9 vertical-space-1">
+            <div class="exercise-bg overflow">
+                <div id="developmentContainer"></div>
             </div>            
         </div>
     </div>    
 
     <div class="row">
         <div class="col-lg-3">
-            <h2 class="exercise-legend">Solución: </h2>
+            <h2 class="exercise-legend">Solución <span class="glyphicon glyphicon-arrow-right"></span></h2>
             <h4><i>&raquo;TERCER PASO: Escriba el resultado.</i></h4>
         </div>
 
         <div class="col-lg-9">            
-            <div class="panel panel-default" style="overflow: auto;">
-                <div class="panel-body">
-                    <div id="solutionContainer"></div>
-                </div>
+            <div class="exercise-bg overflow">
+                <div id="solutionContainer"></div>
             </div>            
         </div>
     </div>    
@@ -65,7 +59,7 @@
         @Html.HiddenFor(m => m.Exercise.Solution)
         <div class="row">
             <div class="col-lg-3">
-                <h2 class="exercise-legend">Temática y descripción: </h2>
+                <h2 class="exercise-legend">Temática y descripción <span class="glyphicon glyphicon-arrow-right"></span></h2>
                 <h4><i>&raquo;ÚLTIMO PASO: Elija una temática de la siguiente lista que identifique al ejercicio y escriba una pequeña reseña sobre su contenido.</i></h4>
             </div>
 

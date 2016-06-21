@@ -14,9 +14,9 @@
             @foreach (var favorite in Model.FavoriteExercises)
             {
                 <tr>
-                    <td><a href='@Url.Action("Show", "Exercise", new { id = @favorite.ExerciseId })'>Ejercicio Nº @favorite.ExerciseId</a></td>
-                    <td>@favorite.Description</td>
-                    <td>
+                    <td class="col-vcenter"><a href='@Url.Action("Show", "Exercise", new { id = @favorite.ExerciseId })'>Ejercicio Nº @favorite.ExerciseId</a></td>
+                    <td class="col-vcenter">@favorite.Description</td>
+                    <td class="col-vcenter">
                         @if (favorite.Resolved)
 	                    {
 		                     <span class="glyphicon glyphicon-ok text-success"></span>
