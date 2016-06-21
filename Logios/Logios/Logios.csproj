@@ -336,6 +336,7 @@
     <Content Include="Content\images\trophys\pergamino_bronze.svg" />
     <Content Include="Content\images\trophys\pergamino_oro.svg" />
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
+    <Content Include="Content\nprogress.css" />
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
     <Content Include="Content\video\library_reading_hall.mp4" />
@@ -348,6 +349,8 @@
     <Content Include="Scripts\jquery.joyride-2.1.js" />
     <Content Include="Scripts\jquery.tooltipster.min.js" />
     <Content Include="Scripts\manage.js" />
+    <Content Include="Scripts\nprogress.js" />
+    <Content Include="Scripts\nprogress.min.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
@@ -560,6 +563,8 @@
     <Content Include="Content\resources\fonts\round_brackets3454.ttf" />
     <Content Include="Content\resources\fonts\script.ttf" />
     <Content Include="Content\resources\fonts\double-struck.ttf" />
+    <Content Include="App_Readme\NProgressjs_README.md" />
+    <Content Include="App_Readme\NProgressjs_LICENSE" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\exercise.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

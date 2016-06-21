@@ -9,18 +9,21 @@
     @Styles.Render("~/Content/tooltipster-logios.css")
     @Styles.Render("~/Content/exerciseSwitch.css")
     @Styles.Render("~/Content/joyride-2.1.css")
+    @Styles.Render("~/Content/nprogress.css")    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/jquery.gotop.min.js")
+    @Scripts.Render("~/Scripts/jquery.gotop.min.js")    
     @Scripts.Render("~/Scripts/jquery.tooltipster.min.js")
-    @Scripts.Render("~/Scripts/site.js")    
+    @Scripts.Render("~/Scripts/nprogress.min.js")
+    @Scripts.Render("~/Scripts/site.js")        
 </head>
 <body>
     <noscript>
         <meta http-equiv="refresh" content="0;url=../Error/NoScript" />
     </noscript>
-
+    
+    <script>NProgress.start();</script>
     <div class="navbar navbar-inverse navbar-fixed-top navbar-shadow">
         <div class="container">
             <div class="navbar-header">
@@ -64,7 +67,8 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <p><strong>AVISO: </strong> Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.</p>
         <p>Al continuar navegando entendemos que aceptas el uso de cookies. <a href="#" class="alert-link">Más información.</a></p>
-    </div>    
-    @RenderSection("scripts", required: false)
+    </div>
+    <script>NProgress.done();</script>    
+    @RenderSection("scripts", required: false)    
 </body>
 </html>
