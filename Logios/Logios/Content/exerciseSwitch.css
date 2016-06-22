@@ -21,7 +21,12 @@
 .onoffswitch-inner:before {
     content: "MOSTRAR EJERCICIOS RESUELTOS";
     padding-left: 10px;
-    background-color: #004E9C; color: #FFFFFF;
+    background: #004E9C; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#004E9C, #6c6a6a); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#004E9C, #6c6a6a); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#004E9C, #6c6a6a); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#004E9C, #6c6a6a); /* Standard syntax (must be last) */
+    background-color: #004E9C; color: #FFFFFF;    
 }
 .onoffswitch-inner:after {
     content: "OCULTAR EJERCICIOS RESUELTOS";
