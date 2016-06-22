@@ -300,19 +300,18 @@ function toggleLoading(enable) {
 }
 
 function launchTutorial(automatic) {
-    var cookieAlreadyExists = $.cookie('logiosTutorialHome');
+    var tutorialWasPlayed = storage.isTutorialViewed('home', userId);
 
-    // Si es automatico y ya existe la cookie, no hacer nada.
-    if (automatic && cookieAlreadyExists) {
+    // Si es automatico y ya fue reproducido, no hacer nada.
+    if (automatic && tutorialWasPlayed) {
         return;
     }
 
     // Si es automatico pero no existe la cookie crearla (y luego ejecutarlo)
-    if (automatic) {
-        $.cookie('logiosTutorialHome', 'tutorial run', { expires: 1024 });
+    if (automatic && tutorialWasPlayed === null) {
+        storage.viewTutorial('home', userId);
     }
 
-    // Ejecutar el tutorial configurado.
     $('#joyRideTipContent').joyride('restart');
 }
 

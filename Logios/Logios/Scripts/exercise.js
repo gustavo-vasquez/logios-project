@@ -73,16 +73,16 @@ function pagination(isFirst, isLast) {
 }
 
 function launchTutorial(automatic) {
-    var cookieAlreadyExists = $.cookie('logiosTutorialExercise');
+    var tutorialWasPlayed = storage.isTutorialViewed('showExercise', userId);
 
-    // Si es automatico y ya existe la cookie, no hacer nada.
-    if (automatic && cookieAlreadyExists) {
+    // Si es automatico y ya fue reproducido, no hacer nada.
+    if (automatic && tutorialWasPlayed) {
         return;
     }
 
     // Si es automatico pero no existe la cookie crearla (y luego ejecutarlo)
-    if (automatic) {
-        $.cookie('logiosTutorialExercise', 'tutorial run', { expires: 1024 });
+    if (automatic && tutorialWasPlayed === null) {
+        storage.viewTutorial('showExercise', userId);
     }
 
     $('#joyRideTipContent').joyride('restart');

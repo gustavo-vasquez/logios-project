@@ -259,8 +259,13 @@
     </li>
 </ol>
 
-@section scripts {        
+@section scripts {      
+        <script type="text/javascript">
+            var userId = '@User.Identity.GetUserId()';
+        </script>
+      
         @Scripts.Render("~/Scripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML-full")
+        @Scripts.Render("~/Scripts/localStorage.js")
         @Scripts.Render("~/Scripts/controlPanel.js")
         @Scripts.Render("~/Scripts/formulaEditor.js")
         @Scripts.Render("~/Scripts/exercise.js")
