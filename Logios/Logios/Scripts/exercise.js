@@ -73,6 +73,10 @@ function pagination(isFirst, isLast) {
 }
 
 function launchTutorial(automatic) {
+    if (userId === '') {
+        return;
+    }
+
     var tutorialWasPlayed = storage.isTutorialViewed('showExercise', userId);
 
     // Si es automatico y ya fue reproducido, no hacer nada.
