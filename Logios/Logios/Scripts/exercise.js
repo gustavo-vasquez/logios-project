@@ -8,7 +8,7 @@ $(document).ready(function () {
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));    
 
     $('#btnHelper').click(function () {
         window.open("/Exercise/HelperEditor", "", "width=530,height=320");

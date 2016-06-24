@@ -2,7 +2,7 @@
 var developmentEditor;
 var solutionEditor;
 
-$(document).ready(function () {
+$(document).ready(function () {    
     $('#CreateForm').removeData('validator').removeData('unobtrusiveValidation');
     $.validator.setDefaults({ ignore: [] });
     $.validator.unobtrusive.parse('#CreateForm');            
@@ -32,7 +32,12 @@ $(document).ready(function () {
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
         'autoformat': true
     });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));    
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));
+
+    //setTimeout(function () {
+    //    $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+    //    $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').css('display', 'none');
+    //}, 10);
 });
 
 function isNotEmpty(data) {

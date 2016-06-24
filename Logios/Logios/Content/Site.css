@@ -479,3 +479,21 @@ h1 .favorite-star {
     transition: none !important;
     color: #2c5b89;
 }
+
+.arrowDown, .arrowUp {        
+    border: 0.1em solid #969696;
+    text-align: center;
+    height: 12px;
+    border-top: none;
+    margin-top: -2px;
+    margin-bottom: 16px;
+}
+
+.arrowUp {
+    border-left: none;
+}
+
+.arrowDown:hover, .arrowUp:hover {
+    background-color: #DDDDDD;
+    cursor: pointer;    
+}

@@ -6,7 +6,7 @@
             <tr>
                 <th>Ejercicio</th>
                 <th>Descripción</th>
-                <th>¿Resuelto?</th>
+                @*<th>¿Resuelto?</th>*@
                 <th>Quitar</th>
             </tr>
         </thead>
@@ -16,7 +16,7 @@
                 <tr>
                     <td class="col-vcenter"><a href='@Url.Action("Show", "Exercise", new { id = @favorite.ExerciseId })'>Ejercicio Nº @favorite.ExerciseId</a></td>
                     <td class="col-vcenter">@favorite.Description</td>
-                    <td class="col-vcenter">
+                    @*<td class="col-vcenter">
                         @if (favorite.Resolved)
 	                    {
 		                     <span class="glyphicon glyphicon-ok text-success"></span>
@@ -25,7 +25,7 @@
                         {
                             <span class="glyphicon glyphicon-remove text-danger"></span>
                         }
-                    </td>
+                    </td>*@
                     <td><button class="btn btn-danger btn-sm remove-favorite-button" data-exercise-id="@favorite.ExerciseId"><span class="glyphicon glyphicon-trash"></span></button></td>
                 </tr>
             }

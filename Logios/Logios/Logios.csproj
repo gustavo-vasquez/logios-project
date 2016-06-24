@@ -313,6 +313,8 @@
     <Content Include="Content\exerciseSwitch.css" />
     <Content Include="Content\images\1465327785_profle.png" />
     <Content Include="Content\images\1466540006_help-512x512px.png" />
+    <Content Include="Content\images\arrow_drop_up.png" />
+    <Content Include="Content\images\arrow_drop_down.png" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\avatars\1465327785_profle.png" />
     <Content Include="Content\images\login_social\social-Google-square2.png" />

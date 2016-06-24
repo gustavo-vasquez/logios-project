@@ -17,6 +17,14 @@
         <div class="col-lg-9 vertical-space-1">
             <div class="exercise-bg overflow">                
                 <div id="problemContainer"></div>
+                <div>
+                    <div class="col-lg-6 arrowDown" data-toggle="tooltip" title="Aumentar espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_down.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                    <div class="col-lg-6 arrowUp" data-toggle="tooltip" title="Disminuir espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_up.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                </div>
             </div>                        
         </div>
     </div>
@@ -29,7 +37,15 @@
 
         <div class="col-lg-9 vertical-space-1">
             <div class="exercise-bg overflow">                
-                <div id="developmentContainer"></div>                                    
+                <div id="developmentContainer"></div>
+                <div>
+                    <div class="col-lg-6 arrowDown" data-toggle="tooltip" title="Aumentar espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_down.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                    <div class="col-lg-6 arrowUp" data-toggle="tooltip" title="Disminuir espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_up.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                </div>                                    
             </div>            
         </div>
     </div>
@@ -42,7 +58,15 @@
 
         <div class="col-lg-9">            
             <div class="exercise-bg overflow">                
-                <div id="solutionContainer"></div>                                    
+                <div id="solutionContainer"></div>
+                <div>
+                    <div class="col-lg-6 arrowDown" data-toggle="tooltip" title="Aumentar espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_down.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                    <div class="col-lg-6 arrowUp" data-toggle="tooltip" title="Disminuir espacio">
+                        <button class="button-transparent"><img src="~/Content/images/arrow_drop_up.png" alt="increment_heightEditor" width="24" style="margin-top: -16px;" /></button>
+                    </div>
+                </div>                                    
             </div>            
         </div>
     </div>
@@ -91,5 +115,5 @@
 @section scripts {
         @Scripts.Render("~/bundles/jqueryval")        
         @Scripts.Render("~/Scripts/formulaEditor.js")
-        @Scripts.Render("~/Scripts/createExercise.js")
+        @Scripts.Render("~/Scripts/createExercise.js")        
     }

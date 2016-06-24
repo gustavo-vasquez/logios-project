@@ -1,16 +1,16 @@
-﻿#problemContainer {
-    width: 800px;
+﻿#problemContainer {    
     height: 300px;
+    min-height: 300px;
 }
 
-#developmentContainer {
-    width: 800px;
+#developmentContainer {    
     height: 300px;
+    min-height: 300px;
 }
 
-#solutionContainer {
-    width: 800px;
-    height: 200px;
+#solutionContainer {    
+    height: 250px;
+    min-height: 250px;
 }
 
 .summary li {
