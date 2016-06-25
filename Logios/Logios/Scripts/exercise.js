@@ -6,9 +6,28 @@ $(document).ready(function () {
         'fontFamily': 'Tahoma',
         'fontSize': '22px',
         'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
-        'autoformat': true
+        'autoformat': true,
+        'reservedWords': ''
     });
-    solutionEditor.insertInto(document.getElementById('solutionContainer'));    
+    solutionEditor.insertInto(document.getElementById('solutionContainer'));
+
+    setTimeout(function () {
+        $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').css('display', 'none');
+    }, 10);
+
+    $('#solutionContainer input').focus(function () {
+        if ($('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+        }
+    });
+
+    $('#solutionContainer input').keydown(function (event) {
+        if (event.keyCode == 8 || event.keyCode == 46) {
+            if (solutionEditor.isFormulaEmpty() && $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+                $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+            }
+        }
+    });
 
     $('#btnHelper').click(function () {
         window.open("/Exercise/HelperEditor", "", "width=530,height=320");

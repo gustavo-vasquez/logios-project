@@ -481,7 +481,7 @@ h1 .favorite-star {
 }
 
 .arrowDown, .arrowUp {        
-    border: 0.1em solid #969696;
+    border: 1px solid #969696;
     text-align: center;
     height: 12px;
     border-top: none;
@@ -497,3 +497,7 @@ h1 .favorite-star {
     background-color: #DDDDDD;
     cursor: pointer;    
 }
+
+/*.wrs_italic {
+    font-style: normal !important;
+}*/

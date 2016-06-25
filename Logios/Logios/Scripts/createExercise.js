@@ -1,43 +1,74 @@
 ﻿var problemEditor;
 var developmentEditor;
 var solutionEditor;
+var params = {
+    'language': 'es',
+    'fontFamily': 'Tahoma',
+    'fontSize': '22px',
+    'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
+    'autoformat': true,
+    'reservedWords': ''
+};
 
 $(document).ready(function () {    
     $('#CreateForm').removeData('validator').removeData('unobtrusiveValidation');
     $.validator.setDefaults({ ignore: [] });
-    $.validator.unobtrusive.parse('#CreateForm');            
+    $.validator.unobtrusive.parse('#CreateForm');    
 
-    problemEditor = com.wiris.jsEditor.JsEditor.newInstance({
-        'language': 'es',
-        'fontFamily': 'Tahoma',
-        'fontSize': '22px',        
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
-        'autoformat': true
-    });
+    problemEditor = com.wiris.jsEditor.JsEditor.newInstance(params);
     problemEditor.insertInto(document.getElementById('problemContainer'));
 
-    developmentEditor = com.wiris.jsEditor.JsEditor.newInstance({
-        'language': 'es',
-        'fontFamily': 'Tahoma',        
-        'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
-        'autoformat': true
-    });
+    developmentEditor = com.wiris.jsEditor.JsEditor.newInstance(params);
     developmentEditor.insertInto(document.getElementById('developmentContainer'));
 
-    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance({
-        'language': 'es',
-        'fontFamily': 'Tahoma',        
-        'fontSize': '22px',
-        'toolbar': '<toolbar ref="general" removeLinks="true"></toolbar>',
-        'autoformat': true
-    });
+    solutionEditor = com.wiris.jsEditor.JsEditor.newInstance(params);
     solutionEditor.insertInto(document.getElementById('solutionContainer'));
 
-    //setTimeout(function () {
-    //    $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
-    //    $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').css('display', 'none');
-    //}, 10);
+    setTimeout(function () {        
+        $('.wrs_layoutFor3Rows tr td button[title="Itálica automática"]').css('display', 'none');
+    }, 10);
+    
+    $('#problemContainer input').focus(function () {
+        if ($('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+        }        
+    });
+
+    $('#problemContainer input').keydown(function (event) {
+        if (event.keyCode == 8 || event.keyCode == 46) {
+            if (problemEditor.isFormulaEmpty() && $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+                $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+            }
+        }
+    });
+
+    $('#developmentContainer input').focus(function () {
+        if ($('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+        }
+    });
+
+    $('#developmentContainer input').keydown(function (event) {
+        if (event.keyCode == 8 || event.keyCode == 46) {
+            if (developmentEditor.isFormulaEmpty() && $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+                $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+            }
+        }
+    });
+
+    $('#solutionContainer input').focus(function () {
+        if ($('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+        }
+    });
+
+    $('#solutionContainer input').keydown(function (event) {
+        if (event.keyCode == 8 || event.keyCode == 46) {
+            if (solutionEditor.isFormulaEmpty() && $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+                $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+            }
+        }
+    });
 });
 
 function isNotEmpty(data) {

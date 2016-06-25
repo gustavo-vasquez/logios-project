@@ -392,6 +392,7 @@
     <Content Include="Views\Trophies\_TrophiesList.cshtml" />
     <Content Include="Views\Manage\_FavoriteExercisesUserPanel.cshtml" />
     <Content Include="Views\Exercise\HelperEditor.cshtml" />
+    <Content Include="Views\Shared\_ArrowsEditor.cshtml" />
     <Resource Include="Content\images\thumbnails\Integrales.png" />
     <Content Include="Content\images\Background7_edited.jpg" />
     <Content Include="Content\images\bg3.jpg" />
