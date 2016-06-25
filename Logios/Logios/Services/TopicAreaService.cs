@@ -40,12 +40,6 @@ namespace Logios.Services
                 }
             }
 
-            // Llenar con data falsa para ver como se muestran las cosas
-            result.TopicsByArea["Tema 3"] = this.GenerateFakeTopics(4);
-            result.TopicsByArea["Tema 4"] = this.GenerateFakeTopics(6);
-            result.TopicsByArea["Tema 5"] = this.GenerateFakeTopics(7);
-            result.TopicsByArea["Tema 6"] = this.GenerateFakeTopics(7);
-
             return result;
         }
 
@@ -80,23 +74,6 @@ namespace Logios.Services
 
                 return result;
             }
-        }
-
-        // Generar topics de mentira para ver el Layout, sacar cuando tengamos el feedbackd e Juan
-        private IEnumerable<Topic> GenerateFakeTopics(int topicCount)
-        {
-            var fakeTopics = new List<Topic>();
-
-            for (int i = 0; i < topicCount; i++)
-            {
-                fakeTopics.Add(new Topic()
-                {
-                    TopicId = 1,
-                    Description = string.Concat("Tema ", i)
-                });
-            }
-
-            return fakeTopics;
         }
 
         public List<TopicArea> GetTopicAreas()
