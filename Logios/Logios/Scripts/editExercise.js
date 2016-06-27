@@ -42,13 +42,19 @@ $(document).ready(function () {
         }
     });
 
-    $('#problemContainer input').keydown(function (event) {
-        if (event.keyCode == 8 || event.keyCode == 46) {
-            if (problemEditor.isFormulaEmpty() && $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
-                $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
-            }
+    $('#problemContainer input').keypress(function () {
+        if ($('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
         }
     });
+
+    //$('#problemContainer input').keydown(function (event) {
+    //    if (event.keyCode == 8 || event.keyCode == 46) {
+    //        if (problemEditor.isFormulaEmpty() && $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+    //            $('#problemContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+    //        }
+    //    }
+    //});
 
     $('#developmentContainer input').focus(function () {
         if ($('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
@@ -56,13 +62,19 @@ $(document).ready(function () {
         }
     });
 
-    $('#developmentContainer input').keydown(function (event) {
-        if (event.keyCode == 8 || event.keyCode == 46) {
-            if (developmentEditor.isFormulaEmpty() && $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
-                $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
-            }
+    $('#developmentContainer input').keypress(function () {
+        if ($('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
         }
     });
+
+    //$('#developmentContainer input').keydown(function (event) {
+    //    if (event.keyCode == 8 || event.keyCode == 46) {
+    //        if (developmentEditor.isFormulaEmpty() && $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+    //            $('#developmentContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+    //        }
+    //    }
+    //});
 
     $('#solutionContainer input').focus(function () {
         if ($('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
@@ -70,13 +82,19 @@ $(document).ready(function () {
         }
     });
 
-    $('#solutionContainer input').keydown(function (event) {
-        if (event.keyCode == 8 || event.keyCode == 46) {
-            if (solutionEditor.isFormulaEmpty() && $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
-                $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
-            }
+    $('#solutionContainer input').keypress(function () {
+        if ($('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+            $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
         }
     });
+
+    //$('#solutionContainer input').keydown(function (event) {
+    //    if (event.keyCode == 8 || event.keyCode == 46) {
+    //        if (solutionEditor.isFormulaEmpty() && $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').hasClass('wrs_toggled')) {
+    //            $('#solutionContainer .wrs_layoutFor3Rows tr td button[title="Itálica automática"]').click();
+    //        }
+    //    }
+    //});
 });
 
 function passData() {
