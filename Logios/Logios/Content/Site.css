@@ -158,7 +158,7 @@ body {
 }
 
 .exercise-title {
-    max-height: 32px;
+    height: 32px;
     overflow: hidden;
 }
 
@@ -198,7 +198,7 @@ div.topic-exercises-container {
 }
 
 .text-logios {
-    color: #033c73;
+    color: #033c73 !important;
 }
 
 .decorate {
@@ -376,8 +376,7 @@ img.trophy-image {
 }
 
 .favorite-star {
-    cursor: pointer;
-    float: right;
+    cursor: pointer;        
 }
 
 .favorite-star:hover {
@@ -497,7 +496,3 @@ h1 .favorite-star {
     background-color: #DDDDDD;
     cursor: pointer;    
 }
-
-/*.wrs_italic {
-    font-style: normal !important;
-}*/

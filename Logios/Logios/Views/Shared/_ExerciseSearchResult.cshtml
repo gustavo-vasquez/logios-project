@@ -43,8 +43,8 @@
                             }
                             else
                             {
-                                <h3 class="exercise-title text-logios">
-                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })">
+                                <h3 class="exercise-title">
+                                    <a href="@Url.Action("Show", "Exercise", new { Id = @exercise.ExerciseId })" class="text-info">
                                         Ejercicio - @exercise.ExerciseId
                                     </a>
                                     @if (Request.IsAuthenticated)

@@ -8,10 +8,10 @@ namespace Logios.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required(ErrorMessage = "Debes escribir un nombre")]
+        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
-
-        [Required(ErrorMessage = "Debes escribir un mail valido")]
+        
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -75,7 +75,7 @@ namespace Logios.Models
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "El campo Nombre de Usuario es obligatorio.")]
-        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario sólo puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
+        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
         [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
 

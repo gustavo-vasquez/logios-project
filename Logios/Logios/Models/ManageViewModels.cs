@@ -36,15 +36,15 @@ namespace Logios.Models
 
     public class SetPasswordViewModel
     {
-        [Required(ErrorMessage = "El campo Nueva contraseña es obligatorio.")]        
+        [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]        
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 minúscula, 1 mayúscula y un 1 número (Mínimo 6 caracteres).")]
         [DataType(DataType.Password)]
         [Display(Name = "Nueva contraseña")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmar nueva contraseña")]
-        [Compare("NewPassword", ErrorMessage = "El campo Nueva contraseña y Confirmar no coinciden.")]
+        [Display(Name = "Confirmar contraseña")]
+        [Compare("NewPassword", ErrorMessage = "El campo Contraseña y Confirmar contraseña no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 
