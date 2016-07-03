@@ -101,10 +101,10 @@ namespace Logios.Controllers
         public ActionResult Edit([Bind(Include = "TrophyId,Description,Reason,Points,Image")] Trophy trophy)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.Entry(trophy).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ControlPanel", "Administrator");
             }
             return View(trophy);
         }
