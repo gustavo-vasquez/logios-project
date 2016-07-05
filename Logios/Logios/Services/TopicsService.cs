@@ -38,7 +38,7 @@ namespace Logios.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                var result = context.Topics.First(t => t.Description == description);
+                var result = context.Topics.First(t => t.Description.ToLower().Trim() == description.ToLower().Trim());
                 return result;
             }
         }

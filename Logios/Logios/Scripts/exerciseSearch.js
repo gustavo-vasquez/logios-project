@@ -136,7 +136,7 @@ function searchExercise() {
     var lastTopic = lastTopicInput.val();
 
     // Si quere buscar lo mismo dos veces seguidas y no hay resultados o lo que busca no es un tema válido, no hago nada
-    if (!inputIsValid(topic) || (lastTopic === topic && searchResults)) {
+    if (!inputIsValid(topic) || (equalWords(lastTopic, topic) && searchResults)) {
         return false;
     }
 
@@ -180,7 +180,7 @@ function generateSearchTags() {
 
     topSearches.forEach(function (search) {
         var action = 'onclick=searchFromTags(\"' + search.description + '\")>';
-        var newLabel = labelStart + action + search.description + labelEnd;
+        var newLabel = labelStart + action + capitalizeString(search.description) + labelEnd;
         $('#search-tags').append(newLabel);
     });
 }
@@ -219,7 +219,7 @@ function addOneToSearchCount(searches, topicDescription) {
     var found = false;
 
     for (var i = 0; i < searches.length; i++) {
-        if (searches[i].description === topicDescription) {
+        if (searches[i].description.toLowerCase() === topicDescription.trim().toLowerCase()) {
             searches[i].searchCount++;
             found = true;
             break;
@@ -228,7 +228,7 @@ function addOneToSearchCount(searches, topicDescription) {
 
     if (found === false) {
         searches.push({
-            description: topicDescription,
+            description: capitalizeString(topicDescription),
             searchCount: 1
         });
     }
@@ -253,7 +253,7 @@ function inputIsValid(searchValue) {
 
     // Verificar si lo que pusieron en la barra de busqueda es uno de los temas que tenemos.
     topics.forEach(function (topic) {
-        if (topic.toLowerCase() === searchValue.toLowerCase()) {
+        if (equalWords(topic, searchValue)) {
             topicIsValid = true;
         }
     });
@@ -313,6 +313,27 @@ function launchTutorial(automatic) {
     }
 
     $('#joyRideTipContent').joyride('restart');
+}
+
+function equalWords(word1, word2) {
+    return word1.toLowerCase().trim().replace(/\s+/g, ' ') === word2.toLowerCase().trim().replace(/\s+/g, ' ');
+}
+
+function capitalizeString(words) {
+
+    // Eliminar los espacios extras al comienzo, al final y en el medio.
+    var parsedWords = words.trim().replace(/\s+/g, ' ');
+
+    // Meter cada palabra por separado dentro de un array para trabajarlo mejor.
+    var wordsInArray = parsedWords.split(' ');
+
+    // Poner en mayuscula la primera letra de cada palabra y el resto en minuscula.
+    for (var i = 0, wordCount = wordsInArray.length; i < wordCount; i++) {
+        wordsInArray[i] = wordsInArray[i].substr(0, 1).toUpperCase() + wordsInArray[i].substr(1).toLowerCase();
+    }
+
+    // Devolver un string que es la union de las palabras separadas por espacios.
+    return wordsInArray.join(' ');
 }
 
 //Extensión de JQuery
