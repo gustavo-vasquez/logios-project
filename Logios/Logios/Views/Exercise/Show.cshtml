@@ -13,7 +13,7 @@
                 <label class="label label-success" style="font-size: 16px;">Ya resuelto</label>
             </div>
             <h1 class="text-success vertical-space-1">
-                <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+                <b>EJERCICIO Nº <span id="ExcerciseNumber">@Model.Exercise.ExerciseId</span></b>
                 @if (Model.Favorited)
                 {
                     <span class="glyphicon glyphicon-star text-warning favorite-star" data-exercise-id="@Model.Exercise.ExerciseId" data-toggle="tooltip" data-placement="right" title="Quitar de favoritos"></span>
@@ -28,7 +28,7 @@
         else
         {
             <h1 class="vertical-space-1">
-                <b>EJERCICIO Nº @Model.Exercise.ExerciseId</b>
+                <b>EJERCICIO Nº <span id="ExcerciseNumber">@Model.Exercise.ExerciseId</span></b>
                 @if (Request.IsAuthenticated)
                 {
                     if (Model.Favorited)
@@ -91,7 +91,7 @@
             <div class="col-lg-3">
                 <h2 class="exercise-legend">Solución <span class="glyphicon glyphicon-arrow-right"></span></h2>
                 <h5 class="text-danger" style="font-size: 17px;">&raquo; En caso de no saber como expresar la solución, revisa nuevamente el enunciado</h5>
-                <button id="btnHelper" class="btn btn-sm btn-warning text-primary" style="border: 2px solid lightgray;"><span class="glyphicon glyphicon-file"></span> Hacer cuentas auxiliares</button>
+                <button id="btnHelper" class="btn btn-sm btn-warning text-primary"><span class="glyphicon glyphicon-file"></span> Hacer cuentas auxiliares</button>
             </div>
 
             <div id="divSolution" class="col-lg-9">
