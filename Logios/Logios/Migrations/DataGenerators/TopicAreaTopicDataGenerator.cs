@@ -14,12 +14,12 @@ namespace Logios.Migrations.DataGenerators
             var topic2 = context.Topics.FirstOrDefault(x => x.Description == "Matrices");
             var topicArea1 = context.TopicAreas.FirstOrDefault(x => x.Description == "Algebra");
 
-            var topic3 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueb A-A");
-            var topic4 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueb A-B");
+            var topic3 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueba A-A");
+            var topic4 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueba A-B");
             var topicArea2 = context.TopicAreas.FirstOrDefault(x => x.Description == "Temática de Prueba A");
 
-            var topic5 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueb B-A");
-            var topic6 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueb B-B");
+            var topic5 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueba B-A");
+            var topic6 = context.Topics.FirstOrDefault(x => x.Description == "Tópico de Prueba B-B");
             var topicArea3 = context.TopicAreas.FirstOrDefault(x => x.Description == "Temática de Prueba B");
 
             var newTopicAreaTopics = new List<TopicAreaTopic>()

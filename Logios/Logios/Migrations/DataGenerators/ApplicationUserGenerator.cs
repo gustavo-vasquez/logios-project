@@ -34,7 +34,7 @@ namespace Logios.Migrations.DataGenerators
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "ADMIN", Email = "administrator@example.com" };
+                var userToInsert = new ApplicationUser { UserName = "ADMIN", Email = "team.logios.project@gmail.com" };
                 var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
                 userManager.Create(userToInsert, "Admin12$");
                 userManager.AddToRole(userToInsert.Id, "Admin");                
@@ -62,6 +62,8 @@ namespace Logios.Migrations.DataGenerators
                 userManager.AddToRole(userToInsert.Id, "Usuario");
                 context.UserProfiles.Add(userProfile);
             }
+
+
 
             context.SaveChanges();
 
