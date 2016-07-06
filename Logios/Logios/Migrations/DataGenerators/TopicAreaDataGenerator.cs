@@ -12,7 +12,9 @@ namespace Logios.Migrations.DataGenerators
         {
             var newTopicAreas = new List<TopicArea>
             {
-                new TopicArea { TopicAreaId = 1, Description = "Algebra" }                
+                new TopicArea { TopicAreaId = 1, Description = "Algebra" },
+                new TopicArea { TopicAreaId = 2, Description = "Temática de Prueba A" },
+                new TopicArea { TopicAreaId = 3, Description = "Temática de Prueba B" },
             };
 
             newTopicAreas.ForEach(t => context.TopicAreas.Add(t));

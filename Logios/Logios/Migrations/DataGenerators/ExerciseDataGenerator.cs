@@ -19,7 +19,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mi mathvariant=\"normal\">x</mi><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>1</mn></mrow></mfenced><mfenced><mrow><msup><mi mathvariant=\"normal\">x</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn></mrow></mfenced></math>",
                     Description = "Factorización de Polinomios aplicando Ruffini",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 				
 				new Exercise {
@@ -29,7 +29,7 @@ namespace Logios.Migrations.DataGenerators
 					Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mn>3</mn><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>1</mn></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>1</mn></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>2</mn></mrow></mfenced></math>",
 					Description = "Factorización de Polinomios aplicando Ruffini",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 				},
 				
                 new Exercise {
@@ -39,7 +39,7 @@ namespace Logios.Migrations.DataGenerators
 					Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>6</mn></mrow></mfenced><mfenced><mrow><mo>-</mo><msup><mi mathvariant=\"normal\">x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow></mfenced></math>",
 					Description = "Factorización de Polinomios aplicando Ruffini",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 				},
 				
                 new Exercise {
@@ -49,7 +49,7 @@ namespace Logios.Migrations.DataGenerators
 					Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mfenced><mfrac><mrow><mo>-</mo><mn>1</mn><mo>+</mo><msqrt><mn>11</mn><mi mathvariant=\"normal\">i</mi></msqrt></mrow><mn>6</mn></mfrac></mfenced></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mfrac><mfenced><mrow><mo>-</mo><mn>1</mn><mo>-</mo><msqrt><mn>11</mn><mi mathvariant=\"normal\">i</mi></msqrt></mrow></mfenced><mn>6</mn></mfrac></mrow></mfenced></math>",
 					Description = "Factorización de Polinomios usando Ruffini y raíces no reales",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 				},
                 new Exercise {
                     ExerciseId = 5,
@@ -58,7 +58,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>2</mn></mrow></mfenced><msup><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>3</mn></mrow></mfenced><mn>2</mn></msup></math>",
                      Description = "Factorización de polinomios. Desarrollo hecho con Gauss",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 
                 },
 
@@ -69,7 +69,7 @@ namespace Logios.Migrations.DataGenerators
 					Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">P</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mn>2</mn><mi mathvariant=\"normal\">x</mi><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>1</mn></mrow></mfenced><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>1</mn></mrow></mfenced><msup><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>-</mo><mn>2</mn></mrow></mfenced><mn>2</mn></msup></math>",
 					Description = "Factorización de Polinómios y Desarrollo aplicando Gauss",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 				},
 
                 new Exercise {
@@ -79,7 +79,7 @@ namespace Logios.Migrations.DataGenerators
 					Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">T</mi><mfenced><mi mathvariant=\"normal\">x</mi></mfenced><mo>=</mo><mn>3</mn><mi mathvariant=\"normal\">x</mi><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>1</mn></mrow></mfenced><msup><mfenced><mrow><mi mathvariant=\"normal\">x</mi><mo>+</mo><mn>2</mn></mrow></mfenced><mn>2</mn></msup></math>",
 					Description = "Factorización de polinómios con Desarrollo aplicando Gauss",
 					Topic = context.Topics.FirstOrDefault(t => t.Description == "Polinomios"),
-					User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+					User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
 				},
 
                 new Exercise {
@@ -89,7 +89,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi mathvariant=\"normal\">A</mi><mo>+</mo><mi mathvariant=\"normal\">B</mi><mo>=</mo><mfenced><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>7</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Suma de matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -99,7 +99,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AC</mi><mo>=</mo><mfenced><mtable><mtr><mtd><mn>0</mn></mtd><mtd><mn>7</mn></mtd><mtd><mn>9</mn></mtd></mtr><mtr><mtd><mn>7</mn></mtd><mtd><mn>7</mn></mtd><mtd><mn>17</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Multiplicación de matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -109,7 +109,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi mathvariant=\"normal\">C</mi><mi mathvariant=\"normal\">t</mi></msup><mi mathvariant=\"normal\">B</mi><mo>=</mo><mfenced><mtable><mtr><mtd><mn>8</mn></mtd><mtd><mo>-</mo><mn>3</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>4</mn></mtd><mtd><mn>5</mn></mtd></mtr><mtr><mtd><mn>4</mn></mtd><mtd><mn>3</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Multiplicación de matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -119,7 +119,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfenced><mrow><mn>2</mn><mi mathvariant=\"normal\">A</mi><mo>+</mo><mi mathvariant=\"normal\">B</mi></mrow></mfenced><mi mathvariant=\"normal\">C</mi><mo>=</mo><mfenced><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mn>13</mn></mtd><mtd><mn>19</mn></mtd></mtr><mtr><mtd><mn>14</mn></mtd><mtd><mn>28</mn></mtd><mtd><mn>52</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Operaciones con matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -129,7 +129,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mo>=</mo><mfenced><mtable><mtr><mtd><mn>23</mn></mtd><mtd><mo>-</mo><mn>7</mn></mtd><mtd><mn>35</mn></mtd></mtr><mtr><mtd><mn>33</mn></mtd><mtd><mo>-</mo><mn>11</mn></mtd><mtd><mn>53</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mo>-</mo><mn>9</mn></mtd><mtd><mn>5</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Multiplicación de matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -139,7 +139,7 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mfenced><mrow><mi mathvariant=\"normal\">A</mi><mo>+</mo><mi mathvariant=\"normal\">B</mi></mrow></mfenced><mn>2</mn></msup><mo>=</mo><mfenced><mtable><mtr><mtd><mn>11</mn></mtd><mtd><mn>84</mn></mtd><mtd><mn>93</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>5</mn></mtd><mtd><mn>88</mn></mtd><mtd><mn>99</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>19</mn></mtd><mtd><mn>70</mn></mtd><mtd><mn>101</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Operaciones con matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 },
 
                 new Exercise {
@@ -149,8 +149,129 @@ namespace Logios.Migrations.DataGenerators
                     Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msup><mi mathvariant=\"normal\">A</mi><mn>2</mn></msup><mo>-</mo><msup><mi mathvariant=\"normal\">B</mi><mn>2</mn></msup><mo>=</mo><mfenced><mtable><mtr><mtd><mo>-</mo><mn>20</mn></mtd><mtd><mn>70</mn></mtd><mtd><mn>29</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>30</mn></mtd><mtd><mn>63</mn></mtd><mtd><mn>42</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>52</mn></mtd><mtd><mo>-</mo><mn>34</mn></mtd><mtd><mo>-</mo><mn>69</mn></mtd></mtr></mtable></mfenced></math>",
                     Description = "Operaciones con matrices",
                     Topic = context.Topics.FirstOrDefault(t => t.Description == "Matrices"),
-                    User = context.Users.FirstOrDefault(u => u.Email == "administrator@example.com")
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 15,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 16,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 17,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AA</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 18,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 19,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 20,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>AB</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb A-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 21,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 22,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 23,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BA</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-A"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 24,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>1</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 25,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>2</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
+                },
+
+                new Exercise {
+                    ExerciseId = 26,
+                    Problem = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Development = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>BB</mi><mn>3</mn><mo>.</mo><mo>&#x000A0;</mo><mi>Escriba</mi><mo>&#x000A0;</mo><mn>1</mn><mo>&#x000A0;</mo><mi>en</mi><mo>&#x000A0;</mo><mi>el</mi><mo>&#x000A0;</mo><mi>resultado</mi></math>",
+                    Solution = "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1</mn></math>",
+                    Description = "Ejercicio de ejemplo",
+                    Topic = context.Topics.FirstOrDefault(t => t.Description == "Tópico de Prueb B-B"),
+                    User = context.Users.FirstOrDefault(u => u.Email == "team.logios.project@gmail.com")
                 }
+
             };
 
             newExercises.ForEach(e => context.Exercises.Add(e));
