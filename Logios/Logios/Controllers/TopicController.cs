@@ -31,7 +31,7 @@ namespace Logios.Controllers
             var resultsViewModel = new ExerciseResultViewModel()
             {
                 Exercises = exercises,
-                TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png")
+                TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description.Replace(' ', '_'), ".png")
             };
 
             ViewBag.TopicDescription = topic.Description;

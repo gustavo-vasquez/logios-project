@@ -331,10 +331,10 @@
     <Content Include="Content\images\share_social\1465196475_google_circle.png" />
     <Content Include="Content\images\thumbnails\Matrices.png" />
     <Content Include="Content\images\thumbnails\Polinomios.png" />
-    <Content Include="Content\images\thumbnails\Tópico de Prueb A-A.png" />
-    <Content Include="Content\images\thumbnails\Tópico de Prueb A-B.png" />
-    <Content Include="Content\images\thumbnails\Tópico de Prueb B-A.png" />
-    <Content Include="Content\images\thumbnails\Tópico de Prueb B-B.png" />
+    <Content Include="Content\images\thumbnails\Temática_de_prueba_A1.png" />
+    <Content Include="Content\images\thumbnails\Temática_de_prueba_A2.png" />
+    <Content Include="Content\images\thumbnails\Temática_de_prueba_B1.png" />
+    <Content Include="Content\images\thumbnails\Temática_de_prueba_B2.png" />
     <Content Include="Content\images\trophys\laurel_bronze.svg" />
     <Content Include="Content\images\trophys\laurel_oro.svg" />
     <Content Include="Content\images\trophys\laurel_plata.svg" />

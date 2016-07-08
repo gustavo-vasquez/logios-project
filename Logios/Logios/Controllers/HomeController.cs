@@ -34,7 +34,7 @@ namespace Logios.Controllers
                 var userId = User.Identity.GetUserId();
 
                 resultsViewModel.Exercises = ExerciseService.GetExerciseDTOsCards(userId, topic.TopicId, showResolvedExercises);                
-                resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description, ".png");
+                resultsViewModel.TopicImageUrl = string.Concat(@"/Content/images/thumbnails/", topic.Description.Replace(' ', '_'), ".png");
             }
 
             return PartialView("_ExerciseSearchResult", resultsViewModel);
