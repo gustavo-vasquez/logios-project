@@ -175,13 +175,18 @@ function generateSearchTags() {
     }
 
     var topSearches = getTopThreeMostSearchedTopics();
-    var labelStart = '<span class="label label-default search-tag" ';
-    var labelEnd = '</span>';
 
     topSearches.forEach(function (search) {
-        var action = 'onclick=searchFromTags(\"' + search.description + '\")>';
-        var newLabel = labelStart + action + search.description + labelEnd;
-        $('#search-tags').append(newLabel);
+        var $searchTag = $('<span></span>');
+        $searchTag.addClass('label label-default search-tag');
+
+        $searchTag.text(search.description);
+
+        $searchTag.click(function (event) {
+            searchFromTags(search.description);
+        });
+
+        $('#search-tags').append($searchTag);
     });
 }
 
@@ -228,7 +233,7 @@ function addOneToSearchCount(searches, topicDescription) {
 
     if (found === false) {
         searches.push({
-            description: capitalizeString(topicDescription),
+            description: translateString(topicDescription),
             searchCount: 1
         });
     }
@@ -319,34 +324,20 @@ function equalWords(word1, word2) {
     return word1.toLowerCase().trim().replace(/\s+/g, ' ') === word2.toLowerCase().trim().replace(/\s+/g, ' ');
 }
 
-function capitalizeString(words) {
+function translateString(words) {
 
     // Eliminar los espacios extras al comienzo, al final y en el medio.
-    var parsedWords = words.trim().replace(/\s+/g, ' ');
+    var parsedWords = words.trim().replace(/\s+/g, ' ').toLowerCase();
 
-    // Convierto la primer letra a mayuscula y el resto a minuscula
-    var capitalizeWords = words.charAt(0).toUpperCase() + words.slice(1).toLowerCase();
+    var result;
 
-    if (words.includes("de prueba")) {
-        // Cambio la primer letra de la ultima palabra por mayuscula
-        var lastSpace = capitalizeWords.lastIndexOf(' ');
-        var wordsBeforeLastSpace = capitalizeWords.slice(0, lastSpace + 1);
-        var patchedWords = wordsBeforeLastSpace + capitalizeWords[lastSpace+1].toUpperCase() + capitalizeWords.slice(lastSpace + 2, capitalizeWords.length);
-        capitalizeWords = patchedWords;
-    }    
+    topics.forEach(function (topic) {
+        if (topic.toLowerCase() === parsedWords) {
+            result = topic;
+        }
+    });
 
-    return capitalizeWords;
-
-    // Meter cada palabra por separado dentro de un array para trabajarlo mejor.
-    //var wordsInArray = parsedWords.split(' ');
-
-    // Poner en mayuscula la primera letra de cada palabra y el resto en minuscula.
-    //for (var i = 0, wordCount = wordsInArray.length; i < wordCount; i++) {
-    //    wordsInArray[i] = wordsInArray[i].substr(0, 1).toUpperCase() + wordsInArray[i].substr(1).toLowerCase();
-    //}
-
-    // Devolver un string que es la union de las palabras separadas por espacios.
-    //return wordsInArray.join(' ');
+    return result;
 }
 
 //Extensión de JQuery
