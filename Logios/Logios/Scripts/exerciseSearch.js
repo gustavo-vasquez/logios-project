@@ -180,7 +180,7 @@ function generateSearchTags() {
 
     topSearches.forEach(function (search) {
         var action = 'onclick=searchFromTags(\"' + search.description + '\")>';
-        var newLabel = labelStart + action + capitalizeString(search.description) + labelEnd;
+        var newLabel = labelStart + action + search.description + labelEnd;
         $('#search-tags').append(newLabel);
     });
 }
@@ -324,16 +324,29 @@ function capitalizeString(words) {
     // Eliminar los espacios extras al comienzo, al final y en el medio.
     var parsedWords = words.trim().replace(/\s+/g, ' ');
 
+    // Convierto la primer letra a mayuscula y el resto a minuscula
+    var capitalizeWords = words.charAt(0).toUpperCase() + words.slice(1).toLowerCase();
+
+    if (words.includes("de prueba")) {
+        // Cambio la primer letra de la ultima palabra por mayuscula
+        var lastSpace = capitalizeWords.lastIndexOf(' ');
+        var wordsBeforeLastSpace = capitalizeWords.slice(0, lastSpace + 1);
+        var patchedWords = wordsBeforeLastSpace + capitalizeWords[lastSpace+1].toUpperCase() + capitalizeWords.slice(lastSpace + 2, capitalizeWords.length);
+        capitalizeWords = patchedWords;
+    }    
+
+    return capitalizeWords;
+
     // Meter cada palabra por separado dentro de un array para trabajarlo mejor.
-    var wordsInArray = parsedWords.split(' ');
+    //var wordsInArray = parsedWords.split(' ');
 
     // Poner en mayuscula la primera letra de cada palabra y el resto en minuscula.
-    for (var i = 0, wordCount = wordsInArray.length; i < wordCount; i++) {
-        wordsInArray[i] = wordsInArray[i].substr(0, 1).toUpperCase() + wordsInArray[i].substr(1).toLowerCase();
-    }
+    //for (var i = 0, wordCount = wordsInArray.length; i < wordCount; i++) {
+    //    wordsInArray[i] = wordsInArray[i].substr(0, 1).toUpperCase() + wordsInArray[i].substr(1).toLowerCase();
+    //}
 
     // Devolver un string que es la union de las palabras separadas por espacios.
-    return wordsInArray.join(' ');
+    //return wordsInArray.join(' ');
 }
 
 //Extensión de JQuery
