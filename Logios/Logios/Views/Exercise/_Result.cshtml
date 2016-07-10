@@ -1,6 +1,6 @@
-﻿ @model Boolean?
+﻿@model Logios.Models.ResultModalViewModel
 
-<script>            
+<script>
     var resultModal = $('#resultModal')
 
     resultModal.modal({
@@ -18,8 +18,7 @@
         }
     }
 </script>
-
-@if (Model.Value)
+@if (Model.AlreadyResolved && !Model.ShowedAnswer)
 {
     <div id="resultModal" class="modal fade">
         <div class="vertical-alignment-helper">
@@ -31,12 +30,10 @@
                     </div>
                     <div class="modal-body text-center">
                         <h4>¡Felicitaciones!</h4>
-                        <h4>Has obtenido un punto por resolver este ejercicio.</h4>
-                        <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
+                        <h4>No has obtenido puntos porque ya habías resuelto este ejercicio.</h4>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-md-12 row">                            
-                            @Html.Partial("_ShareButtons")                                                        
+                        <div class="col-md-12 row">
                             <div class="col-md-3" style="padding-left: 25px; padding-top: 5px;">
                                 <button type="button" class="btn btn-info btn-block" onclick="closeModal(true)">Aceptar</button>
                             </div>
@@ -49,20 +46,59 @@
 }
 else
 {
-    <div id="resultModal" class="modal fade">
-        <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center">
-                <div class="modal-content">                    
-                    <div class="modal-body text-center">
-                        <h3 class="modal-title text-center text-danger"><b>¡RESPUESTA INCORRECTA! <span class="glyphicon glyphicon-remove"></span></b></h3>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-danger" onclick="closeModal(false)">Inténtalo de nuevo</button>
+    if (Model.Success)
+    {
+        <div id="resultModal" class="modal fade">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="closeModal(true)">&times;</button>
+                            <h3 class="modal-title text-center text-success"><b>¡RESPUESTA CORRECTA! <span class="glyphicon glyphicon-ok"></span></b></h3>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h4>¡Felicitaciones!</h4>
+                            @if (Model.ShowedAnswer)
+                            {
+                                <h4 class="text-danger">No has obtenido puntos porque ya viste el desarrollo del ejercicio</h4>
+                            }
+                            else
+                            {
+
+                                <h4>Has obtenido un punto por resolver este ejercicio.</h4>
+                                <p><i>(NOTA: Sólo se otorgan puntos la primera vez.)</i></p>
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-12 row">
+                                @Html.Partial("_ShareButtons")
+                                <div class="col-md-3" style="padding-left: 25px; padding-top: 5px;">
+                                    <button type="button" class="btn btn-info btn-block" onclick="closeModal(true)">Aceptar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div id="resultModal" class="modal fade">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <h3 class="modal-title text-center text-danger"><b>¡RESPUESTA INCORRECTA! <span class="glyphicon glyphicon-remove"></span></b></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-danger" onclick="closeModal(false)">Inténtalo de nuevo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }

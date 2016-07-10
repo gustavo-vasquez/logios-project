@@ -59,9 +59,9 @@ namespace Logios.Controllers
         {
             var currentUser = User.Identity.GetUserId();
 
-            bool? result = ExerciseService.CheckAnswer(id, answer);
+            var result = ExerciseService.CheckAnswer(id, answer);
 
-            if (result.Value)
+            if (result.Success)
             {
                 if (!ExerciseService.CheckUserHasRecord(currentUser, id))
                 {

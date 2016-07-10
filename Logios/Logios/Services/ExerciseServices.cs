@@ -31,22 +31,31 @@ namespace Logios.Services
             return exercise;
         }
 
-        public bool CheckAnswer(int id, string answer)
+        public ResultModalViewModel CheckAnswer(int id, string answer)
         {
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
-
+            
             if (exercise == null)
             {
                 throw new ArgumentException(string.Format("No se encontró un ejercicio con Id = {0}", id));
             }
 
+            var userExercise = context.UserExercise.FirstOrDefault(e => e.ExerciseId == exercise.ExerciseId);
+            var showed = userExercise == null ? false : userExercise.ShowedSolution;
+            var alreadyDone = userExercise != null;
+
             var mathJaxSpace = @"<mo>&#x000A0;</mo>";
             var parsedAnswer = answer.Replace(mathJaxSpace, string.Empty).Trim();
             var parsedSolution = exercise.Solution.Replace(mathJaxSpace, string.Empty).Trim();
 
-            var answerIsCorrect = parsedAnswer.EqualsIgnoreCase(parsedSolution);
-
-            return answerIsCorrect;
+            var success = parsedAnswer.EqualsIgnoreCase(parsedSolution);
+            
+            return new ResultModalViewModel()
+            {
+                Success = success,
+                ShowedAnswer = showed,
+                AlreadyResolved = alreadyDone
+            };
         }
 
         public ExerciseViewModel GetExerciseInformation(int? id, string userId)

@@ -280,6 +280,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\AreaViewModel.cs" />
     <Compile Include="Models\CreateExerciseViewModel.cs" />
+    <Compile Include="Models\ResultModalViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Models\EditExerciseViewModel.cs" />
     <Compile Include="Models\ExerciseResultViewModel.cs" />
