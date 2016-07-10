@@ -5,30 +5,33 @@
 }
 <h1>@ViewBag.Title</h1>
 <hr />
-<div class="col-md-12">
-    <div class="col-md-6 col-md-offset-3">
+
+   
         @using (Html.BeginForm("CreateArea", "TopicArea", FormMethod.Post, new { id = "CreateAreaForm", @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
             <fieldset>
-                <legend class="text-info">Crear un nueva área.</legend>
-                <div class="form-group">
-                    <label for="Description" class="col-md-3 control-label">Descripción:</label>
-                    <div class="col-md-9">
-                        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", placeholder = "Descripción..." })
-                        @Html.ValidationMessageFor(a => a.Description, null, new { @class = "text-danger" })
+                <div class="row">
+                    
+                    <div class="form-group">
+                        <label for="Description" class="col-md-3 text-right control-label">Descripción:</label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(a => a.Description, new { @class = "form-control", placeholder = "Descripción..." })
+                            @Html.ValidationMessageFor(a => a.Description, null, new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-9 col-md-offset-7">
-                        <button type="submit" class="btn btn-success">Confirmar</button>
-                        <button type="button" class="btn btn-danger" onclick="window.location.href = '/Administrator/ControlPanel';">Cancelar</button>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-9 text-right">
+                            <button type="submit" class="btn btn-success">Confirmar</button>
+                            <button type="button" class="btn btn-danger" onclick="window.location.href = '/Administrator/ControlPanel';">Cancelar</button>
+                        </div>
                     </div>
                 </div>
             </fieldset>
         }
-    </div>
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
