@@ -63,7 +63,7 @@ namespace Logios.Services
                 foreach (var topic in result.Topics)
                 {
                     var newViewModel = new ExerciseResultViewModel();
-                    newViewModel.Exercises = this.ExerciseServices.GetExerciseDTOsByTopic(userId, topic.TopicId);
+                    newViewModel.Exercises = this.ExerciseServices.GetExerciseDTOsCards(userId, topic.TopicId,true);
 
                     newViewModel.TopicImageUrl = string.Concat("/Content/images/thumbnails/", topic.Description.Replace(' ', '_'), ".png");
 

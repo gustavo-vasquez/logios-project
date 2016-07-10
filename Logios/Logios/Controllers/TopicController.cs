@@ -26,7 +26,7 @@ namespace Logios.Controllers
             var userId = User.Identity.GetUserId();
             var topic = this.TopicService.GetById(topicId);
 
-            var exercises = this.ExerciseService.GetExerciseDTOsByTopic(userId, topicId);
+            var exercises = this.ExerciseService.GetExerciseDTOsCards(userId, topicId, true);
             
             var resultsViewModel = new ExerciseResultViewModel()
             {
