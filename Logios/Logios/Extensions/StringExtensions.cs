@@ -11,5 +11,12 @@ namespace Logios.Extensions
         {
             return string.Equals(str1, str2, StringComparison.InvariantCultureIgnoreCase);
         }
+
+        public static string Capitalize(this string originalString)
+        {
+            var capitalizedString = string.Concat(originalString.Substring(0, 1).ToUpper(), originalString.Substring(1));
+
+            return capitalizedString;
+        }
     }
 }

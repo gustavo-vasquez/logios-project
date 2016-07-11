@@ -1,37 +1,6 @@
 ﻿@model Logios.Models.ExerciseUserPanelViewModel
 @{ int colNumber = 0; }
 
-<script>
-    function openExercises(topicName) {        
-        if ($('.' + topicName + '').next('ul').css('display') == 'none') {            
-            $('.' + topicName + ' > span:first').removeClass('glyphicon glyphicon-chevron-right');
-            $('.' + topicName + ' > span:first').addClass('glyphicon glyphicon-chevron-down');
-            $('.' + topicName + '').next('ul').css('display', 'block');
-
-            if($('ul[name=' + topicName + '] li').length == 0 ) {
-                $.ajax({
-                    url: "/Manage/ExercisesTree?topicName=" + topicName,
-                    type: 'GET',                
-                    error: function (response) {                    
-                        alert('Error: ' + response.responseText);
-                    },
-                    success: function (treeArray) {
-                        for (i = 0; i < treeArray.length; i++) {
-                            $('ul[name=' + topicName + ']').append('<li><a href="/Exercise/Show/' + treeArray[i] + '"><span class="glyphicon glyphicon-file"></span> Ejercicio ' + treeArray[i] + '</a></li>');
-                        }
-                        treeListed = true;
-                    }
-                });
-            }
-        }
-        else {
-            $('.' + topicName + ' > span:first').removeClass('glyphicon glyphicon-chevron-down');
-            $('.' + topicName + ' > span:first').addClass('glyphicon glyphicon-chevron-right');
-            $('.' + topicName + '').next('ul').css('display', 'none');
-        }
-    }
-</script>
-
 <h4>Estos son todos los ejercicios que has visto:</h4>
 <div>
     @foreach (var topicAreaDescription in Model.Statistics.Keys)
@@ -54,7 +23,7 @@
                         @foreach (var topicStatistics in Model.Statistics[topicAreaDescription])
                         {
                             <li class="topic-statistics">
-                                <a onclick="openExercises('@topicStatistics.Key');" class="text-info topic-menu @topicStatistics.Key">
+                                <a class="text-info topic-menu" data-topic='@topicStatistics.Key'>
                                     <span class="glyphicon glyphicon-chevron-right"></span> @topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span>
                                 </a>
                                 <ul name="@topicStatistics.Key" style="display: none;">                                    
@@ -71,3 +40,4 @@
         { colNumber++; }
     }
 </div>
+<script type="text/javascript" src="~/Scripts/exerciseStatistics.js"></script>

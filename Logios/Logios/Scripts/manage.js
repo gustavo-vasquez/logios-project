@@ -7,7 +7,7 @@
             ];
 
         setupTabs(tabNames);
-        
+
         function setupTabs(tabNames) {
             var tabs = {};
             
@@ -37,5 +37,5 @@
                 });
             });
         }                
-    });        
+    }); // END onDocument.ready()
 })();
