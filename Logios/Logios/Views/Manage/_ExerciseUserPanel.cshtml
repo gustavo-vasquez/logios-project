@@ -23,7 +23,7 @@
                         @foreach (var topicStatistics in Model.Statistics[topicAreaDescription])
                         {
                             <li class="topic-statistics">
-                                <a onclick="openExercises('@topicStatistics.Key');" class="text-info topic-menu @topicStatistics.Key">
+                                <a class="text-info topic-menu" data-topic='@topicStatistics.Key'>
                                     <span class="glyphicon glyphicon-chevron-right"></span> @topicStatistics.Key <span class="badge resolved-exercises"> @topicStatistics.Value </span>
                                 </a>
                                 <ul name="@topicStatistics.Key" style="display: none;">                                    
@@ -40,3 +40,4 @@
         { colNumber++; }
     }
 </div>
+<script type="text/javascript" src="~/Scripts/exerciseStatistics.js"></script>

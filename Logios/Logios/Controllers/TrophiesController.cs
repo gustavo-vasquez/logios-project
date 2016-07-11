@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Logios.Entities;
 using Logios.Services;
 using Microsoft.AspNet.Identity;
+using Logios.Extensions;
 
 namespace Logios.Controllers
 {    
@@ -26,7 +27,11 @@ namespace Logios.Controllers
 
         public PartialViewResult TrophiesList()
         {
-            return PartialView("_TrophiesList", db.Trophies.ToList());
+            var parsedTrophiesList = db.Trophies.ToList();
+
+            parsedTrophiesList.ForEach(x => x.Reason = x.Reason.Capitalize());
+
+            return PartialView("_TrophiesList", parsedTrophiesList);
         }
 
         [Authorize]
