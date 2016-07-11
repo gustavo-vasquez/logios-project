@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using Logios.Models;
 using System.Collections.Generic;
 using Logios.Services;
+using Newtonsoft.Json;
 
 namespace Logios.Controllers
 {
@@ -465,8 +466,10 @@ namespace Logios.Controllers
 
         [HttpGet]
         public ActionResult ExercisesTree(string topicName)
-        {            
-            return Json(new ExerciseServices().GetExercisesResolved(User.Identity.GetUserId(), topicName), JsonRequestBehavior.AllowGet);
+        {
+            var tree = new ExerciseServices().GetExercisesResolved(User.Identity.GetUserId(), topicName);            
+
+            return Json(tree, JsonRequestBehavior.AllowGet);
         }
         
         #region Helpers

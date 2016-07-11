@@ -10,6 +10,7 @@ using Logios.Extensions;
 using System.Net.Mail;
 using System.Net;
 using Logios.DTOs;
+using System.Collections;
 
 namespace Logios.Services
 {
@@ -215,21 +216,23 @@ namespace Logios.Services
             context.SaveChanges();
         }
 
-        public IEnumerable<int> GetExercisesResolved(string userId, string topicName)
+        public IEnumerable<KeyValuePair<int, bool>> GetExercisesResolved(string userId, string topicName)
         {
-            List<int> tree = new List<int>();
-            List<int> allResolvedIds = context.UserExercise.Where(x => x.UserId == userId).Select(x => x.ExerciseId).ToList();
-            var topicId = context.Topics.FirstOrDefault(t => t.Description == topicName).TopicId;
-            var exercises = context.Exercises;
+            //List<int> tree = new List<int>();
+            List<KeyValuePair<int, bool>> tree = new List<KeyValuePair<int, bool>>();                        
+            List<int> allExerciseIds = context.UserExercise.Where(x => x.UserId == userId).Select(x => x.ExerciseId).ToList();
+            List<int> notShowedExercises = context.UserExercise.Where(x => x.UserId == userId && x.ShowedSolution == false).Select(x => x.ExerciseId).ToList();
+            var topicId = context.Topics.FirstOrDefault(t => t.Description == topicName).TopicId;            
 
-            foreach(var exerciseId in allResolvedIds)
+            foreach(var exerciseId in allExerciseIds)
             {
-                if (exercises.Any(e => e.ExerciseId == exerciseId && e.Topic.TopicId == topicId))
+                if (context.Exercises.Any(e => e.ExerciseId == exerciseId && e.Topic.TopicId == topicId))
                 {
-                    tree.Add(exerciseId);
+                    // Si es true el ejercicio visto dio puntos, si es false quiere decir que ya se vio el desarrollo
+                    tree.Add(new KeyValuePair<int, bool>(exerciseId, notShowedExercises.Any(x => x.Equals(exerciseId))));                    
                 }
             }
-
+            
             return tree;
         }
 
