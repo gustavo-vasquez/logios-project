@@ -17,7 +17,7 @@ namespace Logios.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                var topics = context.Topics.ToList();
+                var topics = context.Topics.Where(x => x.IsDeleted == false).ToList();
                 var result = new List<TopicDTO>();
                 topics.ForEach(t => result.Add(new TopicDTO { TopicId = t.TopicId, Description = t.Description }));
 

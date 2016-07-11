@@ -1,5 +1,6 @@
 ﻿using Logios.Entities;
 using Logios.Enums;
+using Logios.Extensions;
 using Logios.Helpers.Trophy;
 using Logios.Models;
 using System;
@@ -56,7 +57,10 @@ namespace Logios.Services
         {
             using (var context = new ApplicationDbContext())
             {
-                return context.Trophies.ToList();
+                var parsedTrophiesList = context.Trophies.ToList();
+                parsedTrophiesList.ForEach(x => x.Reason = x.Reason.Capitalize());
+
+                return parsedTrophiesList;
             }
         }
 
