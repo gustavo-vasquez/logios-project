@@ -59,7 +59,7 @@ namespace Logios.Controllers
         {
             var currentUser = User.Identity.GetUserId();
 
-            var result = ExerciseService.CheckAnswer(id, answer);
+            var result = ExerciseService.CheckAnswer(id, currentUser, answer);
 
             if (result.Success)
             {

@@ -32,7 +32,7 @@ namespace Logios.Services
             return exercise;
         }
 
-        public ResultModalViewModel CheckAnswer(int id, string answer)
+        public ResultModalViewModel CheckAnswer(int id, string userId, string answer)
         {
             var exercise = context.Exercises.FirstOrDefault(e => e.ExerciseId == id);
             
@@ -41,7 +41,7 @@ namespace Logios.Services
                 throw new ArgumentException(string.Format("No se encontró un ejercicio con Id = {0}", id));
             }
 
-            var userExercise = context.UserExercise.FirstOrDefault(e => e.ExerciseId == exercise.ExerciseId);
+            var userExercise = context.UserExercise.FirstOrDefault(e => e.ExerciseId == exercise.ExerciseId && e.UserId == userId);
             var showed = userExercise == null ? false : userExercise.ShowedSolution;
             var alreadyDone = userExercise != null;
 
