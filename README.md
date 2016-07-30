@@ -1,2 +1,2 @@
 # Logios_Repo
-Proyecto final.
+Proyecto final de la Tecnicatura en desarrollo web.
