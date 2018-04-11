@@ -1,60 +1,22 @@
 ﻿@model Logios.Models.RegisterViewModel
 
-<div id="landing_message" class="col-md-6">
-    <h2 class="landingpage" style="font-size: 32px;">¿Por qué debería registrarme?</h2>
-    <p class="landingpage">- Con una cuenta podrás:</p>
-    <ul class="landingpage">
-        <li class="landingpage"><span class="glyphicon glyphicon-plus"></span> Resolver ejercicios</li>
-        <li class="landingpage"><span class="glyphicon glyphicon-plus"></span> Ver el desarrollo de cada ejercicio</li>
-        <li class="landingpage"><span class="glyphicon glyphicon-plus"></span> Obtener premios por tu desempeño</li>
-        <li class="landingpage"><span class="glyphicon glyphicon-plus"></span> Guardar ejercicios en tus favoritos</li>
-        <li class="landingpage"><span class="glyphicon glyphicon-plus"></span> Ver estadísticas de tus ejercicios resueltos</li>
+<div id="landing_message" class="col-md-6 landingpage">
+    <h2 style="font-size: 32px;">¿Por qué debería registrarme?</h2>
+    <p>- Con una cuenta podrás:</p>
+    <ul>
+        <li><span class="glyphicon glyphicon-plus"></span> Resolver ejercicios</li>
+        <li><span class="glyphicon glyphicon-plus"></span> Ver el desarrollo de cada ejercicio</li>
+        <li><span class="glyphicon glyphicon-plus"></span> Obtener premios por tu desempeño</li>
+        <li><span class="glyphicon glyphicon-plus"></span> Guardar ejercicios en tus favoritos</li>
+        <li><span class="glyphicon glyphicon-plus"></span> Ver estadísticas de tus ejercicios resueltos</li>
     </ul>                    
-    <h2 class="landingpage">¡Que esperas para probar <span style="font-family: 'Uncial Antiqua';"><b>Logios</b></span>!</h2>
+    <h2>¡Que esperas para probar <span class="logios">Logios</span>!</h2>
 </div>
+
 <div class="col-md-6 landingpage">
-        @Html.Partial("_HomeSocialLogin", new Logios.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        @*<h2 class="landingpage">@ViewBag.Title</h2>
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4 class="landingpage">Crear una nueva cuenta.</h4>
-            <hr />
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="form-group">
-                <label for="Email" class="col-md-4 control-label">E-mail:</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                </div>
-            </div>
+    @Html.Partial("_HomeSocialLogin", new Logios.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+</div>
 
-            <div class="form-group">
-                <label for="UserName" class="col-md-4 control-label">Nombre de usuario:</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="Password" class="col-md-4 control-label">Contraseña:</label>
-                <div class="col-md-8">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="ConfirmPassword" class="col-md-4 control-label">Confirmar contraseña:</label>
-                <div class="col-md-8">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group pull-right">
-                <div class="col-md-8">
-                    <input type="submit" class="btn btn-info" value="Confirmar registro" />
-                </div>
-            </div>
-        }*@
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

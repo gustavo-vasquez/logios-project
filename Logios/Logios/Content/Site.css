@@ -73,13 +73,13 @@ footer {
 }
 
 @font-face {
-    font-family:UncialAntiqua-regular;
-    src:url('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
-    src:local('/content/fonts/UncialAntiqua-Regular.otf')format('opentype');
+    font-family: 'UncialAntiqua-regular';
+    src: url('/content/fonts/UncialAntiqua-Regular.otf') format('opentype');
+    src: local('/content/fonts/UncialAntiqua-Regular.otf') format('opentype');
 }
 
-.landingpage {
-    color: white !important;
+.landingpage, .landingpage > h2, .landingpage > a {
+    color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -214,6 +214,11 @@ div.topic-exercises-container {
 .logios-header {
     background-color: #033c73;
     color: white;
+}
+
+.logios {
+    font-family: 'UncialAntiqua-regular';
+    font-weight: bold;
 }
 
 .col-vcenter {
