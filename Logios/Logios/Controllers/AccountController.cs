@@ -381,7 +381,7 @@ namespace Logios.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl, string LoginProvider)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -411,6 +411,7 @@ namespace Logios.Controllers
             }
 
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.LoginProvider = LoginProvider;
             return View(model);
         }
 

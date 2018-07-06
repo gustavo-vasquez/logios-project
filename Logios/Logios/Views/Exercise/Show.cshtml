@@ -98,20 +98,20 @@
                     <div id="solutionContainer"></div>
                     @Html.Partial("_ArrowsEditor")
                     @using (Ajax.BeginForm(
-                "Show",
-                "Exercise",
-                new AjaxOptions()
-                {
-                    HttpMethod = "POST",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "DivResult"
-                },
-                new
-                {
-                    Id = "ResultForm",
-                    @Class = "form",
-                    role = "form"
-                }))
+                        "Show",
+                        "Exercise",
+                        new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "DivResult"
+                        },
+                        new
+                        {
+                            Id = "ResultForm",
+                            @Class = "form",
+                            role = "form"
+                        }))
                     {
                         @Html.AntiForgeryToken();
                         <div class="row">

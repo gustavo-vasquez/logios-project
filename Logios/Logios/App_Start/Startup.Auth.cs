@@ -55,8 +55,8 @@ namespace Logios
 
             app.UseTwitterAuthentication(new TwitterAuthenticationOptions
             {
-                ConsumerKey = "dmRydVXUCVvaI3O9e7pY4oztA",
-                ConsumerSecret = "dIvpFfXj6o12MbkHZytCt3dDSyuMfWOlj5N9dPeYdOhElwJcWn",
+                ConsumerKey = "zEorWmvSAZuqOJNQo4DnE7539",
+                ConsumerSecret = "BnDfClNysjgZro2Kod2uZjjURRil3sWy0v1Ae1IwVKzp9B7TDk",
                 BackchannelCertificateValidator =
                          new Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator(
                              new[] {
@@ -81,13 +81,13 @@ namespace Logios
 
 
             app.UseFacebookAuthentication(
-               appId: "1607369316242920",
-               appSecret: "d042a831e90c22e62c03340089fc4ee6");
+               appId: "428511860958897",
+               appSecret: "560b8a6d25c1fa0affec069816abef59");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "711585564011-ic7qih1oqipn69p8l89dqveo1c8hi0d5.apps.googleusercontent.com",
-                ClientSecret = "YY4qfZEJ2tin6Y7XCbwEnLTT",
+                ClientId = "169023533010-bq2me803l7pnuh5vsbqpur2kesdn32j3.apps.googleusercontent.com",
+                ClientSecret = "iopNI42CG9EJ5qSi0SAjSgiQ",
                 CallbackPath = new PathString("/signin-google")
             });
         }
