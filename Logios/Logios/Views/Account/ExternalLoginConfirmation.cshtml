@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Email:</label>                
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
             </div>

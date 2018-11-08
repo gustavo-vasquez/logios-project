@@ -159,7 +159,13 @@ namespace Logios.Services
                     return true;
                 }
 
-                return false;                
+                var topicsNotDeleted = context.TopicAreaTopics.Join(context.Topics, a => a.TopicId, t => t.TopicId,
+                                    (a,t) => new { TopicAreaTopic = a, Topic = t }).Where(c => c.TopicAreaTopic.TopicAreaId == id && !c.Topic.IsDeleted);
+
+                if (topicsNotDeleted.Count() > 0)
+                    return false;
+                else
+                    return true;
             }
         }
 

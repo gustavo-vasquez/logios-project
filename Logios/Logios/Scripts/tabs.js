@@ -50,7 +50,7 @@ function deleteUser(userId) {
                     data: { id: userData.Id, __RequestVerificationToken: gettoken() },
                     type: 'POST',
                     error: function (response) {
-                        alert("Error al procesar solicitud.");
+                        alert("Error al procesar solicitud.\nHay uno o más ejercicios creados por este usuario. Bórralos primero.");
                     },
                     success: function (response) {
                         window.location.href = response.Url;

@@ -30,40 +30,27 @@ namespace Logios.Migrations.DataGenerators
                 userManager.Create(roleManager);
             }
 
-            if (!(context.Users.Any(u => u.UserName == "ADMIN")))
+            if (!(context.Users.Any(u => u.UserName == "Administrador")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "ADMIN", Email = "team.logios.project@gmail.com" };
+                var userToInsert = new ApplicationUser { UserName = "Administrador", Email = "team.logios.project@gmail.com" };
                 var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
-                userManager.Create(userToInsert, "Admin12$");
+                userManager.Create(userToInsert, "Admin123<");
                 userManager.AddToRole(userToInsert.Id, "Admin");                
                 context.UserProfiles.Add(userProfile);
-            }
+            }            
 
-            if (!(context.Users.Any(u => u.UserName == "Cosme_Fulanito")))
+            if (!(context.Users.Any(u => u.UserName == "Invitado")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "Cosme_Fulanito", Email = "cosme@fulanito.com" };
+                var userToInsert = new ApplicationUser { UserName = "Invitado", Email = "invitado@testing.com" };
                 var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
-                userManager.Create(userToInsert, "Cosme123$");
-                userManager.AddToRole(userToInsert.Id, "Admin");
-                context.UserProfiles.Add(userProfile);
-            }
-
-            if (!(context.Users.Any(u => u.UserName == "Testing")))
-            {
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "Testing", Email = "testing@testing.com" };
-                var userProfile = new UserProfile { UserID = userToInsert.Id, Points = 0 };
-                userManager.Create(userToInsert, "Testing22$");
+                userManager.Create(userToInsert, "Invitado99<");
                 userManager.AddToRole(userToInsert.Id, "Usuario");
                 context.UserProfiles.Add(userProfile);
             }
-
-
 
             context.SaveChanges();
 

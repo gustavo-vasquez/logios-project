@@ -261,6 +261,14 @@ namespace Logios.Controllers
                 {
                     return HttpNotFound();
                 }
+
+                using(var context = new ApplicationDbContext())
+                {
+                    var userProfile = context.UserProfiles.Find(id);
+                    context.UserProfiles.Remove(userProfile);
+                    context.SaveChanges();
+                }
+                
                 var result = await UserManager.DeleteAsync(user);
                 if (!result.Succeeded)
                 {

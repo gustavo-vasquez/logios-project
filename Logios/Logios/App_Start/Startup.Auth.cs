@@ -53,31 +53,35 @@ namespace Logios
             //    clientId: "",
             //    clientSecret: "");
 
-            app.UseTwitterAuthentication(new TwitterAuthenticationOptions
-            {
-                ConsumerKey = "zEorWmvSAZuqOJNQo4DnE7539",
-                ConsumerSecret = "BnDfClNysjgZro2Kod2uZjjURRil3sWy0v1Ae1IwVKzp9B7TDk",
-                BackchannelCertificateValidator =
-                         new Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator(
-                             new[] {
-                                // VeriSign Class 3 Secure Server CA - G2
-                                "A5EF0B11CEC04103A34A659048B21CE0572D7D47",
-                                // VeriSign Class 3 Secure Server CA - G3
-                                "0D445C165344C1827E1D20AB25F40163D8BE79A5", 
-                                // VeriSign Class 3 Public Primary Certification Authority - G5
-                                "7FD365A7C2DDECBBF03009F34339FA02AF333133", 
-                                // Symantec Class 3 Secure Server CA - G4
-                                "39A55D933676616E73A761DFA16A7E59CDE66FAD", 
-                                // Symantec Class 3 EV SSL CA - G3
-                                "?add53f6680fe66e383cbac3e60922e3b4c412bed", 
-                                // VeriSign Class 3 Primary CA - G5
-                                "4eb6d578499b1ccf5f581ead56be3d9b6744a5e5", 
-                                // DigiCert SHA2 High Assurance Server C?A 
-                                "5168FF90AF0207753CCCD9656462A212B859723B",
-                                // DigiCert High Assurance EV Root CA 
-                                "B13EC36903F8BF4701D498261A0802EF63642BC3"
-                                 })
-            });
+            //app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            //{
+            //    ConsumerKey = "zEorWmvSAZuqOJNQo4DnE7539",
+            //    ConsumerSecret = "BnDfClNysjgZro2Kod2uZjjURRil3sWy0v1Ae1IwVKzp9B7TDk",
+            //    BackchannelCertificateValidator =
+            //             new Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator(
+            //                 new[] {
+            //                    // VeriSign Class 3 Secure Server CA - G2
+            //                    "A5EF0B11CEC04103A34A659048B21CE0572D7D47",
+            //                    // VeriSign Class 3 Secure Server CA - G3
+            //                    "0D445C165344C1827E1D20AB25F40163D8BE79A5", 
+            //                    // VeriSign Class 3 Public Primary Certification Authority - G5
+            //                    "7FD365A7C2DDECBBF03009F34339FA02AF333133", 
+            //                    // Symantec Class 3 Secure Server CA - G4
+            //                    "39A55D933676616E73A761DFA16A7E59CDE66FAD", 
+            //                    // Symantec Class 3 EV SSL CA - G3
+            //                    "?add53f6680fe66e383cbac3e60922e3b4c412bed", 
+            //                    // VeriSign Class 3 Primary CA - G5
+            //                    "4eb6d578499b1ccf5f581ead56be3d9b6744a5e5", 
+            //                    // DigiCert SHA2 High Assurance Server C?A 
+            //                    "5168FF90AF0207753CCCD9656462A212B859723B",
+            //                    // DigiCert High Assurance EV Root CA 
+            //                    "B13EC36903F8BF4701D498261A0802EF63642BC3"
+            //                     })
+            //});
+
+            app.UseTwitterAuthentication(
+               consumerKey: "A2R84oHUVizZlp1mXdbfYgZVm",
+               consumerSecret: "z0d3TuGFyzgUQwY45YIB8HMorvqFpu9KDTgE5S7WzUX3W0ayTT");
 
 
             app.UseFacebookAuthentication(
@@ -86,8 +90,8 @@ namespace Logios
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "169023533010-bq2me803l7pnuh5vsbqpur2kesdn32j3.apps.googleusercontent.com",
-                ClientSecret = "iopNI42CG9EJ5qSi0SAjSgiQ",
+                ClientId = "711585564011-ic7qih1oqipn69p8l89dqveo1c8hi0d5.apps.googleusercontent.com",
+                ClientSecret = "YY4qfZEJ2tin6Y7XCbwEnLTT",
                 CallbackPath = new PathString("/signin-google")
             });
         }
