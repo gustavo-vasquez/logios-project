@@ -245,7 +245,7 @@ namespace Logios.Services
             {
                 try
                 {                    
-                    context.Exercises.First(e => e.Topic.TopicId == id);                    
+                    context.Exercises.First(e => e.Topic.TopicId == id && !e.IsDeleted);                    
                 }
                 catch
                 {
