@@ -1,4 +1,4 @@
-# Logios_Repo (Logios)
+# Logios - Sapere aude
 Proyecto final de la carrera <i>Tecnicatura universitaria en web</i>
 
 Una aplicación web educativa capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
