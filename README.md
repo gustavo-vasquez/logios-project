@@ -1,7 +1,9 @@
 # Logios - Sapere aude
-Proyecto final de la carrera <i>Tecnicatura universitaria en web</i>
+Proyecto final de la carrera: <b>Tecnicatura universitaria en web.</b>
 
 Una aplicación web educativa capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
+
+![Logios-Preview](https://github.com/gustavo-vasquez/Logios_Repo/blob/master/Logios/Logios/Content/images/Logios_preview.png)
 
 ## Funcionalidades
 <ul>
