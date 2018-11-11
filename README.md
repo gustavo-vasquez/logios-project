@@ -1,10 +1,9 @@
-# Logios_Repo (Logios)
-Proyecto final de la carrera <i>Tecnicatura en desarrollo web</i>
+# Logios - Sapere aude
+Proyecto final de la carrera <i>Tecnicatura universitaria en web</i>
 
-Una aplicación web capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
+Una aplicación web educativa capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
 
 ## Funcionalidades
-
 <ul>
   <li>Creación de usuarios (de la forma tradicional o mediante el uso de redes sociales)</li>
   <li>Búsqueda de ejercicios de distinta categoría</li>
@@ -30,7 +29,6 @@ Una aplicación web capaz de almacenar ejercicios matemáticos completos de dist
 </ul>
 
 ## Tecnologías
-
 <ul>
   <li>HTML5</li>
   <li>CSS</li>
@@ -47,8 +45,10 @@ Una aplicación web capaz de almacenar ejercicios matemáticos completos de dist
   <li>Wiris editor</li>
 </ul>
 
-## Autores
+## Notas
+La aplicación fue desarrollada usando el enfoque code first migrations. Desde el "package manager console" ejecutar el comando "Update-Database" para generar la base de datos (dentro de la carpeta App_Data) mediante LocalDb.
 
+## Autores
 Gustavo Vasquez
 
 Fernando Apaolaza
