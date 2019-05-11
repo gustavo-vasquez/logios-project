@@ -3,7 +3,13 @@ Proyecto final de la carrera: <b>Tecnicatura universitaria en web.</b>
 
 Una aplicación web educativa capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
 
-![Logios-Preview](https://github.com/gustavo-vasquez/Logios_Repo/blob/master/Logios/Logios/Content/images/Logios_preview.png)
+![Logios-Home](Logios/Logios/Content/previews/1-inicio.png)
+
+![Logios-Profile](Logios/Logios/Content/previews/2-perfil.png)
+
+![Logios-Exercise](Logios/Logios/Content/previews/3-ejercicio.png)
+
+![Logios-Trophy](Logios/Logios/Content/previews/4-trofeo.png)
 
 ## Funcionalidades
 <ul>
