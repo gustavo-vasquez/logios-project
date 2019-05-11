@@ -357,6 +357,10 @@
     <Content Include="Content\images\trophys\pergamino_oro.svg" />
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
     <Content Include="Content\nprogress.css" />
+    <Content Include="Content\previews\1-inicio.png" />
+    <Content Include="Content\previews\2-perfil.png" />
+    <Content Include="Content\previews\3-ejercicio.png" />
+    <Content Include="Content\previews\4-trofeo.png" />
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
     <Content Include="Content\video\library_reading_hall.mp4" />
