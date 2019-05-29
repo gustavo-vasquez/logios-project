@@ -338,6 +338,8 @@
     <Content Include="Content\images\logo_v3.1.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_spinner.gif" />
+    <Content Include="Content\images\previews\5-ver_desarrollo.png" />
+    <Content Include="Content\images\previews\6-desarrollo.png" />
     <Content Include="Content\images\share_social\1465195920_twitter_circle.png" />
     <Content Include="Content\images\share_social\1465196478_facebook_circle.png" />
     <Content Include="Content\images\share_social\1465196475_google_circle.png" />
@@ -357,10 +359,10 @@
     <Content Include="Content\images\trophys\pergamino_oro.svg" />
     <Content Include="Content\images\trophys\pergamino_plata.svg" />
     <Content Include="Content\nprogress.css" />
-    <Content Include="Content\previews\1-inicio.png" />
-    <Content Include="Content\previews\2-perfil.png" />
-    <Content Include="Content\previews\3-ejercicio.png" />
-    <Content Include="Content\previews\4-trofeo.png" />
+    <Content Include="Content\images\previews\1-inicio.png" />
+    <Content Include="Content\images\previews\2-perfil.png" />
+    <Content Include="Content\images\previews\3-ejercicio.png" />
+    <Content Include="Content\images\previews\4-trofeo.png" />
     <Content Include="Content\tooltipster-logios.css" />
     <Content Include="Content\tooltipster.css" />
     <Content Include="Content\video\library_reading_hall.mp4" />
