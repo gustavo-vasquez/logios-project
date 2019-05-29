@@ -1,15 +1,27 @@
 # Logios - Sapere aude
 Proyecto final de la carrera: <b>Tecnicatura universitaria en web.</b>
 
-Una aplicación web educativa capaz de almacenar ejercicios matemáticos completos de distinta complejidad.
+Aplicación web educativa capaz de almacenar ejercicios matemáticos complejos con su proceso de desarrollo y resultado.
 
-![Logios-Home](Logios/Logios/Content/previews/1-inicio.png)
+INICIO
+:-------------------------:
+![Logios-Home](Logios/Logios/Content/images/previews/1-inicio.png)
 
-![Logios-Profile](Logios/Logios/Content/previews/2-perfil.png)
+PERFIL
+:-------------------------:
+![Logios-Profile](Logios/Logios/Content/images/previews/2-perfil.png)
 
-![Logios-Exercise](Logios/Logios/Content/previews/3-ejercicio.png)
+EJERCICIO
+:-------------------------:
+![Logios-Exercise](Logios/Logios/Content/images/previews/3-ejercicio.png)
 
-![Logios-Trophy](Logios/Logios/Content/previews/4-trofeo.png)
+ADVERTENCIA             |  DESARROLLO
+:-------------------------:|:-------------------------:
+![Logios-Trophy](Logios/Logios/Content/images/previews/5-ver_desarrollo.png)  |  ![Logios-Trophy](Logios/Logios/Content/images/previews/6-desarrollo.png)
+
+TROFEO
+:-------------------------:
+![Logios-Trophy](Logios/Logios/Content/images/previews/4-trofeo.png)
 
 ## Funcionalidades
 <ul>
@@ -55,6 +67,7 @@ Una aplicación web educativa capaz de almacenar ejercicios matemáticos complet
 
 ## Notas
 La aplicación fue desarrollada usando el enfoque code first migrations. Desde el "package manager console" ejecutar el comando "Update-Database" para generar la base de datos (dentro de la carpeta App_Data) mediante LocalDb.
+Al abrirse en el navegador es posible que aparezca como "no seguro" el certificado https. En ese caso, ir a "continuar a localhost".
 
 ## Autores
 Gustavo Vasquez
