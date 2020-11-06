@@ -31,6 +31,8 @@ namespace Logios.Controllers
         {
             var userId = User.Identity.GetUserId();
             var viewModel = this.TopicAreaService.GetExercisesByTopicArea(userId, topicAreaDescription);
+            ViewBag.TopicAreaDescription = topicAreaDescription;
+
             return View(viewModel);
         }
 

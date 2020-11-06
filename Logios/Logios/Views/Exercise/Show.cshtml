@@ -212,7 +212,7 @@
     {
         <div class="row">
             <div class="col-lg-9 col-lg-push-3">
-                <h3 style="color: red"><strong>Debes <a href="@Url.Action("Login", "Account")" style="color: red; text-decoration: underline">iniciar sesión</a> para resolver los ejercicios y ver su desarrollo</strong></h3>
+                <h3 style="color: red"><strong>Debes <a href="@Url.Action("Login", "Account", new { returnUrl = Request.RawUrl })" style="color: red; text-decoration: underline">iniciar sesión</a> para resolver los ejercicios y ver su desarrollo</strong></h3>
             </div>
         </div>
     }

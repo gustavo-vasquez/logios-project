@@ -18,7 +18,7 @@
     }
     else
     {
-        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        using (Html.BeginForm("ExternalLogin", "Account", new { returnUrl = Model.ReturnUrl }))
         {
             @Html.AntiForgeryToken()
             <div id="socialLoginList" class="row">
@@ -42,7 +42,7 @@
 
     <div class="row">
         <h3 class="text-center landingpage">
-            <a href="@Url.Action("Register", "Account")"> Clic aquí para registrarse</a>
+            <a href="@Url.Action("Register", "Account", new { returnUrl = Model.ReturnUrl })"> Clic aquí para registrarse</a>
         </h3>
     </div>
 }

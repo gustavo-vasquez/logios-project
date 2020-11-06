@@ -7,11 +7,13 @@ namespace Logios.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required(ErrorMessage = "Debes escribir un nombre")]
-        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
+        [Required(ErrorMessage = "Debes escribir un nombre.")]
+        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo. Empezar con una letra. Mínimo 4 caracteres.")]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
-        
+
+        [Required(ErrorMessage = "El campo E-mail es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Ha ingresado un correo electrónico no válido.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -75,7 +77,7 @@ namespace Logios.Models
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "El campo Nombre de Usuario es obligatorio.")]
-        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo (sin espacios y empezar con una letra). Mínimo 4 caracteres.")]
+        [RegularExpression(@"^([A-Za-zñ]{1})+([\w]{3,})$", ErrorMessage = "El Nombre de usuario puede contener mayúsculas, minúsculas, números o un guiónbajo. Empezar con una letra. Mínimo 4 caracteres.")]
         [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
 
@@ -86,7 +88,7 @@ namespace Logios.Models
 
         [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 minúscula, 1 mayúscula y un 1 número (Mínimo 6 caracteres).")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos una minúscula, mayúscula y número. Mínimo 6 caracteres.")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -110,7 +112,7 @@ namespace Logios.Models
 
         [Required(ErrorMessage = "El campo Contraseña es obligatorio.")]
         [StringLength(100, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.", MinimumLength = 6)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos 1 minúscula, 1 mayúscula y un 1 número (Mínimo 6 caracteres).")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,50}$", ErrorMessage = "La contraseña debe tener al menos una minúscula, mayúscula y número. Mínimo 6 caracteres.")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }

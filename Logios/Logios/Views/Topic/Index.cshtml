@@ -1,5 +1,9 @@
 ﻿@model Logios.Models.ExerciseResultViewModel
 
+@{ 
+    ViewBag.Title = ViewBag.TopicDescription;
+}
+
 <h1>@ViewBag.TopicDescription</h1>
 <div>
     @{ Html.RenderPartial("_ExerciseSearchResult", Model); }

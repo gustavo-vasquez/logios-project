@@ -117,7 +117,7 @@ namespace Logios.Controllers
                     return RedirectToAction("Show", "Exercise", new { id = exerciseId });
                 }
 
-                throw new Exception();
+                return View("Report", model);
             }
             catch(Exception ex)
             {
