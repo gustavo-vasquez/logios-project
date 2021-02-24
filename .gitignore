@@ -239,3 +239,5 @@ _Pvt_Extensions
 # App keys for social login
 /Logios/Logios/App_Start/Startup.Auth.cs
 
+# Avatars of users
+Logios/Logios/Content/images/avatars
